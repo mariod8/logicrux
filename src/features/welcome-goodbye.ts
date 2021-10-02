@@ -6,7 +6,7 @@ export default async (
     action: "ADD" | "REMOVE"
 ) => {
     const { guild, user } = member
-    const channel = (await getChannelByString("general", guild)) as TextChannel
+    const channel = await getChannelByString("general", guild)
 
     if (!channel) return
     if (action === "ADD")

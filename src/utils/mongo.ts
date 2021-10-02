@@ -24,3 +24,7 @@ export async function incGlobalStats(
     }
     await Promise.all(promises)
 }
+
+export async function getUserProfile(userIdentification: Object){
+    return await userSchema.findOne(userIdentification)
+}

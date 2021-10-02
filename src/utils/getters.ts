@@ -1,4 +1,4 @@
-import { Guild, GuildMember } from "discord.js"
+import { Guild, GuildMember, TextChannel } from "discord.js"
 const stringSimilarity = require("string-similarity")
 
 export function getUserByString(username: string, guild: Guild) {
@@ -40,7 +40,7 @@ export function getChannelByString(channel: string, guild: Guild) {
         channelSimilarityThreshold
     )
         return null
-    else return similarChannel
+    else return similarChannel as TextChannel
 }
 
 export function getRandomInArray(array: Array<any>) {
