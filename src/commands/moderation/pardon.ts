@@ -26,8 +26,7 @@ export default {
         const userID = args[0]
         const target = await client?.users?.fetch(userID).catch(console.error)
 
-        if (!target)
-            return "El ID de usuario es inválido"
+        if (!target) return "El ID de usuario es inválido"
         args.shift()
         const reason = args.length ? args.join(" ") : "_No especificado_"
         guild?.members?.unban(userID, reason).catch(console.error)

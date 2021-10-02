@@ -34,10 +34,7 @@ export default {
             .setDescription(
                 `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`
             )
-            .setFooter(
-                `Baneado por ${user.username}`,
-                user.displayAvatarURL()
-            )
+            .setFooter(`Baneado por ${user.username}`, user.displayAvatarURL())
             .setColor("RED")
         target.ban({
             reason,

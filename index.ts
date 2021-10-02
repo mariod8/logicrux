@@ -4,6 +4,7 @@ import WOKCommands from "wokcommands"
 import responses from "./src/features/responses"
 import welcomeGoodbye from "./src/features/welcome-goodbye"
 import path from "path"
+import { statsOnMessage } from "./src/handlers/stats"
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -28,7 +29,7 @@ client.on("ready", () => {
             "slash",
         ],
     })
-        .setDefaultPrefix("!")
+        .setDefaultPrefix("//")
         .setBotOwner("323378898794446850")
     console.log(`${client?.user?.username} is ready!`)
 })
@@ -36,6 +37,7 @@ client.on("ready", () => {
 client.on("messageCreate", (message) => {
     const { author } = message
 
+    statsOnMessage(message)
     if (author?.bot) return
     responses(message)
 })

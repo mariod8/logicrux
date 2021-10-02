@@ -22,132 +22,132 @@ export default {
     ],
     callback: ({ args, user }) => {
         const characters: any = {
-            "a": {
+            a: {
                 top: "OXO",
                 mid: "XXX",
                 bot: "XOX",
             },
-            "b": {
+            b: {
                 top: "XXO",
                 mid: "XXX",
                 bot: "XXX",
             },
-            "c": {
+            c: {
                 top: "XXX",
                 mid: "XOO",
                 bot: "XXX",
             },
-            "d": {
+            d: {
                 top: "XXO",
                 mid: "XOX",
                 bot: "XXO",
             },
-            "e": {
+            e: {
                 top: "XXX",
                 mid: "XXO",
                 bot: "XXX",
             },
-            "f": {
+            f: {
                 top: "XXX",
                 mid: "XXO",
                 bot: "XOO",
             },
-            "g": {
+            g: {
                 top: "XXO",
                 mid: "XOX",
                 bot: "XXX",
             },
-            "h": {
+            h: {
                 top: "XOX",
                 mid: "XXX",
                 bot: "XOX",
             },
-            "i": {
+            i: {
                 top: "XXX",
                 mid: "OXO",
                 bot: "XXX",
             },
-            "j": {
+            j: {
                 top: "OOX",
                 mid: "XOX",
                 bot: "XXX",
             },
-            "k": {
+            k: {
                 top: "XOX",
                 mid: "XXO",
                 bot: "XOX",
             },
-            "l": {
+            l: {
                 top: "XOO",
                 mid: "XOO",
                 bot: "XXX",
             },
-            "m": {
+            m: {
                 top: "XXX",
                 mid: "XXX",
                 bot: "XOX",
             },
-            "n": {
+            n: {
                 top: "XXX",
                 mid: "XOX",
                 bot: "XOX",
             },
-            "o": {
+            o: {
                 top: "XXX",
                 mid: "XOX",
                 bot: "XXX",
             },
-            "p": {
+            p: {
                 top: "XXX",
                 mid: "XXX",
                 bot: "XOO",
             },
-            "q": {
+            q: {
                 top: "XXX",
                 mid: "XXX",
                 bot: "OOX",
             },
-            "r": {
+            r: {
                 top: "XXX",
                 mid: "XOO",
                 bot: "XOO",
             },
-            "s": {
+            s: {
                 top: "OXX",
                 mid: "OXO",
                 bot: "XXO",
             },
-            "t": {
+            t: {
                 top: "XXX",
                 mid: "OXO",
                 bot: "OXO",
             },
-            "u": {
+            u: {
                 top: "XOX",
                 mid: "XOX",
                 bot: "XXX",
             },
-            "v": {
+            v: {
                 top: "XOX",
                 mid: "XOX",
                 bot: "OXO",
             },
-            "w": {
+            w: {
                 top: "XOX",
                 mid: "XXX",
                 bot: "XXX",
             },
-            "x": {
+            x: {
                 top: "XOX",
                 mid: "OXO",
                 bot: "XOX",
             },
-            "y": {
+            y: {
                 top: "XOX",
                 mid: "OXO",
                 bot: "OXO",
             },
-            "z": {
+            z: {
                 top: "XXO",
                 mid: "OXO",
                 bot: "OXX",
@@ -257,7 +257,7 @@ export default {
                 mid: "OXX",
                 bot: "OXO",
             },
-            "ª": {
+            ª: {
                 top: "XOO",
                 mid: "OOO",
                 bot: "OOO",

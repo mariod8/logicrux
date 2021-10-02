@@ -3,11 +3,11 @@ import mongoose, { Schema } from "mongoose"
 const name = "user-profile"
 
 const userSchema = new Schema({
-    guildId: {
+    guildID: {
         type: String,
         require: true,
     },
-    userId: {
+    userID: {
         type: String,
         require: true,
     },

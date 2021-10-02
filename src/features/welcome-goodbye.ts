@@ -1,5 +1,5 @@
 import { GuildMember, PartialGuildMember, TextChannel } from "discord.js"
-import { getChannelByString } from "../util/getters"
+import { getChannelByString } from "../utils/getters"
 
 export default async (
     member: GuildMember | PartialGuildMember,
