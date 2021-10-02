@@ -1,17 +1,26 @@
 import userSchema from "../schemas/user-schema"
 
-export async function incUserSchema(
+export async function incGlobalStats(
     userIdentification: Object,
-    userStats: Object
+    globalStats: any
 ) {
-    await userSchema.updateOne(
-        userIdentification,
-        {
-            $inc: userStats,
-        } as any,
-        {
-            upsert: true,
-            setDefaultsOnInsert: false,
-        }
-    )
+    var promises = []
+
+    for (const globalStat in globalStats) {
+        promises.push(
+            userSchema.updateOne(
+                userIdentification,
+                {
+                    $inc: {
+                        [`globalStats.${globalStat}`]: globalStats[globalStat],
+                    },
+                } as any,
+                {
+                    upsert: true,
+                    setDefaultsOnInsert: false,
+                }
+            )
+        )
+    }
+    await Promise.all(promises)
 }

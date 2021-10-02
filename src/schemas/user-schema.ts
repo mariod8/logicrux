@@ -32,6 +32,7 @@ const userSchema = new Schema({
     },
     weeklyStats: {
         type: Object,
+        default: {},
     },
 })
 

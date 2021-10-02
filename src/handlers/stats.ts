@@ -1,21 +1,18 @@
 import { Message } from "discord.js"
 import { emojis } from "../utils/regex"
-import { incUserSchema } from "../utils/mongo"
+import { incGlobalStats } from "../utils/mongo"
 
 export function statsOnMessage(message: Message) {
+    interface _userIdentification {
+        userID: string
+        guildID: string
+    }
     interface _globalStats {
         messages: Number
         words?: Number
         attachments?: Number
         emojis?: Number
         replies?: Number
-    }
-    interface _userIdentification {
-        userID: string
-        guildID: string
-    }
-    interface _userStats {
-        globalStats: _globalStats
     }
     var {
         author,
@@ -30,17 +27,16 @@ export function statsOnMessage(message: Message) {
         userID: author?.id as string,
         guildID: guild?.id as string,
     }
-    var userStats: _userStats = {
-        globalStats: {
-            messages: 1
-        }
+    var globalStats: _globalStats = {
+        messages: 1,
     }
 
     if (type !== "DEFAULT") return
-    if (content) userStats.globalStats.words = content.split(" ").length
-    if (attachments.size > 0) userStats.globalStats.attachments = attachments.size
-    if (reference) userStats.globalStats.replies = 1
-    if (emojis.test(content)) userStats.globalStats.emojis = content?.match(emojis)?.length
+    if (content) globalStats.words = content.split(" ").length
+    if (attachments.size > 0) globalStats.attachments = attachments.size
+    if (reference) globalStats.replies = 1
+    if (emojis.test(content))
+        globalStats.emojis = content?.match(emojis)?.length
 
-    incUserSchema(userIdentification, userStats)
+    incGlobalStats(userIdentification, globalStats)
 }
