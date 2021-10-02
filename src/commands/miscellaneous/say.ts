@@ -1,5 +1,5 @@
 import { ICommand } from "wokcommands"
-import { cleanSpam } from "../../util/string"
+import { cleanSpam } from "../../utils/string"
 
 export default {
     category: "Miscellaneous",

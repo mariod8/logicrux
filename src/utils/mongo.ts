@@ -8,7 +8,7 @@ export async function incUserSchema(
         userIdentification,
         {
             $inc: userStats,
-        },
+        } as any,
         {
             upsert: true,
             setDefaultsOnInsert: false,

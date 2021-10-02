@@ -1,5 +1,5 @@
 import { ICommand } from "wokcommands"
-import { emojis } from "../../util/regex"
+import { emojis } from "../../utils/regex"
 
 export default {
     category: "Miscellaneous",

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-const name = "user-profile"
+const name = "user-profiles"
 
 const userSchema = new Schema({
     guildID: {
@@ -14,62 +14,20 @@ const userSchema = new Schema({
     globalStats: {
         type: Object,
         default: {
-            xpCurrentLevel: {
-                type: Number,
-                default: 0,
-            },
-            totalXp: {
-                type: Number,
-                default: 0,
-            },
-            level: {
-                type: Number,
-                default: 0,
-            },
-            mutes: {
-                type: Number,
-                default: 0,
-            },
-            weeklyUser: {
-                type: Number,
-                default: 0,
-            },
-            messages: {
-                type: Number,
-                default: 0,
-            },
-            words: {
-                type: Number,
-                default: 0,
-            },
-            attachments: {
-                type: Number,
-                default: 0,
-            },
-            emojis: {
-                type: Number,
-                default: 0,
-            },
-            commands: {
-                type: Number,
-                default: 0,
-            },
-            musicPlayed: {
-                type: Number,
-                default: 0,
-            },
-            reactions: {
-                type: Number,
-                default: 0,
-            },
-            replies: {
-                type: Number,
-                default: 0,
-            },
-            presence: {
-                type: Number,
-                default: -1,
-            },
+            xpCurrentLevel: 0,
+            totalXp: 0,
+            level: 0,
+            mutes: 0,
+            weeklyUser: 0,
+            messages: 0,
+            words: 0,
+            attachments: 0,
+            emojis: 0,
+            commands: 0,
+            musicPlayed: 0,
+            reactions: 0,
+            replies: 0,
+            presence: -1,
         },
     },
     weeklyStats: {
