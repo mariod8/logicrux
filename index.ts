@@ -37,7 +37,7 @@ client.on("messageCreate", (message) => {
     const { author } = message
 
     if (author?.bot) return
-    responses()
+    responses(message)
 })
 
 client.on("guildMemberAdd", (member) => {

@@ -42,3 +42,7 @@ export function getChannelByString(channel: string, guild: Guild) {
         return null
     else return similarChannel
 }
+
+export function getRandomInArray(array: Array<any>) {
+    return array[Math.floor(Math.random() * array.length)]
+}
