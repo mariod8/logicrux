@@ -1,4 +1,4 @@
-import { ColorResolvable, GuildMember, MessageEmbed } from "discord.js"
+import { GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 
 export default {
@@ -22,9 +22,8 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ interaction, args }) => {
+    callback: ({ interaction, args, user }) => {
         const target = interaction.options.getMember("user") as GuildMember
-        const author = interaction.user
 
         if (!target) return "Please specify someone to kick"
         if (!target.kickable) return "No se puede kickear al usuario"
@@ -36,11 +35,11 @@ export default {
                 `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`
             )
             .setFooter(
-                `Expulsado por ${author.username}`,
-                author.displayAvatarURL()
+                `Expulsado por ${user.username}`,
+                user.displayAvatarURL()
             )
             .setColor("ORANGE")
-        target.kick(reason)
+        target.kick(reason).catch(console.error)
         return embed
     },
 } as ICommand

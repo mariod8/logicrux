@@ -1,4 +1,3 @@
-import { ColorResolvable, GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 
 export default {

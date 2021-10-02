@@ -1,6 +1,7 @@
 import DiscordJS, { Intents } from "discord.js"
 import dotenv from "dotenv"
 import WOKCommands from "wokcommands"
+import responses from "./src/features/responses"
 import welcomeGoodbye from "./src/features/welcome-goodbye"
 import path from "path"
 dotenv.config()
@@ -27,7 +28,7 @@ client.on("ready", () => {
             "slash",
         ],
     })
-        .setDefaultPrefix("/")
+        .setDefaultPrefix("!")
         .setBotOwner("323378898794446850")
     console.log(`${client?.user?.username} is ready!`)
 })
@@ -36,6 +37,7 @@ client.on("messageCreate", (message) => {
     const { author } = message
 
     if (author?.bot) return
+    responses()
 })
 
 client.on("guildMemberAdd", (member) => {

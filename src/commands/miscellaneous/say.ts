@@ -5,7 +5,7 @@ export default {
     category: "Miscellaneous",
     description: "Echo command",
     minArgs: 1,
-    slash: true,
+    slash: "both",
     testOnly: true,
     expectedArgs: "<text>",
     options: [
