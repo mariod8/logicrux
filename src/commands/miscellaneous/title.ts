@@ -16,257 +16,256 @@ export default {
         {
             name: "text",
             description: "Text to convert",
-            required: false,
+            required: true,
             type: "STRING",
         },
     ],
     callback: ({ args, user }) => {
-        const characters = {
-            a: {
+        const characters: any = {
+            "a": {
                 top: "OXO",
-                middle: "XXX",
-                bottom: "XOX",
+                mid: "XXX",
+                bot: "XOX",
             },
-            b: {
+            "b": {
                 top: "XXO",
-                middle: "XXX",
-                bottom: "XXX",
+                mid: "XXX",
+                bot: "XXX",
             },
-            c: {
+            "c": {
                 top: "XXX",
-                middle: "XOO",
-                bottom: "XXX",
+                mid: "XOO",
+                bot: "XXX",
             },
-            d: {
+            "d": {
                 top: "XXO",
-                middle: "XOX",
-                bottom: "XXO",
+                mid: "XOX",
+                bot: "XXO",
             },
-            e: {
+            "e": {
                 top: "XXX",
-                middle: "XXO",
-                bottom: "XXX",
+                mid: "XXO",
+                bot: "XXX",
             },
-            f: {
+            "f": {
                 top: "XXX",
-                middle: "XXO",
-                bottom: "XOO",
+                mid: "XXO",
+                bot: "XOO",
             },
-            g: {
+            "g": {
                 top: "XXO",
-                middle: "XOX",
-                bottom: "XXX",
+                mid: "XOX",
+                bot: "XXX",
             },
-            h: {
+            "h": {
                 top: "XOX",
-                middle: "XXX",
-                bottom: "XOX",
+                mid: "XXX",
+                bot: "XOX",
             },
-            i: {
+            "i": {
                 top: "XXX",
-                middle: "OXO",
-                bottom: "XXX",
+                mid: "OXO",
+                bot: "XXX",
             },
-            j: {
+            "j": {
                 top: "OOX",
-                middle: "XOX",
-                bottom: "XXX",
+                mid: "XOX",
+                bot: "XXX",
             },
-            k: {
+            "k": {
                 top: "XOX",
-                middle: "XXO",
-                bottom: "XOX",
+                mid: "XXO",
+                bot: "XOX",
             },
-            l: {
+            "l": {
                 top: "XOO",
-                middle: "XOO",
-                bottom: "XXX",
+                mid: "XOO",
+                bot: "XXX",
             },
-            m: {
+            "m": {
                 top: "XXX",
-                middle: "XXX",
-                bottom: "XOX",
+                mid: "XXX",
+                bot: "XOX",
             },
-            n: {
+            "n": {
                 top: "XXX",
-                middle: "XOX",
-                bottom: "XOX",
+                mid: "XOX",
+                bot: "XOX",
             },
-            o: {
+            "o": {
                 top: "XXX",
-                middle: "XOX",
-                bottom: "XXX",
+                mid: "XOX",
+                bot: "XXX",
             },
-            p: {
+            "p": {
                 top: "XXX",
-                middle: "XXX",
-                bottom: "XOO",
+                mid: "XXX",
+                bot: "XOO",
             },
-            q: {
+            "q": {
                 top: "XXX",
-                middle: "XXX",
-                bottom: "OOX",
+                mid: "XXX",
+                bot: "OOX",
             },
-            r: {
+            "r": {
                 top: "XXX",
-                middle: "XOO",
-                bottom: "XOO",
+                mid: "XOO",
+                bot: "XOO",
             },
-            s: {
+            "s": {
                 top: "OXX",
-                middle: "OXO",
-                bottom: "XXO",
+                mid: "OXO",
+                bot: "XXO",
             },
-            t: {
+            "t": {
                 top: "XXX",
-                middle: "OXO",
-                bottom: "OXO",
+                mid: "OXO",
+                bot: "OXO",
             },
-            u: {
+            "u": {
                 top: "XOX",
-                middle: "XOX",
-                bottom: "XXX",
+                mid: "XOX",
+                bot: "XXX",
             },
-            v: {
+            "v": {
                 top: "XOX",
-                middle: "XOX",
-                bottom: "OXO",
+                mid: "XOX",
+                bot: "OXO",
             },
-            w: {
+            "w": {
                 top: "XOX",
-                middle: "XXX",
-                bottom: "XXX",
+                mid: "XXX",
+                bot: "XXX",
             },
-            x: {
+            "x": {
                 top: "XOX",
-                middle: "OXO",
-                bottom: "XOX",
+                mid: "OXO",
+                bot: "XOX",
             },
-            y: {
+            "y": {
                 top: "XOX",
-                middle: "OXO",
-                bottom: "OXO",
+                mid: "OXO",
+                bot: "OXO",
             },
-            z: {
+            "z": {
                 top: "XXO",
-                middle: "OXO",
-                bottom: "OXX",
+                mid: "OXO",
+                bot: "OXX",
             },
-            0: {
+            "0": {
                 top: "XXX",
-                middle: "XOX",
-                bottom: "XXX",
+                mid: "XOX",
+                bot: "XXX",
             },
-            1: {
+            "1": {
                 top: "XXO",
-                middle: "OXO",
-                bottom: "XXX",
+                mid: "OXO",
+                bot: "XXX",
             },
-            2: {
+            "2": {
                 top: "XXO",
-                middle: "OXO",
-                bottom: "OXX",
+                mid: "OXO",
+                bot: "OXX",
             },
-            3: {
+            "3": {
                 top: "XXX",
-                middle: "OXX",
-                bottom: "XXX",
+                mid: "OXX",
+                bot: "XXX",
             },
-            4: {
+            "4": {
                 top: "XOX",
-                middle: "XXX",
-                bottom: "OOX",
+                mid: "XXX",
+                bot: "OOX",
             },
-            5: {
+            "5": {
                 top: "OXX",
-                middle: "OXO",
-                bottom: "XXO",
+                mid: "OXO",
+                bot: "XXO",
             },
-            6: {
+            "6": {
                 top: "XOO",
-                middle: "XXX",
-                bottom: "XXX",
+                mid: "XXX",
+                bot: "XXX",
             },
-            7: {
+            "7": {
                 top: "XXX",
-                middle: "OOX",
-                bottom: "OOX",
+                mid: "OOX",
+                bot: "OOX",
             },
-            8: {
+            "8": {
                 top: "OXX",
-                middle: "XXX",
-                bottom: "XXX",
+                mid: "XXX",
+                bot: "XXX",
             },
-            9: {
+            "9": {
                 top: "XXX",
-                middle: "XXX",
-                bottom: "OOX",
+                mid: "XXX",
+                bot: "OOX",
             },
             "/": {
                 top: "OOX",
-                middle: "OXO",
-                bottom: "XOO",
+                mid: "OXO",
+                bot: "XOO",
             },
             " ": {
                 top: "OOO",
-                middle: "OOO",
-                bottom: "OOO",
+                mid: "OOO",
+                bot: "OOO",
             },
             "+": {
                 top: "OXO",
-                middle: "XXX",
-                bottom: "OXO",
+                mid: "XXX",
+                bot: "OXO",
             },
             "-": {
                 top: "OOO",
-                middle: "XXX",
-                bottom: "OOO",
+                mid: "XXX",
+                bot: "OOO",
             },
             ".": {
                 top: "OOO",
-                middle: "OOO",
-                bottom: "OXO",
+                mid: "OOO",
+                bot: "OXO",
             },
             ",": {
                 top: "OOO",
-                middle: "OXO",
-                bottom: "OXO",
+                mid: "OXO",
+                bot: "OXO",
             },
             ":": {
                 top: "OXO",
-                middle: "OOO",
-                bottom: "OXO",
+                mid: "OOO",
+                bot: "OXO",
             },
             "[": {
                 top: "XXO",
-                middle: "XOO",
-                bottom: "XXO",
+                mid: "XOO",
+                bot: "XXO",
             },
             "]": {
                 top: "OXX",
-                middle: "OOX",
-                bottom: "OXX",
+                mid: "OOX",
+                bot: "OXX",
             },
             "'": {
                 top: "OXO",
-                middle: "OXO",
-                bottom: "OOO",
+                mid: "OXO",
+                bot: "OOO",
             },
             "?": {
                 top: "XXX",
-                middle: "OXX",
-                bottom: "OXO",
+                mid: "OXX",
+                bot: "OXO",
             },
-            ª: {
+            "ª": {
                 top: "XOO",
-                middle: "OOO",
-                bottom: "OOO",
+                mid: "OOO",
+                bot: "OOO",
             },
         }
-        const emoji = args[0]
+        const emoji = args[0] as string
         const emptyChar = "      "
-
-        let result = "‎\n"
+        var result = "‎\n"
 
         if (!emojis.test(emoji))
             return `**${user?.username}**, el emoji introducido no se puede usar o bien no es un emoji`
@@ -291,7 +290,7 @@ export default {
         for (let i = 0; i < title.length; i++) {
             for (let j = 0; j < 3; j++)
                 result +=
-                    characters[`${title[i].toLowerCase()}`].middle[j] === "X"
+                    characters[`${title[i].toLowerCase()}`].mid[j] === "X"
                         ? emoji
                         : emptyChar
             result += "   "
@@ -302,15 +301,14 @@ export default {
         for (let i = 0; i < title.length; i++) {
             for (let j = 0; j < 3; j++)
                 result +=
-                    characters[`${title[i].toLowerCase()}`].bottom[j] === "X"
+                    characters[`${title[i].toLowerCase()}`].bot[j] === "X"
                         ? emoji
                         : emptyChar
             result += "   "
         }
 
         if (result.length > 2000)
-            return `**${user?.username}**, el mensaje tiene más de 2000 caracteres`
-
+            return `**${user?.username}**, el resultado del mensaje tiene más de 2000 caracteres`
         return result
     },
 } as ICommand
