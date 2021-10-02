@@ -267,8 +267,8 @@ export default {
         const emptyChar = "      "
         var result = "‎\n"
 
-        if (!emojis.test(emoji))
-            return `**${user?.username}**, el emoji introducido no se puede usar o bien no es un emoji`
+        // if (!emojis.test(emoji))
+        //     return `**${user?.username}**, el emoji introducido no se puede usar o bien no es un emoji`
 
         args.shift()
         const title = args.join(" ")
@@ -278,10 +278,7 @@ export default {
             if (!(`${title[i].toLowerCase()}` in characters))
                 return `**${user?.username}**, el caracter \'${title[i]}\' no se puede imprimir`
             for (let j = 0; j < 3; j++)
-                result +=
-                    characters[`${title[i].toLowerCase()}`].top[j] === "X"
-                        ? emoji
-                        : emptyChar
+                result += characters[`${title[i].toLowerCase()}`].top[j] === "X" ? emoji : emptyChar
             result += "   "
         }
         result += "\n"
@@ -289,10 +286,7 @@ export default {
         // middle row
         for (let i = 0; i < title.length; i++) {
             for (let j = 0; j < 3; j++)
-                result +=
-                    characters[`${title[i].toLowerCase()}`].mid[j] === "X"
-                        ? emoji
-                        : emptyChar
+                result += characters[`${title[i].toLowerCase()}`].mid[j] === "X" ? emoji : emptyChar
             result += "   "
         }
         result += "\n"
@@ -300,15 +294,11 @@ export default {
         // bottom row
         for (let i = 0; i < title.length; i++) {
             for (let j = 0; j < 3; j++)
-                result +=
-                    characters[`${title[i].toLowerCase()}`].bot[j] === "X"
-                        ? emoji
-                        : emptyChar
+                result += characters[`${title[i].toLowerCase()}`].bot[j] === "X" ? emoji : emptyChar
             result += "   "
         }
 
-        if (result.length > 2000)
-            return `**${user?.username}**, el resultado del mensaje tiene más de 2000 caracteres`
+        if (result.length > 2000) return `**${user?.username}**, el resultado del mensaje tiene más de 2000 caracteres`
         return result
     },
 } as ICommand

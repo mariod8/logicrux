@@ -5,6 +5,7 @@ import responses from "./src/features/responses"
 import welcomeGoodbye from "./src/features/welcome-goodbye"
 import path from "path"
 import { statsOnMessage } from "./src/handlers/stats"
+import { addXP } from "./src/handlers/levels"
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -19,15 +20,7 @@ client.on("ready", () => {
         mongoUri: process.env.MONGO_URI,
         showWarns: true,
         testServers: ["829448956417015828", "666295714724446209"],
-        disabledDefaultCommands: [
-            "help",
-            "command",
-            "language",
-            "prefix",
-            "requiredrole",
-            "channelonly",
-            "slash",
-        ],
+        disabledDefaultCommands: ["help", "command", "language", "prefix", "requiredrole", "channelonly", "slash"],
     })
         .setDefaultPrefix("//")
         .setBotOwner("323378898794446850")
@@ -37,8 +30,9 @@ client.on("ready", () => {
 client.on("messageCreate", (message) => {
     const { author } = message
 
-    statsOnMessage(message)
     if (author?.bot) return
+    statsOnMessage(message)
+    addXP(message, author, "SINGLE")
     responses(message)
 })
 

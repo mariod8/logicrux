@@ -14,14 +14,7 @@ export function statsOnMessage(message: Message) {
         emojis?: Number
         replies?: Number
     }
-    var {
-        author,
-        content,
-        attachments,
-        reference = null,
-        guild,
-        type,
-    } = message
+    var { author, content, attachments, reference = null, guild, type } = message
 
     var userIdentification: _userIdentification = {
         userID: author?.id as string,
@@ -35,8 +28,7 @@ export function statsOnMessage(message: Message) {
     if (content) globalStats.words = content.split(" ").length
     if (attachments.size > 0) globalStats.attachments = attachments.size
     if (reference) globalStats.replies = 1
-    if (emojis.test(content))
-        globalStats.emojis = content?.match(emojis)?.length
+    if (emojis.test(content)) globalStats.emojis = content?.match(emojis)?.length
 
     incGlobalStats(userIdentification, globalStats)
 }

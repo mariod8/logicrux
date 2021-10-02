@@ -9,16 +9,11 @@ export function getUserByString(username: string, guild: Guild) {
     guild.members.cache.each((member) => {
         usernames.push(member.user.username.toLowerCase())
     })
-    const similarUsername = stringSimilarity.findBestMatch(username, usernames)
-        .bestMatch.target as string
+    const similarUsername = stringSimilarity.findBestMatch(username, usernames).bestMatch.target as string
     const similarMember = guild.members.cache.find(
         (member) => member.user.username.toLowerCase() === similarUsername
     ) as GuildMember
-    if (
-        stringSimilarity.compareTwoStrings(similarUsername, username) <
-        usernameSimilarityThreshold
-    )
-        return null
+    if (stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold) return null
     else return similarMember.user
 }
 
@@ -30,16 +25,9 @@ export function getChannelByString(channel: string, guild: Guild) {
     guild.channels.cache
         .filter((channel) => channel.type === "GUILD_TEXT")
         .each((channel) => channels.push(channel.name.toLowerCase()))
-    const similarChannelName = stringSimilarity.findBestMatch(channel, channels)
-        .bestMatch.target as string
-    const similarChannel = guild.channels.cache.find(
-        (channel) => channel.name.toLowerCase() === similarChannelName
-    )
-    if (
-        stringSimilarity.compareTwoStrings(similarChannelName, channel) <
-        channelSimilarityThreshold
-    )
-        return null
+    const similarChannelName = stringSimilarity.findBestMatch(channel, channels).bestMatch.target as string
+    const similarChannel = guild.channels.cache.find((channel) => channel.name.toLowerCase() === similarChannelName)
+    if (stringSimilarity.compareTwoStrings(similarChannelName, channel) < channelSimilarityThreshold) return null
     else return similarChannel as TextChannel
 }
 

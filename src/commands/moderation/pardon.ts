@@ -29,16 +29,15 @@ export default {
         if (!target) return "El ID de usuario es inválido"
         args.shift()
         const reason = args.length ? args.join(" ") : "_No especificado_"
-        guild?.members?.unban(userID, reason).catch(console.error)
+        try {
+            await guild?.members?.unban(userID, reason)
+        } catch {
+            return "El usuario no está baneado"
+        }
         const embed = new MessageEmbed()
             .setTitle(`${target?.username} ha sido desbaneado`)
-            .setDescription(
-                `**ID Usuario**: ${userID}\n**Miembro**: ${target}\n**Motivo**: ${reason}`
-            )
-            .setFooter(
-                `Desbaneado por ${user?.username}`,
-                user.displayAvatarURL()
-            )
+            .setDescription(`**ID Usuario**: ${userID}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
+            .setFooter(`Desbaneado por ${user?.username}`, user.displayAvatarURL())
             .setColor("GREEN")
         return embed
     },

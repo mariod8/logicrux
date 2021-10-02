@@ -31,13 +31,8 @@ export default {
         const reason = args.length ? args.join(" ") : "_No especificado_"
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido expulsado`)
-            .setDescription(
-                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`
-            )
-            .setFooter(
-                `Expulsado por ${user.username}`,
-                user.displayAvatarURL()
-            )
+            .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
+            .setFooter(`Expulsado por ${user.username}`, user.displayAvatarURL())
             .setColor("ORANGE")
         target.kick(reason).catch(console.error)
         return embed
