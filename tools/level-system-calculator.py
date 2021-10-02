@@ -4,7 +4,7 @@ def xp_per_msg(level):
     return math.floor(math.pow(level, 1))
 
 def xp_per_lvl(level):
-    return math.floor(math.pow(level, 1.5))
+    return math.floor(math.pow(level, 1.4))
 
 def main():
     total_msg = 0
