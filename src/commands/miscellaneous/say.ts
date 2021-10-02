@@ -1,14 +1,14 @@
 import { ICommand } from "wokcommands"
-import { cleanSpam } from "../util/string"
+import { cleanSpam } from "../../util/string"
 
 export default {
-    category: "Miscellanious",
+    category: "Miscellaneous",
     description: "Echo command",
     minArgs: 1,
     expectedArgs: "<text>",
     slash: true,
     testOnly: true,
-    callback: ({ channel, interaction, text }) => {
+    callback: ({ text }) => {
         return cleanSpam(text)
     },
 } as ICommand

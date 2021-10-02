@@ -13,8 +13,7 @@ client.on("ready", () => {
         commandsDir: path.join(__dirname, "src/commands"),
         typeScript: true,
         ignoreBots: true,
-        mongoUri:
-            "mongodb+srv://logicrux:ghx7Zxqvz7NWbFR@logicrux.its80.mongodb.net/log",
+        mongoUri: process.env.MONGO_URI,
         showWarns: true,
         testServers: ["829448956417015828", "666295714724446209"],
         disabledDefaultCommands: [
@@ -26,12 +25,12 @@ client.on("ready", () => {
             "channelonly",
             "slash",
         ],
-    }).setDefaultPrefix("/")
+    }).setDefaultPrefix("!")
     console.log(`${client?.user?.username} is ready!`)
 })
 
 client.on("messageCreate", (message) => {
-    const { channel, author } = message
+    const { author } = message
 
     if (author?.bot) return
 })
