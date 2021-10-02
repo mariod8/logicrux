@@ -8,8 +8,6 @@ export default {
   slash: true,
   testOnly: true,
   guildOnly: true,
-  minArgs: 1,
-  expectedArgs: "<user> [reason]",
   options: [
     {
       name: "user",
