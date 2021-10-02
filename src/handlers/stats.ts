@@ -1,12 +1,9 @@
 import { Message } from "discord.js"
 import { emojis } from "../utils/regex"
 import { incGlobalStats } from "../utils/mongo"
+import { _userIdentification } from "../templates"
 
 export function statsOnMessage(message: Message) {
-    interface _userIdentification {
-        userID: string
-        guildID: string
-    }
     interface _globalStats {
         messages: Number
         words?: Number
@@ -14,11 +11,11 @@ export function statsOnMessage(message: Message) {
         emojis?: Number
         replies?: Number
     }
-    var { author, content, attachments, reference = null, guild, type } = message
+    var { author, content, attachments, reference, guild, type } = message
 
     var userIdentification: _userIdentification = {
-        userID: author?.id as string,
-        guildID: guild?.id as string,
+        userID: author!.id,
+        guildID: guild!.id,
     }
     var globalStats: _globalStats = {
         messages: 1,

@@ -14,7 +14,7 @@ const userSchema = new Schema({
     globalStats: {
         type: Object,
         default: {
-            xpCurrentLevel: 0,
+            xp: 0,
             totalXp: 0,
             level: 0,
             mutes: 0,

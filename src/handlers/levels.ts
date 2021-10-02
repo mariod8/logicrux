@@ -1,4 +1,5 @@
 import { Message, User } from "discord.js"
+import { _userIdentification } from "../templates"
 import { getChannelByString } from "../utils/getters"
 import { getUserProfile, setGlobalStats } from "../utils/mongo"
 
@@ -8,11 +9,12 @@ const getXpPerMsg = (level: number) => Math.floor(Math.pow(level, 0.55))
 export async function addXP(message: Message, user: User, method: "SINGLE" | "BULK") {
     const { guild } = message
     const spamChannel = await getChannelByString("spam", guild!)
-    const userIdentification = { guildID: guild?.id, userID: user?.id }
-    const userProfile = await getUserProfile(userIdentification)
-    if (!userProfile || !spamChannel) return
-    var { xp = 0, level = 0, totalXp = 0 } = userProfile
+    const userIdentification: _userIdentification = { guildID: guild!.id, userID: user!.id }
+    var { xp, level, totalXp } = await getUserProfile(userIdentification)
+    if (!spamChannel) return
+
     if (method === "SINGLE") {
+        console.log(xp, level, totalXp)
         const xpPerLvl = getXpPerLvl(level)
         const xpPerMsg = getXpPerMsg(level)
         xp += xpPerMsg
@@ -23,6 +25,7 @@ export async function addXP(message: Message, user: User, method: "SINGLE" | "BU
         }
         if (level === 1) spamChannel.send(`**${user?.username}** ha subido a nivel ${level}`)
         else if (level % 10 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel ${level}`)
+        console.log(xp, level, totalXp)
     }
-    setGlobalStats(userIdentification, { xp, level, totalXp })
+    await setGlobalStats(userIdentification, { xp, level, totalXp })
 }
