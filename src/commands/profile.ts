@@ -1,4 +1,3 @@
-import { MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 
 export default {
@@ -15,7 +14,5 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ args, user }) => {
-        const profile = new MessageEmbed().setTitle(`Perfil de ${user.username}`).setThumbnail
-    },
+    callback: async ({ args, user, channel }) => {},
 } as ICommand

@@ -10,7 +10,12 @@ import init from "./src/init"
 dotenv.config()
 
 const client = new DiscordJS.Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+    intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.DIRECT_MESSAGES,
+        Intents.FLAGS.GUILD_BANS,
+    ],
 })
 
 client.on("ready", () => {
@@ -25,7 +30,7 @@ client.on("ready", () => {
     })
         .setDefaultPrefix("//")
         .setBotOwner("323378898794446850")
-    init(client)
+    //init(client)
     console.log(`${client?.user?.username} is ready!`)
 })
 
