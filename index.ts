@@ -25,7 +25,7 @@ client.on("ready", () => {
     })
         .setDefaultPrefix("//")
         .setBotOwner("323378898794446850")
-    init()
+    init(client)
     console.log(`${client?.user?.username} is ready!`)
 })
 

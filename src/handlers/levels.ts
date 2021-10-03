@@ -2,7 +2,7 @@ import { Message, User } from "discord.js"
 import { _userIdentification } from "../templates"
 import { getChannelByString } from "../utils/getters"
 import { MyMath } from "../utils/math"
-import { getAllGuildUserProfiles, getUserProfile, setGlobalStats } from "../utils/mongo"
+import { getUserProfile, setGlobalStats } from "../utils/mongo"
 
 const getXpPerLvl = (level: number) => Math.floor(Math.pow(level, 2.5))
 const getXpPerMsg = (level: number, content: string) => Math.floor(Math.pow(level, 1.2)) * 100 * (Math.floor(MyMath.clamp(content.length, 0, 30) / 30) + 1)

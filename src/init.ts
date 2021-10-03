@@ -1,8 +1,15 @@
+import { Client } from "discord.js"
 import moment from "moment"
 import momentTimezone from "moment-timezone"
 
-export default () => {
+export default (client: Client) => {
     // Set Spain/Madrid timezone and language
-    momentTimezone.tz("Spain/Madrid").format()
+    momentTimezone.tz("Europe/Madrid").format()
     moment.locale("es")
+
+    // Set presence
+    client?.user?.setActivity('chats 📲', { type: 'WATCHING' });
+
+    // Set avatar
+    client?.user?.setAvatar("./src/assets/avatar.jpg");
 }
