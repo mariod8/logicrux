@@ -13,8 +13,9 @@ export function getUserByString(username: string, guild: Guild) {
     const similarMember = guild.members.cache.find(
         (member) => member.user.username.toLowerCase() === similarUsername
     ) as GuildMember
-    if (stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold) return null
-    else return similarMember.user
+    return stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold
+        ? null
+        : similarMember.user
 }
 
 export function getChannelByString(channel: string, guild: Guild) {
@@ -27,9 +28,11 @@ export function getChannelByString(channel: string, guild: Guild) {
         .each((channel) => channels.push(channel.name.toLowerCase()))
     const similarChannelName = stringSimilarity.findBestMatch(channel, channels).bestMatch.target as string
     const similarChannel = guild.channels.cache.find((channel) => channel.name.toLowerCase() === similarChannelName)
-    if (stringSimilarity.compareTwoStrings(similarChannelName, channel) < channelSimilarityThreshold)
-        return guild.channels.cache.filter((channel) => channel.type === "GUILD_TEXT").first() as TextChannel
-    else return similarChannel as TextChannel
+    return (
+        stringSimilarity.compareTwoStrings(similarChannelName, channel) < channelSimilarityThreshold
+            ? guild.channels.cache.filter((channel) => channel.type === "GUILD_TEXT").first()
+            : similarChannel
+    ) as TextChannel
 }
 
 export function getRandomInArray(array: Array<any>) {

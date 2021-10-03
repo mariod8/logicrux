@@ -19,6 +19,7 @@ export async function addXP(message: Message, user: User, method: "MESSAGE" | "B
     if (method === "MESSAGE") {
         const xpPerLvl = getXpPerLvl(level)
         const xpPerMsg = getXpPerMsg(level) * (Math.floor(MyMath.clamp(content.length, 0, 20) / 20) + 1)
+
         xp += xpPerMsg
         totalXp += xpPerMsg
         if (xp >= xpPerLvl) {
@@ -27,6 +28,7 @@ export async function addXP(message: Message, user: User, method: "MESSAGE" | "B
         }
         if (level != previousLevel)
             if (level === 1) spamChannel.send(`**${user?.username}** ha subido a nivel ${level}`)
+            else if (level === 1000) spamChannel.send(`**${user?.username}** ha subido a nivel ${level}!!!`)
             else if (level % 10 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel ${level}`)
             else if (level === 666) spamChannel.send(`**${user?.username}** ha subido a nivel ${level} 👺`)
             else if (level === 69) spamChannel.send(`**${user?.username}** ha subido a nivel ${level} 😎`)
