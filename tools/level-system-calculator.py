@@ -1,10 +1,10 @@
 import math
 
 def xp_per_msg(level):
-    return math.floor(math.pow(level, .55))
+    return math.floor(math.pow(level, 1.2)) * 100
 
 def xp_per_lvl(level):
-    return math.floor(math.pow(level, 1))
+    return math.floor(math.pow(level, 2.5))
 
 def main():
     total_msg = 0

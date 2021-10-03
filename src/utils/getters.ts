@@ -27,7 +27,8 @@ export function getChannelByString(channel: string, guild: Guild) {
         .each((channel) => channels.push(channel.name.toLowerCase()))
     const similarChannelName = stringSimilarity.findBestMatch(channel, channels).bestMatch.target as string
     const similarChannel = guild.channels.cache.find((channel) => channel.name.toLowerCase() === similarChannelName)
-    if (stringSimilarity.compareTwoStrings(similarChannelName, channel) < channelSimilarityThreshold) return null
+    if (stringSimilarity.compareTwoStrings(similarChannelName, channel) < channelSimilarityThreshold)
+        return guild.channels.cache.filter((channel) => channel.type === "GUILD_TEXT").first() as TextChannel
     else return similarChannel as TextChannel
 }
 

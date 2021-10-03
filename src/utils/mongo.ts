@@ -1,5 +1,5 @@
 import userSchema from "../schemas/user-schema"
-import { _globalStats, _userIdentification, _userProfile } from "../templates"
+import { _userIdentification, _userProfile } from "../templates"
 
 export async function incGlobalStats(userIdentification: _userIdentification, globalStats: any) {
     var promises = []
@@ -45,37 +45,23 @@ export async function setGlobalStats(userIdentification: _userIdentification, gl
     await Promise.all(promises)
 }
 
-export async function getUserProfile(userIdentification: Object) {
-    const {
-        xp = 0,
-        totalXp = 0,
-        level = 0,
-        mutes = 0,
-        weeklyUser = 0,
-        messages = 0,
-        words = 0,
-        attachments = 0,
-        emojis = 0,
-        commands = 0,
-        musicPlayed = 0,
-        reactions = 0,
-        replies = 0,
-        presence = -1,
-    } = (await userSchema.findOne(userIdentification)) as _globalStats
-    return {
-        xp,
-        totalXp,
-        level,
-        mutes,
-        weeklyUser,
-        messages,
-        words,
-        attachments,
-        emojis,
-        commands,
-        musicPlayed,
-        reactions,
-        replies,
-        presence,
+export async function getUserProfile(userIdentification: _userIdentification) {
+    var userProfile: _userProfile = await userSchema.findOne(userIdentification)
+    var globalStats = {
+        xp: userProfile?.globalStats?.xp | 0,
+        totalXp: userProfile?.globalStats?.totalXp | 0,
+        level: userProfile?.globalStats?.level | 0,
+        mutes: userProfile?.globalStats?.mutes | 0,
+        weeklyUser: userProfile?.globalStats?.weeklyUser | 0,
+        messages: userProfile?.globalStats?.messages | 0,
+        words: userProfile?.globalStats?.words | 0,
+        attachments: userProfile?.globalStats?.attachments | 0,
+        emojis: userProfile?.globalStats?.emojis | 0,
+        commands: userProfile?.globalStats?.commands | 0,
+        musicPlayed: userProfile?.globalStats?.musicPlayed | 0,
+        reactions: userProfile?.globalStats?.reactions | 0,
+        replies: userProfile?.globalStats?.replies | 0,
+        presence: userProfile?.globalStats?.presence | -1,
     }
+    return { globalStats }
 }

@@ -3,7 +3,7 @@ import os
 import json
 import re
 
-path = "/home/mario/Documents/Archivos/Proyectos/Javascript/Logicrux/tools/bulk-guild-export/guild-backup"
+path = "/home/mario/Documents/Archivos/Proyectos/Javascript/logicrux/tools/bulk-guild-export/guild-backup"
 emojis = r"(:\d+|\w+:)"
 data = {}
 

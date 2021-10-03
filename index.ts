@@ -32,7 +32,7 @@ client.on("messageCreate", (message) => {
 
     if (author?.bot) return
     statsOnMessage(message)
-    addXP(message, author, "SINGLE")
+    addXP(message, author, "MESSAGE")
     responses(message)
 })
 
