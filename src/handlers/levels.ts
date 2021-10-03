@@ -2,10 +2,10 @@ import { Message, User } from "discord.js"
 import { _userIdentification } from "../templates"
 import { getChannelByString } from "../utils/getters"
 import { MyMath } from "../utils/math"
-import { getUserProfile, setGlobalStats } from "../utils/mongo"
+import { getAllGuildUserProfiles, getUserProfile, setGlobalStats } from "../utils/mongo"
 
 const getXpPerLvl = (level: number) => Math.floor(Math.pow(level, 2.5))
-const getXpPerMsg = (level: number) => Math.floor(Math.pow(level, 1.2)) * 100
+const getXpPerMsg = (level: number, content: string) => Math.floor(Math.pow(level, 1.2)) * 100 * (Math.floor(MyMath.clamp(content.length, 0, 30) / 30) + 1)
 
 export async function addXP(message: Message, user: User, method: "MESSAGE" | "BULK") {
     const { guild, content } = message
@@ -18,7 +18,7 @@ export async function addXP(message: Message, user: User, method: "MESSAGE" | "B
 
     if (method === "MESSAGE") {
         const xpPerLvl = getXpPerLvl(level)
-        const xpPerMsg = getXpPerMsg(level) * (Math.floor(MyMath.clamp(content.length, 0, 20) / 20) + 1)
+        const xpPerMsg = getXpPerMsg(level, content)
 
         xp += xpPerMsg
         totalXp += xpPerMsg

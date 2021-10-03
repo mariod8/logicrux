@@ -4,6 +4,8 @@ export type _userIdentification = {
 }
 
 export type _userProfile = {
+    userID: string,
+    guildID: string,
     globalStats: {
         xp: number
         totalXp: number

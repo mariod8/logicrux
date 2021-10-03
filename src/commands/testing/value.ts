@@ -1,5 +1,6 @@
 import moment from "moment"
 import { ICommand } from "wokcommands"
+import { cleanSpecialCharacters } from "../../utils/string"
 
 export default {
     category: "Testing",
@@ -19,12 +20,18 @@ export default {
                     name: "Current date",
                     value: "cur_date",
                 },
+                {
+                    name: "Username",
+                    value: "username",
+                },
             ],
         },
     ],
-    callback: ({ args }) => {
+    callback: ({ args, guild, user }) => {
         if (args[0] === "cur_date") {
             return moment().toString()
+        } else if (args[0] === "username") {
+            return cleanSpecialCharacters(guild?.members?.cache?.get(user?.id)?.displayName as string)
         }
         return "Value returned!"
     },

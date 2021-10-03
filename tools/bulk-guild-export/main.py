@@ -15,10 +15,12 @@ def parse_csv(file):
                 data[line[0]] = {
                     "name": "undefined",
                     "messages": 0,
+                    "words": 0,
                     "attachments": 0,
                     "emojis": 0
                 }
             data[line[0]]["messages"] += 1
+            data[line[0]]["words"] += len(line[3].split(" "))
             data[line[0]]["name"] = line[1]
             if line[4] != "":
                 data[line[0]]["attachments"] += 1
