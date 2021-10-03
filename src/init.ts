@@ -8,8 +8,8 @@ export default (client: Client) => {
     moment.locale("es")
 
     // Set presence
-    client?.user?.setActivity('chats 📲', { type: 'WATCHING' });
+    client?.user?.setActivity("chats 📲", { type: "WATCHING" })
 
     // Set avatar
-    client?.user?.setAvatar("./src/assets/avatar.jpg");
+    client?.user?.setAvatar("./src/assets/avatar.jpg")
 }

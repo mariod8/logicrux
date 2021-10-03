@@ -5,7 +5,8 @@ import { MyMath } from "../utils/math"
 import { getUserProfile, setGlobalStats } from "../utils/mongo"
 
 const getXpPerLvl = (level: number) => Math.floor(Math.pow(level, 2.5))
-const getXpPerMsg = (level: number, content: string) => Math.floor(Math.pow(level, 1.2)) * 100 * (Math.floor(MyMath.clamp(content.length, 0, 30) / 30) + 1)
+const getXpPerMsg = (level: number, content: string) =>
+    Math.floor(Math.pow(level, 1.2)) * 100 * (Math.floor(MyMath.clamp(content.length, 0, 30) / 30) + 1)
 
 export async function addXP(message: Message, user: User, method: "MESSAGE" | "BULK") {
     const { guild, content } = message

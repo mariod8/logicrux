@@ -20,7 +20,7 @@ function getCleanUserProfile(_userProfile: _userProfile) {
         replies: _userProfile?.globalStats?.replies | 0,
         presence: _userProfile?.globalStats?.presence | -1,
     }
-    return {userID, guildID, globalStats}
+    return { userID, guildID, globalStats }
 }
 
 export async function incGlobalStats(userIdentification: _userIdentification, globalStats: any) {
@@ -73,6 +73,6 @@ export async function getUserProfile(userIdentification: _userIdentification) {
 }
 
 export async function getAllGuildUserProfiles(guildID: string) {
-    var userProfiles: Array<_userProfile> = await userSchema.find({guildID})
-    return userProfiles.map(userProfile => getCleanUserProfile(userProfile))
+    var userProfiles: Array<_userProfile> = await userSchema.find({ guildID })
+    return userProfiles.map((userProfile) => getCleanUserProfile(userProfile))
 }

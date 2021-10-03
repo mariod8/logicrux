@@ -29,14 +29,18 @@ export default {
         if (!target.bannable) return "No se puede banear al usuario"
         args.shift()
         const reason = args.length ? args.join(" ") : "_No especificado_"
+        try {
+            target.ban({
+                reason,
+            })
+        } catch {
+            return "El usuario ya está baneado"
+        }
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido baneado`)
             .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
             .setFooter(`Baneado por ${user.username}`, user.displayAvatarURL())
             .setColor("RED")
-        target.ban({
-            reason,
-        })
         return embed
     },
 } as ICommand
