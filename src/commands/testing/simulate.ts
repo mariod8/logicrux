@@ -7,7 +7,6 @@ export default {
     testOnly: true,
     guildOnly: true,
     ownerOnly: true,
-    expectedArgs: "<type>",
     options: [
         {
             name: "type",

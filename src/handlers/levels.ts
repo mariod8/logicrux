@@ -32,6 +32,7 @@ export async function addXP(message: Message, user: User, method: "MESSAGE" | "B
             else if (level % 10 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel ${level}`)
             else if (level === 666) spamChannel.send(`**${user?.username}** ha subido a nivel ${level} 👺`)
             else if (level === 69) spamChannel.send(`**${user?.username}** ha subido a nivel ${level} 😎`)
+    } else if (method === "BULK") {
     }
     setGlobalStats(userIdentification, { xp, level, totalXp })
 }

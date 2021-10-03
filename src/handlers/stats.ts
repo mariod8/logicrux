@@ -2,6 +2,9 @@ import { Message } from "discord.js"
 import { emojis } from "../utils/regex"
 import { incGlobalStats } from "../utils/mongo"
 import { _userIdentification } from "../templates"
+import { getTime } from "../utils/getters"
+
+var weeklyStatTracking
 
 export function statsOnMessage(message: Message) {
     interface _globalStats {
@@ -28,4 +31,10 @@ export function statsOnMessage(message: Message) {
     if (emojis.test(content)) globalStats.emojis = content?.match(emojis)?.length
 
     incGlobalStats(userIdentification, globalStats)
+}
+
+export function weeklyStats() {
+    weeklyStatTracking = setTimeout(() => {
+        setInterval(() => {}, getTime("WEEKLY_LOOP"))
+    }, getTime("MS_TO_END_OF_WEEK"))
 }

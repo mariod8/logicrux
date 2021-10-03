@@ -6,6 +6,7 @@ import welcomeGoodbye from "./src/features/welcome-goodbye"
 import path from "path"
 import { statsOnMessage } from "./src/handlers/stats"
 import { addXP } from "./src/handlers/levels"
+import init from "./src/init"
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -24,6 +25,7 @@ client.on("ready", () => {
     })
         .setDefaultPrefix("//")
         .setBotOwner("323378898794446850")
+    init()
     console.log(`${client?.user?.username} is ready!`)
 })
 
