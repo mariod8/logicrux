@@ -16,6 +16,9 @@ const client = new DiscordJS.Client({
         Intents.FLAGS.DIRECT_MESSAGES,
         Intents.FLAGS.GUILD_BANS,
     ],
+    allowedMentions: {
+        repliedUser: false
+    }
 })
 
 client.on("ready", () => {
