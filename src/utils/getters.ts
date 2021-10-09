@@ -49,7 +49,30 @@ export function getRandomNumber(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
+export function getRandomDecimalNumber(min: number, max: number) {
+    return Math.random() * (max - min + 1) + min
+}
+
 export function getTime(option: "MS_TO_END_OF_WEEK" | "WEEKLY_LOOP") {
     if (option === "MS_TO_END_OF_WEEK") return moment().endOf("isoWeek").valueOf() - moment().valueOf() - 5000
     else if (option === "WEEKLY_LOOP") return 7 * 24 * 60 * 3600 * 1000
+}
+
+export function getMsFromString(time: string) {
+    time = time.toLowerCase()
+    var timeUnit = /[smhd]/gm.exec(time)![0]
+    var timeValue = parseInt(/\d+/gm.exec(time)![0]) * 1000
+
+    switch (timeUnit) {
+        case "s":
+            return timeValue
+        case "m":
+            return timeValue * 60
+        case "h":
+            return timeValue * 60 * 60
+        case "d":
+            return timeValue * 60 * 60 * 24
+        default:
+            return 1000
+    }
 }
