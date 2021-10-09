@@ -8,7 +8,12 @@ const getXpPerLvl = (level: number) => Math.floor(Math.pow(level, 2.5))
 const getXpPerMsg = (level: number, content: string) =>
     Math.floor(Math.pow(level, 1.2)) * 100 * (Math.floor(MyMath.clamp(content.length, 0, 30) / 30) + 1)
 
-export async function addXP(message: Message, user: User, method: "MESSAGE" | "BULK_MESSAGES" | "BULK_XP", amount?: number) {
+export async function addXP(
+    message: Message,
+    user: User,
+    method: "MESSAGE" | "BULK_MESSAGES" | "BULK_XP",
+    amount?: number
+) {
     const { guild, content } = message
     const spamChannel = await getChannelByString("spam", guild!)
     const userIdentification: _userIdentification = { guildID: guild!.id, userID: user!.id }
@@ -33,72 +38,6 @@ export async function addXP(message: Message, user: User, method: "MESSAGE" | "B
             else if (level % 10 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
             else if (level === 666) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}** 👺`)
             else if (level === 69) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}** 😎`)
-    } else if (method === "BULK_MESSAGES") {
-        if (amount > 0) {
-            while (amount > 0) {
-                const xpPerLvl = getXpPerLvl(level)
-                const xpPerMsg = getXpPerMsg(level, content)
-
-                xp += xpPerMsg
-                totalXp += xpPerMsg
-                if (xp >= xpPerLvl) {
-                    level++
-                    xp -= xpPerLvl
-                }
-                amount--
-            }
-            if (level != previousLevel)
-                spamChannel.send(`**${user?.username}** ha subido del nivel ${previousLevel} al nivel **${level}**`)
-        } else if (amount < 0) {
-            while (amount < 0) {
-                const xpPerLvl = getXpPerLvl(level)
-                const xpPerMsg = getXpPerMsg(level, content)
-
-                xp -= xpPerMsg
-                totalXp -= xpPerMsg
-                if (xp <= xpPerLvl) {
-                    level--
-                    xp = xpPerLvl
-                }
-                amount++
-            }
-            if (level != previousLevel)
-                spamChannel.send(`**${user?.username}** ha bajado del nivel ${previousLevel} al nivel **${level}**`)
-        }
-    } else if (method === "BULK_XP") {
-        if (amount > 0) {
-            xp += amount
-            totalXp += amount
-            while (amount > 0) {
-                const xpPerLvl = getXpPerLvl(level)
-                const xpPerMsg = getXpPerMsg(level, content)
-
-                xp += xpPerMsg
-                totalXp += xpPerMsg
-                if (xp >= xpPerLvl) {
-                    level++
-                    xp -= xpPerLvl
-                }
-                amount -= xpPerMsg
-            }
-            if (level != previousLevel)
-                spamChannel.send(`**${user?.username}** ha subido del nivel ${previousLevel} al nivel **${level}**`)
-        } else if (amount < 0) {
-            while (amount < 0) {
-                const xpPerLvl = getXpPerLvl(level)
-                const xpPerMsg = getXpPerMsg(level, content)
-
-                xp -= xpPerMsg
-                totalXp -= xpPerMsg
-                if (xp <= xpPerLvl) {
-                    level--
-                    xp = xpPerLvl
-                }
-                amount++
-            }
-            if (level != previousLevel)
-                spamChannel.send(`**${user?.username}** ha bajado del nivel ${previousLevel} al nivel **${level}**`)
-        }
     }
     setGlobalStats(userIdentification, { xp, level, totalXp })
 }

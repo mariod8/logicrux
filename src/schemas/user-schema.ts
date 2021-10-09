@@ -1,7 +1,28 @@
+import moment from "moment"
 import mongoose, { Schema } from "mongoose"
 
 const name = "user-profiles"
-
+const userStats = {
+    xp: 0,
+    totalXp: 0,
+    level: 0,
+    mutes: 0,
+    weeklyUser: 0,
+    messages: 0,
+    words: 0,
+    attachments: 0,
+    emojis: 0,
+    commands: 0,
+    musicPlayed: 0,
+    reactions: 0,
+    replies: 0,
+    presence: -1,
+}
+const dailyStats = {
+    date: moment().format("L"),
+    userStats,
+}
+const weeklyStats = [dailyStats, dailyStats, dailyStats, dailyStats, dailyStats, dailyStats, dailyStats]
 const userSchema = new Schema({
     guildID: {
         type: String,
@@ -13,26 +34,11 @@ const userSchema = new Schema({
     },
     globalStats: {
         type: Object,
-        default: {
-            xp: 0,
-            totalXp: 0,
-            level: 0,
-            mutes: 0,
-            weeklyUser: 0,
-            messages: 0,
-            words: 0,
-            attachments: 0,
-            emojis: 0,
-            commands: 0,
-            musicPlayed: 0,
-            reactions: 0,
-            replies: 0,
-            presence: -1,
-        },
+        default: userStats,
     },
-    weeklyStats: {
-        type: Object,
-        default: {},
+    monthlyStats: {
+        type: Array,
+        default: [weeklyStats, weeklyStats, weeklyStats, weeklyStats],
     },
 })
 

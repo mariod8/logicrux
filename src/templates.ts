@@ -3,23 +3,46 @@ export type _userIdentification = {
     guildID: string
 }
 
+export type _userStats = {
+    xp: number
+    totalXp: number
+    level: number
+    mutes: number
+    weeklyUser: number
+    messages: number
+    words: number
+    attachments: number
+    emojis: number
+    commands: number
+    musicPlayed: number
+    reactions: number
+    replies: number
+    presence: number
+}
+
+export type _dailyStats = {
+    date: string
+    userStats: _userStats
+}
+
+export type _weeklyStats = [
+    dailyStats: _dailyStats,
+    dailyStats: _dailyStats,
+    dailyStats: _dailyStats,
+    dailyStats: _dailyStats,
+    dailyStats: _dailyStats,
+    dailyStats: _dailyStats,
+    dailyStats: _dailyStats
+]
+
 export type _userProfile = {
     userID: string
     guildID: string
-    globalStats: {
-        xp: number
-        totalXp: number
-        level: number
-        mutes: number
-        weeklyUser: number
-        messages: number
-        words: number
-        attachments: number
-        emojis: number
-        commands: number
-        musicPlayed: number
-        reactions: number
-        replies: number
-        presence: number
-    }
+    globalStats: _userStats
+    monthlyStats: [
+        weeklyStats: _weeklyStats,
+        weeklyStats: _weeklyStats,
+        weeklyStats: _weeklyStats,
+        weeklyStats: _weeklyStats
+    ]
 }

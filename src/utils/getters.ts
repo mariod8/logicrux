@@ -40,6 +40,11 @@ export function getRandomInArray(array: Array<any>) {
     return array[Math.floor(Math.random() * array.length)]
 }
 
+export function getRandomInObject(object: any) {
+    const keys = Object.keys(object)
+    return object[keys[Math.floor(Math.random() * keys.length)]]
+}
+
 export function getTime(option: "MS_TO_END_OF_WEEK" | "WEEKLY_LOOP") {
     if (option === "MS_TO_END_OF_WEEK") return moment().endOf("isoWeek").valueOf() - moment().valueOf() - 5000
     else if (option === "WEEKLY_LOOP") return 7 * 24 * 60 * 3600 * 1000
