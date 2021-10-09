@@ -36,7 +36,7 @@ function getCleanUserProfile(_userProfile: _userProfile) {
                 reactions: _userProfile?.monthlyStats[week][day]?.userStats.reactions | 0,
                 replies: _userProfile?.monthlyStats[week][day]?.userStats.replies | 0,
                 presence: _userProfile?.monthlyStats[week][day]?.userStats.presence | 0,
-            }
+            },
         }
     }
     var userID: string = _userProfile?.userID

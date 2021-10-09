@@ -16,10 +16,10 @@ export default {
         },
     ],
     callback: async ({ args, user, guild }) => {
-        const profile = await getUserProfile({userID: user!.id, guildID: guild!.id})
+        const profile = await getUserProfile({ userID: user!.id, guildID: guild!.id })
 
-        profile.monthlyStats.forEach(weeklyStats => {
-            weeklyStats.forEach(dailyStats => {
+        profile.monthlyStats.forEach((weeklyStats) => {
+            weeklyStats.forEach((dailyStats) => {
                 console.log(dailyStats.date, dailyStats.userStats)
             })
         })
