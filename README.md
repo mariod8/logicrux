@@ -3,4 +3,4 @@
 | Command | Bot Owner | Guild Owner | Administrators | Everybody | 
 |----------------|:---------------:|:---------------:|:----------------:|
 | /play |✅|✅|✅|✅|
-| /ban |✅|✅||||
+| /ban |✅|✅|✅||
