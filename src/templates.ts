@@ -46,3 +46,5 @@ export type _userProfile = {
         weeklyStats: _weeklyStats
     ]
 }
+
+export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"
