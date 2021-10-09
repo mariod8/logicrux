@@ -2,4 +2,4 @@
 
 | Command | Bot Owner | Guild Owner | Everybody | 
 |----------------|:---------------:|:---------------:|:----------------:|
-| /play | <li>- [x] &#x200B;</li> | <ul><li>- [x] &#x200B;</li></ul> | <ul><li>- [x] &#x200B;</li></ul>  |
+| /play | ✅ | ✅ | ✅  |
