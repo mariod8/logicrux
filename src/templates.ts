@@ -47,4 +47,10 @@ export type _userProfile = {
     ]
 }
 
+export type rgb = {
+    r: number
+    g: number
+    b: number
+}
+
 export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"

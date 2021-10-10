@@ -9,7 +9,9 @@ import {
 } from "discord.js"
 import moment from "moment"
 import { Emojis } from "../../emojis"
+import { lerp } from "../../utils/color"
 import { getMsFromString, getRandomDecimalNumber, getRandomInArray } from "../../utils/getters"
+import { MyMath } from "../../utils/math"
 
 class __2048 {
     readonly boardSize = 4
@@ -134,8 +136,8 @@ class __2048 {
         board += "+"
         return board
     }
-    private getColor() {
-        
+    private getEmbedColor() {
+        return lerp("#00ff00", "#ff0000", MyMath.clamp(this.score / 2048, 0, 1))
     }
     public getId() {
         return this.id
@@ -158,7 +160,7 @@ class __2048 {
                     inline: true,
                 }
             )
-            .setColor("AQUA")
+            .setColor(this.getEmbedColor())
         return embed
     }
 }
