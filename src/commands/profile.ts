@@ -1,5 +1,7 @@
+import { GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
-import { getUserProfile } from "../utils/mongo"
+import { Emojis } from "../emojis"
+import { MyMember } from "../member"
 
 export default {
     category: "Stats",
@@ -10,19 +12,20 @@ export default {
     options: [
         {
             name: "user",
-            description: "Who you want to get the profile from. You can leave this blank to get your profile",
+            description: "Who you want to get the profile from. You can leave this blank to get yours",
             required: false,
             type: "STRING",
         },
     ],
-    callback: async ({ args, user, guild }) => {
-        const profile = await getUserProfile({ userID: user!.id, guildID: guild!.id })
-
-        profile.monthlyStats.forEach((weeklyStats) => {
-            weeklyStats.forEach((dailyStats) => {
-                console.log(dailyStats.date, dailyStats.userStats)
-            })
-        })
-        return "Done"
+    callback: async ({ interaction, message }) => {
+        const clientEmojis = Emojis.getClientEmojis()
+        var targetMember = new MyMember(message.member as GuildMember, clientEmojis)
+        //const profile = await getUserProfile({ userID: target!.id, guildID: guild!.id })
+        const embed = new MessageEmbed()
+            .setTitle(`Perfil de ${targetMember.getUser().username}`)
+            .setDescription(targetMember.getStatus())
+            .setColor(targetMember.getUserPrimaryColor())
+            .setThumbnail(targetMember.getUser().displayAvatarURL())
+        return embed
     },
 } as ICommand

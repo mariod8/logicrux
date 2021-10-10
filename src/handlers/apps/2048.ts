@@ -35,8 +35,8 @@ class __2048 {
         this.highscore = 0
         this.id = moment().valueOf()
         this.genRandomTile()
-        this.updateHighscore()
         this.user = user
+        this.updateHighscore()
         this.startTime = moment().valueOf()
     }
     public move(dir: _2048MoveDir) {
@@ -192,7 +192,7 @@ class __2048 {
                 {
                     name: "Score",
                     value: `${this.score} _(${Math.floor(
-                        this.score / MyMath.clamp(this.highscore, 1, this.highscore) * 100
+                        (this.score / MyMath.clamp(this.highscore, 1, this.highscore)) * 100
                     )}% HS_)`,
                     inline: true,
                 },

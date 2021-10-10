@@ -3,6 +3,15 @@ export type _userIdentification = {
     guildID: string
 }
 
+export type _2048 = {
+    games: number
+    highscore: number
+}
+
+export type _apps = {
+    _2048: _2048
+}
+
 export type _userStats = {
     xp: number
     totalXp: number
@@ -18,34 +27,13 @@ export type _userStats = {
     reactions: number
     replies: number
     presence: number
-    _2048Games: number
+    apps: _apps
 }
-
-export type _dailyStats = {
-    date: string
-    userStats: _userStats
-}
-
-export type _weeklyStats = [
-    dailyStats: _dailyStats,
-    dailyStats: _dailyStats,
-    dailyStats: _dailyStats,
-    dailyStats: _dailyStats,
-    dailyStats: _dailyStats,
-    dailyStats: _dailyStats,
-    dailyStats: _dailyStats
-]
 
 export type _userProfile = {
     userID: string
     guildID: string
     globalStats: _userStats
-    monthlyStats: [
-        weeklyStats: _weeklyStats,
-        weeklyStats: _weeklyStats,
-        weeklyStats: _weeklyStats,
-        weeklyStats: _weeklyStats
-    ]
 }
 
 export type _guildIdentification = {

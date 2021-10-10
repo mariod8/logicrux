@@ -16,14 +16,14 @@ const userStats = {
     musicPlayed: 0,
     reactions: 0,
     replies: 0,
-    _2048Games: 0,
+    apps: {
+        _2048: {
+            games: 0,
+            highscore: 0,
+        },
+    },
     presence: -1,
 }
-const dailyStats = {
-    date: moment().format("L"),
-    userStats,
-}
-const weeklyStats = [dailyStats, dailyStats, dailyStats, dailyStats, dailyStats, dailyStats, dailyStats]
 const userSchema = new Schema({
     guildID: {
         type: String,
@@ -36,10 +36,6 @@ const userSchema = new Schema({
     globalStats: {
         type: Object,
         default: userStats,
-    },
-    monthlyStats: {
-        type: Array,
-        default: [weeklyStats, weeklyStats, weeklyStats, weeklyStats],
     },
 })
 

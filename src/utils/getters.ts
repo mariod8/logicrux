@@ -1,4 +1,4 @@
-import { Guild, GuildMember, TextChannel } from "discord.js"
+import { Client, ColorResolvable, CommandInteraction, Guild, GuildMember, Message, TextChannel, User } from "discord.js"
 import moment from "moment"
 const stringSimilarity = require("string-similarity")
 
@@ -34,6 +34,12 @@ export function getChannelByString(channel: string, guild: Guild) {
             ? guild.channels.cache.filter((channel) => channel.type === "GUILD_TEXT").first()
             : similarChannel
     ) as TextChannel
+}
+
+export function getTarget(message: Message, args: Array<string>, interaction: CommandInteraction) {
+    if (interaction) return (interaction?.options?.getMember("user") as GuildMember).user
+    if (message?.mentions) return message?.mentions?.users?.first() as User
+    return getUserByString(args[0], message.guild as Guild) as User
 }
 
 export function getRandomInArray(array: Array<any>) {

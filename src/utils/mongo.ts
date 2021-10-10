@@ -1,6 +1,6 @@
 import guildSchema from "../schemas/guild-schema"
 import userSchema from "../schemas/user-schema"
-import { _guildIdentification, _guildProfile, _userIdentification, _userProfile } from "../templates"
+import { _guildIdentification, _guildProfile, _userIdentification, _userProfile, _userStats } from "../templates"
 
 function getCleanUserProfile(_userProfile: _userProfile) {
     const userStats = {
@@ -18,72 +18,17 @@ function getCleanUserProfile(_userProfile: _userProfile) {
         reactions: _userProfile?.globalStats?.reactions | 0,
         replies: _userProfile?.globalStats?.replies | 0,
         presence: _userProfile?.globalStats?.presence | -1,
-        _2048Games: _userProfile?.globalStats?._2048Games | 0,
-    }
-    const getMonthlyStats = (week: number, day: number) => {
-        return {
-            date: _userProfile?.monthlyStats[week][day]?.date,
-            userStats: {
-                xp: _userProfile?.monthlyStats[week][day]?.userStats.xp | 0,
-                totalXp: _userProfile?.monthlyStats[week][day]?.userStats.totalXp | 0,
-                level: _userProfile?.monthlyStats[week][day]?.userStats.level | 0,
-                mutes: _userProfile?.monthlyStats[week][day]?.userStats.mutes | 0,
-                weeklyUser: _userProfile?.monthlyStats[week][day]?.userStats.weeklyUser | 0,
-                messages: _userProfile?.monthlyStats[week][day]?.userStats.messages | 0,
-                words: _userProfile?.monthlyStats[week][day]?.userStats.words | 0,
-                attachments: _userProfile?.monthlyStats[week][day]?.userStats.attachments | 0,
-                emojis: _userProfile?.monthlyStats[week][day]?.userStats.emojis | 0,
-                commands: _userProfile?.monthlyStats[week][day]?.userStats.commands | 0,
-                musicPlayed: _userProfile?.monthlyStats[week][day]?.userStats.musicPlayed | 0,
-                reactions: _userProfile?.monthlyStats[week][day]?.userStats.reactions | 0,
-                replies: _userProfile?.monthlyStats[week][day]?.userStats.replies | 0,
-                presence: _userProfile?.monthlyStats[week][day]?.userStats.presence | -1,
-                _2048Games: _userProfile?.monthlyStats[week][day]?.userStats._2048Games | 0,
+        apps: {
+            _2048_: {
+                games: _userProfile?.globalStats?.apps?._2048?.games | 0,
+                highscore: _userProfile?.globalStats?.apps?._2048?.highscore | 0,
             },
-        }
+        },
     }
     var userID: string = _userProfile?.userID
     var guildID: string = _userProfile?.guildID
     var globalStats = userStats
-    var monthlyStats = [
-        [
-            getMonthlyStats(0, 0),
-            getMonthlyStats(0, 1),
-            getMonthlyStats(0, 2),
-            getMonthlyStats(0, 3),
-            getMonthlyStats(0, 4),
-            getMonthlyStats(0, 5),
-            getMonthlyStats(0, 6),
-        ],
-        [
-            getMonthlyStats(1, 0),
-            getMonthlyStats(1, 1),
-            getMonthlyStats(1, 2),
-            getMonthlyStats(1, 3),
-            getMonthlyStats(1, 4),
-            getMonthlyStats(1, 5),
-            getMonthlyStats(1, 6),
-        ],
-        [
-            getMonthlyStats(2, 0),
-            getMonthlyStats(2, 1),
-            getMonthlyStats(2, 2),
-            getMonthlyStats(2, 3),
-            getMonthlyStats(2, 4),
-            getMonthlyStats(2, 5),
-            getMonthlyStats(2, 6),
-        ],
-        [
-            getMonthlyStats(3, 0),
-            getMonthlyStats(3, 1),
-            getMonthlyStats(3, 2),
-            getMonthlyStats(3, 3),
-            getMonthlyStats(3, 4),
-            getMonthlyStats(3, 5),
-            getMonthlyStats(3, 6),
-        ],
-    ]
-    return { userID, guildID, globalStats, monthlyStats }
+    return { userID, guildID, globalStats }
 }
 
 function getCleanGuildProfile(_guildProfile: _guildProfile) {
