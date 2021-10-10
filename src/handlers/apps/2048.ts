@@ -18,12 +18,14 @@ class __2048 {
     private tiles: number[][]
     private id: number
     private score: number
+    private user: User
 
-    constructor() {
+    constructor(user: User) {
         this.tiles = new Array(this.boardSize).fill(0).map(() => new Array(this.boardSize).fill(0))
         this.id = moment().valueOf()
         this.genRandomTile()
         this.score = 0
+        this.user = user
     }
     public move(dir: "UP" | "DOWN" | "LEFT" | "RIGHT") {
         var tilesWereMoved = false
@@ -144,7 +146,7 @@ class __2048 {
     }
     public getEmbed() {
         const embed = new MessageEmbed()
-            .setTitle("2048")
+            .setTitle(`2048`)
             .setDescription(
                 "The 2048 game on Discord. Use the buttons to move the tiles. When two tiles with the same number touch, they'll merge!"
             )
@@ -158,15 +160,21 @@ class __2048 {
                     name: "Score",
                     value: this.score.toString(),
                     inline: true,
+                },
+                {
+                    name: "Highest",
+                    value: this.score.toString(),
+                    inline: true,
                 }
             )
             .setColor(this.getEmbedColor())
+            .setFooter(`${this.user.username} is playing`, this.user.displayAvatarURL())
         return embed
     }
 }
 
 export async function _2048Init(channel: TextChannel, user: User) {
-    const _2048 = new __2048()
+    const _2048 = new __2048(user)
     const clientEmojis = Emojis.getClientEmojis()
     const controls = [
         new MessageActionRow().addComponents(
