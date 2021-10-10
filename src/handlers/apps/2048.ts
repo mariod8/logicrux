@@ -1,11 +1,19 @@
-import { ButtonInteraction, MessageActionRow, MessageButton, MessageEmbed, TextChannel, User } from "discord.js"
+import {
+    ButtonInteraction,
+    Message,
+    MessageActionRow,
+    MessageButton,
+    MessageEmbed,
+    TextChannel,
+    User,
+} from "discord.js"
 import moment from "moment"
 import { Emojis } from "../../emojis"
-import { getMsFromString, getRandomDecimalNumber, getRandomInArray, getRandomNumber } from "../../utils/getters"
+import { getMsFromString, getRandomDecimalNumber, getRandomInArray } from "../../utils/getters"
 
 class __2048 {
+    readonly boardSize = 4
     private tiles: number[][]
-    private boardSize = 4
     private id: number
     private score: number
 
@@ -24,39 +32,35 @@ class __2048 {
                 for (var i = 0; i < this.boardSize; i++)
                     if (this.tiles[i][j] !== 0)
                         for (var i2 = 0; i2 < i; i2++)
-                            if (this.tiles[i][i2] === 0) {
+                            if (this.tiles[i2][j] === 0) {
                                 tilesWereMoved = true
-                                this.tiles[i][i2] = this.tiles[i][j]
+                                this.tiles[i2][j] = this.tiles[i][j]
                                 this.tiles[i][j] = 0
                                 break
-                            } else if (this.tiles[i][i2] === this.tiles[i][j]) {
+                            } else if (this.tiles[i2][j] === this.tiles[i][j]) {
                                 tilesWereMoved = true
-                                this.tiles[i][i2] += this.tiles[i][j]
-                                if (this.tiles[i][i2] > highestAddition) highestAddition = this.tiles[i][i2]
+                                this.tiles[i2][j] += this.tiles[i][j]
+                                if (this.tiles[i2][j] > highestAddition) highestAddition = this.tiles[i2][j]
                                 this.tiles[i][j] = 0
                                 break
                             }
         } else if (dir === "DOWN") {
-            for (var j = 0; j < this.boardSize; j++){
-                for (var i = this.boardSize - 1; i >= 0; i--){
-                    if (this.tiles[i][j] !== 0){
-                        for (var j2 = j; j2 >= 0; j2--){
-                            if (this.tiles[i][j2] === 0) {
+            for (var j = 0; j < this.boardSize; j++)
+                for (var i = this.boardSize - 1; i >= 0; i--)
+                    if (this.tiles[i][j] !== 0)
+                        for (var i2 = this.boardSize - 1; i2 > i; i2--)
+                            if (this.tiles[i2][j] === 0) {
                                 tilesWereMoved = true
-                                this.tiles[i][j2] = this.tiles[i][j]
+                                this.tiles[i2][j] = this.tiles[i][j]
                                 this.tiles[i][j] = 0
                                 break
-                            } else if (this.tiles[i][j2] === this.tiles[i][j]) {
+                            } else if (this.tiles[i2][j] === this.tiles[i][j]) {
                                 tilesWereMoved = true
-                                this.tiles[i][j2] += this.tiles[i][j]
-                                if (this.tiles[i][j2] > highestAddition) highestAddition = this.tiles[i][j2]
+                                this.tiles[i2][j] += this.tiles[i][j]
+                                if (this.tiles[i2][j] > highestAddition) highestAddition = this.tiles[i2][j]
                                 this.tiles[i][j] = 0
                                 break
                             }
-                        }
-                    }
-                }
-            }
         } else if (dir === "LEFT") {
             for (var i = 0; i < this.boardSize; i++)
                 for (var j = 0; j < this.boardSize; j++)
@@ -78,7 +82,7 @@ class __2048 {
             for (var i = 0; i < this.boardSize; i++)
                 for (var j = this.boardSize - 1; j >= 0; j--)
                     if (this.tiles[i][j] !== 0)
-                        for (var j2 = j; j2 >= 0; j2--)
+                        for (var j2 = this.boardSize - 1; j2 > j; j2--)
                             if (this.tiles[i][j2] === 0) {
                                 tilesWereMoved = true
                                 this.tiles[i][j2] = this.tiles[i][j]
@@ -130,6 +134,9 @@ class __2048 {
         board += "+"
         return board
     }
+    private getColor() {
+        
+    }
     public getId() {
         return this.id
     }
@@ -151,26 +158,29 @@ class __2048 {
                     inline: true,
                 }
             )
+            .setColor("AQUA")
         return embed
     }
 }
 
 export async function _2048Init(channel: TextChannel, user: User) {
     const _2048 = new __2048()
-    const filter = (i: ButtonInteraction) => {
-        return i.user.id === user.id
-    }
     const clientEmojis = Emojis.getClientEmojis()
     const controls = [
         new MessageActionRow().addComponents(
-            new MessageButton().setCustomId("left").setLabel("<").setStyle("PRIMARY"),
-            new MessageButton().setCustomId("right").setLabel(">").setStyle("PRIMARY"),
+            new MessageButton().setCustomId("left").setEmoji(clientEmojis!.leftArrow).setStyle("PRIMARY"),
+            new MessageButton().setCustomId("right").setEmoji(clientEmojis!.rightArrow).setStyle("PRIMARY"),
             new MessageButton().setCustomId("up").setLabel("^").setStyle("PRIMARY"),
             new MessageButton().setCustomId("down").setLabel("v").setStyle("PRIMARY"),
             new MessageButton().setCustomId("exit").setEmoji(clientEmojis!.exit).setStyle("SECONDARY")
         ),
     ]
-    await channel.send({ embeds: [_2048.getEmbed()], components: controls }).catch(console.error)
+    const instanceMessage = (await channel
+        .send({ embeds: [_2048.getEmbed()], components: controls })
+        .catch(console.error)) as Message
+    const filter = (i: ButtonInteraction) => {
+        return i.user.id === user.id && i.message.id === instanceMessage.id
+    }
     const controlsManager = channel.createMessageComponentCollector({
         componentType: "BUTTON",
         time: getMsFromString("50s"),
@@ -195,11 +205,11 @@ export async function _2048Init(channel: TextChannel, user: User) {
             controlsManager.resetTimer()
             i.update({ embeds: [_2048.getEmbed()], components: controls })
         } else if (i.customId === "exit") {
-            i.update({ embeds: [_2048.getEmbed()], components: [] })
             controlsManager.stop()
         }
     })
     controlsManager.on("end", async (collection) => {
+        await instanceMessage.edit({ embeds: [_2048.getEmbed()], components: [] }).catch(console.error)
         console.log(`2048 (${_2048.getId()}) ended!`)
     })
 }
