@@ -1,5 +1,6 @@
+import guildSchema from "../schemas/guild-schema"
 import userSchema from "../schemas/user-schema"
-import { _userIdentification, _userProfile } from "../templates"
+import { _guildIdentification, _guildProfile, _userIdentification, _userProfile } from "../templates"
 
 function getCleanUserProfile(_userProfile: _userProfile) {
     const userStats = {
@@ -83,6 +84,16 @@ function getCleanUserProfile(_userProfile: _userProfile) {
     return { userID, guildID, globalStats, monthlyStats }
 }
 
+function getCleanGuildProfile(_guildProfile: _guildProfile) {
+    var guildID = _guildProfile?.guildID
+    var _2048 = {
+        score: _guildProfile?._2048?.score | 0,
+        userID: _guildProfile?._2048?.userID,
+        date: _guildProfile?._2048?.date,
+    }
+    return { _2048, guildID }
+}
+
 export async function incGlobalStats(userIdentification: _userIdentification, globalStats: any) {
     var promises = []
 
@@ -127,12 +138,61 @@ export async function setGlobalStats(userIdentification: _userIdentification, gl
     await Promise.all(promises)
 }
 
+export async function incGuildProfile(guildIdentification: _guildIdentification, properties: any) {
+    var promises = []
+
+    for (const property in properties) {
+        promises.push(
+            guildSchema.updateOne(
+                guildIdentification,
+                {
+                    $inc: {
+                        [`${property}`]: properties[property],
+                    },
+                } as any,
+                {
+                    upsert: true,
+                    setDefaultsOnInsert: false,
+                }
+            )
+        )
+    }
+    await Promise.all(promises)
+}
+
+export async function setGuildProfile(guildIdentification: _guildIdentification, properties: any) {
+    var promises = []
+
+    for (const property in properties) {
+        promises.push(
+            guildSchema.updateOne(
+                guildIdentification,
+                {
+                    $set: {
+                        [`${property}`]: properties[property],
+                    },
+                } as any,
+                {
+                    upsert: true,
+                    setDefaultsOnInsert: false,
+                }
+            )
+        )
+    }
+    await Promise.all(promises)
+}
+
 export async function getUserProfile(userIdentification: _userIdentification) {
-    var _userProfile: _userProfile = await userSchema.findOne(userIdentification)
-    return getCleanUserProfile(_userProfile)
+    var userProfile: _userProfile = await userSchema.findOne(userIdentification)
+    return getCleanUserProfile(userProfile)
 }
 
 export async function getAllGuildUserProfiles(guildID: string) {
     var userProfiles: Array<_userProfile> = await userSchema.find({ guildID })
     return userProfiles.map((userProfile) => getCleanUserProfile(userProfile))
+}
+
+export async function getGuildProfile(guildIdentification: _guildIdentification) {
+    var guildProfile: _guildProfile = await guildSchema.findOne(guildIdentification)
+    return getCleanGuildProfile(guildProfile) as _guildProfile
 }

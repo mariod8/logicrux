@@ -1,5 +1,6 @@
 import {
     ButtonInteraction,
+    Guild,
     Message,
     MessageActionRow,
     MessageButton,
@@ -9,9 +10,11 @@ import {
 } from "discord.js"
 import moment from "moment"
 import { Emojis } from "../../emojis"
+import { _2048MoveDir, _guildProfile } from "../../templates"
 import { lerp } from "../../utils/color"
-import { getMsFromString, getRandomDecimalNumber, getRandomInArray } from "../../utils/getters"
+import { getMsFromString, getRandomDecimalNumber, getRandomInArray, getTimeElapsed } from "../../utils/getters"
 import { MyMath } from "../../utils/math"
+import { getGuildProfile, setGuildProfile } from "../../utils/mongo"
 
 class __2048 {
     readonly boardSize = 4
@@ -19,15 +22,24 @@ class __2048 {
     private id: number
     private score: number
     private user: User
+    private highscore: any
+    private userHighscore: any
+    private dateHighscore: any
+    private guild: Guild
+    private startTime: number
 
-    constructor(user: User) {
+    constructor(user: User, guild: Guild) {
         this.tiles = new Array(this.boardSize).fill(0).map(() => new Array(this.boardSize).fill(0))
+        this.guild = guild
+        this.score = 0
+        this.highscore = 0
         this.id = moment().valueOf()
         this.genRandomTile()
-        this.score = 0
+        this.updateHighscore()
         this.user = user
+        this.startTime = moment().valueOf()
     }
-    public move(dir: "UP" | "DOWN" | "LEFT" | "RIGHT") {
+    public move(dir: _2048MoveDir) {
         var tilesWereMoved = false
         var highestAddition = 0
 
@@ -101,16 +113,13 @@ class __2048 {
                             }
         }
         this.score += highestAddition
+        this.updateHighscore()
         return tilesWereMoved
     }
     private getCellSpacing(num: number) {
         return num > 999 ? " " : num > 99 ? " · " : num > 9 ? " · · " : " · · · "
     }
     public genRandomTile() {
-        interface tile {
-            i: number
-            j: number
-        }
         var tiles = []
         var chosenTile = null
 
@@ -139,10 +148,34 @@ class __2048 {
         return board
     }
     private getEmbedColor() {
-        return lerp("#00ff00", "#ff0000", MyMath.clamp(this.score / 2048, 0, 1))
+        return lerp("#57f287", "#ed4245", MyMath.clamp(this.score / (this.highscore === 0 ? 1 : this.highscore), 0, 1))
+    }
+    public async updateHighscore() {
+        const guildProfile = await getGuildProfile({ guildID: this.guild.id })
+        this.highscore = guildProfile?._2048?.score
+        this.dateHighscore = moment(guildProfile?._2048?.date, "x").format("lll")
+        this.userHighscore = await this.guild?.members?.cache?.get(guildProfile?._2048?.userID)?.user
+        if (this.score > this.highscore) {
+            this.highscore = this.score
+            await setGuildProfile(
+                { guildID: this.guild.id },
+                { "_2048.score": this.score, "_2048.userID": this.user.id, "_2048.date": moment().valueOf().toString() }
+            )
+        }
     }
     public getId() {
         return this.id
+    }
+    public gameOver() {
+        for (var i = 0; i < this.boardSize; i++) {
+            for (var j = 0; j < this.boardSize; j++) {
+                if (i - 1 > 0) if (this.tiles[i - 1][j] === this.tiles[i][j]) return false
+                if (j - 1 > 0) if (this.tiles[i][j - 1] === this.tiles[i][j]) return false
+                if (i + 1 < this.boardSize - 1) if (this.tiles[i + 1][j] === this.tiles[i][j]) return false
+                if (j + 1 < this.boardSize - 1) if (this.tiles[i][j + 1] === this.tiles[i][j]) return false
+            }
+        }
+        return true
     }
     public getEmbed() {
         const embed = new MessageEmbed()
@@ -162,19 +195,25 @@ class __2048 {
                     inline: true,
                 },
                 {
-                    name: "Highest",
-                    value: this.score.toString(),
-                    inline: true,
+                    name: "Highscore",
+                    value:
+                        this.highscore === 0
+                            ? "_No previous highscore_"
+                            : `${this.highscore} · ${this.userHighscore} _(${this.dateHighscore})_`,
+                    inline: false,
                 }
             )
             .setColor(this.getEmbedColor())
-            .setFooter(`${this.user.username} is playing`, this.user.displayAvatarURL())
+            .setFooter(
+                `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment().valueOf())} ⏰`,
+                this.user.displayAvatarURL()
+            )
         return embed
     }
 }
 
 export async function _2048Init(channel: TextChannel, user: User) {
-    const _2048 = new __2048(user)
+    const _2048 = new __2048(user, channel!.guild)
     const clientEmojis = Emojis.getClientEmojis()
     const controls = [
         new MessageActionRow().addComponents(
@@ -193,33 +232,47 @@ export async function _2048Init(channel: TextChannel, user: User) {
     }
     const controlsManager = channel.createMessageComponentCollector({
         componentType: "BUTTON",
-        time: getMsFromString("50s"),
+        time: getMsFromString("60s"),
         filter,
     })
+    function _2048Exit(option?: 0) {
+        instanceMessage
+            .edit({
+                embeds: [
+                    _2048
+                        .getEmbed()
+                        .setTitle(option === 0 ? "2048 (GAME ENDED)" : "2048 (GAME OVER)")
+                        .setColor("LIGHT_GREY"),
+                ],
+                components: [],
+            })
+            .catch(console.error)
+        controlsManager.stop()
+    }
 
     controlsManager.on("collect", async (i: ButtonInteraction) => {
         if (i.customId === "left") {
             if (_2048.move("LEFT")) _2048.genRandomTile()
-            controlsManager.resetTimer()
-            i.update({ embeds: [_2048.getEmbed()], components: controls })
         } else if (i.customId === "right") {
             if (_2048.move("RIGHT")) _2048.genRandomTile()
-            controlsManager.resetTimer()
-            i.update({ embeds: [_2048.getEmbed()], components: controls })
         } else if (i.customId === "down") {
             if (_2048.move("DOWN")) _2048.genRandomTile()
-            controlsManager.resetTimer()
-            i.update({ embeds: [_2048.getEmbed()], components: controls })
         } else if (i.customId === "up") {
             if (_2048.move("UP")) _2048.genRandomTile()
+        }
+        if (i.customId !== "exit") {
+            if (_2048.gameOver()) {
+                _2048Exit()
+            } else {
             controlsManager.resetTimer()
             i.update({ embeds: [_2048.getEmbed()], components: controls })
-        } else if (i.customId === "exit") {
-            controlsManager.stop()
+            }
+        } else {
+            _2048Exit()
         }
     })
     controlsManager.on("end", async (collection) => {
-        await instanceMessage.edit({ embeds: [_2048.getEmbed()], components: [] }).catch(console.error)
-        console.log(`2048 (${_2048.getId()}) ended!`)
+        if (collection.last()?.customId === "exit") _2048Exit(0)
+        console.log(`2048 (${_2048.getId()}, ${user.username}) ended!`)
     })
 }

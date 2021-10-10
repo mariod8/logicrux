@@ -47,6 +47,21 @@ export type _userProfile = {
     ]
 }
 
+export type _guildIdentification = {
+    guildID: string
+}
+
+export type __2048 = {
+    score: number
+    userID: string
+    date: string
+}
+
+export type _guildProfile = {
+    guildID: string
+    _2048: __2048
+}
+
 export type rgb = {
     r: number
     g: number
@@ -54,3 +69,4 @@ export type rgb = {
 }
 
 export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"
+export type _2048MoveDir = "LEFT" | "RIGHT" | "DOWN" | "UP"

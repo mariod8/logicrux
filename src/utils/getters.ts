@@ -76,3 +76,14 @@ export function getMsFromString(time: string) {
             return 1000
     }
 }
+
+export function getTimeElapsed(startTime: number, endTime: number) {
+    var timeElapsed = endTime - startTime
+    var ms = timeElapsed % 1000
+    timeElapsed = (timeElapsed - ms) / 1000
+    var secs = timeElapsed % 60
+    timeElapsed = (timeElapsed - secs) / 60
+    var mins = timeElapsed % 60
+    var hrs = (timeElapsed - mins) / 60
+    return (hrs < 10 ? "0" + hrs : hrs) + ":" + (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs)
+}
