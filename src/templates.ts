@@ -18,6 +18,7 @@ export type _userStats = {
     reactions: number
     replies: number
     presence: number
+    _2048Games: number
 }
 
 export type _dailyStats = {

@@ -16,6 +16,7 @@ const userStats = {
     musicPlayed: 0,
     reactions: 0,
     replies: 0,
+    _2048Games: 0,
     presence: -1,
 }
 const dailyStats = {

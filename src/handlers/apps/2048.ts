@@ -191,7 +191,9 @@ class __2048 {
                 },
                 {
                     name: "Score",
-                    value: this.score.toString(),
+                    value: `${this.score} _(${Math.floor(
+                        this.score / MyMath.clamp(this.highscore, 1, this.highscore) * 100
+                    )}% HS_)`,
                     inline: true,
                 },
                 {
@@ -215,6 +217,7 @@ class __2048 {
 export async function _2048Init(channel: TextChannel, user: User) {
     const _2048 = new __2048(user, channel!.guild)
     const clientEmojis = Emojis.getClientEmojis()
+    const time = getMsFromString("50s")
     const controls = [
         new MessageActionRow().addComponents(
             new MessageButton().setCustomId("left").setEmoji(clientEmojis!.leftArrow).setStyle("PRIMARY"),
@@ -232,16 +235,22 @@ export async function _2048Init(channel: TextChannel, user: User) {
     }
     const controlsManager = channel.createMessageComponentCollector({
         componentType: "BUTTON",
-        time: getMsFromString("60s"),
+        time,
         filter,
     })
-    function _2048Exit(option?: 0) {
+    function _2048Exit(option: 0 | 1 | 2) {
         instanceMessage
             .edit({
                 embeds: [
                     _2048
                         .getEmbed()
-                        .setTitle(option === 0 ? "2048 (GAME ENDED)" : "2048 (GAME OVER)")
+                        .setTitle(
+                            option === 0
+                                ? "2048 (GAME ENDED)"
+                                : option === 1
+                                ? "2048 (TIME EXPIRED)"
+                                : "2048 (GAME OVER)"
+                        )
                         .setColor("LIGHT_GREY"),
                 ],
                 components: [],
@@ -262,17 +271,23 @@ export async function _2048Init(channel: TextChannel, user: User) {
         }
         if (i.customId !== "exit") {
             if (_2048.gameOver()) {
-                _2048Exit()
+                _2048Exit(2)
             } else {
-            controlsManager.resetTimer()
-            i.update({ embeds: [_2048.getEmbed()], components: controls })
+                controlsManager.resetTimer()
+                i.update({ embeds: [_2048.getEmbed()], components: controls })
             }
         } else {
-            _2048Exit()
+            _2048Exit(0)
         }
     })
     controlsManager.on("end", async (collection) => {
         if (collection.last()?.customId === "exit") _2048Exit(0)
+        else if (
+            moment().valueOf() - time >=
+                (collection?.last() ? collection!.last()!.createdTimestamp : moment().valueOf() - 2 * time) ||
+            moment().valueOf() - time >= instanceMessage?.createdTimestamp
+        )
+            _2048Exit(1)
         console.log(`2048 (${_2048.getId()}, ${user.username}) ended!`)
     })
 }

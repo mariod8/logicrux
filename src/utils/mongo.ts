@@ -18,6 +18,7 @@ function getCleanUserProfile(_userProfile: _userProfile) {
         reactions: _userProfile?.globalStats?.reactions | 0,
         replies: _userProfile?.globalStats?.replies | 0,
         presence: _userProfile?.globalStats?.presence | -1,
+        _2048Games: _userProfile?.globalStats?._2048Games | 0,
     }
     const getMonthlyStats = (week: number, day: number) => {
         return {
@@ -36,7 +37,8 @@ function getCleanUserProfile(_userProfile: _userProfile) {
                 musicPlayed: _userProfile?.monthlyStats[week][day]?.userStats.musicPlayed | 0,
                 reactions: _userProfile?.monthlyStats[week][day]?.userStats.reactions | 0,
                 replies: _userProfile?.monthlyStats[week][day]?.userStats.replies | 0,
-                presence: _userProfile?.monthlyStats[week][day]?.userStats.presence | 0,
+                presence: _userProfile?.monthlyStats[week][day]?.userStats.presence | -1,
+                _2048Games: _userProfile?.monthlyStats[week][day]?.userStats._2048Games | 0,
             },
         }
     }
