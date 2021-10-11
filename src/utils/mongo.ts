@@ -1,9 +1,27 @@
 import guildSchema from "../schemas/guild-schema"
+import muteSchema from "../schemas/mute-schema"
 import userSchema from "../schemas/user-schema"
-import { _guildIdentification, _guildProfile, _userIdentification, _userProfile, _userStats } from "../templates"
+import {
+    _2048,
+    _apps,
+    _guildIdentification,
+    _guildProfile,
+    _muteIdentification,
+    _mutes,
+    _userIdentification,
+    _userProfile,
+    _userStats,
+} from "../templates"
 
 function getCleanUserProfile(_userProfile: _userProfile) {
-    const userStats = {
+    const _2048: _2048 = {
+        games: _userProfile?.globalStats?.apps?._2048?.games | 0,
+        highscore: _userProfile?.globalStats?.apps?._2048?.highscore | 0,
+    }
+    const apps: _apps = {
+        _2048,
+    }
+    const userStats: _userStats = {
         xp: _userProfile?.globalStats?.xp | 0,
         totalXp: _userProfile?.globalStats?.totalXp | 0,
         level: _userProfile?.globalStats?.level | 0,
@@ -18,17 +36,15 @@ function getCleanUserProfile(_userProfile: _userProfile) {
         reactions: _userProfile?.globalStats?.reactions | 0,
         replies: _userProfile?.globalStats?.replies | 0,
         presence: _userProfile?.globalStats?.presence | -1,
-        apps: {
-            _2048_: {
-                games: _userProfile?.globalStats?.apps?._2048?.games | 0,
-                highscore: _userProfile?.globalStats?.apps?._2048?.highscore | 0,
-            },
-        },
+        apps,
     }
-    var userID: string = _userProfile?.userID
-    var guildID: string = _userProfile?.guildID
-    var globalStats = userStats
-    return { userID, guildID, globalStats }
+    const userProfile: _userProfile = {
+        userID: _userProfile?.userID,
+        guildID: _userProfile?.guildID,
+        globalStats: userStats,
+    }
+
+    return { userProfile }
 }
 
 function getCleanGuildProfile(_guildProfile: _guildProfile) {
@@ -142,4 +158,13 @@ export async function getAllGuildUserProfiles(guildID: string) {
 export async function getGuildProfile(guildIdentification: _guildIdentification) {
     var guildProfile: _guildProfile = await guildSchema.findOne(guildIdentification)
     return getCleanGuildProfile(guildProfile) as _guildProfile
+}
+
+export async function getMute(muteIdentification: _muteIdentification) {
+    var mute = await muteSchema.findOne(muteIdentification)
+    return mute ? (mute as _mutes) : false
+}
+
+export async function setMute(mute: _mutes) {
+    await muteSchema.updateOne(mute)
 }

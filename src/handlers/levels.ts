@@ -18,7 +18,9 @@ export async function addXP(
     const spamChannel = await getChannelByString("spam", guild!)
     const userIdentification: _userIdentification = { guildID: guild!.id, userID: user!.id }
     var {
-        globalStats: { xp, level, totalXp },
+        userProfile: {
+            globalStats: { xp, level, totalXp },
+        },
     } = await getUserProfile(userIdentification)
     const previousLevel = level
 

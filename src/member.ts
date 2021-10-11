@@ -1,5 +1,4 @@
 import { ColorResolvable, GuildMember } from "discord.js"
-import { rgbToHex } from "./utils/color"
 
 export class MyMember {
     private member: GuildMember

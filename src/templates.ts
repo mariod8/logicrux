@@ -51,6 +51,24 @@ export type _guildProfile = {
     _2048: __2048
 }
 
+export type _mutes = {
+    userID: string
+    guildID: string
+    muteID: string
+    staffID: string
+    staffTag: string
+    expires: string
+    roles: Array<string>
+    current: boolean
+    reason: string
+}
+
+export type _muteIdentification = {
+    userID: string
+    guildID: string
+    current: true
+}
+
 export type rgb = {
     r: number
     g: number

@@ -10,7 +10,9 @@
 |/execute|✅|✅|✅|✅|
 |/title|✅|✅|✅|✅|
 |/ban|✅|✅|✅||
-|/kick|✅|✅|✅||
 |/pardon|✅|✅|✅||
+|/kick|✅|✅|✅||
+|/mute|✅|✅|✅||
+|/unmute|✅|✅|✅||
 |/simulate|✅|✅|||
 |/value|✅||||

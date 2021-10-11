@@ -17,7 +17,7 @@ export default {
             type: "STRING",
         },
     ],
-    callback: async ({ interaction, message }) => {
+    callback: async ({ interaction, message, user }) => {
         const clientEmojis = Emojis.getClientEmojis()
         var targetMember = new MyMember(message.member as GuildMember, clientEmojis)
         //const profile = await getUserProfile({ userID: target!.id, guildID: guild!.id })

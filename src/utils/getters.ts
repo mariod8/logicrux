@@ -1,5 +1,6 @@
 import { Client, ColorResolvable, CommandInteraction, Guild, GuildMember, Message, TextChannel, User } from "discord.js"
 import moment from "moment"
+import { time } from "./regex"
 const stringSimilarity = require("string-similarity")
 
 export function getUserByString(username: string, guild: Guild) {
@@ -36,12 +37,6 @@ export function getChannelByString(channel: string, guild: Guild) {
     ) as TextChannel
 }
 
-export function getTarget(message: Message, args: Array<string>, interaction: CommandInteraction) {
-    if (interaction) return (interaction?.options?.getMember("user") as GuildMember).user
-    if (message?.mentions) return message?.mentions?.users?.first() as User
-    return getUserByString(args[0], message.guild as Guild) as User
-}
-
 export function getRandomInArray(array: Array<any>) {
     return array[Math.floor(Math.random() * array.length)]
 }
@@ -64,10 +59,11 @@ export function getTime(option: "MS_TO_END_OF_WEEK" | "WEEKLY_LOOP") {
     else if (option === "WEEKLY_LOOP") return 7 * 24 * 60 * 3600 * 1000
 }
 
-export function getMsFromString(time: string) {
-    time = time.toLowerCase()
-    var timeUnit = /[smhd]/gm.exec(time)![0]
-    var timeValue = parseInt(/\d+/gm.exec(time)![0]) * 1000
+export function getMsFromString(timeRaw: string) {
+    timeRaw = timeRaw.toLowerCase()
+    if (!time.test(timeRaw)) return 1000
+    var timeUnit = /[smhd]/gm.exec(timeRaw)![0]
+    var timeValue = parseInt(/\d+/gm.exec(timeRaw)![0]) * 1000
 
     switch (timeUnit) {
         case "s":

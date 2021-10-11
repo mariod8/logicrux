@@ -191,9 +191,7 @@ class __2048 {
                 },
                 {
                     name: "Score",
-                    value: `${this.score} _(${Math.floor(
-                        (this.score / MyMath.clamp(this.highscore, 1, this.highscore)) * 100
-                    )}% HS_)`,
+                    value: `${this.score}`,
                     inline: true,
                 },
                 {
