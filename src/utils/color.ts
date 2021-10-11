@@ -8,7 +8,7 @@ function componentToHex(c: number) {
 }
 
 export function rgbToHex(r: number, g: number, b: number) {
-    return ("#" + componentToHex(r) + componentToHex(g) + componentToHex(b)) as ColorResolvable
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b)
 }
 
 function hexToRgb(hex: string) {

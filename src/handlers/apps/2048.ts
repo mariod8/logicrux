@@ -17,35 +17,34 @@ import { MyMath } from "../../utils/math"
 import { getGuildProfile, setGuildProfile } from "../../utils/mongo"
 
 class __2048 {
-    readonly boardSize = 4
+    static readonly boardSize = 4
+    private static highscore: number = 0
+    private static userHighscore: any
+    private static dateHighscore: any
     private tiles: number[][]
     private id: number
     private score: number
     private user: User
-    private highscore: any
-    private userHighscore: any
-    private dateHighscore: any
     private guild: Guild
     private startTime: number
 
     constructor(user: User, guild: Guild) {
-        this.tiles = new Array(this.boardSize).fill(0).map(() => new Array(this.boardSize).fill(0))
+        this.tiles = new Array(__2048.boardSize).fill(0).map(() => new Array(__2048.boardSize).fill(0))
         this.guild = guild
         this.score = 0
-        this.highscore = 0
         this.id = moment().valueOf()
-        this.genRandomTile()
+        this.startTime = this.id
         this.user = user
+        this.genRandomTile()
         this.updateHighscore()
-        this.startTime = moment().valueOf()
     }
     public move(dir: _2048MoveDir) {
         var tilesWereMoved = false
         var highestAddition = 0
 
         if (dir === "UP") {
-            for (var j = 0; j < this.boardSize; j++)
-                for (var i = 0; i < this.boardSize; i++)
+            for (var j = 0; j < __2048.boardSize; j++)
+                for (var i = 0; i < __2048.boardSize; i++)
                     if (this.tiles[i][j] !== 0)
                         for (var i2 = 0; i2 < i; i2++)
                             if (this.tiles[i2][j] === 0) {
@@ -61,10 +60,10 @@ class __2048 {
                                 break
                             }
         } else if (dir === "DOWN") {
-            for (var j = 0; j < this.boardSize; j++)
-                for (var i = this.boardSize - 1; i >= 0; i--)
+            for (var j = 0; j < __2048.boardSize; j++)
+                for (var i = __2048.boardSize - 1; i >= 0; i--)
                     if (this.tiles[i][j] !== 0)
-                        for (var i2 = this.boardSize - 1; i2 > i; i2--)
+                        for (var i2 = __2048.boardSize - 1; i2 > i; i2--)
                             if (this.tiles[i2][j] === 0) {
                                 tilesWereMoved = true
                                 this.tiles[i2][j] = this.tiles[i][j]
@@ -78,8 +77,8 @@ class __2048 {
                                 break
                             }
         } else if (dir === "LEFT") {
-            for (var i = 0; i < this.boardSize; i++)
-                for (var j = 0; j < this.boardSize; j++)
+            for (var i = 0; i < __2048.boardSize; i++)
+                for (var j = 0; j < __2048.boardSize; j++)
                     if (this.tiles[i][j] !== 0)
                         for (var j2 = 0; j2 < j; j2++)
                             if (this.tiles[i][j2] === 0) {
@@ -95,10 +94,10 @@ class __2048 {
                                 break
                             }
         } else if (dir === "RIGHT") {
-            for (var i = 0; i < this.boardSize; i++)
-                for (var j = this.boardSize - 1; j >= 0; j--)
+            for (var i = 0; i < __2048.boardSize; i++)
+                for (var j = __2048.boardSize - 1; j >= 0; j--)
                     if (this.tiles[i][j] !== 0)
-                        for (var j2 = this.boardSize - 1; j2 > j; j2--)
+                        for (var j2 = __2048.boardSize - 1; j2 > j; j2--)
                             if (this.tiles[i][j2] === 0) {
                                 tilesWereMoved = true
                                 this.tiles[i][j2] = this.tiles[i][j]
@@ -123,18 +122,18 @@ class __2048 {
         var tiles = []
         var chosenTile = null
 
-        for (var i = 0; i < this.boardSize; i++)
-            for (var j = 0; j < this.boardSize; j++) if (this.tiles[i][j] === 0) tiles.push({ i, j })
+        for (var i = 0; i < __2048.boardSize; i++)
+            for (var j = 0; j < __2048.boardSize; j++) if (this.tiles[i][j] === 0) tiles.push({ i, j })
         chosenTile = getRandomInArray(tiles)
         this.tiles[chosenTile.i][chosenTile.j] = getRandomDecimalNumber(0, 1) < 0.2 ? 4 : 2
     }
     private getBoard() {
         var board = ""
 
-        for (var i = 0; i < this.boardSize; i++) {
-            for (var k = 0; k < this.boardSize; k++) board += "+---------"
+        for (var i = 0; i < __2048.boardSize; i++) {
+            for (var k = 0; k < __2048.boardSize; k++) board += "+---------"
             board += "+\n"
-            for (var j = 0; j < this.boardSize; j++) {
+            for (var j = 0; j < __2048.boardSize; j++) {
                 board +=
                     "\\|" +
                     this.getCellSpacing(this.tiles[i][j]) +
@@ -143,20 +142,24 @@ class __2048 {
             }
             board += "\\|\n"
         }
-        for (var i = 0; i < this.boardSize; i++) board += "+---------"
+        for (var i = 0; i < __2048.boardSize; i++) board += "+---------"
         board += "+"
         return board
     }
     private getEmbedColor() {
-        return lerp("#57f287", "#ed4245", MyMath.clamp(this.score / (this.highscore === 0 ? 1 : this.highscore), 0, 1))
+        return lerp(
+            "#57F287",
+            "#ED4245",
+            MyMath.clamp(this.score / (__2048.highscore === 0 ? 1 : __2048.highscore), 0, 1)
+        )
     }
     public async updateHighscore() {
         const guildProfile = await getGuildProfile({ guildID: this.guild.id })
-        this.highscore = guildProfile?._2048?.score
-        this.dateHighscore = moment(guildProfile?._2048?.date, "x").format("lll")
-        this.userHighscore = await this.guild?.members?.cache?.get(guildProfile?._2048?.userID)?.user
-        if (this.score > this.highscore) {
-            this.highscore = this.score
+        __2048.highscore = guildProfile?._2048?.score | 0
+        __2048.dateHighscore = guildProfile?._2048?.date ? moment(guildProfile?._2048?.date, "x").format("lll") : null
+        __2048.userHighscore = await this.guild?.members?.cache?.get(guildProfile?._2048?.userID)?.user
+        if (this.score > __2048.highscore) {
+            __2048.highscore = this.score
             await setGuildProfile(
                 { guildID: this.guild.id },
                 { "_2048.score": this.score, "_2048.userID": this.user.id, "_2048.date": moment().valueOf().toString() }
@@ -167,12 +170,14 @@ class __2048 {
         return this.id
     }
     public gameOver() {
-        for (var i = 0; i < this.boardSize; i++) {
-            for (var j = 0; j < this.boardSize; j++) {
-                if (i - 1 > 0) if (this.tiles[i - 1][j] === this.tiles[i][j]) return false
-                if (j - 1 > 0) if (this.tiles[i][j - 1] === this.tiles[i][j]) return false
-                if (i + 1 < this.boardSize - 1) if (this.tiles[i + 1][j] === this.tiles[i][j]) return false
-                if (j + 1 < this.boardSize - 1) if (this.tiles[i][j + 1] === this.tiles[i][j]) return false
+        for (var i = 0; i < __2048.boardSize; i++) {
+            for (var j = 0; j < __2048.boardSize; j++) {
+                if (i - 1 > 0) if (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0) return false
+                if (j - 1 > 0) if (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0) return false
+                if (i + 1 < __2048.boardSize - 1)
+                    if (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0) return false
+                if (j + 1 < __2048.boardSize - 1)
+                    if (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0) return false
             }
         }
         return true
@@ -197,9 +202,9 @@ class __2048 {
                 {
                     name: "Highscore",
                     value:
-                        this.highscore === 0
-                            ? "_No previous highscore_"
-                            : `${this.highscore} · ${this.userHighscore} _(${this.dateHighscore})_`,
+                        __2048.highscore === 0
+                            ? "_No existe o todavía no se ha actualizado_"
+                            : `${__2048.highscore} · ${__2048.userHighscore} _(${__2048.dateHighscore})_`,
                     inline: false,
                 }
             )
@@ -268,7 +273,7 @@ export async function _2048Init(channel: TextChannel, user: User) {
             if (_2048.move("UP")) _2048.genRandomTile()
         }
         if (i.customId !== "exit") {
-            if (_2048.gameOver()) {
+            if (_2048.gameOver() === true) {
                 _2048Exit(2)
             } else {
                 controlsManager.resetTimer()
