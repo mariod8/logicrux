@@ -8,6 +8,7 @@ import { Player } from "discord-music-player"
 import { statsOnMessage } from "./src/handlers/stats"
 import { addXP } from "./src/handlers/levels"
 import init from "./src/init"
+import { checkOnJoinMute } from "./src/handlers/mute"
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -54,6 +55,7 @@ client.on("messageCreate", (message) => {
 
 client.on("guildMemberAdd", (member) => {
     welcomeGoodbye(member, "ADD")
+    checkOnJoinMute(member)
 })
 
 client.on("guildMemberRemove", (member) => {

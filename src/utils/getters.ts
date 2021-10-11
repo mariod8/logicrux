@@ -61,7 +61,7 @@ export function getTime(option: "MS_TO_END_OF_WEEK" | "WEEKLY_LOOP") {
 
 export function getMsFromString(timeRaw: string) {
     timeRaw = timeRaw.toLowerCase()
-    if (!time.test(timeRaw)) return 1000
+    if (!time.exec(timeRaw)) return 1000
     var timeUnit = /[smhd]/gm.exec(timeRaw)![0]
     var timeValue = parseInt(/\d+/gm.exec(timeRaw)![0]) * 1000
 

@@ -67,12 +67,18 @@ export type _muteIdentification = {
     userID: string
     guildID: string
     current: true
+    muteID?: string
 }
 
 export type rgb = {
     r: number
     g: number
     b: number
+}
+
+export type _unmute = {
+    userID: string
+    unmute: NodeJS.Timeout
 }
 
 export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"
