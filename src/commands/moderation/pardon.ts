@@ -22,21 +22,21 @@ export default {
             type: "STRING",
         },
     ],
-    callback: async ({ guild, args, user, client }) => {
-        const userID = args[0]
-        const target = await client?.users?.fetch(userID).catch(console.error)
+    callback: async ({ interaction, guild, user, client }) => {
+        const target = await client?.users?.fetch(interaction.options.getString("user_id")!).catch(console.error)!
+        const reason = interaction.options.getString("reason")
+            ? (interaction.options.getString("reason") as string)
+            : "_No especificado_"
 
         if (!target) return "El ID de usuario es inválido"
-        args.shift()
-        const reason = args.length ? args.join(" ") : "_No especificado_"
         try {
-            await guild?.members?.unban(userID, reason)
+            await guild?.members?.unban(target, reason)
         } catch {
             return "El usuario no está baneado"
         }
         const embed = new MessageEmbed()
             .setTitle(`${target?.username} ha sido desbaneado`)
-            .setDescription(`**ID Usuario**: ${userID}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
+            .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
             .setFooter(`Desbaneado por ${user?.username}`, user.displayAvatarURL())
             .setColor("GREEN")
         return embed

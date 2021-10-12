@@ -5,13 +5,13 @@ import { _2048Init } from "../../handlers/apps/2048"
 export default {
     category: "Miscellaneous",
     description: "Init some type of application",
-    slash: "both",
+    slash: true,
     testOnly: true,
     guildOnly: true,
     options: [
         {
-            name: "app",
-            description: "Application would you like to run",
+            name: "application",
+            description: "Application you'd like to run",
             type: "STRING",
             required: true,
             choices: [
@@ -22,8 +22,10 @@ export default {
             ],
         },
     ],
-    callback: async ({ args, user, channel }) => {
-        if (args[0] === "2048") {
+    callback: async ({ interaction, user, channel }) => {
+        const application = interaction.options.getString("application")
+
+        if (application === "2048") {
             _2048Init(channel as TextChannel, user)
             return "Starting 2048 game..."
         }

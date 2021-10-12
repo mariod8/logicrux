@@ -2,11 +2,12 @@ import { GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../emojis"
 import { MyMember } from "../member"
+import { getUserProfile } from "../utils/mongo"
 
 export default {
     category: "Stats",
-    description: "Get the profile from a user or a guild",
-    slash: "both",
+    description: "Get the profile from a user",
+    slash: true,
     testOnly: true,
     guildOnly: true,
     options: [
@@ -14,13 +15,17 @@ export default {
             name: "user",
             description: "Who you want to get the profile from. You can leave this blank to get yours",
             required: false,
-            type: "STRING",
+            type: "USER",
         },
     ],
-    callback: async ({ interaction, message, user }) => {
+    callback: async ({ interaction, member, guild }) => {
         const clientEmojis = Emojis.getClientEmojis()
-        var targetMember = new MyMember(message.member as GuildMember, clientEmojis)
-        //const profile = await getUserProfile({ userID: target!.id, guildID: guild!.id })
+        const targetMember = new MyMember(
+            interaction.options?.getMember("user") ? (interaction.options.getMember("user") as GuildMember) : member,
+            clientEmojis
+        )
+        //const profile = await getUserProfile({ userID: targetMember.getId(), guildID: guild!.id })
+
         const embed = new MessageEmbed()
             .setTitle(`Perfil de ${targetMember.getUser().username}`)
             .setDescription(targetMember.getStatus())

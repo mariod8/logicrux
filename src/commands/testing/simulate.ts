@@ -9,7 +9,7 @@ export default {
     ownerOnly: true,
     options: [
         {
-            name: "type",
+            name: "option",
             description: "Choose the simulation you'd like to run",
             type: "STRING",
             required: true,
@@ -25,10 +25,12 @@ export default {
             ],
         },
     ],
-    callback: ({ client, member, args }) => {
-        if (args[0] === "join") {
+    callback: ({ client, member, interaction }) => {
+        const option = interaction.options.getString("application")
+
+        if (option === "join") {
             client.emit("guildMemberAdd", member)
-        } else if (args[0] === "leave") {
+        } else if (option === "leave") {
             client.emit("guildMemberRemove", member)
         }
         return "Simulation completed!"

@@ -4,10 +4,8 @@ import { cleanSpam } from "../../utils/string"
 export default {
     category: "Miscellaneous",
     description: "Echo command",
-    minArgs: 1,
-    slash: "both",
+    slash: true,
     testOnly: true,
-    expectedArgs: "<text>",
     options: [
         {
             name: "text",

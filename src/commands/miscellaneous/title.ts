@@ -3,7 +3,7 @@ import { emojis } from "../../utils/regex"
 
 export default {
     category: "Miscellaneous",
-    description: "Displays a 3x3 emoji-formed text",
+    description: "Displays a 3x3 emoji-based-character text",
     slash: true,
     testOnly: true,
     options: [
@@ -20,7 +20,7 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ args, user }) => {
+    callback: ({ interaction, user }) => {
         const characters: any = {
             a: {
                 top: "OXO",
@@ -263,42 +263,35 @@ export default {
                 bot: "OOO",
             },
         }
-        const emoji = args[0] as string
+        const emoji = interaction.options.getString("emoji")
+        const text = interaction.options.getString("text")!.toLowerCase()
         const emptyChar = "      "
         var result = "‎\n"
 
-        // if (!emojis.test(emoji))
-        //     return `**${user?.username}**, el emoji introducido no se puede usar o bien no es un emoji`
-
-        args.shift()
-        const title = args.join(" ")
+        if (!emojis.test(emoji!)) return "El emoji introducido no se puede usar o bien no es un emoji"
 
         // top row
-        for (let i = 0; i < title.length; i++) {
-            if (!(`${title[i].toLowerCase()}` in characters))
-                return `**${user?.username}**, el caracter \'${title[i]}\' no se puede imprimir`
-            for (let j = 0; j < 3; j++)
-                result += characters[`${title[i].toLowerCase()}`].top[j] === "X" ? emoji : emptyChar
+        for (let i = 0; i < text.length; i++) {
+            if (!(`${text[i]}` in characters)) return `El caracter '${text[i]}' no se puede imprimir`
+            for (let j = 0; j < 3; j++) result += characters[`${text[i]}`].top[j] === "X" ? emoji : emptyChar
             result += "   "
         }
         result += "\n"
 
         // middle row
-        for (let i = 0; i < title.length; i++) {
-            for (let j = 0; j < 3; j++)
-                result += characters[`${title[i].toLowerCase()}`].mid[j] === "X" ? emoji : emptyChar
+        for (let i = 0; i < text.length; i++) {
+            for (let j = 0; j < 3; j++) result += characters[`${text[i]}`].mid[j] === "X" ? emoji : emptyChar
             result += "   "
         }
         result += "\n"
 
         // bottom row
-        for (let i = 0; i < title.length; i++) {
-            for (let j = 0; j < 3; j++)
-                result += characters[`${title[i].toLowerCase()}`].bot[j] === "X" ? emoji : emptyChar
+        for (let i = 0; i < text.length; i++) {
+            for (let j = 0; j < 3; j++) result += characters[`${text[i]}`].bot[j] === "X" ? emoji : emptyChar
             result += "   "
         }
 
-        if (result.length > 2000) return `**${user?.username}**, el resultado del mensaje tiene más de 2000 caracteres`
+        if (result.length > 2000) return "El resultado del mensaje supera el límite de 2000 caracteres"
         return result
     },
 } as ICommand

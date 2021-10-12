@@ -22,8 +22,8 @@ export default {
     callback: async ({ interaction, user, guild }) => {
         const target = interaction.options.getMember("user") as GuildMember
 
-        if (!target) return "Especifica alguien a mutear"
-        if (!target.manageable) return "No se puede mutear al usuario"
+        if (!target) return "Especifica alguien a desmutear"
+        if (!target.manageable) return "No se puede desmutear al usuario"
 
         const previousMute = await getMute({ userID: target.id, guildID: guild!.id, current: true })
         if (previousMute === false) return "Este usuario no está muteado"

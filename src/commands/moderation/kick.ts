@@ -22,13 +22,14 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ interaction, args, user }) => {
+    callback: ({ interaction, user }) => {
         const target = interaction.options.getMember("user") as GuildMember
+        const reason = interaction.options.getString("reason")
+            ? (interaction.options.getString("reason") as string)
+            : "_No especificado_"
 
-        if (!target) return "Please specify someone to kick"
-        if (!target.kickable) return "No se puede kickear al usuario"
-        args.shift()
-        const reason = args.length ? args.join(" ") : "_No especificado_"
+        if (!target) return "Especifica alguien a expulsar"
+        if (!target.kickable) return "No se puede expulsar al usuario"
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido expulsado`)
             .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)

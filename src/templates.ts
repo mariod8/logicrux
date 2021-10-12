@@ -82,4 +82,5 @@ export type _unmute = {
 }
 
 export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"
+
 export type _2048MoveDir = "LEFT" | "RIGHT" | "DOWN" | "UP"

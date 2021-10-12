@@ -27,10 +27,12 @@ export default {
             ],
         },
     ],
-    callback: ({ args, guild, user }) => {
-        if (args[0] === "cur_date") {
+    callback: ({ interaction, guild, user }) => {
+        const option = interaction.options.getString("option")
+
+        if (option === "cur_date") {
             return moment().toString()
-        } else if (args[0] === "username") {
+        } else if (option === "username") {
             return cleanSpecialCharacters(guild?.members?.cache?.get(user?.id)?.displayName as string)
         }
         return "Value returned!"

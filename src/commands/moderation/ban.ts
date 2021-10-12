@@ -22,13 +22,14 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ interaction, args, user }) => {
+    callback: ({ interaction, user }) => {
         const target = interaction.options.getMember("user") as GuildMember
+        const reason = interaction.options.getString("reason")
+            ? (interaction.options.getString("reason") as string)
+            : "_No especificado_"
 
-        if (!target) return "Please specify someone to ban"
+        if (!target) return "Especifica alguien a banear"
         if (!target.bannable) return "No se puede banear al usuario"
-        args.shift()
-        const reason = args.length ? args.join(" ") : "_No especificado_"
         try {
             target.ban({
                 reason,

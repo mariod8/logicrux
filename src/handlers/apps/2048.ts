@@ -273,7 +273,7 @@ export async function _2048Init(channel: TextChannel, user: User) {
             if (_2048.move("UP")) _2048.genRandomTile()
         }
         if (i.customId !== "exit") {
-            if (_2048.gameOver() === true) {
+            if (_2048.gameOver()) {
                 _2048Exit(2)
             } else {
                 controlsManager.resetTimer()
