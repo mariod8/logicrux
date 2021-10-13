@@ -2,7 +2,9 @@
 Another Discord Bot
 
 ## Commands
-There are multiple commands to use. All of them use the Discord Slash Commands workflow in order to integrate its syntaxis. Use the prefix `/` to run them. You'll have some instruction on each commands's description. 
+There are multiple commands to use. All of them use the Discord Slash Commands workflow in order to integrate its syntaxis. Use the prefix `/` to run them. You'll have some instruction on each commands's description.
+
+Some commands may require certain permissions or roles to be executed. Here's a list showing that information briefly.
 
 | Command | Bot Owner | Guild Owner | Administrators | Everybody | 
 |----------------|:---------------:|:---------------:|:----------------:|:----------------:|

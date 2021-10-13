@@ -19,18 +19,22 @@ export default {
         },
     ],
     callback: async ({ interaction, member, guild }) => {
-        const clientEmojis = Emojis.getClientEmojis()
         const targetMember = new MyMember(
-            interaction.options?.getMember("user") ? (interaction.options.getMember("user") as GuildMember) : member,
-            clientEmojis
+            interaction.options?.getMember("user") ? (interaction.options.getMember("user") as GuildMember) : member
         )
-        //const profile = await getUserProfile({ userID: targetMember.getId(), guildID: guild!.id })
+        const profile = await getUserProfile({ userID: targetMember.getId(), guildID: guild!.id })
 
         const embed = new MessageEmbed()
-            .setTitle(`Perfil de ${targetMember.getUser().username}`)
+            .setTitle(`Perfil de ${targetMember.getUsername()}`)
             .setDescription(targetMember.getStatus())
             .setColor(targetMember.getUserPrimaryColor())
             .setThumbnail(targetMember.getUser().displayAvatarURL())
+            .addFields(
+                {
+                    name: "`General`",
+                    value: `**Nivel**: ${profile.userProfile.globalStats.level}`
+                }
+            )
         return embed
     },
 } as ICommand

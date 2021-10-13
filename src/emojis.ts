@@ -1,4 +1,5 @@
 import { Client, Guild } from "discord.js"
+import { getRandomInObject } from "./utils/getters"
 
 export class Emojis {
     private static clientEmojis: any = {}
@@ -9,17 +10,18 @@ export class Emojis {
 
         guild.emojis.cache.forEach((emoji) => {
             Emojis.clientEmojis[`${emoji.name}`] = emoji
+            if (emoji.name!.includes("musicDisc")) Emojis.discEmojis[`${emoji.name}`] = emoji
         })
-        guild.emojis.cache
-            .filter((emoji) => emoji?.name?.includes("musicDisc") as boolean)
-            .forEach((emoji) => {
-                Emojis.clientEmojis[`${emoji?.name}`] = emoji
-            })
     }
     public static getClientEmojis() {
         return this.clientEmojis
     }
     public static getDiscEmojis() {
         return this.discEmojis
+    }
+    public static getRandomDiscEmoji(text?: string) {
+        return text?.toLowerCase().includes("pigstep")
+            ? this.discEmojis.musicDiscPigstep
+            : getRandomInObject(this.discEmojis)
     }
 }

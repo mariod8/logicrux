@@ -1,5 +1,6 @@
 import { GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
+import { MyMember } from "../../member"
 
 export default {
     category: "Moderation",
@@ -23,23 +24,23 @@ export default {
         },
     ],
     callback: ({ interaction, user }) => {
-        const target = interaction.options.getMember("user") as GuildMember
+        const targetMember = new MyMember(interaction.options.getMember("user") as GuildMember)
         const reason = interaction.options.getString("reason")
             ? (interaction.options.getString("reason") as string)
             : "_No especificado_"
 
-        if (!target) return "Especifica alguien a banear"
-        if (!target.bannable) return "No se puede banear al usuario"
+        if (!targetMember) return "Especifica alguien a banear"
+        if (!targetMember.getMember().bannable) return "No se puede banear al usuario"
         try {
-            target.ban({
+            targetMember.getMember().ban({
                 reason,
             })
         } catch {
             return "El usuario ya está baneado"
         }
         const embed = new MessageEmbed()
-            .setTitle(`${target.user.username} ha sido baneado`)
-            .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
+            .setTitle(`${targetMember.getUsername()} ha sido baneado`)
+            .setDescription(`**ID Usuario**: ${targetMember.getId()}\n**Miembro**: ${targetMember.getUser()}\n**Motivo**: ${reason}`)
             .setFooter(`Baneado por ${user.username}`, user.displayAvatarURL())
             .setColor("RED")
         return embed

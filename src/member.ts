@@ -1,17 +1,19 @@
 import { ColorResolvable, GuildMember } from "discord.js"
+import { Emojis } from "./emojis"
+import { cleanSpecialCharacters } from "./utils/string"
 
 export class MyMember {
     private member: GuildMember
     private emojis: any
     private id: string
 
-    constructor(member: GuildMember, emojis?: any) {
+    constructor(member: GuildMember) {
         this.member = member
-        this.emojis = emojis
         this.id = member.id
+        this.emojis = Emojis.getClientEmojis()
     }
     public getStatus() {
-        if (!this.emojis) throw "No emojis"
+        
         return this.member?.presence?.status === `online`
             ? `${this.emojis.online} **Online**`
             : this.member?.presence?.status === `idle`
@@ -23,10 +25,16 @@ export class MyMember {
     public getUser() {
         return this.member.user
     }
+    public getMember(){
+        return this.member
+    }
     public getId() {
         return this.id
     }
     public getUserPrimaryColor() {
-        return "#ff00ff" as ColorResolvable
+        return this.member.displayHexColor
+    }
+    public getUsername(){
+        return cleanSpecialCharacters(this.member.user.username)
     }
 }
