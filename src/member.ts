@@ -13,19 +13,18 @@ export class MyMember {
         this.emojis = Emojis.getClientEmojis()
     }
     public getStatus() {
-        
-        return this.member?.presence?.status === `online`
+        return this.member?.presence?.status === "online"
             ? `${this.emojis.online} **Online**`
-            : this.member?.presence?.status === `idle`
+            : this.member?.presence?.status === "idle"
             ? `${this.emojis.idle} **Ausente**`
-            : this.member?.presence?.status === `offline`
+            : this.member?.presence?.status === "offline"
             ? `${this.emojis.offline} **Desconectado**`
             : `${this.emojis.dnd} **No Molestar**`
     }
     public getUser() {
         return this.member.user
     }
-    public getMember(){
+    public getMember() {
         return this.member
     }
     public getId() {
@@ -34,7 +33,7 @@ export class MyMember {
     public getUserPrimaryColor() {
         return this.member.displayHexColor
     }
-    public getUsername(){
+    public getUsername() {
         return cleanSpecialCharacters(this.member.user.username)
     }
 }

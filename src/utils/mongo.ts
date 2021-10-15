@@ -4,6 +4,7 @@ import userSchema from "../schemas/user-schema"
 import {
     _2048,
     _apps,
+    _emojis,
     _guildIdentification,
     _guildProfile,
     _muteIdentification,
@@ -21,6 +22,11 @@ function getCleanUserProfile(_userProfile: _userProfile) {
     const apps: _apps = {
         _2048,
     }
+    const emojis: _emojis = {
+        unicode: _userProfile?.globalStats?.emojis?.unicode | 0,
+        custom: _userProfile?.globalStats?.emojis?.custom | 0,
+        used: _userProfile?.globalStats?.emojis?.used ? _userProfile?.globalStats?.emojis?.used : [],
+    }
     const userStats: _userStats = {
         xp: _userProfile?.globalStats?.xp | 0,
         totalXp: _userProfile?.globalStats?.totalXp | 0,
@@ -30,12 +36,12 @@ function getCleanUserProfile(_userProfile: _userProfile) {
         messages: _userProfile?.globalStats?.messages | 0,
         words: _userProfile?.globalStats?.words | 0,
         attachments: _userProfile?.globalStats?.attachments | 0,
-        emojis: _userProfile?.globalStats?.emojis | 0,
         commands: _userProfile?.globalStats?.commands | 0,
         musicPlayed: _userProfile?.globalStats?.musicPlayed | 0,
         reactions: _userProfile?.globalStats?.reactions | 0,
         replies: _userProfile?.globalStats?.replies | 0,
         presence: _userProfile?.globalStats?.presence | -1,
+        emojis,
         apps,
     }
     const userProfile: _userProfile = {

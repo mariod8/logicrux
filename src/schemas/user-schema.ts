@@ -11,7 +11,11 @@ const userStats = {
     messages: 0,
     words: 0,
     attachments: 0,
-    emojis: 0,
+    emojis: {
+        unicode: 0,
+        custom: 0,
+        used: [],
+    },
     commands: 0,
     musicPlayed: 0,
     reactions: 0,

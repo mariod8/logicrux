@@ -12,6 +12,17 @@ export type _apps = {
     _2048: _2048
 }
 
+export type _used = {
+    name: string
+    amount: number
+}
+
+export type _emojis = {
+    unicode: number
+    custom: number
+    used: Array<_used>
+}
+
 export type _userStats = {
     xp: number
     totalXp: number
@@ -21,7 +32,7 @@ export type _userStats = {
     messages: number
     words: number
     attachments: number
-    emojis: number
+    emojis: _emojis
     commands: number
     musicPlayed: number
     reactions: number
@@ -84,3 +95,5 @@ export type _unmute = {
 export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"
 
 export type _2048MoveDir = "LEFT" | "RIGHT" | "DOWN" | "UP"
+
+export type _menuPages = "general" | "emojis" | "chat"

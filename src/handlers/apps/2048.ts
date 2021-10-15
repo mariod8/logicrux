@@ -172,8 +172,10 @@ class __2048 {
     public gameOver() {
         for (var i = 0; i < __2048.boardSize; i++) {
             for (var j = 0; j < __2048.boardSize; j++) {
-                if (i - 1 > 0) if (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0) return false
-                if (j - 1 > 0) if (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0) return false
+                if (i - 1 >= 0)
+                    if (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0) return false
+                if (j - 1 >= 0)
+                    if (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0) return false
                 if (i + 1 < __2048.boardSize - 1)
                     if (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0) return false
                 if (j + 1 < __2048.boardSize - 1)

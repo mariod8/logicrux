@@ -40,7 +40,9 @@ export default {
         }
         const embed = new MessageEmbed()
             .setTitle(`${targetMember.getUsername()} ha sido baneado`)
-            .setDescription(`**ID Usuario**: ${targetMember.getId()}\n**Miembro**: ${targetMember.getUser()}\n**Motivo**: ${reason}`)
+            .setDescription(
+                `**ID Usuario**: ${targetMember.getId()}\n**Miembro**: ${targetMember.getUser()}\n**Motivo**: ${reason}`
+            )
             .setFooter(`Baneado por ${user.username}`, user.displayAvatarURL())
             .setColor("RED")
         return embed
