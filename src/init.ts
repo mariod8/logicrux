@@ -11,7 +11,7 @@ export default (client: Client, player: Player) => {
     moment.locale("es")
 
     // Set presence
-    client?.user?.setActivity("chats 📲", { type: "WATCHING" })
+    client?.user?.setActivity("Minecraft Live 2021", { type: "WATCHING" })
 
     // Set avatar
     // client?.user?.setAvatar("./src/assets/avatar.jpg")

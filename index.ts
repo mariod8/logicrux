@@ -35,7 +35,7 @@ async function cleanGuildSlashCommands(client: Client) {
 }
 
 client.on("ready", async () => {
-    // await cleanGuildSlashCommands(client)
+    //await cleanGuildSlashCommands(client)
     new WOKCommands(client, {
         commandsDir: path.join(__dirname, "src/commands"),
         typeScript: true,

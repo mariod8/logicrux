@@ -18,8 +18,7 @@ Some commands may require certain permissions or roles to be executed. Here's a 
 |/kick|✅|✅|✅||
 |/mute|✅|✅|✅||
 |/unmute|✅|✅|✅||
-|/simulate|✅|✅|||
-|/value|✅||||
+|/owner|✅||||
 
 ## Building
 

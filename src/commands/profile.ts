@@ -1,5 +1,5 @@
+import { CanvasRenderService } from "chartjs-node-canvas"
 import {
-    BufferResolvable,
     ButtonInteraction,
     GuildMember,
     MessageActionRow,
@@ -14,7 +14,6 @@ import { MyMember } from "../member"
 import { _menuPages, _used, _userProfile } from "../templates"
 import { getMsFromString } from "../utils/getters"
 import { getUserProfile } from "../utils/mongo"
-import { CanvasRenderService } from "chartjs-node-canvas"
 
 class Profile {
     private page: _menuPages
@@ -66,16 +65,16 @@ class Profile {
         var result = ""
 
         if (!emojis.length) return "_No has usado ningún emoji_"
-        emojis.sort(function(a, b) {
-            return b.amount - a.amount;
-        });
+        emojis.sort(function (a, b) {
+            return b.amount - a.amount
+        })
         for (var i = 0; i < emojis.length && i < 10; i++) {
-            result += `**${emojis[i].name}** - **${emojis[i].amount}**\n`
+            result += `${i + 1}. ${emojis[i].name} - **${emojis[i].amount}**\n`
         }
         return result
     }
 
-    public setPage(option: _menuPages){
+    public setPage(option: _menuPages) {
         this.page = option
     }
 
