@@ -1,1 +1,1 @@
-ts-node index.ts
+"start": "ts-node index.ts",
