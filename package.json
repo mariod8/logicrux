@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "pretty": "prettier --write \"./**/*.{ts,js,jsx,json}\""
+        "pretty": "prettier --write \"./**/*.{ts,js,jsx,json}\"",
+        "start": "ts-node index.ts"
     },
     "repository": {
         "type": "git",
