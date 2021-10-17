@@ -1,4 +1,3 @@
-import { CanvasRenderService } from "chartjs-node-canvas"
 import {
     ButtonInteraction,
     GuildMember,
@@ -26,39 +25,6 @@ class Profile {
         this.member = member
         this.profile = profile
         this.clientEmojis = clientEmojis
-    }
-
-    public async getEmojiChart() {
-        const {
-            globalStats: {
-                emojis: { used },
-            },
-        } = this.profile
-        const names: Array<string> = []
-        const amount: Array<number> = []
-        const width = 800
-        const height = 800
-        const canvas = new CanvasRenderService(width, height)
-
-        used.forEach((emoji) => {
-            names.push(emoji.name)
-            amount.push(emoji.amount)
-        })
-        const config = {
-            type: "doughnut",
-            data: {
-                labels: names,
-                datasets: [
-                    {
-                        label: "adsao",
-                        data: amount,
-                    },
-                ],
-            },
-        }
-        const image = await canvas.renderToBuffer(config)
-        const file = new MessageAttachment(image)
-        return file
     }
 
     private getMostUsedEmojis(emojis: Array<_used>) {
