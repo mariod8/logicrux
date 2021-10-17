@@ -14,7 +14,7 @@ import { _2048MoveDir, _guildProfile } from "../../templates"
 import { lerp } from "../../utils/color"
 import { getMsFromString, getRandomDecimalNumber, getRandomInArray, getTimeElapsed } from "../../utils/getters"
 import { MyMath } from "../../utils/math"
-import { getGuildProfile, setGuildProfile } from "../../utils/mongo"
+import { getGuildProfile, getUserProfile, incGlobalStats, setGlobalStats, setGuildProfile } from "../../utils/mongo"
 
 class __2048 {
     static readonly boardSize = 4
@@ -184,6 +184,9 @@ class __2048 {
         }
         return true
     }
+    public getScore() {
+        return this.score
+    }
     public getEmbed() {
         const embed = new MessageEmbed()
             .setTitle(`2048`)
@@ -222,7 +225,7 @@ class __2048 {
 export async function _2048Init(channel: TextChannel, user: User) {
     const _2048 = new __2048(user, channel!.guild)
     const clientEmojis = Emojis.getClientEmojis()
-    const time = getMsFromString("50s")
+    const time = getMsFromString("300s")
     const controls = [
         new MessageActionRow().addComponents(
             new MessageButton().setCustomId("left").setEmoji(clientEmojis!.leftArrow).setStyle("PRIMARY"),
@@ -293,6 +296,29 @@ export async function _2048Init(channel: TextChannel, user: User) {
             moment().valueOf() - time >= instanceMessage?.createdTimestamp
         )
             _2048Exit(1)
+        const profile = await getUserProfile({
+            userID: user.id,
+            guildID: channel!.guild.id,
+        })
+        if (_2048.getScore() > profile?.userProfile?.globalStats?.apps?._2048?.highscore)
+            await setGlobalStats(
+                {
+                    userID: user.id,
+                    guildID: channel!.guild.id,
+                },
+                {
+                    "apps._2048.highscore": _2048.getScore(),
+                }
+            )
+        await incGlobalStats(
+            {
+                userID: user.id,
+                guildID: channel!.guild.id,
+            },
+            {
+                "apps._2048.games": 1,
+            }
+        )
         console.log(`2048 (${_2048.getId()}, ${user.username}) ended!`)
     })
 }

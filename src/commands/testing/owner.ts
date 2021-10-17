@@ -5146,15 +5146,15 @@ export default {
                             guildID: "666295714724446209",
                         },
                         {
-                            "messages": stat_.messages,
-                            "words": stat_.words,
-                            "attachments": stat_.attachments,
+                            messages: stat_.messages,
+                            words: stat_.words,
+                            attachments: stat_.attachments,
                             "emojis.unicode": stat_.unicode,
                             "emojis.custom": stat_.custom,
                             "emojis.used": stat_.used,
-                            "level": stat_.level,
-                            "xp": stat_.xp,
-                            "totalXp": stat_.totalXp,
+                            level: stat_.level,
+                            xp: stat_.xp,
+                            totalXp: stat_.totalXp,
                         }
                     )
                 )
