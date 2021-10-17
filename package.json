@@ -2,7 +2,10 @@
     "name": "logicrux",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "index.ts",
+    "engines": {
+        "node": "16.11.1"
+    },
     "scripts": {
         "pretty": "prettier --write \"./**/*.{ts,js,jsx,json}\"",
         "start": "ts-node index.ts"
