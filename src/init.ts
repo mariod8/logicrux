@@ -14,7 +14,7 @@ export default (client: Client, player: Player) => {
     client?.user?.setActivity("Minecraft", { type: "PLAYING" })
 
     // Set avatar
-    client?.user?.setAvatar("./src/assets/avatar.jpeg")
+    //client?.user?.setAvatar("./src/assets/avatar.jpeg")
 
     // Set emojis
     Emojis.setEmojis(client)
