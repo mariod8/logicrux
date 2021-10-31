@@ -17,7 +17,7 @@ const client = new DiscordJS.Client({
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.DIRECT_MESSAGES,
         Intents.FLAGS.GUILD_BANS,
-        Intents.FLAGS.GUILD_VOICE_STATES,
+        Intents.FLAGS.GUILD_VOICE_STATES
     ],
     allowedMentions: {
         repliedUser: false,
@@ -69,4 +69,4 @@ client.on("guildMemberRemove", (member) => {
     welcomeGoodbye(member, "REMOVE")
 })
 
-client.login(process.env.TOKEN_OG)
+client.login(process.env.TOKEN)

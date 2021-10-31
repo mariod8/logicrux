@@ -176,9 +176,9 @@ class __2048 {
                     if (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0) return false
                 if (j - 1 >= 0)
                     if (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0) return false
-                if (i + 1 < __2048.boardSize - 1)
+                if (i + 1 <= __2048.boardSize - 1)
                     if (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0) return false
-                if (j + 1 < __2048.boardSize - 1)
+                if (j + 1 <= __2048.boardSize - 1)
                     if (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0) return false
             }
         }
