@@ -6,6 +6,6 @@ export default async (member: GuildMember | PartialGuildMember, action: "ADD" | 
     const channel = await getChannelByString("general", guild)
 
     if (!channel) return
-    if (action === "ADD") channel.send(`\`\`\`fix\n${user?.username} joined the game\n\`\`\``).catch(console.error)
-    else channel.send(`\`\`\`fix\n${user?.username} leaved the game\n\`\`\``).catch(console.error)
+    if (action === "ADD") await channel.send(`\`\`\`fix\n${user?.username} joined the game\n\`\`\``).catch(console.error)
+    else await channel.send(`\`\`\`fix\n${user?.username} leaved the game\n\`\`\``).catch(console.error)
 }

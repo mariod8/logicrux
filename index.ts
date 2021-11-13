@@ -20,6 +20,8 @@ const client = new DiscordJS.Client({
         Intents.FLAGS.GUILD_BANS,
         Intents.FLAGS.GUILD_VOICE_STATES,
         Intents.FLAGS.GUILD_PRESENCES,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS
     ],
     allowedMentions: {
         repliedUser: false,
