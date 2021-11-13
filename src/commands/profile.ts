@@ -75,7 +75,7 @@ class Profile {
                     .setThumbnail(this.member.getUser().displayAvatarURL())
                     .addFields({
                         name: "`Chat`",
-                        value: `**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${this.profile.globalStats.words}\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
+                        value: `**Nivel**: ${this.profile.globalStats.level}\n**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${this.profile.globalStats.words}\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
                     }),
             ]
         } else if (option === "emojis") {
