@@ -1,6 +1,8 @@
-import { ColorResolvable, GuildMember } from "discord.js"
+import { GuildMember } from "discord.js"
 import { Emojis } from "./emojis"
+import { rgbToHex } from "./utils/color"
 import { cleanSpecialCharacters } from "./utils/string"
+const { getColorFromURL } = require("color-thief-node")
 
 export class MyMember {
     private member: GuildMember
@@ -30,8 +32,11 @@ export class MyMember {
     public getId() {
         return this.id
     }
-    public getUserPrimaryColor() {
-        return this.member.displayHexColor
+    public async getUserPrimaryColor() {
+        const url = this.member.displayAvatarURL({ dynamic: false, format: "jpg", size: 256 })
+
+        const [r, g, b] = await getColorFromURL(url)
+        return rgbToHex(r, g, b)
     }
     public getUsername() {
         return cleanSpecialCharacters(this.member.user.username)

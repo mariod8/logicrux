@@ -18,7 +18,8 @@ const client = new DiscordJS.Client({
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.DIRECT_MESSAGES,
         Intents.FLAGS.GUILD_BANS,
-        Intents.FLAGS.GUILD_VOICE_STATES
+        Intents.FLAGS.GUILD_VOICE_STATES,
+        Intents.FLAGS.GUILD_PRESENCES,
     ],
     allowedMentions: {
         repliedUser: false,
@@ -55,7 +56,7 @@ client.on("ready", async () => {
 client.on("messageCreate", (message) => {
     const { author, channelId } = message
 
-    if(author.id === "730742657046806529" && channelId === "730742558556291173") reactNewVersion(message)
+    if (author.id === "730742657046806529" && channelId === "730742558556291173") reactNewVersion(message)
     if (author?.bot) return
     statsOnMessage(message)
     addXP(message, author, "MESSAGE")

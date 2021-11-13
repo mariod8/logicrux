@@ -147,7 +147,11 @@ class __2048 {
             __2048.highscore = this.score
             await setGuildProfile(
                 { guildID: this.guild.id },
-                { "_2048.score": this.score, "_2048.userTag": this.user.tag, "_2048.date": moment().valueOf().toString() }
+                {
+                    "_2048.score": this.score,
+                    "_2048.userTag": this.user.tag,
+                    "_2048.date": moment().valueOf().toString(),
+                }
             )
         }
     }

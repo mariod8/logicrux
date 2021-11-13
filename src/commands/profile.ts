@@ -44,14 +44,14 @@ class Profile {
         this.page = option
     }
 
-    public getEmbed(option?: _menuPages) {
+    public async getEmbed(option?: _menuPages) {
         if (!option) option = this.page
         if (option === "general") {
             return [
                 new MessageEmbed()
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
                     .setDescription(this.member.getStatus())
-                    .setColor(this.member.getUserPrimaryColor())
+                    .setColor(await this.member.getUserPrimaryColor())
                     .setThumbnail(this.member.getUser().displayAvatarURL())
                     .addFields({
                         name: "`General`",
@@ -71,7 +71,7 @@ class Profile {
                 new MessageEmbed()
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
                     .setDescription("Datos del chat")
-                    .setColor(this.member.getUserPrimaryColor())
+                    .setColor(await this.member.getUserPrimaryColor())
                     .setThumbnail(this.member.getUser().displayAvatarURL())
                     .addFields({
                         name: "`Chat`",
@@ -83,7 +83,7 @@ class Profile {
                 new MessageEmbed()
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
                     .setDescription("Estadísticas sobre los emojis que has usado")
-                    .setColor(this.member.getUserPrimaryColor())
+                    .setColor(await this.member.getUserPrimaryColor())
                     .setThumbnail(this.member.getUser().displayAvatarURL())
                     .addFields(
                         {
@@ -159,7 +159,7 @@ export default {
         const time = getMsFromString("40s")
 
         const message = await channel.send({
-            embeds: profile.getEmbed("general"),
+            embeds: await profile.getEmbed("general"),
             components: profile.getComponents("general"),
         })
         const filter = (i: ButtonInteraction) => {
@@ -174,14 +174,14 @@ export default {
         menusManager.on("collect", async (i: ButtonInteraction) => {
             profile.setPage(i.customId as _menuPages)
             i.update({
-                embeds: profile.getEmbed(i.customId as _menuPages),
+                embeds: await profile.getEmbed(i.customId as _menuPages),
                 components: profile.getComponents(i.customId as _menuPages),
             })
             menusManager.resetTimer()
         })
         menusManager.on("end", async (collection) => {
             message.edit({
-                embeds: profile.getEmbed(),
+                embeds: await profile.getEmbed(),
                 components: [],
             })
         })
