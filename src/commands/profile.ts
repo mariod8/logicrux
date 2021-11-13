@@ -103,7 +103,6 @@ class Profile {
         }
     }
     public getComponents(option?: _menuPages) {
-        0
         if (option === "general") {
             return [
                 new MessageActionRow().addComponents(
