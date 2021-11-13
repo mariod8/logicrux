@@ -142,12 +142,12 @@ class __2048 {
         const guildProfile = await getGuildProfile({ guildID: this.guild.id })
         __2048.highscore = guildProfile?._2048?.score | 0
         __2048.dateHighscore = guildProfile?._2048?.date ? moment(guildProfile?._2048?.date, "x").format("lll") : null
-        __2048.userHighscore = await this.guild?.members?.cache?.get(guildProfile?._2048?.userID)?.user
+        __2048.userHighscore = guildProfile?._2048?.userTag
         if (this.score > __2048.highscore) {
             __2048.highscore = this.score
             await setGuildProfile(
                 { guildID: this.guild.id },
-                { "_2048.score": this.score, "_2048.userID": this.user.id, "_2048.date": moment().valueOf().toString() }
+                { "_2048.score": this.score, "_2048.userTag": this.user.tag, "_2048.date": moment().valueOf().toString() }
             )
         }
     }

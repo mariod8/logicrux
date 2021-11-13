@@ -10,7 +10,7 @@ const guildSchema = new Schema({
         type: Object,
         default: {
             score: 0,
-            userID: "",
+            userTag: "",
             date: "",
         },
     },

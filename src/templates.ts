@@ -53,7 +53,7 @@ export type _guildIdentification = {
 
 export type __2048 = {
     score: number
-    userID: string
+    userTag: string
     date: string
 }
 

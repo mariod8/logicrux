@@ -57,7 +57,7 @@ function getCleanGuildProfile(_guildProfile: _guildProfile) {
     var guildID = _guildProfile?.guildID
     var _2048 = {
         score: _guildProfile?._2048?.score | 0,
-        userID: _guildProfile?._2048?.userID,
+        userTag: _guildProfile?._2048?.userTag,
         date: _guildProfile?._2048?.date,
     }
     return { _2048, guildID }
