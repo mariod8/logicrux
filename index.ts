@@ -9,6 +9,7 @@ import { addXP } from "./src/handlers/levels"
 import { checkOnJoinMute } from "./src/handlers/mute"
 import { statsOnMessage } from "./src/handlers/stats"
 import init from "./src/init"
+import { reactNewVersion } from "./src/react"
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -52,8 +53,9 @@ client.on("ready", async () => {
 })
 
 client.on("messageCreate", (message) => {
-    const { author } = message
+    const { author, channelId } = message
 
+    if(author.id === "730742657046806529" && channelId === "730742558556291173") reactNewVersion(message)
     if (author?.bot) return
     statsOnMessage(message)
     addXP(message, author, "MESSAGE")
