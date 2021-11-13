@@ -15,6 +15,7 @@ import { lerp } from "../../utils/color"
 import { getMsFromString, getRandomDecimalNumber, getRandomInArray, getTimeElapsed } from "../../utils/getters"
 import { MyMath } from "../../utils/math"
 import { getGuildProfile, getUserProfile, incGlobalStats, setGlobalStats, setGuildProfile } from "../../utils/mongo"
+const asciiTable = require("ascii-table")
 
 class __2048 {
     static readonly boardSize = 4
@@ -128,22 +129,9 @@ class __2048 {
         this.tiles[chosenTile.i][chosenTile.j] = getRandomDecimalNumber(0, 1) < 0.2 ? 4 : 2
     }
     private getBoard() {
-        var board = ""
-
-        for (var i = 0; i < __2048.boardSize; i++) {
-            for (var k = 0; k < __2048.boardSize; k++) board += "+---------"
-            board += "+\n"
-            for (var j = 0; j < __2048.boardSize; j++) {
-                board +=
-                    "\\|" +
-                    this.getCellSpacing(this.tiles[i][j]) +
-                    this.tiles[i][j] +
-                    this.getCellSpacing(this.tiles[i][j])
-            }
-            board += "\\|\n"
-        }
-        for (var i = 0; i < __2048.boardSize; i++) board += "+---------"
-        board += "+"
+        var board = new asciiTable()
+        board.addRowMatrix(this.tiles).removeBorder()
+        board = "```\n" + board.toString() + "\n```"
         return board
     }
     private getEmbedColor() {
@@ -190,13 +178,11 @@ class __2048 {
     public getEmbed() {
         const embed = new MessageEmbed()
             .setTitle(`2048`)
-            .setDescription(
-                "The 2048 game on Discord. Use the buttons to move the tiles. When two tiles with the same number touch, they'll merge!"
-            )
+            .setDescription("The 2048 Game")
             .addFields(
                 {
                     name: "Board",
-                    value: this.getBoard(),
+                    value: `${this.getBoard()}`,
                     inline: true,
                 },
                 {

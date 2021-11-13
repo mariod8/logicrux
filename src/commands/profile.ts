@@ -63,21 +63,19 @@ class Profile {
                             this.member.getMember().premiumSinceTimestamp
                                 ? moment(this.member.getMember().premiumSince).format("lll")
                                 : "_Nunca_"
-                        }\n**Veces usuario de la semana**: ${this.profile.globalStats.weeklyUser} ${
-                            this.clientEmojis.hero
-                        }\n**Veces muteado**: ${this.profile.globalStats.mutes} ${this.clientEmojis.muted}`,
+                        }`,
                     }),
             ]
         } else if (option === "chat") {
             return [
                 new MessageEmbed()
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
-                    .setDescription("Algunas estadísticas relacionadas con el chat")
+                    .setDescription("Datos del chat")
                     .setColor(this.member.getUserPrimaryColor())
                     .setThumbnail(this.member.getUser().displayAvatarURL())
                     .addFields({
                         name: "`Chat`",
-                        value: `**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${this.profile.globalStats.words}\n**Veces reaccionado**: ${this.profile.globalStats.reactions}\n**Veces respondido**: ${this.profile.globalStats.replies}\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}\n**Comandos ejecutados**: ${this.profile.globalStats.commands}`,
+                        value: `**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${this.profile.globalStats.words}\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
                     }),
             ]
         } else if (option === "emojis") {

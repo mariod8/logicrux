@@ -5,7 +5,7 @@ import momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
 import { MyPlayer } from "./player"
 
-export default (client: Client, player: Player) => {
+export default async (client: Client, player: Player) => {
     // Set Spain/Madrid timezone and language
     momentTimezone.tz("Europe/Madrid").format()
     moment.locale("es")
@@ -14,7 +14,7 @@ export default (client: Client, player: Player) => {
     client?.user?.setActivity("Minecraft", { type: "PLAYING" })
 
     // Set avatar
-    client?.user?.setAvatar("./src/assets/avatar.jpeg")
+    //client?.user?.setAvatar("./src/assets/avatar.jpeg")
 
     // Set emojis
     Emojis.setEmojis(client)
