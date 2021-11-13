@@ -116,9 +116,6 @@ class __2048 {
         this.updateHighscore()
         return tilesWereMoved
     }
-    private getCellSpacing(num: number) {
-        return num > 999 ? " " : num > 99 ? " · " : num > 9 ? " · · " : " · · · "
-    }
     public genRandomTile() {
         var tiles = []
         var chosenTile = null
@@ -216,8 +213,8 @@ export async function _2048Init(channel: TextChannel, user: User) {
         new MessageActionRow().addComponents(
             new MessageButton().setCustomId("left").setEmoji(clientEmojis!.leftArrow).setStyle("PRIMARY"),
             new MessageButton().setCustomId("right").setEmoji(clientEmojis!.rightArrow).setStyle("PRIMARY"),
-            new MessageButton().setCustomId("up").setLabel("^").setStyle("PRIMARY"),
-            new MessageButton().setCustomId("down").setLabel("v").setStyle("PRIMARY"),
+            new MessageButton().setCustomId("up").setEmoji(clientEmojis!.upArrow).setStyle("PRIMARY"),
+            new MessageButton().setCustomId("down").setEmoji(clientEmojis!.downArrow).setStyle("PRIMARY"),
             new MessageButton().setCustomId("exit").setEmoji(clientEmojis!.exit).setStyle("SECONDARY")
         ),
     ]
