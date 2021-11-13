@@ -9,6 +9,12 @@ Some commands may require certain permissions or roles to be executed. Here's a 
 | Command | Bot Owner | Guild Owner | Administrators | Everybody | 
 |----------------|:---------------:|:---------------:|:----------------:|:----------------:|
 |/play|✅|✅|✅|✅|
+|/stop|✅|✅|✅|✅|
+|/loop|✅|✅|✅|✅|
+|/pause|✅|✅|✅|✅|
+|/resume|✅|✅|✅|✅|
+|/shuffle|✅|✅|✅|✅|
+|/skip|✅|✅|✅|✅|
 |/profile|✅|✅|✅|✅|
 |/say|✅|✅|✅|✅|
 |/execute|✅|✅|✅|✅|

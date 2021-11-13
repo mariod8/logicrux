@@ -9,7 +9,7 @@ import { addXP } from "./src/handlers/levels"
 import { checkOnJoinMute } from "./src/handlers/mute"
 import { statsOnMessage } from "./src/handlers/stats"
 import init from "./src/init"
-import { reactNewVersion } from "./src/react"
+import { reactNewVersion } from "./src/features/react"
 dotenv.config()
 
 const client = new DiscordJS.Client({

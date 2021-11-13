@@ -1,5 +1,5 @@
 import { Message } from "discord.js"
-import { Emojis } from "./emojis"
+import { Emojis } from "../emojis"
 
 export async function reactNewVersion(message: Message) {
     const clientEmojis = Emojis.getClientEmojis()
