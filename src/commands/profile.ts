@@ -13,6 +13,7 @@ import { MyMember } from "../member"
 import { _menuPages, _used, _userProfile } from "../templates"
 import { getMsFromString } from "../utils/getters"
 import { getUserProfile } from "../utils/mongo"
+import { intToString } from "../utils/string"
 
 class Profile {
     private page: _menuPages
@@ -64,7 +65,7 @@ class Profile {
                                 ? moment(this.member.getMember().premiumSince).format("lll")
                                 : "_Nunca_"
                         }`,
-                    })
+                    }),
             ]
         } else if (option === "chat") {
             return [
@@ -75,7 +76,17 @@ class Profile {
                     .setThumbnail(this.member.getUser().displayAvatarURL())
                     .addFields({
                         name: "`Chat`",
-                        value: `**Nivel**: ${this.profile.globalStats.level}\n**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${this.profile.globalStats.words}\n**Ratio palabras/mensaje**: ${Math.round(this.profile.globalStats.words / this.profile.globalStats.messages * 100) / 100}\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
+                        value: `**Nivel**: ${this.profile.globalStats.level}\n**XP**: ${intToString(
+                            313613131461
+                        )}\n**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${
+                            this.profile.globalStats.words
+                        }\n**Ratio palabras/mensaje**: ${
+                            this.profile.globalStats.messages === 0
+                                ? 0
+                                : Math.round(
+                                      (this.profile.globalStats.words / this.profile.globalStats.messages) * 100
+                                  ) / 100
+                        }\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
                     }),
             ]
         } else if (option === "emojis") {

@@ -22,7 +22,7 @@ export async function statsOnMessage(message: Message) {
             globalStats: {
                 emojis: { used, unicode, custom },
             },
-            username
+            username,
         },
     } = await getUserProfile({ userID: author.id, guildID: guild!.id })
 
@@ -48,8 +48,7 @@ export async function statsOnMessage(message: Message) {
                     amount: 1,
                 })
         }
-    if(username === "" || username !== author.username)
-        setUsername(userIdentification, author.username)
+    if (username === "" || username !== author.username) setUsername(userIdentification, author.username)
     incGlobalStats(userIdentification, userStats)
     setGlobalStats(userIdentification, { "emojis.used": used, "emojis.unicode": unicode, "emojis.custom": custom })
 }
