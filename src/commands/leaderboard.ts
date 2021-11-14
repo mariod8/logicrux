@@ -73,7 +73,7 @@ export default {
                 var userData: any = {}
                 userData["0"] = cleanSpecialCharacters(profiles[i].userProfile.username)
                 userData["1"] = profiles[i].userProfile.globalStats.level.toString()
-                userData["2"] = intToString(profiles[i].userProfile.globalStats.xp)
+                userData["2"] = intToString(profiles[i].userProfile.globalStats.totalXp)
                 data.push(userData)
             }
             return await getLeaderboardEmbed(guild!, data, "Niveles")
