@@ -37,6 +37,10 @@ const userSchema = new Schema({
         type: String,
         require: true,
     },
+    username: {
+        type: String,
+        require: false,
+    },
     globalStats: {
         type: Object,
         default: userStats,

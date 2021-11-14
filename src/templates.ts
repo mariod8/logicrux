@@ -44,6 +44,7 @@ export type _userStats = {
 export type _userProfile = {
     userID: string
     guildID: string
+    username: string
     globalStats: _userStats
 }
 

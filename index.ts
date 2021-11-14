@@ -21,7 +21,7 @@ const client = new DiscordJS.Client({
         Intents.FLAGS.GUILD_VOICE_STATES,
         Intents.FLAGS.GUILD_PRESENCES,
         Intents.FLAGS.GUILD_MEMBERS,
-        Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS
+        Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
     ],
     allowedMentions: {
         repliedUser: false,
@@ -49,7 +49,7 @@ client.on("ready", async () => {
         testServers: ["829448956417015828", "666295714724446209"],
         disabledDefaultCommands: ["help", "command", "language", "prefix", "requiredrole", "channelonly", "slash"],
         botOwners: ["323378898794446850"],
-        debug: true,
+        debug: true
     }).setDefaultPrefix("//")
     init(client, player)
     console.log(`${client?.user?.username} is ready!`)

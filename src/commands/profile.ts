@@ -64,7 +64,7 @@ class Profile {
                                 ? moment(this.member.getMember().premiumSince).format("lll")
                                 : "_Nunca_"
                         }`,
-                    }),
+                    })
             ]
         } else if (option === "chat") {
             return [
@@ -75,7 +75,7 @@ class Profile {
                     .setThumbnail(this.member.getUser().displayAvatarURL())
                     .addFields({
                         name: "`Chat`",
-                        value: `**Nivel**: ${this.profile.globalStats.level}\n**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${this.profile.globalStats.words}\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
+                        value: `**Nivel**: ${this.profile.globalStats.level}\n**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${this.profile.globalStats.words}\n**Ratio palabras/mensaje**: ${Math.round(this.profile.globalStats.words / this.profile.globalStats.messages * 100) / 100}\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
                     }),
             ]
         } else if (option === "emojis") {

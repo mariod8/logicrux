@@ -24,7 +24,6 @@ function hexToRgb(hex: string) {
         g = "0x" + hex[3] + hex[4]
         b = "0x" + hex[5] + hex[6]
     }
-
     return {
         r: +r,
         g: +g,

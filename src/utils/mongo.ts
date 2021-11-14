@@ -47,6 +47,7 @@ function getCleanUserProfile(_userProfile: _userProfile) {
     const userProfile: _userProfile = {
         userID: _userProfile?.userID,
         guildID: _userProfile?.guildID,
+        username: _userProfile?.username ? _userProfile?.username : "",
         globalStats: userStats,
     }
 
@@ -105,6 +106,21 @@ export async function setGlobalStats(userIdentification: _userIdentification, gl
         )
     }
     await Promise.all(promises)
+}
+
+export async function setUsername(userIdentification: _userIdentification, username: string) {
+    await userSchema.updateOne(
+        userIdentification,
+        {
+            $set: {
+                username,
+            },
+        },
+        {
+            upsert: true,
+            setDefaultsOnInsert: false,
+        }
+    )
 }
 
 export async function incGuildProfile(guildIdentification: _guildIdentification, properties: any) {

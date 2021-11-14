@@ -9,7 +9,8 @@ export class MyMember {
     private emojis: any
     private id: string
 
-    constructor(member: GuildMember) {
+    constructor(member: GuildMember | undefined) {
+        if (member === undefined) throw new Error("Undefined")
         this.member = member
         this.id = member.id
         this.emojis = Emojis.getClientEmojis()
