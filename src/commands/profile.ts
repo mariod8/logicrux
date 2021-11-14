@@ -157,6 +157,7 @@ export default {
         },
     ],
     callback: async ({ interaction, member, guild, channel, user }) => {
+        try{
         const targetMember = interaction.options?.getString("user")
             ? (getUserByString(
                   interaction.options.getString("user") as string,
@@ -200,6 +201,9 @@ export default {
                 components: [],
             })
         })
+    } catch(e) {
+        return e
+    }
         return "Cargando perfil..."
     },
 } as ICommand

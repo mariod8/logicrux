@@ -16,9 +16,9 @@ export function getUserByString(username: string, guild: Guild, type: _userType 
     const similarMember = guild.members.cache.find(
         (member) => member.user.username.toLowerCase() === similarUsername
     ) as GuildMember
-    return stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold
-        ? null
-        : type === _userType.User
+    if(stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold)
+    throw "No se ha podido encontrar al usuario"
+    return type === _userType.User
         ? similarMember.user
         : similarMember
 }
