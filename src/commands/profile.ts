@@ -10,8 +10,8 @@ import moment from "moment"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../emojis"
 import { MyMember } from "../member"
-import { _menuPages, _used, _userProfile } from "../templates"
-import { getMsFromString } from "../utils/getters"
+import { _menuPages, _used, _userProfile, _userType } from "../templates"
+import { getMsFromString, getUserByString } from "../utils/getters"
 import { getUserProfile } from "../utils/mongo"
 import { intToString } from "../utils/string"
 
@@ -153,12 +153,16 @@ export default {
             name: "user",
             description: "Who you want to get the profile from. You can leave this blank to get yours",
             required: false,
-            type: "USER",
+            type: "STRING",
         },
     ],
     callback: async ({ interaction, member, guild, channel, user }) => {
-        const targetMember = interaction.options?.getMember("user")
-            ? (interaction.options.getMember("user") as GuildMember)
+        const targetMember = interaction.options?.getString("user")
+            ? (getUserByString(
+                  interaction.options.getString("user") as string,
+                  guild!,
+                  _userType.Member
+              ) as GuildMember)
             : member
         const profile = new Profile(
             new MyMember(targetMember),

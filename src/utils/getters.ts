@@ -1,9 +1,10 @@
 import { Client, ColorResolvable, CommandInteraction, Guild, GuildMember, Message, TextChannel, User } from "discord.js"
 import moment from "moment"
+import { _userType } from "../templates"
 import { time } from "./regex"
 const stringSimilarity = require("string-similarity")
 
-export function getUserByString(username: string, guild: Guild) {
+export function getUserByString(username: string, guild: Guild, type: _userType = _userType.User) {
     var usernames: Array<string> = []
     const usernameSimilarityThreshold = 0.1
     username = username.toLowerCase()
@@ -17,7 +18,9 @@ export function getUserByString(username: string, guild: Guild) {
     ) as GuildMember
     return stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold
         ? null
-        : similarMember.user
+        : type === _userType.User
+        ? similarMember.user
+        : similarMember
 }
 
 export function getChannelByString(channel: string, guild: Guild) {

@@ -34,7 +34,10 @@ const player = new Player(client, {
 })
 async function cleanGuildSlashCommands(client: Client) {
     await client!.guilds!.cache!.each(async (guild) => {
-        await guild!.commands!.fetch()!.then(async (commands) => await commands!.each((c) => c!.delete()))
+        await guild!.commands!.fetch()!.then(async (commands) => await commands!.each((c) => {
+            console.log(`Eliminando "${c.name}"`)
+            c!.delete()
+        }))
     })
 }
 
