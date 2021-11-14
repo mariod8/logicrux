@@ -191,6 +191,6 @@ export async function setMute(mute: _mutes) {
     await new muteSchema(mute).save()
 }
 
-export async function delMute(muteIdentification: _muteIdentification) {
+export async function deleteMute(muteIdentification: _muteIdentification) {
     await muteSchema.deleteMany(muteIdentification)
 }

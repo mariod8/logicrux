@@ -32,7 +32,7 @@ export default {
             type: "STRING",
         },
     ],
-    callback: async ({ interaction, user, guild }) => {
+    callback: async ({ interaction, user, guild, client }) => {
         const target = interaction.options.getMember("user") as GuildMember
         const reason = interaction.options.getString("reason")
             ? (interaction.options.getString("reason") as string)
@@ -56,7 +56,7 @@ export default {
             .filter((role) => role.editable && role !== guild!.roles.everyone && !role.managed)
             .forEach((role) => targetRoles.push(role.id))
         await target.roles.set([mutedRole])
-        if (endMute) addScheduledUnmute(target, muteID, durationMs)
+        if (endMute) addScheduledUnmute(target, muteID, durationMs, client)
         await setMute({
             userID: target.id,
             guildID: guild!.id,

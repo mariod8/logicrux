@@ -1,8 +1,7 @@
 import { GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
-import { cleanTimeouts, recoverRoles } from "../../handlers/mute"
+import { unmute } from "../../handlers/mute"
 import { _mutes } from "../../templates"
-import { delMute, getMute } from "../../utils/mongo"
 
 export default {
     category: "Moderation",
@@ -19,18 +18,12 @@ export default {
             type: "USER",
         },
     ],
-    callback: async ({ interaction, user, guild }) => {
+    callback: async ({ interaction, user, client }) => {
         const target = interaction.options.getMember("user") as GuildMember
 
         if (!target) return "Especifica alguien a desmutear"
         if (!target.manageable) return "No se puede desmutear al usuario"
-
-        const previousMute = await getMute({ userID: target.id, guildID: guild!.id, current: true })
-        if (previousMute === false) return "Este usuario no está muteado"
-        const { userID, guildID, muteID, roles, staffID, staffTag, current, expires, reason } = previousMute as _mutes
-        await delMute({ userID, guildID, current: true })
-        if (expires !== "never") cleanTimeouts(target.id)
-        await recoverRoles(target, roles)
+        if(!await unmute(target, null)) return "Este usuario no está muteado"
 
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido desmuteado`)
