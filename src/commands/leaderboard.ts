@@ -2,7 +2,7 @@ import { Guild, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../emojis"
 import { getAllGuildUserProfiles } from "../utils/mongo"
-import { cleanSpecialCharacters } from "../utils/string"
+import { cleanSpecialCharacters, intToString } from "../utils/string"
 
 const maxItemsPerPage = 10
 
@@ -68,11 +68,12 @@ export default {
         var data = []
 
         if (option === "level") {
-            data.push("Nombre#Nivel")
+            data.push("Nombre#Nivel#XP")
             for (var i = 0; i < profiles.length; i++) {
                 var userData: any = {}
                 userData["0"] = cleanSpecialCharacters(profiles[i].userProfile.username)
                 userData["1"] = profiles[i].userProfile.globalStats.level.toString()
+                userData["2"] = intToString(profiles[i].userProfile.globalStats.xp)
                 data.push(userData)
             }
             return await getLeaderboardEmbed(guild!, data, "Niveles")
