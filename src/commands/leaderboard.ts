@@ -18,7 +18,7 @@ function getLeaderboardEmbed(guild: Guild, data: any, title: string, orderColumn
         data.sort(function (a: any, b: any) {
             return b[orderColumn] - a[orderColumn]
         })
-        for (var j = 0; j < maxItemsPerPage; j++) {
+        for (var j = 0; j < maxItemsPerPage && j < data.length; j++) {
             column +=
                 (i > 0
                     ? ""
@@ -80,6 +80,7 @@ export default {
         } else if (option === "2048") {
             data.push("Nombre#Highscore#Partidas")
             for (var i = 0; i < profiles.length; i++) {
+                if(profiles[i].userProfile.globalStats.apps._2048.games === 0) continue
                 var userData: any = {}
                 userData["0"] = cleanSpecialCharacters(profiles[i].userProfile.username)
                 userData["1"] = profiles[i].userProfile.globalStats.apps._2048.highscore.toString()
