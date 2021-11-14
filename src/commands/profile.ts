@@ -77,7 +77,7 @@ class Profile {
                     .addFields({
                         name: "`Chat`",
                         value: `**Nivel**: ${this.profile.globalStats.level}\n**XP**: ${intToString(
-                            313613131461
+                            this.profile.globalStats.totalXp
                         )}\n**Mensajes enviados**: ${this.profile.globalStats.messages}\n**Palabras escritas**: ${
                             this.profile.globalStats.words
                         }\n**Ratio palabras/mensaje**: ${
