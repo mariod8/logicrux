@@ -157,53 +157,53 @@ export default {
         },
     ],
     callback: async ({ interaction, member, guild, channel, user }) => {
-        try{
-        const targetMember = interaction.options?.getString("user")
-            ? (getUserByString(
-                  interaction.options.getString("user") as string,
-                  guild!,
-                  _userType.Member
-              ) as GuildMember)
-            : member
-        const profile = new Profile(
-            new MyMember(targetMember),
-            await (
-                await getUserProfile({ userID: targetMember.id, guildID: guild!.id })
-            ).userProfile,
-            Emojis.getClientEmojis()
-        )
-        const time = getMsFromString("40s")
+        try {
+            const targetMember = interaction.options?.getString("user")
+                ? (getUserByString(
+                      interaction.options.getString("user") as string,
+                      guild!,
+                      _userType.Member
+                  ) as GuildMember)
+                : member
+            const profile = new Profile(
+                new MyMember(targetMember),
+                await (
+                    await getUserProfile({ userID: targetMember.id, guildID: guild!.id })
+                ).userProfile,
+                Emojis.getClientEmojis()
+            )
+            const time = getMsFromString("40s")
 
-        const message = await channel.send({
-            embeds: await profile.getEmbed("general"),
-            components: profile.getComponents("general"),
-        })
-        const filter = (i: ButtonInteraction) => {
-            return i.user.id === user.id && i.message.id === message.id
+            const message = await channel.send({
+                embeds: await profile.getEmbed("general"),
+                components: profile.getComponents("general"),
+            })
+            const filter = (i: ButtonInteraction) => {
+                return i.user.id === user.id && i.message.id === message.id
+            }
+            const menusManager = channel.createMessageComponentCollector({
+                componentType: "BUTTON",
+                time,
+                filter,
+            })
+
+            menusManager.on("collect", async (i: ButtonInteraction) => {
+                profile.setPage(i.customId as _menuPages)
+                i.update({
+                    embeds: await profile.getEmbed(i.customId as _menuPages),
+                    components: profile.getComponents(i.customId as _menuPages),
+                })
+                menusManager.resetTimer()
+            })
+            menusManager.on("end", async (collection) => {
+                message.edit({
+                    embeds: await profile.getEmbed(),
+                    components: [],
+                })
+            })
+        } catch (e) {
+            return e
         }
-        const menusManager = channel.createMessageComponentCollector({
-            componentType: "BUTTON",
-            time,
-            filter,
-        })
-
-        menusManager.on("collect", async (i: ButtonInteraction) => {
-            profile.setPage(i.customId as _menuPages)
-            i.update({
-                embeds: await profile.getEmbed(i.customId as _menuPages),
-                components: profile.getComponents(i.customId as _menuPages),
-            })
-            menusManager.resetTimer()
-        })
-        menusManager.on("end", async (collection) => {
-            message.edit({
-                embeds: await profile.getEmbed(),
-                components: [],
-            })
-        })
-    } catch(e) {
-        return e
-    }
         return "Cargando perfil..."
     },
 } as ICommand
