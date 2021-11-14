@@ -68,12 +68,11 @@ export default {
         var data = []
 
         if (option === "level") {
-            data.push("Nombre#Nivel#XP")
+            data.push("Nombre#Nivel")
             for (var i = 0; i < profiles.length; i++) {
                 var userData: any = {}
                 userData["0"] = cleanSpecialCharacters(profiles[i].userProfile.username)
                 userData["1"] = profiles[i].userProfile.globalStats.level.toString()
-                userData["2"] = intToString(profiles[i].userProfile.globalStats.totalXp)
                 data.push(userData)
             }
             return await getLeaderboardEmbed(guild!, data, "Niveles")
