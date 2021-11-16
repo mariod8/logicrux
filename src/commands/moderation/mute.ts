@@ -48,8 +48,8 @@ export default {
         if (!target) return "Especifica alguien a mutear"
         if ((durationMs > 2147483647 || durationMs < 5000) && endMute) return "La duración no es válida"
         if (!mutedRole) return "No se ha encontrado el rol de mutear"
-        if (!target.manageable) return "No se puede mutear al usuario"
-
+        if (!target.manageable || target.roles.botRole) return "No se puede mutear al usuario"
+        
         const previousMute = await getMute({ userID: target.id, guildID: guild!.id })
         if (previousMute) return "Este usuario ya está muteado"
         await target.roles.cache

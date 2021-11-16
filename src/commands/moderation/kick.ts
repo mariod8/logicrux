@@ -29,7 +29,7 @@ export default {
             : "_No especificado_"
 
         if (!target) return "Especifica alguien a expulsar"
-        if (!target.kickable) return "No se puede expulsar al usuario"
+        if (!target.kickable || target.roles.botRole) return "No se puede expulsar al usuario"
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido expulsado`)
             .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)

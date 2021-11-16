@@ -24,24 +24,24 @@ export default {
         },
     ],
     callback: ({ interaction, user }) => {
-        const targetMember = new MyMember(interaction.options.getMember("user") as GuildMember)
+        const target = new MyMember(interaction.options.getMember("user") as GuildMember)
         const reason = interaction.options.getString("reason")
             ? (interaction.options.getString("reason") as string)
             : "_No especificado_"
 
-        if (!targetMember) return "Especifica alguien a banear"
-        if (!targetMember.getMember().bannable) return "No se puede banear al usuario"
+        if (!target) return "Especifica alguien a banear"
+        if (!target.getMember().bannable || target.getMember().roles.botRole) return "No se puede banear al usuario"
         try {
-            targetMember.getMember().ban({
+            target.getMember().ban({
                 reason,
             })
         } catch {
             return "El usuario ya está baneado"
         }
         const embed = new MessageEmbed()
-            .setTitle(`${targetMember.getUsername()} ha sido baneado`)
+            .setTitle(`${target.getUsername()} ha sido baneado`)
             .setDescription(
-                `**ID Usuario**: ${targetMember.getId()}\n**Miembro**: ${targetMember.getUser()}\n**Motivo**: ${reason}`
+                `**ID Usuario**: ${target.getId()}\n**Miembro**: ${target.getUser()}\n**Motivo**: ${reason}`
             )
             .setFooter(`Baneado por ${user.username}`, user.displayAvatarURL())
             .setColor("RED")

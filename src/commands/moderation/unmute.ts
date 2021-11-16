@@ -26,7 +26,7 @@ export default {
         var previousMute
 
         if (!target) return "Especifica alguien a desmutear"
-        if (!target.manageable) return "No se puede desmutear al usuario"
+        if (!target.manageable || target.roles.botRole) return "No se puede desmutear al usuario"
         if (!mutedRole) return "No se ha encontrado el rol de mutear"
         previousMute = await unmute(target, null)
         if(!previousMute) {
