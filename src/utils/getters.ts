@@ -90,3 +90,9 @@ export function getTimeElapsed(startTime: number, endTime: number) {
     var hrs = (timeElapsed - mins) / 60
     return (hrs < 10 ? "0" + hrs : hrs) + ":" + (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs)
 }
+
+export function getDate(ms: number | string) {
+    if(typeof(ms) == "string")
+        return moment(ms, "x").format("lll")
+    return moment(ms).format("lll")
+}       

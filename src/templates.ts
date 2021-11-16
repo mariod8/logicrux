@@ -68,17 +68,15 @@ export type _mutes = {
     guildID: string
     muteID: string
     staffID: string
-    staffTag: string
-    expires: string
+    start: number
+    expires: number
     roles: Array<string>
-    current: boolean
     reason: string
 }
 
 export type _muteIdentification = {
     userID: string
     guildID: string
-    current: true
     muteID?: string
 }
 

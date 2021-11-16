@@ -8,7 +8,7 @@ import { MyPlayer } from "./player"
 export default async (client: Client, player: Player) => {
     // Set Spain/Madrid timezone and language
     momentTimezone.tz("Europe/Madrid").format()
-    moment.locale("es")
+    moment.locale("Europe/Madrid")
 
     // Set presence
     client?.user?.setActivity("Minecraft", { type: "PLAYING" })

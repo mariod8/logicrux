@@ -19,22 +19,18 @@ const muteSchema = new Schema(
             type: String,
             required: true,
         },
-        staffTag: {
-            type: String,
+        start: {
+            type: Number,
             required: true,
         },
         expires: {
-            type: String,
+            type: Number,
             required: true,
         },
         roles: {
             type: Array,
             required: true,
             default: [],
-        },
-        current: {
-            type: Boolean,
-            required: true,
         },
         reason: {
             type: String,

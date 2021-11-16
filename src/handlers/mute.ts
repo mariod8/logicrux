@@ -1,28 +1,30 @@
 import { Client, GuildMember, MessageEmbed } from "discord.js"
+import moment from "moment"
 import { _mutes, _unmute } from "../templates"
-import { getChannelByString } from "../utils/getters"
+import { getChannelByString, getDate, getTimeElapsed } from "../utils/getters"
 import { deleteMute, getMute } from "../utils/mongo"
 
 const scheduledUnmutes: Array<_unmute> = []
 
 export async function unmute(target: GuildMember, client: Client | null, muteID?: string) {
     const previousMute = muteID
-        ? await getMute({ userID: target.id, guildID: target.guild.id, current: true, muteID })
-        : await getMute({ userID: target.id, guildID: target.guild.id, current: true })
-    if (previousMute === false) return false
-    const { userID, guildID, roles, staffID, staffTag, current, expires, reason } = previousMute as _mutes
-    await deleteMute({ userID, guildID, current: true })
+        ? await getMute({ userID: target.id, guildID: target.guild.id, muteID })
+        : await getMute({ userID: target.id, guildID: target.guild.id })
+    if (!previousMute) return null
+    const { userID, guildID, roles, start } = previousMute as _mutes
+    await deleteMute({ userID, guildID })
     await recoverRoles(target, roles).catch(console.error)
+    cleanTimeouts(target.id)
     if(muteID && client) {
         const spamChannel = await getChannelByString("spam", target.guild!)
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido desmuteado`)
-            .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}`)
+            .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(start)}\n**Muteado durante**: ${getTimeElapsed(start, moment().valueOf())}`)
             .setFooter(`Desmuteado por ${client?.user?.username}`, client?.user?.displayAvatarURL())
             .setColor("GREEN")
         await spamChannel.send({embeds: [embed]})
     } 
-    return true
+    return previousMute
 }
 
 export async function recoverRoles(member: GuildMember, roles: Array<string>) {
@@ -50,9 +52,14 @@ export function cleanTimeouts(userID: string) {
 }
 
 export async function checkOnJoinMute(member: GuildMember) {
-    const previousMute = await getMute({ userID: member?.id, guildID: member?.guild?.id, current: true })
-    if (previousMute !== false) return
+    const previousMute = await getMute({ userID: member?.id, guildID: member?.guild?.id })
     const mutedRole = await member?.guild?.roles?.cache?.find((role) => role.name.toLowerCase().includes("mute")!)
+
+    if (!previousMute) return
     if (!mutedRole) return
-    await member.roles.set([mutedRole])
+    if (previousMute.expires > 0 && previousMute.expires <= moment().valueOf()) {
+        await unmute(member, null)
+    } else {
+        await member.roles.set([mutedRole])
+    }
 }

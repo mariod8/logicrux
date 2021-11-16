@@ -12,7 +12,7 @@ import moment from "moment"
 import { Emojis } from "../../emojis"
 import { _2048MoveDir, _guildProfile } from "../../templates"
 import { lerp } from "../../utils/color"
-import { getMsFromString, getRandomDecimalNumber, getRandomInArray, getTimeElapsed } from "../../utils/getters"
+import { getDate, getMsFromString, getRandomDecimalNumber, getRandomInArray, getTimeElapsed } from "../../utils/getters"
 import { MyMath } from "../../utils/math"
 import { getGuildProfile, getUserProfile, incGlobalStats, setGlobalStats, setGuildProfile } from "../../utils/mongo"
 const asciiTable = require("ascii-table")
@@ -141,7 +141,7 @@ class __2048 {
     public async updateHighscore() {
         const guildProfile = await getGuildProfile({ guildID: this.guild.id })
         __2048.highscore = guildProfile?._2048?.score | 0
-        __2048.dateHighscore = guildProfile?._2048?.date ? moment(guildProfile?._2048?.date, "x").format("lll") : null
+        __2048.dateHighscore = guildProfile?._2048?.date ? getDate(guildProfile?._2048?.date) : null
         __2048.userHighscore = guildProfile?._2048?.userTag
         if (this.score > __2048.highscore) {
             __2048.highscore = this.score

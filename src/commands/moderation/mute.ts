@@ -50,8 +50,8 @@ export default {
         if (!mutedRole) return "No se ha encontrado el rol de mutear"
         if (!target.manageable) return "No se puede mutear al usuario"
 
-        const previousMute = await getMute({ userID: target.id, guildID: guild!.id, current: true })
-        if (previousMute !== false) return "Este usuario ya está muteado"
+        const previousMute = await getMute({ userID: target.id, guildID: guild!.id })
+        if (previousMute) return "Este usuario ya está muteado"
         await target.roles.cache
             .filter((role) => role.editable && role !== guild!.roles.everyone && !role.managed)
             .forEach((role) => targetRoles.push(role.id))
@@ -63,9 +63,8 @@ export default {
             muteID,
             roles: targetRoles,
             staffID: user.id,
-            staffTag: user.tag,
-            current: true,
-            expires: endMute ? endMute.toString() : "never",
+            start: startMute,
+            expires: endMute ? endMute : -1,
             reason,
         }).catch(console.error)
 
