@@ -18,7 +18,7 @@ import { getGuildProfile, getUserProfile, incGlobalStats, setGlobalStats, setGui
 const asciiTable = require("ascii-table")
 
 class __2048 {
-    static readonly boardSize = 4
+    static readonly boardSize = 10
     private static highscore: number = 0
     private static userHighscore: any
     private static dateHighscore: any

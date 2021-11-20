@@ -3,6 +3,7 @@ import { rgb } from "../templates"
 
 function componentToHex(c: number) {
     var hex = c.toString(16)
+    
     return hex.length == 1 ? "0" + hex : hex
 }
 
@@ -38,5 +39,6 @@ function calcLerp(a: number, b: number, u: number) {
 export function lerp(a: string, b: string, u: number) {
     const { r: sR, g: sG, b: sB } = hexToRgb(a)
     const { r: eR, g: eG, b: eB } = hexToRgb(b)
+
     return rgbToHex(calcLerp(sR, eR, u), calcLerp(sG, eG, u), calcLerp(sB, eB, u)) as ColorResolvable
 }
