@@ -28,7 +28,7 @@ const client = new DiscordJS.Client({
     },
 })
 const player = new Player(client, {
-    leaveOnEmpty: true,
+    leaveOnEmpty: false,
     quality: "high",
     volume: 80,
 })
