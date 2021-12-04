@@ -110,14 +110,15 @@ export default {
                 await Promise.all(unmutes)
             }
 
-            guild!.members!.cache!.each(async (target) => {
+            const promises: Array<any> = []
+            await guild!.members!.cache!.each(async (target) => {
                 const targetRoles: Array<string> = []
                 if (!target.manageable || target.roles.botRole) return
 
                 await target.roles.cache
                     .filter((role) => role.editable && role !== guild!.roles.everyone && !role.managed)
                     .forEach((role) => targetRoles.push(role.id))
-                await target.roles.set([mutedRole])
+                promises.push(target.roles.set([mutedRole]))
                 //if (endMute) addScheduledUnmute(target, muteID, durationMs, client, false, true)
                 await setMute({
                     userID: target.id,
@@ -131,6 +132,7 @@ export default {
                 }).catch(console.error)
             })
 
+            await Promise.all(promises)
             await setGuildProfile({ guildID: guild!.id }, { muted: true })
 
             embed
