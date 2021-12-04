@@ -33,7 +33,7 @@ export default {
             type: "SUB_COMMAND",
         },
     ],
-    callback: async ({ interaction, user, guild }) => {
+    callback: async ({ interaction, user, member, guild }) => {
         const target = interaction.options.getMember("user") as GuildMember
         const mutedRole = await guild?.roles?.cache?.find((role) => role.name.toLowerCase().includes("mute")!)
         const option = interaction.options.getSubcommand()
@@ -57,21 +57,11 @@ export default {
                 return
             }
 
-            await guild!.members!.cache!.each(async (target) => {
-                previousMute = await unmute(target, null, false, null)
-                
-                if (!previousMute) {
-                    if (await target.roles.cache.has(mutedRole!.id)) await target.roles.remove(mutedRole!)
-                }
-            })
+            await unmute(member, null, false, null, true)
             await setGuildProfile({ guildID: guild!.id }, { muted: false })
             embed
                 .setTitle(`${guild!.name} ha sido desmuteado`)
-                .setDescription(
-                    `**ID Servidor**: ${
-                        guild!.id
-                    }\n**Dueño**: ${await guild!.fetchOwner()}`
-                )
+                .setDescription(`**ID Servidor**: ${guild!.id}\n**Dueño**: ${await guild!.fetchOwner()}`)
                 .setFooter(`Desmuteado por ${user.username}`, user.displayAvatarURL())
                 .setColor("GREEN")
         } else if (option === "user") {
@@ -87,7 +77,7 @@ export default {
                 await interaction.editReply("No se ha encontrado el rol de mutear")
                 return
             }
-            previousMute = await unmute(target, null, true, null)
+            previousMute = await unmute(target, null, true, null, false)
             if (!previousMute) {
                 if (await target.roles.cache.has(mutedRole?.id)) await target.roles.remove(mutedRole!)
                 await interaction.editReply("Este usuario no está muteado")

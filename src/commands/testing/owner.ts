@@ -5620,8 +5620,8 @@ export default {
                 },
                 {
                     name: "Permissions",
-                    value: "perms"
-                }
+                    value: "perms",
+                },
             ],
         },
     ],
@@ -5641,9 +5641,9 @@ export default {
         } else if (action === "stats") {
             setStats()
             return "Upserting stats!"
-        }  else if (action === "perms") {
-            "TODO"
+        } else if (action === "perms") {
+            ;("TODO")
         }
-        await interaction.reply({content:"OK",ephemeral:true})
+        await interaction.reply({ content: "OK", ephemeral: true })
     },
 } as ICommand
