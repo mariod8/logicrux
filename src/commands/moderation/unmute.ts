@@ -4,6 +4,7 @@ import { ICommand } from "wokcommands"
 import { unmute } from "../../handlers/mute"
 import { _mutes } from "../../templates"
 import { getDate, getTimeElapsed } from "../../utils/getters"
+import { getGuildProfile, setGuildProfile } from "../../utils/mongo"
 
 export default {
     category: "Moderation",
@@ -15,32 +16,96 @@ export default {
     options: [
         {
             name: "user",
-            description: "User you desire to unmute",
-            required: true,
-            type: "USER",
+            description: "Unmute a user",
+            type: "SUB_COMMAND",
+            options: [
+                {
+                    name: "user",
+                    description: "User you want to unmute",
+                    type: "USER",
+                    required: true,
+                },
+            ],
+        },
+        {
+            name: "server",
+            description: "Unmute the entire server",
+            type: "SUB_COMMAND",
         },
     ],
     callback: async ({ interaction, user, guild }) => {
         const target = interaction.options.getMember("user") as GuildMember
         const mutedRole = await guild?.roles?.cache?.find((role) => role.name.toLowerCase().includes("mute")!)
+        const option = interaction.options.getSubcommand()
+        const embed = new MessageEmbed()
         var previousMute
 
-        if (!target) return "Especifica alguien a desmutear"
-        if (!target.manageable || target.roles.botRole) return "No se puede desmutear al usuario"
-        if (!mutedRole) return "No se ha encontrado el rol de mutear"
-        previousMute = await unmute(target, null)
-        if(!previousMute) {
-            if(await target.roles.cache.has(mutedRole.id))
-                await target.roles.remove(mutedRole)
-            return "Este usuario no está muteado"
-        }
+        await interaction.deferReply()
 
-        const {start, expires} = previousMute
-        const embed = new MessageEmbed()
-            .setTitle(`${target.user.username} ha sido desmuteado`)
-            .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(start)}\n**Muteado durante**: ${getTimeElapsed(start, moment().valueOf())}`)
-            .setFooter(`Desmuteado por ${user.username}`, user.displayAvatarURL())
-            .setColor("GREEN")
-        return embed
+        if (option === "server") {
+            if (user.id !== guild!.ownerId!) {
+                await interaction.editReply("Solo el dueño del servidor puede ejecutar este comando")
+                return
+            }
+            if (!mutedRole) {
+                await interaction.editReply("No se ha encontrado el rol de mutear")
+                return
+            }
+            const guildMute = await getGuildProfile({ guildID: guild!.id })
+            if (!guildMute.muted) {
+                await interaction.editReply("El servidor no está muteado")
+                return
+            }
+
+            await guild!.members!.cache!.each(async (target) => {
+                previousMute = await unmute(target, null, false, null)
+                
+                if (!previousMute) {
+                    if (await target.roles.cache.has(mutedRole!.id)) await target.roles.remove(mutedRole!)
+                }
+            })
+            await setGuildProfile({ guildID: guild!.id }, { muted: false })
+            embed
+                .setTitle(`${guild!.name} ha sido desmuteado`)
+                .setDescription(
+                    `**ID Servidor**: ${
+                        guild!.id
+                    }\n**Dueño**: ${await guild!.fetchOwner()}`
+                )
+                .setFooter(`Desmuteado por ${user.username}`, user.displayAvatarURL())
+                .setColor("GREEN")
+        } else if (option === "user") {
+            if (!target) {
+                await interaction.editReply("Especifica alguien a desmutear")
+                return
+            }
+            if (!target.manageable || target.roles.botRole) {
+                await interaction.editReply("No se puede desmutear al usuario")
+                return
+            }
+            if (!mutedRole) {
+                await interaction.editReply("No se ha encontrado el rol de mutear")
+                return
+            }
+            previousMute = await unmute(target, null, true, null)
+            if (!previousMute) {
+                if (await target.roles.cache.has(mutedRole?.id)) await target.roles.remove(mutedRole!)
+                await interaction.editReply("Este usuario no está muteado")
+                return
+            }
+
+            const { start } = previousMute
+
+            embed
+                .setTitle(`${target.user.username} ha sido desmuteado`)
+                .setDescription(
+                    `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(
+                        start
+                    )}\n**Muteado durante**: ${getTimeElapsed(start, moment().valueOf())}`
+                )
+                .setFooter(`Desmuteado por ${user.username}`, user.displayAvatarURL())
+                .setColor("GREEN")
+        }
+        await interaction.editReply({ embeds: [embed] })
     },
 } as ICommand

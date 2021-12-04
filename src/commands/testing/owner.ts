@@ -5618,10 +5618,14 @@ export default {
                     name: "Stats",
                     value: "stats",
                 },
+                {
+                    name: "Permissions",
+                    value: "perms"
+                }
             ],
         },
     ],
-    callback: async ({ client, member, interaction }) => {
+    callback: async ({ client, member, interaction, guild }) => {
         const action = interaction.options.getString("action")
 
         if (action === "curr_date") {
@@ -5637,6 +5641,9 @@ export default {
         } else if (action === "stats") {
             setStats()
             return "Upserting stats!"
+        }  else if (action === "perms") {
+            "TODO"
         }
+        await interaction.reply({content:"OK",ephemeral:true})
     },
 } as ICommand

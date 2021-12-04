@@ -10,6 +10,7 @@ import { checkOnJoinMute } from "./src/handlers/mute"
 import { statsOnMessage } from "./src/handlers/stats"
 import init from "./src/init"
 import { reactNewVersion } from "./src/features/react"
+import rage from "./src/features/rage"
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -69,6 +70,7 @@ client.on("messageCreate", (message) => {
     statsOnMessage(message)
     addXP(message, author, "MESSAGE")
     responses(message)
+    rage(message)
 })
 
 client.on("guildMemberAdd", (member) => {

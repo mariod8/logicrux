@@ -3,3 +3,4 @@ export const emojis =
 export const spam = /<@!?(\d+)>/m
 export const sus = /ඞ|\bs+u+s+\b|among us|amongus|amogus/m
 export const time = /\d+[smhd]/m
+export const rage = /[a-z]/m

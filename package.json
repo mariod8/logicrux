@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.ts",
     "engines": {
-        "node": "16.11.1"
+        "node": ">=16.11.1"
     },
     "scripts": {
         "pretty": "prettier --write \"./**/*.{ts,js,jsx,json}\"",

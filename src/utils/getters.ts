@@ -44,7 +44,7 @@ export function getRandomInArray(array: Array<any>) {
 
 export function getRandomInObject(object: any) {
     const keys = Object.keys(object)
-    
+
     return object[keys[Math.floor(Math.random() * keys.length)]]
 }
 
@@ -93,7 +93,6 @@ export function getTimeElapsed(startTime: number, endTime: number) {
 }
 
 export function getDate(ms: number | string) {
-    if(typeof(ms) == "string")
-        return moment(ms, "x").format("lll")
+    if (typeof ms == "string") return moment(ms, "x").format("lll")
     return moment(ms).format("lll")
-}       
+}

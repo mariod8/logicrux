@@ -61,6 +61,7 @@ export type __2048 = {
 export type _guildProfile = {
     guildID: string
     _2048: __2048
+    muted: boolean
 }
 
 export type _mutes = {

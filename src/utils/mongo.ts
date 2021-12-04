@@ -61,7 +61,8 @@ function getCleanGuildProfile(_guildProfile: _guildProfile) {
         userTag: _guildProfile?._2048?.userTag,
         date: _guildProfile?._2048?.date,
     }
-    return { _2048, guildID }
+    var muted = _guildProfile?.muted || false
+    return { _2048, guildID, muted }
 }
 
 export async function incGlobalStats(userIdentification: _userIdentification, globalStats: any) {
@@ -185,6 +186,11 @@ export async function getGuildProfile(guildIdentification: _guildIdentification)
 export async function getMute(muteIdentification: _muteIdentification) {
     var mute = await muteSchema.findOne(muteIdentification)
     return mute ? (mute as _mutes) : false
+}
+
+export async function getMutes(guildID: string) {
+    var mute = await muteSchema.find({ guildID })
+    return mute ? (mute.map((mute) => mute as _mutes) as Array<_mutes>) : false
 }
 
 export async function setMute(mute: _mutes) {

@@ -157,6 +157,8 @@ export default {
         },
     ],
     callback: async ({ interaction, member, guild, channel, user }) => {
+        await interaction.deferReply()
+
         try {
             const targetMember = interaction.options?.getString("user")
                 ? (getUserByString(
@@ -174,10 +176,11 @@ export default {
             )
             const time = getMsFromString("40s")
 
-            const message = await channel.send({
+            await interaction.editReply({
                 embeds: await profile.getEmbed("general"),
                 components: profile.getComponents("general"),
             })
+            const message = await interaction.fetchReply()
             const filter = (i: ButtonInteraction) => {
                 return i.user.id === user.id && i.message.id === message.id
             }
@@ -196,7 +199,7 @@ export default {
                 menusManager.resetTimer()
             })
             menusManager.on("end", async (collection) => {
-                message.edit({
+                interaction.editReply({
                     embeds: await profile.getEmbed(),
                     components: [],
                 })
@@ -204,6 +207,5 @@ export default {
         } catch (e) {
             return e
         }
-        return "Cargando perfil..."
     },
 } as ICommand

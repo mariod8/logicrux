@@ -1,9 +1,9 @@
 import { GuildMember, MessageEmbed } from "discord.js"
 import moment from "moment"
 import { ICommand } from "wokcommands"
-import { addScheduledUnmute } from "../../handlers/mute"
+import { addScheduledUnmute, unmute } from "../../handlers/mute"
 import { getMsFromString } from "../../utils/getters"
-import { getMute, setMute } from "../../utils/mongo"
+import { getGuildProfile, getMute, getMutes, setGuildProfile, setMute } from "../../utils/mongo"
 
 export default {
     category: "Moderation",
@@ -15,21 +15,47 @@ export default {
     options: [
         {
             name: "user",
-            description: "User you desire to mute",
-            required: true,
-            type: "USER",
+            description: "Mute a user",
+            type: "SUB_COMMAND",
+            options: [
+                {
+                    name: "user",
+                    description: "User you want to mute",
+                    type: "USER",
+                    required: true,
+                },
+                {
+                    name: "duration",
+                    description: "Cantidad de tiempo a mutear",
+                    type: "STRING",
+                    required: false,
+                },
+                {
+                    name: "reason",
+                    description: "Motivo del muteo",
+                    type: "STRING",
+                    required: false,
+                },
+            ],
         },
         {
-            name: "duration",
-            description: 'Mute duration. Minimum one minute. Maximum 24 days. ex.: "20m" (20 minutes)',
-            required: false,
-            type: "STRING",
-        },
-        {
-            name: "reason",
-            description: "Reason why you want to mute this user",
-            required: false,
-            type: "STRING",
+            name: "server",
+            description: "Mute the entire server",
+            type: "SUB_COMMAND",
+            options: [
+                {
+                    name: "duration",
+                    description: "Cantidad de tiempo a mutear",
+                    type: "STRING",
+                    required: false,
+                },
+                {
+                    name: "reason",
+                    description: "Motivo del muteo",
+                    type: "STRING",
+                    required: false,
+                },
+            ],
         },
     ],
     callback: async ({ interaction, user, guild, client }) => {
@@ -44,39 +70,129 @@ export default {
         const mutedRole = await guild?.roles?.cache?.find((role) => role.name.toLowerCase().includes("mute")!)
         const targetRoles: Array<string> = []
         const muteID = startMute.toString()
-
-        if (!target) return "Especifica alguien a mutear"
-        if ((durationMs > 2147483647 || durationMs < 5000) && endMute) return "La duración no es válida"
-        if (!mutedRole) return "No se ha encontrado el rol de mutear"
-        if (!target.manageable || target.roles.botRole) return "No se puede mutear al usuario"
-        
-        const previousMute = await getMute({ userID: target.id, guildID: guild!.id })
-        if (previousMute) return "Este usuario ya está muteado"
-        await target.roles.cache
-            .filter((role) => role.editable && role !== guild!.roles.everyone && !role.managed)
-            .forEach((role) => targetRoles.push(role.id))
-        await target.roles.set([mutedRole])
-        if (endMute) addScheduledUnmute(target, muteID, durationMs, client)
-        await setMute({
-            userID: target.id,
-            guildID: guild!.id,
-            muteID,
-            roles: targetRoles,
-            staffID: user.id,
-            start: startMute,
-            expires: endMute ? endMute : -1,
-            reason,
-        }).catch(console.error)
-
         const embed = new MessageEmbed()
-            .setTitle(`${target.user.username} ha sido muteado`)
-            .setDescription(
-                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Inicio**: ${moment(startMute).format(
-                    "lll"
-                )}\n**Fin**: ${endMute ? moment(endMute).format("lll") : "_Indefinido_"}\n**Motivo**: ${reason}`
-            )
-            .setFooter(`Muteado por ${user.username}`, user.displayAvatarURL())
-            .setColor("RED")
-        return embed
+        const option = interaction.options.getSubcommand()
+
+        await interaction.deferReply()
+
+        if (option === "server") {
+            if (user.id !== guild!.ownerId!) {
+                await interaction.editReply("Solo el dueño del servidor puede ejecutar este comando")
+                return
+            }
+            if ((durationMs > 2147483647 || durationMs < 5000) && endMute) {
+                await interaction.editReply("La duración no es válida")
+                return
+            }
+            if (!mutedRole) {
+                await interaction.editReply("No se ha encontrado el rol de mutear")
+                return
+            }
+            if (guild!.memberCount > 100) {
+                await interaction.editReply("Hay demasiados miembros")
+                return
+            }
+            const guildMute = await getGuildProfile({ guildID: guild!.id })
+            if (guildMute.muted) {
+                await interaction.editReply("El servidor ya está muteado")
+                return
+            }
+
+            const previousMutes = await getMutes(guild!.id)
+            if (previousMutes) {
+                const unmutes: Array<any> = []
+
+                previousMutes.forEach(async (previousMute) => {
+                    const target = await guild!.members!.cache!.get(previousMute.userID)
+
+                    if (target) unmutes.push(unmute(target, null, false, null))
+                })
+                await Promise.all(unmutes)
+            }
+
+            guild!.members!.cache!.each(async (target) => {
+                if (!target.manageable || target.roles.botRole) return
+
+                await target.roles.cache
+                    .filter((role) => role.editable && role !== guild!.roles.everyone && !role.managed)
+                    .forEach((role) => targetRoles.push(role.id))
+                await target.roles.set([mutedRole])
+                if (endMute) addScheduledUnmute(target, muteID, durationMs, client, false)
+                await setMute({
+                    userID: target.id,
+                    guildID: guild!.id,
+                    muteID,
+                    roles: targetRoles,
+                    staffID: user.id,
+                    start: startMute,
+                    expires: endMute ? endMute : -1,
+                    reason,
+                }).catch(console.error)
+            })
+
+            await setGuildProfile({ guildID: guild!.id }, { muted: true })
+
+            embed
+                .setTitle(`${guild!.name} ha sido muteado`)
+                .setDescription(
+                    `**ID Servidor**: ${guild!.id}\n**Dueño**: ${await guild!.fetchOwner()}\n**Inicio**: ${moment(
+                        startMute
+                    ).format("lll")}\n**Fin**: ${
+                        endMute ? moment(endMute).format("lll") : "_Indefinido_"
+                    }\n**Motivo**: ${reason}`
+                )
+                .setFooter(`Muteado por ${user.username}`, user.displayAvatarURL())
+                .setColor("RED")
+        } else if (option === "user") {
+            if (!target) {
+                await interaction.editReply("Especifica alguien a mutear")
+                return
+            }
+            if ((durationMs > 2147483647 || durationMs < 5000) && endMute) {
+                await interaction.editReply("La duración no es válida")
+                return
+            }
+            if (!mutedRole) {
+                await interaction.editReply("No se ha encontrado el rol de mutear")
+                return
+            }
+
+            if (!target.manageable || target.roles.botRole) {
+                await interaction.editReply("No se puede mutear al usuario")
+                return
+            }
+
+            const previousMute = await getMute({ userID: target.id, guildID: guild!.id })
+            if (previousMute) {
+                await interaction.editReply("Este usuario ya está muteado")
+                return
+            }
+            await target.roles.cache
+                .filter((role) => role.editable && role !== guild!.roles.everyone && !role.managed)
+                .forEach((role) => targetRoles.push(role.id))
+            await target.roles.set([mutedRole])
+            if (endMute) addScheduledUnmute(target, muteID, durationMs, client, true)
+            await setMute({
+                userID: target.id,
+                guildID: guild!.id,
+                muteID,
+                roles: targetRoles,
+                staffID: user.id,
+                start: startMute,
+                expires: endMute ? endMute : -1,
+                reason,
+            }).catch(console.error)
+
+            embed
+                .setTitle(`${target.user.username} ha sido muteado`)
+                .setDescription(
+                    `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Inicio**: ${moment(startMute).format(
+                        "lll"
+                    )}\n**Fin**: ${endMute ? moment(endMute).format("lll") : "_Indefinido_"}\n**Motivo**: ${reason}`
+                )
+                .setFooter(`Muteado por ${user.username}`, user.displayAvatarURL())
+                .setColor("RED")
+        }
+        await interaction.editReply({ embeds: [embed] })
     },
 } as ICommand

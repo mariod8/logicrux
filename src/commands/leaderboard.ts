@@ -79,7 +79,7 @@ export default {
         } else if (option === "2048") {
             data.push("Nombre#Highscore#Partidas")
             for (var i = 0; i < profiles.length; i++) {
-                if(profiles[i].userProfile.globalStats.apps._2048.games === 0) continue
+                if (profiles[i].userProfile.globalStats.apps._2048.games === 0) continue
                 var userData: any = {}
                 userData["0"] = cleanSpecialCharacters(profiles[i].userProfile.username)
                 userData["1"] = profiles[i].userProfile.globalStats.apps._2048.highscore.toString()

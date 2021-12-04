@@ -14,6 +14,10 @@ const guildSchema = new Schema({
             date: "",
         },
     },
+    muted: {
+        type: Boolean,
+        default: false,
+    },
 })
 
 export default mongoose.models[name] || mongoose.model(name, guildSchema, name)
