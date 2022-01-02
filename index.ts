@@ -65,8 +65,9 @@ client.on("ready", async () => {
 client.on("messageCreate", (message) => {
     const { author, channelId } = message
 
-    if (author.id === "730742657046806529" && channelId === "730742558556291173") reactNewVersion(message)
+    reactNewVersion(message)
     if (author?.bot) return
+    if (message.content === "test") welcomeGoodbye(message.member!, "ADD")
     statsOnMessage(message)
     addXP(message, author, "MESSAGE")
     responses(message)
@@ -82,4 +83,4 @@ client.on("guildMemberRemove", (member) => {
     welcomeGoodbye(member, "REMOVE")
 })
 
-client.login(process.env.TOKEN_OG)
+client.login(process.env.TOKEN)

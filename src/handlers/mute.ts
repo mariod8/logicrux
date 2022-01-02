@@ -27,7 +27,7 @@ export async function unmute(
         })
         roleIDs = [...new Set(roleIDs)]
         roleIDs.forEach((role) => {
-            promises.push(roles[role] = target.guild!.roles!.cache!.get(role))
+            promises.push((roles[role] = target.guild!.roles!.cache!.get(role)))
         })
         await Promise.all(promises)
 
@@ -38,7 +38,9 @@ export async function unmute(
             previousMute.roles.forEach((role) => {
                 userRoles.push(roles[role])
             })
-            promises.push(target!.guild!.members!.cache!.get(previousMute!.userID)!.roles!.set(userRoles!).catch(console.error))
+            promises.push(
+                target!.guild!.members!.cache!.get(previousMute!.userID)!.roles!.set(userRoles!).catch(console.error)
+            )
             await deleteMute({ userID: previousMute.userID, guildID: target.guild.id })
         })
         await Promise.all(promises)
