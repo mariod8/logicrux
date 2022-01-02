@@ -3,11 +3,11 @@ import { ICommand } from "wokcommands"
 import { setGlobalStats, setUsername } from "../../utils/mongo"
 import { cleanSpecialCharacters } from "../../utils/string"
 
-const stats = {}
+const stats: any = {}
 
 async function setStats() {
     for (var stat in stats) {
-        var stat_ = stats[stat] as any
+        var stat_: any = stats[stat]
 
         console.log(stat_.name)
         await setGlobalStats(
