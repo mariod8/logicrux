@@ -7,12 +7,12 @@ export default async (member: GuildMember | PartialGuildMember, action: "ADD" | 
     const { guild, user } = member
     const channel = await getChannelByString("general", guild)
     const fontFile = "minecraft_font.ttf"
-    const fontSize = 16
+    const fontSize = 12
     const content = `${user?.username} ${action === "ADD" ? "joined" : "left"} the game`
 
     if (!channel) return
     Canvas.registerFont(path.join(__dirname, "../assets/" + fontFile), { family: "MinecraftFont" })
-    const canvas = Canvas.createCanvas(400, fontSize * 1.2)
+    const canvas = Canvas.createCanvas(400, fontSize * 1.4)
     const context = canvas.getContext("2d")
     context.font = fontSize + 'px "MinecraftFont"'
     context.clearRect(0, 0, canvas.width, canvas.height)

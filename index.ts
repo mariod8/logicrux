@@ -63,10 +63,11 @@ client.on("ready", async () => {
 })
 
 client.on("messageCreate", (message) => {
-    const { author, channelId } = message
+    const { author } = message
 
     reactNewVersion(message)
     if (author?.bot) return
+    welcomeGoodbye(message.member!, "ADD")
     statsOnMessage(message)
     addXP(message, author, "MESSAGE")
     responses(message)
