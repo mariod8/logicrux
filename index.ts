@@ -67,7 +67,6 @@ client.on("messageCreate", (message) => {
 
     reactNewVersion(message)
     if (author?.bot) return
-    welcomeGoodbye(message.member!, "ADD")
     statsOnMessage(message)
     addXP(message, author, "MESSAGE")
     responses(message)
