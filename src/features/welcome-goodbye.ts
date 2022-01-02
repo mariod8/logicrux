@@ -6,8 +6,8 @@ import path from "path"
 export default async (member: GuildMember | PartialGuildMember, action: "ADD" | "REMOVE") => {
     const { guild, user } = member
     const channel = await getChannelByString("general", guild)
-    const fontFile = "Minecraft.ttf"
-    const fontSize = 20
+    const fontFile = "minecraft_font.ttf"
+    const fontSize = 15
 
     if (!channel) return
     Canvas.registerFont(path.join(__dirname, "../assets/" + fontFile), { family: "Minecraft" })
