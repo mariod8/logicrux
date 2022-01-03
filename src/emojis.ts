@@ -6,7 +6,7 @@ export class Emojis {
     private static discEmojis: any = {}
 
     public static async setEmojis(client: Client) {
-        const guild = (await client.guilds.cache.get("829448956417015828")) as Guild
+        const guild = client.guilds.cache.get("829448956417015828") as Guild
 
         guild.emojis.cache.forEach((emoji) => {
             Emojis.clientEmojis[`${emoji.name}`] = emoji

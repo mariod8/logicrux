@@ -17,14 +17,10 @@ export default async (member: GuildMember | PartialGuildMember, action: "ADD" | 
     context.font = fontSize + 'px "MinecraftFont"'
     context.clearRect(0, 0, canvas.width, canvas.height)
     context.fillStyle = "#ffff55"
-    context.fillText(
-        content,
-        0,
-        (canvas.height + fontSize) / 2,
-        canvas.width
-    )
-    const att = new MessageAttachment(canvas.toBuffer())
-    await channel.send({
-        files: [att],
-    })
+    context.fillText(content, 0, (canvas.height + fontSize) / 2)
+    await channel
+        .send({
+            files: [new MessageAttachment(canvas.toBuffer())],
+        })
+        .catch(console.error)
 }

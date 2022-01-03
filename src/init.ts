@@ -17,7 +17,7 @@ export default async (client: Client, player: Player) => {
     //client?.user?.setAvatar("./src/assets/avatar.jpeg")
 
     // Set emojis
-    Emojis.setEmojis(client)
+    await Emojis.setEmojis(client)
 
     // Set player
     MyPlayer.setPlayer(player)
