@@ -1,4 +1,4 @@
-import { Client, GuildMember, MessageEmbed, Role } from "discord.js"
+import { Client, EmbedFooterData, GuildMember, MessageEmbed, Role } from "discord.js"
 import moment from "moment"
 import { _mutes, _unmute } from "../templates"
 import { getChannelByString, getDate, getTimeElapsed } from "../utils/getters"
@@ -55,6 +55,10 @@ export async function unmute(
         cleanTimeouts(target.id)
         if (muteID && client && reply) {
             const spamChannel = await getChannelByString("spam", target.guild!)
+            const embedFooterData: EmbedFooterData = {
+                text: `Desmuteado por ${target.user.username}`,
+                iconURL: target.user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            }
             const embed = new MessageEmbed()
                 .setTitle(`${target.user.username} ha sido desmuteado`)
                 .setDescription(
@@ -62,7 +66,7 @@ export async function unmute(
                         start
                     )}\n**Muteado durante**: ${getTimeElapsed(start, moment().valueOf())}`
                 )
-                .setFooter(`Desmuteado por ${client?.user?.username}`, client?.user?.displayAvatarURL())
+                .setFooter(embedFooterData)
                 .setColor("GREEN")
             await spamChannel.send({ embeds: [embed] })
         }

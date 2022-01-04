@@ -1,5 +1,6 @@
 import {
     ButtonInteraction,
+    EmbedFooterData,
     Guild,
     Message,
     MessageActionRow,
@@ -177,6 +178,10 @@ class __2048 {
         return this.score
     }
     public getEmbed() {
+        const embedFooterData: EmbedFooterData = {
+            text: `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment().valueOf())} ⏰`,
+            iconURL: this.user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+        }
         const embed = new MessageEmbed()
             .setTitle(`2048`)
             .setDescription("The 2048 Game")
@@ -201,10 +206,7 @@ class __2048 {
                 }
             )
             .setColor(this.getEmbedColor())
-            .setFooter(
-                `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment().valueOf())} ⏰`,
-                this.user.displayAvatarURL()
-            )
+            .setFooter(embedFooterData)
         return embed
     }
 }

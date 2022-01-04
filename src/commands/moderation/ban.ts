@@ -1,4 +1,4 @@
-import { GuildMember, MessageEmbed } from "discord.js"
+import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 import { MyMember } from "../../member"
 
@@ -38,12 +38,16 @@ export default {
         } catch {
             return "El usuario ya está baneado"
         }
+        const embedFooterData: EmbedFooterData = {
+            text: `Baneado por ${user.username}`,
+            iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+        }
         const embed = new MessageEmbed()
             .setTitle(`${target.getUsername()} ha sido baneado`)
             .setDescription(
                 `**ID Usuario**: ${target.getId()}\n**Miembro**: ${target.getUser()}\n**Motivo**: ${reason}`
             )
-            .setFooter(`Baneado por ${user.username}`, user.displayAvatarURL())
+            .setFooter(embedFooterData)
             .setColor("RED")
         return embed
     },

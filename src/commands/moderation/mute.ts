@@ -1,4 +1,4 @@
-import { GuildMember, MessageEmbed } from "discord.js"
+import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
 import moment from "moment"
 import { ICommand } from "wokcommands"
 import { addScheduledUnmute, unmute } from "../../handlers/mute"
@@ -135,6 +135,10 @@ export default {
             await Promise.all(promises)
             await setGuildProfile({ guildID: guild!.id }, { muted: true })
 
+            const embedFooterData: EmbedFooterData = {
+                text: `Muteado por ${user.username}`,
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            }
             embed
                 .setTitle(`${guild!.name} ha sido muteado`)
                 .setDescription(
@@ -144,7 +148,7 @@ export default {
                         endMute ? moment(endMute).format("lll") : "_Indefinido_"
                     }\n**Motivo**: ${reason}`
                 )
-                .setFooter(`Muteado por ${user.username}`, user.displayAvatarURL())
+                .setFooter(embedFooterData)
                 .setColor("RED")
         } else if (option === "user") {
             if (!target) {
@@ -186,6 +190,10 @@ export default {
                 reason,
             }).catch(console.error)
 
+            const embedFooterData: EmbedFooterData = {
+                text: `Muteado por ${user.username}`,
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            }
             embed
                 .setTitle(`${target.user.username} ha sido muteado`)
                 .setDescription(
@@ -193,7 +201,7 @@ export default {
                         "lll"
                     )}\n**Fin**: ${endMute ? moment(endMute).format("lll") : "_Indefinido_"}\n**Motivo**: ${reason}`
                 )
-                .setFooter(`Muteado por ${user.username}`, user.displayAvatarURL())
+                .setFooter(embedFooterData)
                 .setColor("RED")
         }
         await interaction.editReply({ embeds: [embed] })

@@ -1,4 +1,4 @@
-import { GuildMember, MessageEmbed } from "discord.js"
+import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 
 export default {
@@ -30,10 +30,14 @@ export default {
 
         if (!target) return "Especifica alguien a expulsar"
         if (!target.kickable || target.roles.botRole) return "No se puede expulsar al usuario"
+        const embedFooterData: EmbedFooterData = {
+            text: `Expulsado por ${user.username}`,
+            iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+        }
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido expulsado`)
             .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
-            .setFooter(`Expulsado por ${user.username}`, user.displayAvatarURL())
+            .setFooter(embedFooterData)
             .setColor("ORANGE")
         target.kick(reason).catch(console.error)
         return embed

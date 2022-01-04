@@ -1,4 +1,4 @@
-import { GuildMember, MessageEmbed } from "discord.js"
+import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
 import moment from "moment"
 import { ICommand } from "wokcommands"
 import { unmute } from "../../handlers/mute"
@@ -59,10 +59,14 @@ export default {
 
             await unmute(member, null, false, null, true)
             await setGuildProfile({ guildID: guild!.id }, { muted: false })
+            const embedFooterData: EmbedFooterData = {
+                text: `Desmuteado por ${user.username}`,
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            }
             embed
                 .setTitle(`${guild!.name} ha sido desmuteado`)
                 .setDescription(`**ID Servidor**: ${guild!.id}\n**Dueño**: ${await guild!.fetchOwner()}`)
-                .setFooter(`Desmuteado por ${user.username}`, user.displayAvatarURL())
+                .setFooter(embedFooterData)
                 .setColor("GREEN")
         } else if (option === "user") {
             if (!target) {
@@ -86,6 +90,10 @@ export default {
 
             const { start } = previousMute
 
+            const embedFooterData: EmbedFooterData = {
+                text: `Desmuteado por ${user.username}`,
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            }
             embed
                 .setTitle(`${target.user.username} ha sido desmuteado`)
                 .setDescription(
@@ -93,7 +101,7 @@ export default {
                         start
                     )}\n**Muteado durante**: ${getTimeElapsed(start, moment().valueOf())}`
                 )
-                .setFooter(`Desmuteado por ${user.username}`, user.displayAvatarURL())
+                .setFooter(embedFooterData)
                 .setColor("GREEN")
         }
         await interaction.editReply({ embeds: [embed] })

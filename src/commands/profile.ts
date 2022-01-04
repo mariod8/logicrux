@@ -53,7 +53,7 @@ class Profile {
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
                     .setDescription(this.member.getStatus())
                     .setColor(await this.member.getUserPrimaryColor())
-                    .setThumbnail(this.member.getUser().displayAvatarURL())
+                    .setThumbnail(this.member.getUser().displayAvatarURL({ dynamic: true }))
                     .addFields({
                         name: "`General`",
                         value: `**Miembro**: ${this.member.getMember()}\n**Tag**: ${
@@ -73,7 +73,7 @@ class Profile {
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
                     .setDescription("Datos del chat")
                     .setColor(await this.member.getUserPrimaryColor())
-                    .setThumbnail(this.member.getUser().displayAvatarURL())
+                    .setThumbnail(this.member.getUser().displayAvatarURL({ dynamic: true }))
                     .addFields({
                         name: "`Chat`",
                         value: `**Nivel**: ${this.profile.globalStats.level}\n**XP**: ${intToString(
@@ -95,7 +95,7 @@ class Profile {
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
                     .setDescription("Estadísticas sobre los emojis que has usado")
                     .setColor(await this.member.getUserPrimaryColor())
-                    .setThumbnail(this.member.getUser().displayAvatarURL())
+                    .setThumbnail(this.member.getUser().displayAvatarURL({ dynamic: true }))
                     .addFields(
                         {
                             name: "`Emojis`",
