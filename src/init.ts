@@ -3,6 +3,7 @@ import { Client } from "discord.js"
 import moment from "moment"
 import momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
+import curse from "./features/curse"
 import { MyPlayer } from "./player"
 
 export default async (client: Client, player: Player) => {
@@ -21,4 +22,12 @@ export default async (client: Client, player: Player) => {
 
     // Set player
     MyPlayer.setPlayer(player)
+
+    // Sin
+    setTimeout(async () => {
+        await curse(client)
+        setInterval(async () => {
+            await curse(client)
+        }, 7 * 24 * 3600 * 1000)
+    }, moment().endOf("day").valueOf() - moment().valueOf() + 3600 * 5)
 }
