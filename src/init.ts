@@ -23,11 +23,6 @@ export default async (client: Client, player: Player) => {
     // Set player
     MyPlayer.setPlayer(player)
 
-    // Sin
-    setTimeout(async () => {
-        await curse(client)
-        setInterval(async () => {
-            await curse(client)
-        }, 7 * 24 * 3600 * 1000)
-    }, moment().endOf("day").valueOf() - moment().valueOf() + 3600 * 5)
+    // Curse
+    await curse(client)
 }
