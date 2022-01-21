@@ -10,7 +10,7 @@ export default async function (client: Client) {
         .random()
     if (!member) return
     const channel = logicraft.channels.cache
-        .filter((c) => c.manageable && c.type === "GUILD_TEXT" && validParents.includes(c.parentId))
+        .filter((c) => c.manageable && c.type === "GUILD_TEXT" && validParents.includes(c.parentId ? c.parentId : ""))
         .random() as TextChannel
     if (!channel) return
 
