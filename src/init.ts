@@ -24,5 +24,5 @@ export default async (client: Client, player: Player) => {
     MyPlayer.setPlayer(player)
 
     // Curse
-    await curse(client)
+    //await curse(client)
 }
