@@ -22,8 +22,8 @@ const curse = async (client: Client) => {
         if (!channel) return
 
         await channel.send(sentencer.make(`${member.user.username} is {{adjective}}`)).catch(console.error)
+        curse(client)
     }, timeout)
-    curse(client)
 }
 
 export default async function (client: Client) {
