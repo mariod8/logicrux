@@ -3,7 +3,6 @@ import { Client } from "discord.js"
 import moment from "moment"
 import momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
-import curse from "./features/curse"
 import { MyPlayer } from "./player"
 
 export default async (client: Client, player: Player) => {
@@ -22,7 +21,4 @@ export default async (client: Client, player: Player) => {
 
     // Set player
     MyPlayer.setPlayer(player)
-
-    // Curse
-    //await curse(client)
 }
