@@ -22,4 +22,3 @@ jobs:
         TOKEN_OG: ${{ secrets.TOKEN_OG }}
       run: |
         npm install
-        npx ts-node index.ts
