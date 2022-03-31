@@ -1,4 +1,4 @@
-# Logicrux [![Discord Version](https://img.shields.io/npm/v/discord.js?color=%237289da&label=Discord.js)](https://github.com/discordjs/discord.js) [![Total lines](https://img.shields.io/tokei/lines/github/mariod8/Logicrux?color=red)](https://github.com/XAMPPRocky/tokei)
+# Logicrux [![Discord Version](https://img.shields.io/npm/v/discord.js?color=%237289da&label=Discord.js)](https://github.com/discordjs/discord.js) [![Build](https://img.shields.io/github/workflow/status/mariod8/logicrux/Logicrux)](https://github.com/XAMPPRocky/tokei)
 Another Discord Bot
 
 ## Commands
@@ -46,5 +46,5 @@ That should install the required packages. It is recommended to not update them 
 
 For running Logicrux type
 ```
-ts-node index.ts
+npx ts-node index.ts
 ```
