@@ -21,6 +21,5 @@ jobs:
       env:
         TOKEN_OG: ${{ secrets.TOKEN_OG }}
       run: |
-        npm install \
-        mkdir build \
+        npm install
         npx tsc
