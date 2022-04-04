@@ -47,7 +47,7 @@ export default {
     options: [
         {
             name: "option",
-            description: "Leaderboard topic",
+            description: "Leaderboard with scores about something in particular",
             required: true,
             type: "STRING",
             choices: [
