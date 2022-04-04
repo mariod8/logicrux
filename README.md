@@ -1,4 +1,4 @@
-# Logicrux [![Discord Version](https://img.shields.io/npm/v/discord.js?color=%237289da&label=Discord.js)](https://github.com/discordjs/discord.js) [![Build](https://img.shields.io/github/workflow/status/mariod8/logicrux/Logicrux)](https://github.com/XAMPPRocky/tokei)
+# Logicrux [![Discord Version](https://img.shields.io/npm/v/discord.js?color=%237289da&label=Discord.js)](https://github.com/discordjs/discord.js) [![Build](https://img.shields.io/github/workflow/status/mariod8/logicrux/Logicrux)](https://github.com/XAMPPRocky/tokei) [![Latest Release](https://img.shields.io/github/v/release/mariod8/logicrux?include_prereleases)](https://github.com/mariod8/logicrux/releases/latest)
 Another Discord Bot
 
 ## Commands
@@ -24,7 +24,8 @@ Some commands may require certain permissions or roles to be executed. Here's a 
 |/kick|✅|✅|✅||
 |/mute|✅|✅|✅||
 |/unmute|✅|✅|✅||
-|/owner|✅||||
+|/dev|✅||||
+|/nuke|✅||||
 
 ## Building
 
