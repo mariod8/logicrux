@@ -5,6 +5,7 @@ export default {
     category: "Miscellaneous",
     description: "Displays a 3x3 emoji-based-character text",
     slash: true,
+    testOnly: true,
     options: [
         {
             name: "emoji",

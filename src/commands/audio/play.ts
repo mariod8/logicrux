@@ -7,6 +7,7 @@ export default {
     category: "Audio",
     description: "Play audio in a voice channel",
     guildOnly: true,
+    testOnly: true,
     slash: true,
     options: [
         {

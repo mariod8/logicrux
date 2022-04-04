@@ -7,6 +7,7 @@ export default {
     category: "Audio",
     description: "Stop audio",
     guildOnly: true,
+    testOnly: true,
     slash: true,
     callback: async ({ member, guild }) => {
         const player = MyPlayer.getPlayer()

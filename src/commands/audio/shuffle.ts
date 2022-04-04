@@ -7,6 +7,7 @@ export default {
     category: "Audio",
     description: "Toggle shuffle",
     guildOnly: true,
+    testOnly: true,
     slash: true,
     callback: async ({ guild, member }) => {
         const player = MyPlayer.getPlayer()

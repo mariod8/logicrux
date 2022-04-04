@@ -6,6 +6,7 @@ export default {
     description: "Kicks a user",
     permissions: ["KICK_MEMBERS"],
     slash: true,
+    testOnly: true,
     guildOnly: true,
     options: [
         {

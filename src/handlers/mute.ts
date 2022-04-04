@@ -6,12 +6,7 @@ import { deleteMute, getGuildProfile, getMute, getMutes } from "../utils/mongo"
 
 const scheduledUnmutes: Array<_unmute> = []
 
-export async function unmute(
-    target: GuildMember,
-    client: Client | null,
-    reply: boolean,
-    muteID: string | null,
-) {
+export async function unmute(target: GuildMember, client: Client | null, reply: boolean, muteID: string | null) {
     const previousMute = muteID
         ? await getMute({ userID: target.id, guildID: target.guild.id, muteID })
         : await getMute({ userID: target.id, guildID: target.guild.id })
@@ -53,7 +48,7 @@ export function addScheduledUnmute(
     muteID: string,
     duration: number,
     client: Client,
-    reply: boolean,
+    reply: boolean
 ) {
     scheduledUnmutes.push({
         userID: member.id,

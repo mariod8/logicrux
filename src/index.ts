@@ -41,7 +41,7 @@ client.on("ready", async () => {
         ignoreBots: true,
         mongoUri: process.env.MONGO_URI,
         showWarns: true,
-        testServers: ["829448956417015828"],
+        testServers: Array.from(client.guilds.cache.map((g) => g.id)),
         disabledDefaultCommands: ["help", "command", "language", "prefix", "requiredrole", "channelonly", "slash"],
         botOwners: ["323378898794446850"],
         debug: true,

@@ -11,14 +11,15 @@ export default {
     description: "Unmutes a user",
     permissions: ["MUTE_MEMBERS"],
     slash: true,
+    testOnly: true,
     guildOnly: true,
     options: [
         {
             name: "user",
             description: "Unmute a user",
             type: "USER",
-            required: true
-        }
+            required: true,
+        },
     ],
     callback: async ({ interaction, user, member, guild }) => {
         const target = interaction.options.getMember("user") as GuildMember
@@ -28,7 +29,7 @@ export default {
         var previousMute
 
         await interaction.deferReply()
-        
+
         if (!target) {
             await interaction.editReply("Especifica alguien a desmutear")
             return
@@ -64,5 +65,5 @@ export default {
             .setFooter(embedFooterData)
             .setColor("GREEN")
         await interaction.editReply({ embeds: [embed] })
-    }
+    },
 } as ICommand

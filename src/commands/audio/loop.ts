@@ -9,6 +9,7 @@ export default {
     description: "Loop current song or queue",
     guildOnly: true,
     slash: true,
+    testOnly: true,
     options: [
         {
             name: "option",

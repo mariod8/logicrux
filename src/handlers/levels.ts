@@ -4,14 +4,10 @@ import { getChannelByString } from "../utils/getters"
 import { MyMath } from "../utils/math"
 import { getUserProfile, setGlobalStats } from "../utils/mongo"
 
-const getXpPerLvl = (level: number, xp: number) => 5 * Math.pow(level, 1.5) + (50 * level) + 100 - xp
+const getXpPerLvl = (level: number, xp: number) => 5 * Math.pow(level, 1.5) + 50 * level + 100 - xp
 const getXpPerMsg = (level: number, content: string) => 20 + (level >= 10 ? MyMath.clamp(content.length, 0, 50) : 0)
 
-export async function addXP(
-    message: Message,
-    user: User,
-    method: "MESSAGE"
-) {
+export async function addXP(message: Message, user: User, method: "MESSAGE") {
     const { guild, content } = message
     const spamChannel = await getChannelByString("spam", guild!)
     const userIdentification: _userIdentification = { guildID: guild!.id, userID: user!.id }

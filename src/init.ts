@@ -11,10 +11,11 @@ export default async (client: Client, player: Player) => {
     moment.locale("Europe/Madrid")
 
     // Set presence
-    client?.user?.setActivity("Minecraft", { type: "PLAYING" })
+    client.user?.setActivity("Minecraft", { type: "PLAYING" })
+    client.user?.setStatus("online")
 
     // Set avatar
-    //client?.user?.setAvatar("./src/assets/avatar.jpeg")
+    //client?.user?.setAvatar("./src/assets/avatar2.jpeg")
 
     // Set emojis
     await Emojis.setEmojis(client)

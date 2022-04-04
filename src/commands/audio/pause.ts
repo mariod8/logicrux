@@ -8,6 +8,7 @@ export default {
     description: "Pause the queue",
     guildOnly: true,
     slash: true,
+    testOnly: true,
     callback: async ({ guild, member }) => {
         const player = MyPlayer.getPlayer()
         const channel = member.voice.channel as GuildChannelResolvable

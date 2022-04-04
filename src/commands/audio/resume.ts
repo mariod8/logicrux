@@ -7,6 +7,7 @@ export default {
     category: "Audio",
     description: "Resumes the queue",
     guildOnly: true,
+    testOnly: true,
     slash: true,
     callback: async ({ guild, member }) => {
         const player = MyPlayer.getPlayer()

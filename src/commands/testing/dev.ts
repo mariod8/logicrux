@@ -41,6 +41,12 @@ async function setStats() {
 }
 
 async function cleanGuildSlashCommands(client: Client) {
+    await client.application?.commands.cache
+        .filter((c) => c.name !== "dev")
+        .each(async (c) => {
+            console.log(c.name)
+            await c.delete()
+        })
     await client!.guilds!.cache!.each(async (guild) => {
         await guild!.commands!.fetch()!.then(
             async (commands) =>

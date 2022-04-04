@@ -147,6 +147,7 @@ export default {
     description: "Get the profile from a user",
     slash: true,
     guildOnly: true,
+    testOnly: true,
     options: [
         {
             name: "user",

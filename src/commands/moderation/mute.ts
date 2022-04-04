@@ -10,6 +10,7 @@ export default {
     description: "Mutes a user",
     permissions: ["MUTE_MEMBERS"],
     slash: true,
+    testOnly: true,
     guildOnly: true,
     options: [
         {
