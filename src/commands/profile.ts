@@ -146,7 +146,6 @@ export default {
     category: "Stats",
     description: "Get the profile from a user",
     slash: true,
-    testOnly: true,
     guildOnly: true,
     options: [
         {

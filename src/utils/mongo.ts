@@ -28,7 +28,7 @@ function getCleanUserProfile(_userProfile: _userProfile) {
         used: _userProfile?.globalStats?.emojis?.used ? _userProfile?.globalStats?.emojis?.used : [],
     }
     const userStats: _userStats = {
-        xp: _userProfile?.globalStats?.xp | 0,
+        xp: Math.floor(_userProfile?.globalStats?.xp) | 0,
         totalXp: _userProfile?.globalStats?.totalXp | 0,
         level: _userProfile?.globalStats?.level | 0,
         mutes: _userProfile?.globalStats?.mutes | 0,

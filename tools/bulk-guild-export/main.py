@@ -5,7 +5,7 @@ import re
 import math
 import emoji
 
-path = "/home/mario/Documents/Archivos/Proyectos/Javascript/logicrux/tools/bulk-guild-export/raw-data"
+path = "/home/mariv1k/Documents/Proyectos/Typescript/logicrux/tools/bulk-guild-export/raw_data"
 customEmojis = re.compile(r":(\w+):")
 unicodeEmojis = re.compile(r'\d+(.*?)(?:\u263a|\U0001f645)')
 data = {}
@@ -262,17 +262,17 @@ def extract_emojis(s):
     return emojis
 
 
-def getXpPerLvl(level):
-    return math.floor(math.pow(level, 2.5))
+def getXpPerLvl(level, xp):
+    return 5 * pow(level, 1.5) + (50 * level) + 100 - xp
 
 
 def getXpPerMsg(level, content):
-    return math.floor(math.pow(level, 1.2)) * 100 * (math.floor(clamp(len(content.split(" ")), 0, 30) / 30) + 1)
+    return 20 + ((clamp(len(content), 0, 50)) if level > 10 else 0)
 
 
 def getXP(message, level, xp, totalXp):
     xpMsg = getXpPerMsg(level, message)
-    xpLvl = getXpPerLvl(level)
+    xpLvl = getXpPerLvl(level, totalXp)
     xp += xpMsg
     totalXp += xpMsg
     if(xp >= xpLvl):

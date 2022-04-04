@@ -6,8 +6,8 @@ import { MyPlayer } from "../../player"
 export default {
     category: "Audio",
     description: "Play audio in a voice channel",
+    guildOnly: true,
     slash: true,
-    testOnly: true,
     options: [
         {
             name: "audio",

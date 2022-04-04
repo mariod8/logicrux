@@ -11,67 +11,33 @@ export async function unmute(
     client: Client | null,
     reply: boolean,
     muteID: string | null,
-    guild: boolean
 ) {
-    if (guild) {
-        const previousMutes = await getMutes(target.guild.id)
-        var roleIDs: Array<string> = []
-        const roles: any = {}
-        var promises: Array<any> = []
-
-        if (!previousMutes) return null
-        previousMutes.forEach((previousMute) => {
-            previousMute.roles.forEach((role) => {
-                roleIDs.push(role)
-            })
-        })
-        roleIDs = [...new Set(roleIDs)]
-        roleIDs.forEach((role) => {
-            promises.push((roles[role] = target.guild!.roles!.cache!.get(role)))
-        })
-        await Promise.all(promises)
-
-        promises = []
-        previousMutes.forEach(async (previousMute) => {
-            const userRoles: Array<any> = []
-
-            previousMute.roles.forEach((role) => {
-                userRoles.push(roles[role])
-            })
-            promises.push(
-                target!.guild!.members!.cache!.get(previousMute!.userID)!.roles!.set(userRoles!).catch(console.error)
-            )
-            await deleteMute({ userID: previousMute.userID, guildID: target.guild.id })
-        })
-        await Promise.all(promises)
-    } else {
-        const previousMute = muteID
-            ? await getMute({ userID: target.id, guildID: target.guild.id, muteID })
-            : await getMute({ userID: target.id, guildID: target.guild.id })
-        if (!previousMute) return null
-        const { userID, guildID, roles, start } = previousMute as _mutes
-        await deleteMute({ userID, guildID })
-        await recoverRoles(target, roles).catch(console.error)
-        cleanTimeouts(target.id)
-        if (muteID && client && reply) {
-            const spamChannel = await getChannelByString("spam", target.guild!)
-            const embedFooterData: EmbedFooterData = {
-                text: `Desmuteado por ${target.user.username}`,
-                iconURL: target.user.displayAvatarURL({ dynamic: false, format: "jpg" }),
-            }
-            const embed = new MessageEmbed()
-                .setTitle(`${target.user.username} ha sido desmuteado`)
-                .setDescription(
-                    `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(
-                        start
-                    )}\n**Muteado durante**: ${getTimeElapsed(start, moment.default().valueOf())}`
-                )
-                .setFooter(embedFooterData)
-                .setColor("GREEN")
-            await spamChannel.send({ embeds: [embed] })
+    const previousMute = muteID
+        ? await getMute({ userID: target.id, guildID: target.guild.id, muteID })
+        : await getMute({ userID: target.id, guildID: target.guild.id })
+    if (!previousMute) return null
+    const { userID, guildID, roles, start } = previousMute as _mutes
+    await deleteMute({ userID, guildID })
+    await recoverRoles(target, roles).catch(console.error)
+    cleanTimeouts(target.id)
+    if (muteID && client && reply) {
+        const spamChannel = await getChannelByString("spam", target.guild!)
+        const embedFooterData: EmbedFooterData = {
+            text: `Desmuteado por ${target.user.username}`,
+            iconURL: target.user.displayAvatarURL({ dynamic: false, format: "jpg" }),
         }
-        return previousMute
+        const embed = new MessageEmbed()
+            .setTitle(`${target.user.username} ha sido desmuteado`)
+            .setDescription(
+                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(
+                    start
+                )}\n**Muteado durante**: ${getTimeElapsed(start, moment.default().valueOf())}`
+            )
+            .setFooter(embedFooterData)
+            .setColor("GREEN")
+        await spamChannel.send({ embeds: [embed] })
     }
+    return previousMute
 }
 
 export async function recoverRoles(member: GuildMember, roles: Array<string>) {
@@ -88,11 +54,10 @@ export function addScheduledUnmute(
     duration: number,
     client: Client,
     reply: boolean,
-    guild: boolean
 ) {
     scheduledUnmutes.push({
         userID: member.id,
-        unmute: setTimeout(() => unmute(member, client, reply, muteID, guild), duration),
+        unmute: setTimeout(() => unmute(member, client, reply, muteID), duration),
     } as _unmute)
 }
 
@@ -118,7 +83,7 @@ export async function checkOnJoinMute(member: GuildMember) {
     }
     if (!previousMute) return
     if (previousMute.expires > 0 && previousMute.expires <= moment.default().valueOf()) {
-        await unmute(member, null, true, null, false)
+        await unmute(member, null, true, null)
     } else {
         await member.roles.set([mutedRole])
     }

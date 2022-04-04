@@ -6,8 +6,8 @@ import { MyPlayer } from "../../player"
 export default {
     category: "Audio",
     description: "Stop audio",
+    guildOnly: true,
     slash: true,
-    testOnly: true,
     callback: async ({ member, guild }) => {
         const player = MyPlayer.getPlayer()
         const channel = member.voice.channel as GuildChannelResolvable

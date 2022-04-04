@@ -7,8 +7,8 @@ import { MyPlayer } from "../../player"
 export default {
     category: "Audio",
     description: "Loop current song or queue",
+    guildOnly: true,
     slash: true,
-    testOnly: true,
     options: [
         {
             name: "option",

@@ -33,27 +33,15 @@ const player = new Player(client, {
     quality: "high",
     volume: 80,
 })
-async function cleanGuildSlashCommands(client: Client) {
-    await client!.guilds!.cache!.each(async (guild) => {
-        await guild!.commands!.fetch()!.then(
-            async (commands) =>
-                await commands!.each((c) => {
-                    console.log(`Eliminando "${c.name}"`)
-                    c!.delete()
-                })
-        )
-    })
-}
 
 client.on("ready", async () => {
-    //await cleanGuildSlashCommands(client)
     new WOKCommands(client, {
         commandsDir: path.join(__dirname, "commands"),
         typeScript: true,
         ignoreBots: true,
         mongoUri: process.env.MONGO_URI,
         showWarns: true,
-        testServers: ["829448956417015828", "666295714724446209"],
+        testServers: ["829448956417015828"],
         disabledDefaultCommands: ["help", "command", "language", "prefix", "requiredrole", "channelonly", "slash"],
         botOwners: ["323378898794446850"],
         debug: true,

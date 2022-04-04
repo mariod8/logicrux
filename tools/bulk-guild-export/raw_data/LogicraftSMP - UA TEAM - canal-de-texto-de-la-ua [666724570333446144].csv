@@ -1,0 +1,1341 @@
+AuthorID,Author,Date,Content,Attachments,Reactions
+"310086714481704960","Kaktus#4899","19-Jan-20 08:50 PM","","https://cdn.discordapp.com/attachments/666724570333446144/668542764215959562/unknown.png",""
+"310086714481704960","Kaktus#4899","19-Jan-20 08:50 PM","","https://cdn.discordapp.com/attachments/666724570333446144/668542858336141322/unknown.png",""
+"310086714481704960","Kaktus#4899","20-Jan-20 08:12 PM","","https://cdn.discordapp.com/attachments/666724570333446144/668895613370499097/JPEG_20200120_201139.jpg",""
+"310086714481704960","Kaktus#4899","20-Jan-20 09:05 PM","ya está aquí, ya llegó 🎵","",""
+"310086714481704960","Kaktus#4899","20-Jan-20 09:22 PM","https://www.youtube.com/watch?v=1Kz3QWQMbos&list=PLuzS0jdNRVvqVOIwM-zWOksQJEBB6THDg&index=1","",""
+"310086714481704960","Kaktus#4899","20-Jan-20 09:22 PM","@andresmacia45 miratelo, que es para corriente alterna","",""
+"310086714481704960","Kaktus#4899","20-Jan-20 10:03 PM","Andres, desmuteate un momento","",""
+"660815831462182923","andresmacia45#6151","20-Jan-20 10:51 PM","gvng","",""
+"310086714481704960","Kaktus#4899","21-Jan-20 12:49 AM","you","",""
+"310086714481704960","Kaktus#4899","21-Jan-20 12:49 AM","Me he hecho el del tema 7 de Enero de 2016 y 4/5","",""
+"310086714481704960","Kaktus#4899","21-Jan-20 12:49 AM","Inténtalo, que está interesante","",""
+"310086714481704960","Kaktus#4899","21-Jan-20 12:50 AM","Y está bastante completo","",""
+"310086714481704960","Kaktus#4899","21-Jan-20 12:50 AM","Si sabes hacer ese entero bien, vas a hacer por lo menos bien un apartado de lo que pongan, 100%","",""
+"310086714481704960","Kaktus#4899","21-Jan-20 01:03 AM","Me voy a sobar","",""
+"660815831462182923","andresmacia45#6151","21-Jan-20 01:03 AM","vale bro yo aqui acabo 2017 y a dormi un poc","",""
+"159985870458322944","MEE6#4876","21-Jan-20 01:03 AM","GG @andresmacia45, you just advanced to level 1!","",""
+"133677252708663296","Snowwy#4750","21-Jan-20 02:36 PM","probando","",""
+"323378898794446850","mariv1k#5321","29-Jan-20 08:36 PM","me da bucle chics help","https://cdn.discordapp.com/attachments/666724570333446144/672163215345713185/pene.png",""
+"310086714481704960","Kaktus#4899","29-Jan-20 08:36 PM","Eso es?","",""
+"310086714481704960","Kaktus#4899","29-Jan-20 08:36 PM","Canal de voz","",""
+"310086714481704960","Kaktus#4899","29-Jan-20 08:38 PM","No no, es problema mío, tranqui","",""
+"310086714481704960","Kaktus#4899","29-Jan-20 08:39 PM","","https://cdn.discordapp.com/attachments/666724570333446144/672163900296265768/unknown.png",""
+"323378898794446850","mariv1k#5321","29-Jan-20 08:40 PM","","https://cdn.discordapp.com/attachments/666724570333446144/672164292916936704/pene2.png",""
+"310086714481704960","Kaktus#4899","29-Jan-20 08:51 PM","```asm
+main:
+push {r0-r7}
+add r0, r6, r7
+lsl r0, r0, #0x3
+add r0, r2, r0
+add r3, r0, r3
+ldrb r2, [r3, #0x2]
+mov r0, r8
+bl decrypt2
+mov r11, r0
+pop {r0-r7}
+mov r1, r11
+cmp r1, r2
+blt exit
+mov r0, r8
+mov r1, #0xFF
+ldr r0, [r0, #0x0]
+and r1, r0
+mov r0, r8
+bl decrypt
+mov r11, r0
+pop {r0-r7}
+mov r5, r11
+ldr r2, pokemondata
+mov r4, #0x1C
+mul r5, r4
+add r5, r5, r2
+ldrb r5, [r5, #0x10]
+cmp r1, r5
+blt exit
+mov r10, r3
+pop {r0-r7}
+mov r1, r10
+ldr r0, levelcheckloc
+bx r0
+exit: pop {r0-r7}
+ldr r0, noevo
+bx r0
+decrypt: push {r0-r7}
+mov r1, #0xB
+ldr r2, decryptpoke
+bx r2
+decrypt2: push {r0-r7}
+mov r1, #0x38
+ldr r2, decryptpoke
+bx r2
+.align
+levelcheckloc: .word 0x0804310D
+noevo: .word 0x08043111
+decryptpoke: .word 0x0803FBE9
+pokemondata: .word 0x08254784```","",""
+"323378898794446850","mariv1k#5321","29-Jan-20 08:53 PM","https://twitter.com/SkookumArts/status/1222580952456683521","",""
+"133677252708663296","Snowwy#4750","13-Mar-20 12:52 PM","megabot.intents[pos].examples.size()-1","",""
+"133677252708663296","Snowwy#4750","13-Mar-20 12:53 PM","megabot.intents[pos].examples[megabot.intents[pos].examples.size()-1].id = megabot.nextId;","",""
+"133677252708663296","Snowwy#4750","13-Mar-20 01:14 PM","","https://cdn.discordapp.com/attachments/666724570333446144/687996962523316225/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 01:55 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688007411767705636/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 02:14 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688012134386499601/unknown.png",""
+"323378898794446850","mariv1k#5321","13-Mar-20 02:29 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688015971079684336/durisimo.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 02:43 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688019284235911291/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 02:44 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688019695223308298/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 02:49 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688020825953402983/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 03:01 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688023899384184874/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 03:28 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688030824112979990/unknown.png",""
+"323378898794446850","mariv1k#5321","13-Mar-20 04:37 PM","vector<string> tokens","",""
+"133677252708663296","Snowwy#4750","13-Mar-20 04:57 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688053189396005020/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 05:24 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688059962597179509/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 05:35 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688062591905693720/unknown.png",""
+"133677252708663296","Snowwy#4750","13-Mar-20 05:56 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688068022585393179/unknown.png",""
+"304280586003021824","abg._.blanco#0405","13-Mar-20 06:31 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688076731176845312/unknown.png",""
+"323378898794446850","mariv1k#5321","13-Mar-20 07:43 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688094906702626875/unknown.png",""
+"323378898794446850","mariv1k#5321","13-Mar-20 09:18 PM","","https://cdn.discordapp.com/attachments/666724570333446144/688118708073136160/unknown.png",""
+"323378898794446850","mariv1k#5321","04-May-20 09:40 AM","listos ?","",""
+"664432205598031882","Dark Spirit#3670","04-May-20 10:03 AM","Mario tienes el micro abierto","",""
+"323378898794446850","mariv1k#5321","04-May-20 10:04 AM","no","",""
+"323378898794446850","mariv1k#5321","04-May-20 10:06 AM","que cojones","",""
+"323378898794446850","mariv1k#5321","04-May-20 10:10 AM","","https://cdn.discordapp.com/attachments/666724570333446144/706779846814072856/unknown.png",""
+"310086714481704960","Kaktus#4899","17-May-20 11:57 AM","Yo estoy ya por aquí, por si se quiere pasar alguien p:","",""
+"323378898794446850","mariv1k#5321","17-May-20 12:17 PM","que vas a tocar?","",""
+"323378898794446850","mariv1k#5321","17-May-20 12:17 PM","matlab ?","",""
+"310086714481704960","Kaktus#4899","17-May-20 12:38 PM","Por el momento estoy leyéndome las diapositivas","",""
+"310086714481704960","Kaktus#4899","17-May-20 12:38 PM","Luego haré Matlab","",""
+"323378898794446850","mariv1k#5321","17-May-20 12:47 PM","vale yo voy mas tarde que estoy con ec","",""
+"310086714481704960","Kaktus#4899","17-May-20 12:51 PM","Okay","",""
+"310086714481704960","Kaktus#4899","17-May-20 12:51 PM","gl","",""
+"310086714481704960","Kaktus#4899","17-May-20 07:30 PM","Alguien entra al chat de voz?","",""
+"323378898794446850","mariv1k#5321","17-May-20 07:31 PM","va","",""
+"310086714481704960","Kaktus#4899","17-May-20 07:40 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711634342350159962/unknown.png",""
+"323378898794446850","mariv1k#5321","17-May-20 07:50 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711636694947856507/Lagrange.m",""
+"323378898794446850","mariv1k#5321","17-May-20 07:51 PM","@🤓 UA Student la funcion de lagrange en matlab","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:14 PM","```matlab
+function [result] = lagrange(X,POINTX, POINTY)
+    n = length(x) - 1;
+    a = polyfit(POINTX, POINTY, n)
+    result = polyval(a, X)
+end
+```","",""
+"323378898794446850","mariv1k#5321","17-May-20 08:22 PM","sum = 0;
+    a= polyfit(x,y,xp)
+    sum = polyval(a,xp)","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:22 PM","```matlab
+function [result] = lagrange(X,POINTX, POINTY)
+    if length(POINTX) == length(POINTY)
+        n = length(POINTX) - 1;
+        a = polyfit(POINTX, POINTY, n)
+        result = polyval(a, X)
+    else
+        result = NaN;
+    end
+end
+```","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:26 PM","`","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:27 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711645966851244142/unknown.png",""
+"323378898794446850","mariv1k#5321","17-May-20 08:27 PM","```matlab
+function sol = Lagrange(x,y,xp)
+    if length(x) ~= length(y)
+        fprintf('error\n');
+    else
+    sum = 0;
+    a= polyfit(x,y,xp)
+    sum = polyval(a,xp)
+    end
+end
+```","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:28 PM","```matlab
+function sol = Lagrange(x,y,xp)
+    if length(x) ~= length(y)
+        fprintf('error\n');
+        sol = NaN;
+    else
+    sum = 0;
+    a= polyfit(x,y,xp)
+    sum = polyval(a,xp)
+    end
+end```","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:30 PM","f(xp) = ?","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:31 PM","```matlab
+function [result] = lagrange(X,POINTX, POINTY)
+    if length(POINTX) == length(POINTY)
+        n = length(POINTX) - 1;
+        a = polyfit(POINTX, POINTY, n)
+        result = polyval(a, X)
+    else
+        result = NaN;
+    end
+end
+
+```","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:31 PM","```matlab
+syms x;
+val_x = [1 2 3 4];
+val_y = [2 1 3/2 4];
+
+lagrange(5/2, val_x, val_y)```","",""
+"310086714481704960","Kaktus#4899","17-May-20 08:59 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711654159895625778/unknown.png",""
+"469501062290866176","Michigun D. Kamukura#4125","17-May-20 09:36 PM","> @🤓 UA Student la funcion de lagrange en matlab
+@mariv1k  grande","",""
+"323378898794446850","mariv1k#5321","17-May-20 09:53 PM","```matlab
+ % Newton's divided difference
+ % Find the approximate value of f(1.5) from 
+ % (x,y)= (0,1), (1,e), (2,e^2) & (3,e^3). 
+ 
+ n = input('Enter n for (n+1) nodes, n:  ');
+ x = zeros(1,n+1);
+ y = zeros(n+1,n+1);
+ 
+ for i = 0:n
+   fprintf('Enter x(%d) and f(x(%d)) on separate lines:  \n', i, i);
+   x(i+1) = input(' ');
+   y(i+1,1) = input(' ');
+ end
+ x0 = input('Now enter a point at which to evaluate the polynomial, x = ');
+ 
+ n = size(x,1);
+ if n == 1
+    n = size(x,2);
+ end
+
+ for i = 1:n
+    D(i,1) = y(i);
+ end
+
+ for i = 2:n
+    for j = 2:i
+       D(i,j)=(D(i,j-1)-D(i-1,j-1))/(x(i)-x(i-j+1));
+    end
+ end
+
+ fx0 = D(n,n);
+ for i = n-1:-1:1
+    fx0 = fx0*(x0-x(i)) + D(i,i);
+ end
+fprintf('Newtons iterated value: %11.8f \n', fx0)
+```","",""
+"310086714481704960","Kaktus#4899","17-May-20 09:56 PM","https://moodle2019-20.ua.es/moodle/pluginfile.php/186341/mod_resource/content/0/Pr%C3%A1ctica%205.%20Interpolaci%C3%B3n.pdf","",""
+"310086714481704960","Kaktus#4899","17-May-20 10:18 PM","```matlab
+function result = difdiv(x,y)
+    if length(x)==length(y)
+        n = length(x);
+        for i = 1:n
+            m(i,1) = x(i);
+        end
+        for i = 1:n
+            m(i,2) = y(i);
+        end
+        result = m;
+    else
+        result = NaN;
+    end
+end```","",""
+"310086714481704960","Kaktus#4899","17-May-20 10:18 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711674043769684098/unknown.png",""
+"310086714481704960","Kaktus#4899","17-May-20 10:21 PM","```1º -> Tomar valores del valor del ""eje"" Y recorrido
+2º -> Restar n+1-n y dividirlo entre su respectivo m(n+1, 1)-m(n, 1)
+3º -> Asignar el resultado a la siguiente fila disponible```","",""
+"310086714481704960","Kaktus#4899","17-May-20 10:43 PM","```2-1  3-1  4-1
+3-2  4-2
+4-3```","",""
+"310086714481704960","Kaktus#4899","17-May-20 11:01 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711684899177889802/difdiv.m",""
+"310086714481704960","Kaktus#4899","17-May-20 11:09 PM","```matlab
+x = [0 1 2 3 4];
+y = [1 -1 2 1 0];
+
+spline(x, y)```","",""
+"323378898794446850","mariv1k#5321","17-May-20 11:15 PM","Calcular el Spline cúbico natural para 𝑓(𝑥)=(𝑥2)𝑥−2con 𝑥0=1,𝑥1=2,𝑥2=4","",""
+"310086714481704960","Kaktus#4899","17-May-20 11:20 PM","andypsx","",""
+"310086714481704960","Kaktus#4899","17-May-20 11:21 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711689931764007012/unknown.png",""
+"323378898794446850","mariv1k#5321","18-May-20 08:31 AM","eeeeeeeeeeeeeeeeeeeeeeeeeh","",""
+"323378898794446850","mariv1k#5321","18-May-20 08:31 AM","entrad","",""
+"473503639391043584","𝕽🥀#7738","18-May-20 08:31 AM","teneis examen?","",""
+"323378898794446850","mariv1k#5321","18-May-20 08:31 AM","si","",""
+"323378898794446850","mariv1k#5321","18-May-20 09:37 AM","https://meet.google.com/spd-mmxb-oyw?pli=1&authuser=2","",""
+"323378898794446850","mariv1k#5321","18-May-20 10:43 AM","mañana 13h","",""
+"310086714481704960","Kaktus#4899","18-May-20 10:46 AM","https://meet.google.com/jgy-wgee-yfz?authuser=0","",""
+"664432205598031882","Dark Spirit#3670","18-May-20 10:48 AM","F examen","",""
+"323378898794446850","mariv1k#5321","18-May-20 10:48 AM","F","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:07 AM","https://rua.ua.es/dspace/bitstream/10045/23903/1/2012C2FBDTESTsolu.pdf","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:07 AM","ANDRESSS!!!!!!","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:07 AM","SOLUCIONES","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:22 AM","```El nombre de las columnas del resultado de realizar una unión en álgebra relacional
+
+ - son los mismos que los de la primera relación. 
+ - no importan porque las dos tablas deben tener los mismo nombres de columna y los mismos dominios en las mismas posiciones.
+ - son los mismos que los de la segunda relación.```","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:35 AM","https://rua.ua.es/dspace/bitstream/10045/23901/2/2011C2FBDmultimediaTESTsolu.pdf","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:41 AM","","https://cdn.discordapp.com/attachments/666724570333446144/711876054788341841/unknown.png",""
+"683065121970323553","andresmacia45#4596","18-May-20 11:42 AM","Supón una relación R(A, B, C).
+
+¿Qué esquema tendrá la relación derivada R REN(A|D, B|E)?
+
+
+(A, B, C, D, E)
+(D, E, A, B, C)
+(D, E, C)
+(D, E)","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:44 AM","```14.- Supón una relación R(A, B, C). ¿Qué esquema tendrá la relación derivada R REN(A|D, C|E)? 
+a)  (A, B, C, D, E) 
+b)   (D, B, E) 
+c)  (D, E)```","",""
+"683065121970323553","andresmacia45#4596","18-May-20 11:45 AM","En el ciclo de desarrollo de software
+
+es habitual generar tres esquemas: conceptual, lógico y físico.
+hay seis fases: análisis, esquema conceptual, diseño, esquema lógico, implementación y esquema físico.
+la implementación es el primer paso.
+el análisis es la primera fase.","",""
+"310086714481704960","Kaktus#4899","18-May-20 11:49 AM","```Cuando falla la ejecución de una transacción en base de datos relacional
+
+la orden ROLLBACK nos asegura que la base de datos vuelve al estado previo a la ejecución.
+la orden COMMIT nos asegura que la base de datos vuelve al estado previo a la ejecución.
+no hay nada que hacer, se pasa a otra transacción.
+la política ON CASCADE se activa y elimina los errores.```","",""
+"310086714481704960","Kaktus#4899","18-May-20 12:00 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711880983531618334/IMG_20200518_120030.jpg",""
+"664432205598031882","Dark Spirit#3670","18-May-20 12:01 PM","Cómo se nota que no paras de estudiar","",""
+"310086714481704960","Kaktus#4899","18-May-20 05:18 PM","https://www.youtube.com/watch?v=WxmkYlLK3Hw","",""
+"310086714481704960","Kaktus#4899","18-May-20 05:25 PM","http://www.dccia.ua.es/dccia/inf/asignaturas/MD/curso19-20/desarrollopracticas.htm#SESI%C3%93N_14","",""
+"133677252708663296","Snowwy#4750","18-May-20 05:27 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711963245325320342/unknown.png",""
+"323378898794446850","mariv1k#5321","18-May-20 05:44 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711967394905587804/20205151261585_1.jpg",""
+"310086714481704960","Kaktus#4899","18-May-20 06:38 PM","```la $a0, nombreString
+li $v0, 4
+syscall```","",""
+"310086714481704960","Kaktus#4899","18-May-20 06:47 PM","http://www.dccia.ua.es/dccia/inf/asignaturas/MD/curso19-20/prac12aem.pdf#page=5","",""
+"683065121970323553","andresmacia45#4596","18-May-20 07:03 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711987351332585512/Examen2_Grupo11.pdf",""
+"310086714481704960","Kaktus#4899","18-May-20 07:07 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711988323018866748/unknown.png",""
+"310086714481704960","Kaktus#4899","18-May-20 07:10 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711989098772037632/Screenshot_20200518-191013.png",""
+"683065121970323553","andresmacia45#4596","18-May-20 07:19 PM","https://www.pccomponentes.com/logitech-g203-prodigy-raton-gaming-8000dpi?gclid=CjwKCAjw5Ij2BRBdEiwA0Frc9S9lPUt9BEm0VJhdBrY9QdtIr1EiriqZ7exMbD9IonJW-7eIyzXCRRoCPS0QAvD_BwE","",""
+"310086714481704960","Kaktus#4899","18-May-20 07:53 PM","","https://cdn.discordapp.com/attachments/666724570333446144/711999989127184434/Screenshot_20200518-195336.png",""
+"310086714481704960","Kaktus#4899","18-May-20 07:54 PM","```matlab
+x = [0 1 2 3 4];
+y = [1 -1 2 1 0];
+
+spline(x, y)
+```","",""
+"683065121970323553","andresmacia45#4596","19-May-20 11:32 AM","https://meet.google.com/psz-eqna-pqh","",""
+"683065121970323553","andresmacia45#4596","19-May-20 11:32 AM","!rank","",""
+"159985870458322944","MEE6#4876","19-May-20 11:32 AM","","https://cdn.discordapp.com/attachments/666724570333446144/712236327655178330/card.png",""
+"284772672443777025","santiac#5923","19-May-20 12:01 PM","vais a hacer el examen de matlab?","",""
+"323378898794446850","mariv1k#5321","19-May-20 12:05 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712244430480080936/dd580boesnz41.jpg",""
+"284772672443777025","santiac#5923","19-May-20 12:05 PM","🤔","",""
+"284772672443777025","santiac#5923","19-May-20 12:13 PM","8800 9360 8113","",""
+"284772672443777025","santiac#5923","19-May-20 12:15 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712247026863046717/1883ffc7337e7ce2ac3276fa53b6f4ac.png",""
+"284772672443777025","santiac#5923","19-May-20 12:17 PM","subs(f,pointx)","",""
+"323378898794446850","mariv1k#5321","19-May-20 12:18 PM","pointx(i)","",""
+"284772672443777025","santiac#5923","19-May-20 12:18 PM","subs(f,pointx(i))","",""
+"284772672443777025","santiac#5923","19-May-20 12:21 PM","clc;
+clear;
+x = [1,2,3,4];
+y = [2,4,3,5];
+
+a = polyfit(x, y, 3) % Devuelve los coeficientes del polinomio interpolador de grado = 3.
+
+xp = [1 : 0.01 : 4];
+yp = polyval(a, xp)  % Evalua el polinomio 'a' en 'xp'.
+
+qq = spline(x, y)    % Obtiene el spline cubico usando los datos x, y siendo estos las abcisas y las ordenadas respectivamente.","",""
+"683065121970323553","andresmacia45#4596","19-May-20 12:21 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712248519494467594/unknown.png",""
+"323378898794446850","mariv1k#5321","19-May-20 12:23 PM","subs(f,pointx(i))","",""
+"284772672443777025","santiac#5923","19-May-20 12:23 PM","plot(pointx,pointy,'r',x,y)","",""
+"284772672443777025","santiac#5923","19-May-20 12:24 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712249218320039936/32329fca9ab72dace5b69e7893876d3a.png",""
+"284772672443777025","santiac#5923","19-May-20 12:27 PM","clc;
+clear;
+
+pointx=[1900 1920 1940 1960 1980];
+pointy=[106.46 132.12 152.27 205.05 228.23];
+
+interp1(pointx,pointy,1975,'linear')","",""
+"284772672443777025","santiac#5923","19-May-20 12:28 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712250271123636312/093779fb2e00e97e52860ce01ed5950d.png",""
+"284772672443777025","santiac#5923","19-May-20 12:32 PM","1","",""
+"284772672443777025","santiac#5923","19-May-20 12:32 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712251228121202718/cbc9f18fa7fa1dbee31cce88571e6fdd.png",""
+"284772672443777025","santiac#5923","19-May-20 12:33 PM","clc;
+clear;
+
+x=[1 3 5 7 9 11 13];
+y=tan(x/2);
+A=spline(x,y)
+
+c=A.coefs(3,:)","",""
+"284772672443777025","santiac#5923","19-May-20 12:35 PM","-0.747022","",""
+"284772672443777025","santiac#5923","19-May-20 12:49 PM","0205 3812 3700","",""
+"323378898794446850","mariv1k#5321","19-May-20 12:58 PM","https://moodle2019-20.ua.es/moodle/course/view.php?id=2862#section-5","",""
+"284772672443777025","santiac#5923","19-May-20 01:00 PM","https://meet.google.com/spd-mmxb-oyw","",""
+"323378898794446850","mariv1k#5321","19-May-20 01:01 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712258638877818930/unknown.png",""
+"284772672443777025","santiac#5923","19-May-20 01:01 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712258644435009556/0f768b1ddd11c0a5bbe13e22baf80990.png",""
+"310086714481704960","Kaktus#4899","19-May-20 01:01 PM","```La evolución de los casos activos es un parámetro muy importante en el estudio de la pandemia de covid19. El ministerio sólo ha dado 3 medidas de la Comunidad de Madrid y se necesita calcular una función polinómica que permita obtener más valores de la serie. 
+
+Estos son los valores: 
+
+Día 4 -> 222 casos
+
+Día 12 -> 3578 casos
+
+Día 33 ->  38077 casos
+
+También ha dado la fórmula de la derivada de la función: 40x2× ln(x√)+10x2x
+
+Genera con estos datos el polinomio de mayor grado posible utilizando el método de Hermite y aproxima qué número de contagios tuvo Madrid el día 20 de pandemia y cuántos tendrá el día 60 si no se toman nuevas medidas y no hacemos caso de las recomendaciones #yohagocasodelasnormas #mequedoencasayestudio ```","",""
+"284772672443777025","santiac#5923","19-May-20 01:04 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712259304572452904/IMG_20200519_130346.jpg",""
+"284772672443777025","santiac#5923","19-May-20 01:38 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712267944343896094/WhatsApp_Image_2020-05-19_at_13.32.55.jpeg",""
+"310086714481704960","Kaktus#4899","19-May-20 03:52 PM","AaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAa","",""
+"310086714481704960","Kaktus#4899","19-May-20 06:49 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712346217505357833/unknown.png",""
+"310086714481704960","Kaktus#4899","19-May-20 06:51 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712346661766299658/unknown.png",""
+"683065121970323553","andresmacia45#4596","19-May-20 06:58 PM","no me funciona discord","",""
+"310086714481704960","Kaktus#4899","20-May-20 11:00 AM","https://meet.google.com/yku-wtnu-tdw?authuser=1","",""
+"310086714481704960","Kaktus#4899","20-May-20 11:32 AM","```li $a0, '\n'
+li $v0, valorImprimirChar
+syscall```","",""
+"323378898794446850","mariv1k#5321","20-May-20 11:36 AM","idsqrtneg","",""
+"310086714481704960","Kaktus#4899","20-May-20 12:44 PM","https://www.game.es/HARDWARE/CONSOLA/NINTENDO-SWITCH/NINTENDO-SWITCH/142279","",""
+"284772672443777025","santiac#5923","20-May-20 01:22 PM","un 7,5 en el examen de ayer","",""
+"284772672443777025","santiac#5923","20-May-20 01:22 PM","que grandes sois","",""
+"310086714481704960","Kaktus#4899","20-May-20 01:25 PM","En serio?","",""
+"310086714481704960","Kaktus#4899","20-May-20 01:25 PM","¿Cuál?","",""
+"310086714481704960","Kaktus#4899","20-May-20 01:25 PM","La nota que han dado del ejercicio 3 no es el de ayer eh jajajaja","",""
+"284772672443777025","santiac#5923","20-May-20 01:27 PM","no","",""
+"284772672443777025","santiac#5923","20-May-20 01:27 PM","el de matlab","",""
+"284772672443777025","santiac#5923","20-May-20 01:27 PM","en ese tengo un 10","",""
+"310086714481704960","Kaktus#4899","20-May-20 01:28 PM","Ojo","",""
+"310086714481704960","Kaktus#4899","20-May-20 01:28 PM","Un 8'33 yo","",""
+"310086714481704960","Kaktus#4899","20-May-20 01:28 PM","😮","",""
+"310086714481704960","Kaktus#4899","20-May-20 03:22 PM","","https://cdn.discordapp.com/attachments/666724570333446144/712656558391033886/Examen_de_practicas_-_Leccion_1_Los_Enteros.pdf",""
+"323378898794446850","mariv1k#5321","20-May-20 03:23 PM","https://www.youtube.com/watch?v=pQL-lV3eAPQ&list=PLGoAuZvZTW2koxoa_Zb1J8rTuK11yj-Wz&index=2&t=0s","",""
+"310086714481704960","Kaktus#4899","22-May-20 09:03 AM","https://discord.gg/4xPa2K","",""
+"664432205598031882","Dark Spirit#3670","22-May-20 09:57 AM","pasar por discord una invitación al mismo discord es algo raro e innecesario","",""
+"133677252708663296","Snowwy#4750","22-May-20 10:42 AM","> pasar por discord una invitación al mismo discord es algo raro e innecesario
+@Dark Spirit me lo estaba pasando a mi para invitar a un compañero","",""
+"323378898794446850","mariv1k#5321","23-May-20 12:08 PM","yo estoy con p2","",""
+"323378898794446850","mariv1k#5321","23-May-20 05:17 PM","https://twitter.com/OoCLMDShow/status/1257384592048300033?s=20","",""
+"133677252708663296","Snowwy#4750","23-May-20 06:17 PM","https://www.fiverr.com/ask4you/solve-c-and-c-plus-plus-programming-assignments-and-projects?context_referrer=search_gigs&source=main_banner&ref_ctx_id=2623ec77-cba4-4a48-a70e-01f8098375c7&pckg_id=1&pos=12&seller_online=true","",""
+"323378898794446850","mariv1k#5321","24-May-20 02:52 PM","ostream& operator<<(ostream &os, const Intent &intent){","",""
+"133677252708663296","Snowwy#4750","24-May-20 03:02 PM","","https://cdn.discordapp.com/attachments/666724570333446144/714100969553526864/unknown.png",""
+"133677252708663296","Snowwy#4750","24-May-20 04:50 PM","","https://cdn.discordapp.com/attachments/666724570333446144/714128295985152020/unknown.png",""
+"133677252708663296","Snowwy#4750","24-May-20 04:53 PM","","https://cdn.discordapp.com/attachments/666724570333446144/714128905161801768/unknown.png",""
+"323378898794446850","mariv1k#5321","24-May-20 04:55 PM","-play https://www.youtube.com/playlist?list=PL6NdkXsPL07KiewBDpJC1dFvxEubnNOp1","",""
+"234395307759108106","Groovy#7254","24-May-20 04:55 PM","","",""
+"683065121970323553","andresmacia45#4596","24-May-20 05:00 PM","-play https://www.youtube.com/watch?v=pPw_izFr5PA","",""
+"234395307759108106","Groovy#7254","24-May-20 05:00 PM","","",""
+"683065121970323553","andresmacia45#4596","24-May-20 05:00 PM","-play https://www.youtube.com/watch?v=pPw_izFr5PA","",""
+"234395307759108106","Groovy#7254","24-May-20 05:00 PM","","",""
+"323378898794446850","mariv1k#5321","24-May-20 05:01 PM","-clear","","👌 (1)"
+"323378898794446850","mariv1k#5321","24-May-20 05:01 PM","-play https://www.youtube.com/watch?v=pPw_izFr5PA","",""
+"323378898794446850","mariv1k#5321","24-May-20 05:03 PM","https://www.youtube.com/watch?v=y8Y13enIuUM","",""
+"284772672443777025","santiac#5923","24-May-20 05:06 PM","no hay herencia","",""
+"323378898794446850","mariv1k#5321","24-May-20 05:07 PM","-play https://www.youtube.com/watch?v=P3aFd9Wng_E","",""
+"683065121970323553","andresmacia45#4596","24-May-20 05:08 PM","-playhttps://www.youtube.com/watch?v=OC7cNS0GINo","",""
+"683065121970323553","andresmacia45#4596","24-May-20 05:08 PM","-play https://www.youtube.com/watch?v=OC7cNS0GINo","",""
+"683065121970323553","andresmacia45#4596","24-May-20 05:10 PM","-clear","","👌 (1)"
+"683065121970323553","andresmacia45#4596","24-May-20 05:10 PM","-play https://www.youtube.com/watch?v=83xBPCw5hh4","",""
+"323378898794446850","mariv1k#5321","24-May-20 05:10 PM","string Util::welcome(){
+    unsigned welcomeMsgNum = rand()%KSIZE;
+    return greetings[welcomeMsgNum];
+}.","",""
+"683065121970323553","andresmacia45#4596","24-May-20 05:14 PM","-play https://www.youtube.com/watch?v=P3aFd9Wng_E","",""
+"323378898794446850","mariv1k#5321","24-May-20 06:41 PM","string = cleanString(string)","",""
+"323378898794446850","mariv1k#5321","24-May-20 06:48 PM","Intent *newIntent = new Intent(name);","",""
+"323378898794446850","mariv1k#5321","24-May-20 06:48 PM","megabot.addIntent(newIntent);","",""
+"310086714481704960","Kaktus#4899","24-May-20 07:58 PM","```c++
+Chatbot::intents[existentId]->deleteExample(example);```","",""
+"323378898794446850","mariv1k#5321","24-May-20 08:41 PM","if(similarity == ""jc""){
+        Example::jaccardSimilarity(text);
+    }","",""
+"323378898794446850","mariv1k#5321","24-May-20 08:49 PM","intent[i]->getName();","",""
+"310086714481704960","Kaktus#4899","24-May-20 08:53 PM","```c++
+for(int i = 0; i < (int)c.intents.size(); i++){
+        os << *c.intents[i] << endl;
+    }```","",""
+"323378898794446850","mariv1k#5321","24-May-20 09:52 PM","void Intent::addExample(const Example &example){
+    if(this->examples.size() < KMAXEXAMPLES){
+        examples.push_back(example);
+    }
+    else {
+        throw ERR_MAXEXAMPLES;
+    }
+}","",""
+"310086714481704960","Kaktus#4899","27-May-20 12:48 PM","Chavules","",""
+"310086714481704960","Kaktus#4899","27-May-20 12:49 PM","Llamada para estudiar fbd?","",""
+"323378898794446850","mariv1k#5321","27-May-20 12:49 PM","maybe","",""
+"323378898794446850","mariv1k#5321","27-May-20 12:50 PM","","https://cdn.discordapp.com/attachments/666724570333446144/715154846587682826/1007f256b6bd208673f584641386a5ae.jpg",""
+"310086714481704960","Kaktus#4899","27-May-20 01:11 PM","Esta tarde a las 4","",""
+"310086714481704960","Kaktus#4899","27-May-20 01:12 PM","Tofos a full","",""
+"310086714481704960","Kaktus#4899","27-May-20 03:31 PM","https://drive.google.com/drive/folders/0B6irm_8uZrm-Xzk2RGNSSU1MeTg","",""
+"323378898794446850","mariv1k#5321","27-May-20 04:02 PM","https://twitter.com/LewdleNoodle2/status/1265128312923439104?s=20","",""
+"293091785930964992","spotify_premium#0679","27-May-20 05:19 PM","ponme ua student alex","",""
+"310086714481704960","Kaktus#4899","28-May-20 11:00 AM","Yiii","",""
+"310086714481704960","Kaktus#4899","28-May-20 11:00 AM","Os metéis?","",""
+"310086714481704960","Kaktus#4899","28-May-20 11:00 AM","Y hacemos exámenes?","",""
+"310086714481704960","Kaktus#4899","28-May-20 12:20 PM","No te escucho","",""
+"310086714481704960","Kaktus#4899","28-May-20 12:20 PM","Vale","",""
+"310086714481704960","Kaktus#4899","28-May-20 12:20 PM","Me parece que no me escuchas tú","",""
+"310086714481704960","Kaktus#4899","28-May-20 12:20 PM","Jajajaja","",""
+"310086714481704960","Kaktus#4899","28-May-20 12:20 PM","¿Me escuchas?","",""
+"310086714481704960","Kaktus#4899","28-May-20 12:20 PM","Ahora yo a ti sí","",""
+"310086714481704960","Kaktus#4899","28-May-20 01:49 PM","Todo bien you","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:36 PM","-play https://www.youtube.com/watch?v=arZZw8NyPq8","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:38 PM","entrad hay un temaso","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:39 PM","-replay","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:39 PM","-loop track","",""
+"234395307759108106","Groovy#7254","28-May-20 02:39 PM","","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:39 PM","se viene","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:43 PM","eso + https://youtu.be/3eRBFkxgG7g?t=16 cremita","",""
+"664432205598031882","Dark Spirit#3670","28-May-20 02:48 PM","Aserejé, ja deje tejebe tude jebere
+Sebiunouba majabi an de bugui an de buididipí
+Aserejé, ja deje tejebe tude jebere
+Sebiunouba majabi an de bugui an de buididipí
+Aserejé, ja deje tejebe tude jebere
+Sebiunouba majabi an de bugui an de buididipí","",""
+"664432205598031882","Dark Spirit#3670","28-May-20 02:49 PM","La letra es genial","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:49 PM","buah","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:49 PM","que jartada xD","",""
+"323378898794446850","mariv1k#5321","28-May-20 02:57 PM","-dc","","👋 (1)"
+"310086714481704960","Kaktus#4899","28-May-20 03:32 PM","https://www.pccomponentes.com/mars-gaming-mm018-raton-gaming-rgb-4800dpi","",""
+"683065121970323553","andresmacia45#4596","28-May-20 03:35 PM","https://www.pccomponentes.com/bg-hellcat-raton-gaming-4800dpi","",""
+"323378898794446850","mariv1k#5321","28-May-20 04:06 PM","https://youtu.be/m28Ji_TQNQE","",""
+"323378898794446850","mariv1k#5321","28-May-20 04:20 PM","¿","",""
+"323378898794446850","mariv1k#5321","28-May-20 04:20 PM","?","",""
+"323378898794446850","mariv1k#5321","28-May-20 04:45 PM","","https://cdn.discordapp.com/attachments/666724570333446144/715576511234834523/0eqd6rq1mi151.jpg",""
+"323378898794446850","mariv1k#5321","28-May-20 05:11 PM","https://pokemongolive.com/es/post/realityblending-announcement/","",""
+"323378898794446850","mariv1k#5321","29-May-20 08:34 AM","A TOPEE","",""
+"323378898794446850","mariv1k#5321","29-May-20 08:34 AM","disc despues o  no?","",""
+"323378898794446850","mariv1k#5321","29-May-20 08:36 AM","no os veo activated?","",""
+"683065121970323553","andresmacia45#4596","29-May-20 08:48 AM","yo a tope","",""
+"683065121970323553","andresmacia45#4596","29-May-20 08:48 AM","tu te achantes","",""
+"284772672443777025","santiac#5923","29-May-20 08:49 AM","sabeis algo de algebra relacional?","",""
+"310086714481704960","Kaktus#4899","29-May-20 08:52 AM","https://drive.google.com/file/d/0B6irm_8uZrm-VnF2RkFLbFNONEU/view","",""
+"323378898794446850","mariv1k#5321","29-May-20 08:54 AM","https://moodle2019-20.ua.es/moodle/course/view.php?id=9204#section-1","",""
+"310086714481704960","Kaktus#4899","29-May-20 09:10 AM","https://drive.google.com/file/d/0B6irm_8uZrm-VnF2RkFLbFNONEU/view","",""
+"323378898794446850","mariv1k#5321","29-May-20 09:11 AM","","https://cdn.discordapp.com/attachments/666724570333446144/715824661111504946/EER303.png",""
+"310086714481704960","Kaktus#4899","29-May-20 09:11 AM","","https://cdn.discordapp.com/attachments/666724570333446144/715824663183360020/unknown.png",""
+"683065121970323553","andresmacia45#4596","29-May-20 09:11 AM","","https://cdn.discordapp.com/attachments/666724570333446144/715824748667338782/unknown.png",""
+"310086714481704960","Kaktus#4899","29-May-20 09:14 AM","hneubdps","",""
+"323378898794446850","mariv1k#5321","29-May-20 09:26 AM","https://youtu.be/m28Ji_TQNQE?t=2290","",""
+"284772672443777025","santiac#5923","29-May-20 09:39 AM","si sabeis de AR","",""
+"284772672443777025","santiac#5923","29-May-20 09:39 AM","","https://cdn.discordapp.com/attachments/666724570333446144/715831601333796884/071a0de4ffe7298048b6e71c3a7affbf.png",""
+"284772672443777025","santiac#5923","29-May-20 09:39 AM","","https://cdn.discordapp.com/attachments/666724570333446144/715831645667590234/f7eb906e2eba321409d231cdf9c0dbe9.png",""
+"284772672443777025","santiac#5923","29-May-20 09:41 AM","diria que es d,d,a pero si me confirmais dpm","",""
+"310086714481704960","Kaktus#4899","29-May-20 09:54 AM","<>","",""
+"310086714481704960","Kaktus#4899","29-May-20 09:55 AM","```CLIENTES(numcli, nombre, apellidos, sector, codprov)
+
+¿A qué enunciado corresponde la siguiente expresión de AR?
+
+C1 x CLIENTES donde C1.sector = CLIENTES.sector Y C1.numcli <> CLIENTES.numcli [C1.sector]```","",""
+"323378898794446850","mariv1k#5321","29-May-20 09:56 AM","ARTÍCULO(cod, desc, precio, provincia)
+ALMACÉN(id, nombre, provincia)
+STOCK(cod, id, mes)
+
+¿A qué enunciado corresponde la siguiente expresión de AR?
+
+ARTICULO ⊐⋈ (STOCK donde id = 'A01') [cod,mes]
+
+Seleccione una:
+a. No contesto (por si habías marcado la respuesta y te arrepientes)
+b. Resultado vacío de filas, nunca obtendrá resultados.
+c. Código y mes de los artículos almacenados en cualquier almacén.
+d. Código y mes de los artículos que no están almacenados en ningún almacén.
+e. Código de todos los artículos almacenados en cualquier almacén, y si ese almacén es el A01 también el mes.","",""
+"310086714481704960","Kaktus#4899","29-May-20 09:58 AM","```AVIÓN(mat, nombre, capacidad, motores, idap)
+AEROPUERTO(idap, nombre, localidad, provincia)
+
+¿A qué enunciado corresponde la siguiente expresión de AR?
+
+AVION [mat,idap] ⊐⋈ AEROPUERTO [provincia]
+
+Seleccione una:
+a. Provincias que no tienen estacionados aviones.
+b. Matrícula, identificador de los aviones, y si están estacionados en algún aeropuerto muestra su provincia. 
+c. Matrícula e identificador de aeropuerto de los aviones no estacionados en ningún aeropuerto.
+d. No contesto (por si habías marcado la respuesta y te arrepientes)
+e. Provincia de los aeropuertos donde están estacionados aviones.```","",""
+"284772672443777025","santiac#5923","29-May-20 10:03 AM","q habeis puesto en ese ultimo?","",""
+"323378898794446850","mariv1k#5321","29-May-20 10:03 AM","ese no lo he sacado al finakl","",""
+"310086714481704960","Kaktus#4899","29-May-20 10:10 AM","```Ha ocurrido un error al procesar sus respuestas.(Error al escribir a la base de datos). Elija continuar para regresar a la página en donde estaba y volver a intentarlo.```","",""
+"310086714481704960","Kaktus#4899","29-May-20 01:14 PM","Chavules","",""
+"310086714481704960","Kaktus#4899","29-May-20 01:14 PM","Tengo algo que os va a gustar ;)))","",""
+"310086714481704960","Kaktus#4899","29-May-20 01:24 PM","https://youtu.be/mIMjQScqfiU","",""
+"323378898794446850","mariv1k#5321","29-May-20 01:40 PM","mándalo bien","",""
+"323378898794446850","mariv1k#5321","29-May-20 01:41 PM","que no se veh","",""
+"284772672443777025","santiac#5923","29-May-20 02:20 PM","video privado xd","",""
+"683065121970323553","andresmacia45#4596","29-May-20 02:43 PM","fua a saber que es","",""
+"310086714481704960","Kaktus#4899","29-May-20 03:09 PM","Ahora","",""
+"310086714481704960","Kaktus#4899","29-May-20 03:09 PM","https://youtu.be/mIMjQScqfiU","",""
+"310086714481704960","Kaktus#4899","29-May-20 03:10 PM","¿Veis algún fallo? Depende de este ejercicio que apruebe FBD jajajaja","https://cdn.discordapp.com/attachments/666724570333446144/715914981698175026/unknown.png",""
+"310086714481704960","Kaktus#4899","29-May-20 03:10 PM","```C(c0, c1, d0)
+
+CP(c0)
+
+CAj(d0)->D
+
+
+
+D(d0, d1)
+
+CP(d0)
+
+
+
+R2(c0, d0)
+
+CP(c0)
+
+CAlt(d0)
+
+CAj(c0)->C
+
+CAj(d0)->D
+
+
+
+A(a0, a1, c0, b0)
+
+CP(a0, a1, c0)
+
+CAj(c0)->R2
+
+CAj(b0)->B
+
+VNN(b0)
+
+
+
+B(b0, b1, d0)
+
+CP(b0)
+
+CAlt(d0)
+
+CAj(d0)->D
+
+VNN(b1)```","",""
+"323378898794446850","mariv1k#5321","29-May-20 03:15 PM","ojala apruebes","",""
+"323378898794446850","mariv1k#5321","29-May-20 03:15 PM","lo de mate no es sorpresa","",""
+"323378898794446850","mariv1k#5321","29-May-20 03:15 PM","son ejercicios de examenes anteriores","",""
+"310086714481704960","Kaktus#4899","29-May-20 03:19 PM","Okay","",""
+"310086714481704960","Kaktus#4899","29-May-20 03:19 PM","Anyway quería tenerlo grabado para prepararnos bien 😉","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 12:16 AM","mañana pasad el enlace a meet gracias","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:47 AM","ee","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:47 AM","estan las notas de fbd","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:47 AM","de la seccion 2","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:47 AM","@Kaktus","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:47 AM","suerte bro xd","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:49 AM","Ya tío","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:49 AM","Un puto 10 😮","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:49 AM","letsgo","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:49 AM","No me lo esperaba yendo tan verde al examen y haciendo ese sólo, la verdad","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:49 AM","¿Tú que tal bro? 😄","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:50 AM","Te da aprobado no?","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:50 AM","de sobra jaja","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:50 AM","todos perfecto y me deje 1 sin responder del 4","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:50 AM","tendré un 9 o asi","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:50 AM","Flipa","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:50 AM","ahora lo mismo con mates","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:50 AM","y p2 y ec y md","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:51 AM","Puff","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:51 AM","Ojalá brother","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:51 AM","M2 me da miedo en verdad jajajaja","",""
+"284772672443777025","santiac#5923","01-Jun-20 09:51 AM","me da mas miedo ec","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:51 AM","Si no la apruebo me voy a agobiar jajajjaa","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 09:51 AM","EC da miedo pero hay tiempo de sobra","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 10:34 AM","Enlace para grupo 1: https://meet.google.com/spd-mmxb-oyw","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 11:38 AM","¿A las doce chat de voz?","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 11:41 AM","yo entrare cuando pasen lista","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 11:58 AM","okay","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 12:22 PM","entrad locos","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:25 PM","¿Por qué hay gente con cámara ya y todo? JAJAJAJA","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:26 PM","https://www.youtube.com/watch?v=lSm4QZqN8cA","",""
+"664432205598031882","Dark Spirit#3670","01-Jun-20 12:28 PM","/kill @e[type=nervios]","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 12:29 PM","/execute at @e[type=nervios] run say YOLO","",""
+"664432205598031882","Dark Spirit#3670","01-Jun-20 12:29 PM","XD","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:30 PM","wtf","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:30 PM","Next level Mario jajajaaj","",""
+"664432205598031882","Dark Spirit#3670","01-Jun-20 12:31 PM","/execute at @e[type=examen] run setblock ~ ~ ~ air 0 destroy","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 12:31 PM","👀","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 12:33 PM","tu cuando ibamos a clase no habia la mitad de la mitad de la mitad de gente xD","",""
+"664432205598031882","Dark Spirit#3670","01-Jun-20 12:33 PM","True","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 12:44 PM","xdd","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:46 PM","JAJAJAJAA","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:57 PM","Yeeeeee","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:57 PM","Id entrando jajajajaja","",""
+"664432205598031882","Dark Spirit#3670","01-Jun-20 12:57 PM","Que nervios","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 12:59 PM","Andresicoooooo","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:02 PM","Andres","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:02 PM","@andresmacia45 ¿Cuál tienes?","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:05 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716970731400986704/unknown.png",""
+"683065121970323553","andresmacia45#4596","01-Jun-20 01:05 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716970745644711936/unknown.png",""
+"323378898794446850","mariv1k#5321","01-Jun-20 01:06 PM","https://www.youtube.com/watch?v=oneC1gsSQaM","",""
+"323378898794446850","mariv1k#5321","01-Jun-20 01:13 PM","dzdy para x2sin(y3)+xe3z−cos(z2)=3y−6z+8","",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:25 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716975717912543242/unknown.png",""
+"683065121970323553","andresmacia45#4596","01-Jun-20 01:29 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716976631977214002/unknown.png",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:32 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716977474210365560/unknown.png",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:40 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716979579293663282/JPEG_20200601_134041.jpg",""
+"323378898794446850","mariv1k#5321","01-Jun-20 01:42 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716980010614915132/unknown.png",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:44 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716980513948172298/JPEG_20200601_134422.jpg",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:50 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716982031703081000/unknown.png",""
+"310086714481704960","Kaktus#4899","01-Jun-20 01:54 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716982945851768872/unknown.png",""
+"323378898794446850","mariv1k#5321","01-Jun-20 01:58 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716984047582314576/DescensoporGradiente1.pdf",""
+"323378898794446850","mariv1k#5321","01-Jun-20 01:58 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716984068306370580/DescensoporGradiente2.pdf",""
+"323378898794446850","mariv1k#5321","01-Jun-20 02:01 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716984704481361980/unknown.png",""
+"310086714481704960","Kaktus#4899","01-Jun-20 02:21 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716989829048696872/unknown.png",""
+"323378898794446850","mariv1k#5321","01-Jun-20 02:26 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716991071741018262/unknown.png",""
+"310086714481704960","Kaktus#4899","01-Jun-20 02:43 PM","","https://cdn.discordapp.com/attachments/666724570333446144/716995367043858495/unknown.png",""
+"310086714481704960","Kaktus#4899","03-Jun-20 08:39 AM","A que hora empieza esto?","",""
+"323378898794446850","mariv1k#5321","03-Jun-20 08:39 AM","a menos cuearto et metes a tu meetr","",""
+"310086714481704960","Kaktus#4899","03-Jun-20 08:51 AM","Pasan lista?","",""
+"323378898794446850","mariv1k#5321","03-Jun-20 08:52 AM","si","",""
+"323378898794446850","mariv1k#5321","03-Jun-20 08:56 AM","no me deja entrar al enlace de lenunciado","",""
+"323378898794446850","mariv1k#5321","03-Jun-20 09:02 AM","oh wow problemas de servidor","",""
+"323378898794446850","mariv1k#5321","03-Jun-20 09:03 AM","os carga?","",""
+"323378898794446850","mariv1k#5321","03-Jun-20 09:04 AM","https://pracdlsi.dlsi.ua.es/alumne/assig.cgi?id=cas&asig=%20PROG2II","",""
+"683065121970323553","andresmacia45#4596","03-Jun-20 09:07 AM","https://pracdlsi.dlsi.ua.es/alumne/revisio.cgi?id=cas&asig=PROG2II&prac=prog2c3enun1","",""
+"683065121970323553","andresmacia45#4596","03-Jun-20 10:34 AM","https://pracdlsi.dlsi.ua.es/alumne/assig.cgi?id=cas&asig=PROG2II","",""
+"310086714481704960","Kaktus#4899","03-Jun-20 10:35 AM","Se me escucha?","",""
+"310086714481704960","Kaktus#4899","06-Jun-20 12:17 PM","Heeyyy","",""
+"310086714481704960","Kaktus#4899","06-Jun-20 12:17 PM","¿Cómo lo lleváis todo?","",""
+"323378898794446850","mariv1k#5321","07-Jun-20 07:25 PM","chino chano","",""
+"323378898794446850","mariv1k#5321","07-Jun-20 07:25 PM","alex","",""
+"310086714481704960","Kaktus#4899","07-Jun-20 07:29 PM","Dime","",""
+"310086714481704960","Kaktus#4899","07-Jun-20 07:29 PM","Jajajaja","",""
+"310086714481704960","Kaktus#4899","07-Jun-20 07:29 PM","Tío, tengo mazo de ganas de jugar a Minecraft pero rollo roleo","",""
+"323378898794446850","mariv1k#5321","07-Jun-20 07:47 PM","ostia ya ves y el roleplay se come twitch jaja","",""
+"323378898794446850","mariv1k#5321","07-Jun-20 07:47 PM","https://www.youtube.com/watch?v=ZyxerzXedS0","",""
+"310086714481704960","Kaktus#4899","07-Jun-20 07:52 PM","LOOOOOOOOOOOOOOOOOOOOOOL JAJAJAAJAJA","",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:21 PM","¿Se me escucha?","",""
+"323378898794446850","mariv1k#5321","08-Jun-20 09:22 PM","estas muted","",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:22 PM","What","",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:22 PM","Se supone que se me debería escuchar","",""
+"323378898794446850","mariv1k#5321","08-Jun-20 09:22 PM","igual si quitas el muted no se","",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:22 PM","","https://cdn.discordapp.com/attachments/666724570333446144/719632574388895755/unknown.png",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:23 PM","No no, que no estoy muted jajajaja","",""
+"323378898794446850","mariv1k#5321","08-Jun-20 09:23 PM","","https://cdn.discordapp.com/attachments/666724570333446144/719632612909645844/unknown.png",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:23 PM","Wtfffff","",""
+"323378898794446850","mariv1k#5321","08-Jun-20 09:23 PM","bug","",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:24 PM","MAAAAAAAAAN","",""
+"310086714481704960","Kaktus#4899","08-Jun-20 09:24 PM","TE VOY A MATAR JAJAJAAJA","",""
+"323378898794446850","mariv1k#5321","08-Jun-20 09:27 PM","https://mega.nz/file/7ABz0AiS#AsYXZgrTooBkCsWPmlQ3amRQFCic9cI9OlznDARE6G8","",""
+"323378898794446850","mariv1k#5321","08-Jun-20 09:28 PM","","https://cdn.discordapp.com/attachments/666724570333446144/719633973839528096/unknown.png",""
+"310086714481704960","Kaktus#4899","09-Jun-20 08:51 AM","Andres","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 08:51 AM","Se me oye?","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 09:14 AM","No se calla","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 09:14 AM","NO SE CALLA","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 09:14 AM","no c caia","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 09:14 AM","AaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAa","",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 09:15 AM","ya ves","",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 09:15 AM","tio ponte bien pa hablar","",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 09:15 AM","bien dicho","",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 09:16 AM","jaleo","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 09:17 AM","","https://cdn.discordapp.com/attachments/666724570333446144/719812501809659986/unknown.png",""
+"310086714481704960","Kaktus#4899","09-Jun-20 09:31 AM","add","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 09:41 AM","","https://cdn.discordapp.com/attachments/666724570333446144/719818441921396736/unknown.png",""
+"310086714481704960","Kaktus#4899","09-Jun-20 10:04 AM","","https://cdn.discordapp.com/attachments/666724570333446144/719824346608042004/unknown.png",""
+"310086714481704960","Kaktus#4899","09-Jun-20 10:05 AM","sw $12, 8($13)","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 11:07 AM","","https://cdn.discordapp.com/attachments/666724570333446144/719840101470830622/unknown.png",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 11:12 AM","","https://cdn.discordapp.com/attachments/666724570333446144/719841233916133447/unknown.png",""
+"310086714481704960","Kaktus#4899","09-Jun-20 11:30 AM","","https://cdn.discordapp.com/attachments/666724570333446144/719845794928394240/JPEG_20200609_113006.jpg",""
+"310086714481704960","Kaktus#4899","09-Jun-20 11:30 AM","","https://cdn.discordapp.com/attachments/666724570333446144/719845838054096938/JPEG_20200609_113015.jpg",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 01:43 PM","","https://cdn.discordapp.com/attachments/666724570333446144/719879444122042458/unknown.png",""
+"310086714481704960","Kaktus#4899","09-Jun-20 03:04 PM","Yi you","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 03:04 PM","Estás ready?","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 03:34 PM","Avísame en estar","",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 03:37 PM","si","",""
+"683065121970323553","andresmacia45#4596","09-Jun-20 03:43 PM","yo ya estoy","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 04:16 PM","Okay","",""
+"310086714481704960","Kaktus#4899","09-Jun-20 04:16 PM","Me meto @andresmacia45","",""
+"310086714481704960","Kaktus#4899","11-Jun-20 10:04 AM","Se viene?","",""
+"323378898794446850","mariv1k#5321","11-Jun-20 10:05 AM","🔥","",""
+"683065121970323553","andresmacia45#4596","11-Jun-20 10:36 AM","lets goooo","",""
+"323378898794446850","mariv1k#5321","11-Jun-20 10:44 AM","https://meet.google.com/gfy-othi-mif?pli=1&authuser=2","",""
+"323378898794446850","mariv1k#5321","11-Jun-20 11:12 AM","","https://cdn.discordapp.com/attachments/666724570333446144/720566158390198292/unknown.png",""
+"323378898794446850","mariv1k#5321","11-Jun-20 12:29 PM","https://www.youtube.com/watch?v=I7nldfWUVbo&list=PLGoAuZvZTW2m5bAS6hTjDga7kaMOETzMm&index=3","",""
+"310086714481704960","Kaktus#4899","11-Jun-20 12:37 PM","","https://cdn.discordapp.com/attachments/666724570333446144/720587522782134281/JPEG_20200611_123728.jpg",""
+"310086714481704960","Kaktus#4899","11-Jun-20 12:37 PM","","https://cdn.discordapp.com/attachments/666724570333446144/720587618613723187/JPEG_20200611_123740.jpg",""
+"323378898794446850","mariv1k#5321","15-Jun-20 09:04 PM","mi cumpleaños es en un par de meses bois https://www.amazon.es/dp/B08957PT2K?tag=linustechti05-21","",""
+"323378898794446850","mariv1k#5321","15-Jun-20 09:05 PM","un par de dolars","",""
+"664432205598031882","Dark Spirit#3670","15-Jun-20 09:07 PM","Eres muy optimista pensando que en un par de meses el mundo siga existiendo","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 06:09 PM","MC = {sc = salir de casa,
+vi = tiene sintomas de virus,
+de = hace deporte,
+pa = pandemia global,
+ag = hay aglomeraciones,
+di = mantiene distancias
+}","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 06:10 PM","P1: (sc -> ¬vi) ^ (¬pa -> sc)","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 06:10 PM","P2: (¬de -> ag) ^ (de -> di)","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 06:10 PM","Q: (vi -> pa) ^ (¬ag -> di)","",""
+"323378898794446850","mariv1k#5321","17-Jun-20 06:13 PM","p = salir de casa","",""
+"323378898794446850","mariv1k#5321","17-Jun-20 06:13 PM","q = tener sintomas","",""
+"323378898794446850","mariv1k#5321","17-Jun-20 06:13 PM","r = haber una pandemia","",""
+"323378898794446850","mariv1k#5321","17-Jun-20 06:14 PM","s = encontrar aglomeracions
+t = mantener distancia
+u = hacer deporte","",""
+"323378898794446850","mariv1k#5321","17-Jun-20 06:15 PM","p1 (q -> r) ^ (~t -> ~s)","",""
+"323378898794446850","mariv1k#5321","17-Jun-20 06:16 PM","p2: (~s <-> t) -> (p ^ u)","",""
+"323378898794446850","mariv1k#5321","17-Jun-20 06:16 PM","q: (~q ^ ~r) -> p","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 07:35 PM","sc = A, ¬vi = B","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 07:35 PM","A -> B","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 07:35 PM","vi = V, pa = F","",""
+"310086714481704960","Kaktus#4899","17-Jun-20 07:35 PM","vi = ¬B = ¬¬vi = vi","",""
+"664432205598031882","Dark Spirit#3670","17-Jun-20 10:06 PM","Yo ya he acabado","",""
+"310086714481704960","Kaktus#4899","19-Jun-20 09:56 AM","Yepa","",""
+"323378898794446850","mariv1k#5321","29-Jun-20 09:51 AM","https://www.dropbox.com/sh/d00k6ug0hqruib6/AAAoCNe_uF9y3vEVPmS6OUdoa/Primer%20cuatrimestre/Programaci%C3%B3n%20I/Otros%20P1/Ex%C3%A1menes%20cursos%20anteriores?dl=0&preview=Julio+2014.pdf&subfolder_nav_tracking=1","",""
+"323378898794446850","mariv1k#5321","29-Jun-20 10:03 AM","https://www.dropbox.com/sh/d00k6ug0hqruib6/AACOKFzUuc_MRe-y15ta9S1fa/Primer%20cuatrimestre/Programaci%C3%B3n%20I/Teor%C3%ADa%20P1/Ejercicios%20costes?dl=0&subfolder_nav_tracking=1","",""
+"323378898794446850","mariv1k#5321","29-Jun-20 10:26 AM","btp-nawu-ntr","",""
+"683065121970323553","andresmacia45#4596","29-Jun-20 01:11 PM","ye mario tirali","",""
+"323378898794446850","mariv1k#5321","29-Jun-20 01:13 PM","https://meet.google.com/zyx-qwto-uxc?pli=1&authuser=2","",""
+"683065121970323553","andresmacia45#4596","29-Jun-20 01:19 PM","blanco q risota tu camara","",""
+"683065121970323553","andresmacia45#4596","29-Jun-20 01:21 PM","la teua pitjor mario","",""
+"304280586003021824","abg._.blanco#0405","29-Jun-20 01:21 PM","xD","",""
+"323378898794446850","mariv1k#5321","29-Jun-20 01:21 PM","XDDDD","",""
+"683065121970323553","andresmacia45#4596","29-Jun-20 01:22 PM","no puedo parar de reirme tio","",""
+"683065121970323553","andresmacia45#4596","29-Jun-20 01:23 PM","el iñigo jaja","",""
+"323378898794446850","mariv1k#5321","29-Jun-20 01:41 PM","https://www.dropbox.com/sh/d00k6ug0hqruib6/AABRnnTyRNLgJnm5TT75Affsa/Primer%20cuatrimestre/Programaci%C3%B3n%20I/Pr%C3%A1cticas%20P1/Ejercicios%20P1/7.%20Registros?dl=0&preview=Problema1.cpp&subfolder_nav_tracking=1","",""
+"315399792551264266","iniesgar#0129","03-Jul-20 01:19 PM","No me jodas entregué el examen 22 segundos tardes","",""
+"323378898794446850","mariv1k#5321","04-Jul-20 02:05 PM","que dise","",""
+"323378898794446850","mariv1k#5321","06-Jul-20 10:00 PM","ya han puesto las horas de los examenes en fbdweb","",""
+"315399792551264266","iniesgar#0129","07-Jul-20 09:58 PM","https://twitter.com/fmorenoseco/status/1280548107625922560?s=09","",""
+"315399792551264266","iniesgar#0129","07-Jul-20 09:59 PM","BuscaPlagios holmes","",""
+"664432205598031882","Dark Spirit#3670","10-Jul-20 02:39 PM","¿Alguno hicisteis el examen de STI?","",""
+"323378898794446850","mariv1k#5321","10-Jul-20 03:36 PM","YO SI","",""
+"323378898794446850","mariv1k#5321","10-Jul-20 03:36 PM","yo si","",""
+"664432205598031882","Dark Spirit#3670","10-Jul-20 04:05 PM","Han sacado ya las notas?","",""
+"323378898794446850","mariv1k#5321","10-Jul-20 04:05 PM","no","",""
+"323378898794446850","mariv1k#5321","10-Jul-20 04:05 PM","creo","",""
+"315399792551264266","iniesgar#0129","11-Jul-20 11:50 AM","No todavía no","",""
+"315399792551264266","iniesgar#0129","11-Jul-20 11:51 AM","Estate atento a los anuncios","",""
+"315399792551264266","iniesgar#0129","11-Jul-20 03:35 PM","Ya están las notas de sti","",""
+"323378898794446850","mariv1k#5321","11-Jul-20 03:40 PM","gg","",""
+"315399792551264266","iniesgar#0129","11-Jul-20 04:02 PM","Aprobaste @mariv1k ?","",""
+"323378898794446850","mariv1k#5321","11-Jul-20 04:12 PM","GG","",""
+"310086714481704960","Kaktus#4899","12-Dec-20 05:03 PM","Os rulo por aquí un pdf que me he hecho para el examen de dbd","",""
+"310086714481704960","Kaktus#4899","12-Dec-20 05:03 PM","Para tener la info accesible","",""
+"310086714481704960","Kaktus#4899","12-Dec-20 05:03 PM","","https://cdn.discordapp.com/attachments/666724570333446144/787348977485348894/Solucionario_PL_SQL.pdf",""
+"458738156695584770","The_Siber#3448","21-Apr-21 10:12 AM","hostia espera que hay mas canales xd","",""
+"458738156695584770","The_Siber#3448","21-Apr-21 10:13 AM","acabo de encontrar esto lmao","",""
+"458738156695584770","The_Siber#3448","21-Apr-21 10:13 AM","ale me voy que no soy de la UA xd","",""
+"355636164897669122","SISPLAU#7555","21-Apr-21 10:13 AM","XDD","",""
+"323378898794446850","mariv1k#5321","21-Apr-21 10:40 AM","lmao","",""
+"824989001999712337","LogiCraft Engine#2050","29-Apr-21 01:09 PM","<msg>","","kekw (1),kekwPurple (1)"
+"323378898794446850","mariv1k#5321","06-May-21 10:24 AM","","https://cdn.discordapp.com/attachments/666724570333446144/839779600212033546/Listado_de_Problemas.pdf",""
+"323378898794446850","mariv1k#5321","06-May-21 10:40 AM","","https://cdn.discordapp.com/attachments/666724570333446144/839783793258135582/unknown.png",""
+"323378898794446850","mariv1k#5321","06-May-21 11:05 AM","","https://cdn.discordapp.com/attachments/666724570333446144/839789929676144650/unknown.png",""
+"355636164897669122","SISPLAU#7555","06-May-21 11:11 AM","https://www.youtube.com/watch?v=2M3J63evb2k&ab_channel=FRANCOJUAREZ","",""
+"355636164897669122","SISPLAU#7555","06-May-21 11:31 AM","","https://cdn.discordapp.com/attachments/666724570333446144/839796446676647936/unknown.png",""
+"355636164897669122","SISPLAU#7555","06-May-21 11:31 AM","","https://cdn.discordapp.com/attachments/666724570333446144/839796507565490196/unknown.png",""
+"323378898794446850","mariv1k#5321","06-May-21 11:48 AM","","https://cdn.discordapp.com/attachments/666724570333446144/839800834367422474/unknown.png",""
+"323378898794446850","mariv1k#5321","13-May-21 02:38 PM","dark sisplau la tenéis esta?","https://cdn.discordapp.com/attachments/666724570333446144/842380401607835688/unknown.png",""
+"355636164897669122","SISPLAU#7555","13-May-21 03:08 PM","Porque al ser la FPU una unidad separada, las operaciones en coma flotante solo utilizan los propios registros de la unidad.
+Los datos inmediatos tienen un límite de 16 bits, y la coma flotante de simple precisión ocupa 32.","",""
+"355636164897669122","SISPLAU#7555","13-May-21 03:08 PM","esto es supuestamente","",""
+"323378898794446850","mariv1k#5321","13-May-21 03:08 PM","geniaal","",""
+"355636164897669122","SISPLAU#7555","15-May-21 05:58 PM","@mariv1k @Dark Spirit habeis hecho este apartado del ejercicio del otro dia?","",""
+"355636164897669122","SISPLAU#7555","15-May-21 05:58 PM","","https://cdn.discordapp.com/attachments/666724570333446144/843155468826181712/unknown.png",""
+"355636164897669122","SISPLAU#7555","15-May-21 05:58 PM","","https://cdn.discordapp.com/attachments/666724570333446144/843155493019189298/unknown.png",""
+"323378898794446850","mariv1k#5321","15-May-21 06:00 PM","nop","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:00 PM","lo puedo intentar ahora","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:00 PM","lo voy a intenta","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:00 PM","r","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:00 PM","va","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:06 PM","una cosa","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:07 PM","tell me","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:19 PM","te da 9+47k y -42-10k?","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:20 PM","no","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:20 PM","en la comprobación eso te da bien?","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:21 PM","baia","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:21 PM","es que a mi me sale 42+47k y 9-10k","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:21 PM","XD","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:21 PM","lmao","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:21 PM","a ti te da?","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:22 PM","no","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:22 PM","esq yo le he dado la vuelta","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:22 PM","alfa=10 beta=47 no?","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:22 PM","si","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:22 PM","?","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:22 PM","(s,t)=(14,3)","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:22 PM","yo tengio -14","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:23 PM","(xo,yo)=(42,9)","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:23 PM","por?","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:24 PM","con -14 a mi si que me da","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:24 PM","pero porque te da -14?","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:25 PM","oka ya","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:25 PM","es x=-42+47k y=9-10k","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:25 PM","si","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:25 PM","a mi asi si que me da","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:25 PM","pero porque -14","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:26 PM","cuando haces bezout sale asi","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:26 PM","en la ultima sustitución de bezout tienes que 1=47(-11)+37(14)","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:26 PM","sustituyes el 37 por 10+47(1)","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:27 PM","y te sale al final 1=10(14)+47(3)","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:27 PM","tu como has hecho","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:27 PM","euclides","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:27 PM","con con 47 / 10....","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:28 PM","10=47(-1)+37","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:28 PM","eso me dijo el profesor","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:28 PM","esa es la primera","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:28 PM","supuestamente","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:28 PM","pero tu has cambiado la ecuación del principio","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:29 PM","esq es mas comodo","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:29 PM","esta 10x+47y=3","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:29 PM","y es commutaticva","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:29 PM","y como la has puesto","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:29 PM","da igual mcd(10,47) que mcd(47,10)","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:29 PM","pones el más pequeño a la derecha y es más rápidop","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:30 PM","supongo q se puede","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:30 PM","intenta hacerlo asi","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:30 PM","y haces bezout al revés también?","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:30 PM","tu hazlo y veras que sale","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:31 PM","10(-14)+47(3)","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:31 PM","pero tienes esto no?  d=10s+47t","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:31 PM","mmm vale voy a hacerlo","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:31 PM","si si","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:35 PM","mmm","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:35 PM","me sigue dando 14","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:35 PM","joe","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:35 PM","ps ns","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:38 PM","vale no","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:38 PM","es que como tengo 2 neuronas mi cerebro dice","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:38 PM","-12-2=14","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:38 PM","because mezclo multiplicación y suma porque tengo elevados niveles de retraso","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:39 PM","oka","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:39 PM","haz el siguiente si puedes pls","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:39 PM","que me ha dado una cosa rara","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:39 PM","ok","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:45 PM","bua pero da directo","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:45 PM","ns","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:46 PM","no pero puedes coger un numero menor","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:46 PM","no hace falta que cojas el 5","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:46 PM","si coges el 4 te da que el mcd es 9","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:46 PM","que es el mcd de 45 y 9 vaya","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:46 PM","el problema viene el apartado 3","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:47 PM","el de las soluciones particulares","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:47 PM","yo y xo","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:49 PM","que te da que n=4/9","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:52 PM","s yt q son","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:52 PM","1 -4","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:52 PM","de  9=45+9(-4)","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:52 PM","45(1) vaya","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:53 PM","pero luego tienes d=9","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:53 PM","c=dn=4","",""
+"355636164897669122","SISPLAU#7555","15-May-21 06:53 PM","luego n=4/9 que no se puede","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:54 PM","no tiene sentido es","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:54 PM","o","",""
+"323378898794446850","mariv1k#5321","15-May-21 06:54 PM","45 * 1 - 9 * 4 sno son 4","",""
+"323378898794446850","mariv1k#5321","15-May-21 07:20 PM","19,101,442,689,895,636,018,360,296,992,200,739,800,969,592,470,749,749,539,706,473,354,830,299,557,221,803,888,778,074,571,742,327,156,618,032,499,128,596,887,324,752,678,720,345,005,503,166,494,402,574,218,349,687,690,012,403,053,630,468,162,045,028,315,737,295,635,844,057,756,475,807,252,405,564,660,060,959,823,517,066,595,250,503,294,124,268,876,808,830,158,369,576,578,965,334,362,059,057,562,838,596,918,667,089,759,179,393,066,192,724,669,413,397,015,597,010,838,995,040,824,771,408,543,182,490,388,983,516,664,650,238,562,504,872,791,401,157,828,206,059,783,338,920,799,736,259,949,715,262,536,998,716,190,925,968,492,463,326,192,448,556,781,020,729,341,655,354,872,262,922,497,735,058,235,885,529,224,881,508,289,031,622,692,424,755,065,648,959,937,116,905,500,973,842,557,268,005,216,812,230,078,531,366,040,767,374,487,877,956,050,279,996,692,458,407,762,545,225,615,985,690,620,918,504,653,874,135,012,371,589,225,121,878,855,272,285,019,875,344,221,456,018,536,817,784,090,787,080,395,111,981,052,307,911,827,004,748,692,055,401,467,865,559,727,332,893,559,130,196,113,195,848,858,636,327,299,608,980,265,310,777,095,971,505,633,579,226,292,536,853,230,185,405,345,771,898,701,042,038,067,870,741,622,814,446,971,994,834,481,404,625,746,441,468,700,810,615,159,448,290,165,145,205,431,316,733,501,695,265,497,400,157,616,097,018,227,706,662,619,647,953,469,579,315,776,749,395,465,194,019,828,669,053,988,134,119,716,945,920,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000","",""
+"323378898794446850","mariv1k#5321","26-May-21 06:03 PM",":ua:","",""
+"323378898794446850","mariv1k#5321","26-May-21 06:03 PM","para que nos persiga hasta en las peores pesadillas","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:03 PM","Bieen","",""
+"355636164897669122","SISPLAU#7555","26-May-21 06:13 PM","dolor","",""
+"323378898794446850","mariv1k#5321","26-May-21 06:13 PM","xdd","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:14 PM","Sisplau, esto es para cuando estemos ocupados y siber le apetezca llamarnos","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:14 PM","entre otras cosas","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:15 PM","pero va a ser en eso en lo que más lo usemos","",""
+"355636164897669122","SISPLAU#7555","26-May-21 06:15 PM","lo veo useful","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:15 PM","teniendo en cuenta la frecuencia con la que lo hace","",""
+"355636164897669122","SISPLAU#7555","26-May-21 06:15 PM","sep XD","",""
+"355636164897669122","SISPLAU#7555","26-May-21 06:16 PM","habría que crear otro pero general","",""
+"355636164897669122","SISPLAU#7555","26-May-21 06:16 PM","rollo ocupado deja de puto pinguearme XDD","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:16 PM","XD","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:17 PM","tampoco hace falta tener veinte mil para que no pinguee el siber","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:17 PM","o igual si","",""
+"355636164897669122","SISPLAU#7555","26-May-21 06:17 PM","XDD","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:58 PM","este chat ha quedado muy abandonado","",""
+"664432205598031882","Dark Spirit#3670","26-May-21 06:58 PM","con lo útil que es","",""
+"664432205598031882","Dark Spirit#3670","28-May-21 08:57 PM","en el menú de project, ¿como se llama a las otras funciones?","",""
+"664432205598031882","Dark Spirit#3670","28-May-21 08:58 PM","directamente sin nada delante?","",""
+"323378898794446850","mariv1k#5321","28-May-21 08:58 PM","llamas a las de project","",""
+"323378898794446850","mariv1k#5321","28-May-21 08:58 PM","sin nada","",""
+"323378898794446850","mariv1k#5321","28-May-21 08:58 PM","estas definiendo la propia clase","",""
+"355636164897669122","SISPLAU#7555","28-May-21 08:58 PM","sin nada creo","",""
+"664432205598031882","Dark Spirit#3670","28-May-21 08:58 PM","vale grax","",""
+"323378898794446850","mariv1k#5321","30-May-21 11:58 AM","alguno entendéis como representa la relación r1?","https://cdn.discordapp.com/attachments/666724570333446144/848500703320342548/unknown.png",""
+"664432205598031882","Dark Spirit#3670","30-May-21 12:02 PM","Pues ahora mismo no caigo","",""
+"664432205598031882","Dark Spirit#3670","30-May-21 12:02 PM","parece que E se relaciona con sigo misma","",""
+"664432205598031882","Dark Spirit#3670","30-May-21 12:02 PM","algo así","",""
+"664432205598031882","Dark Spirit#3670","30-May-21 12:02 PM","no sé","",""
+"355636164897669122","SISPLAU#7555","01-Jun-21 06:31 PM","gente conoceis kotlin?","",""
+"323378898794446850","mariv1k#5321","01-Jun-21 06:54 PM","nop","",""
+"323378898794446850","mariv1k#5321","01-Jun-21 06:54 PM","es de la :ua: ?","",""
+"355636164897669122","SISPLAU#7555","01-Jun-21 06:55 PM","nop xD","",""
+"323378898794446850","mariv1k#5321","01-Jun-21 06:56 PM","y porq preguntas aqui","",""
+"355636164897669122","SISPLAU#7555","01-Jun-21 06:56 PM","porque sois los que sabeis de programacion","",""
+"355636164897669122","SISPLAU#7555","01-Jun-21 06:56 PM","y al parecer es un lenguaje que quieren que se utilice para android y sustituya al actual","",""
+"323378898794446850","mariv1k#5321","01-Jun-21 06:57 PM","ni me suena luego lo busco","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:40 PM","aqui no está silver","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:40 PM","que la chupe","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:40 PM","XDD","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:41 PM","XDD","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:41 PM","pasale foto de esto","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:41 PM","esta pa silver 🖕","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:41 PM","le digo de tu parte XD","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:41 PM","que sino me funa","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:41 PM","pos eso","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:41 PM","que pases captura","",""
+"458738156695584770","The_Siber#3448","02-Jun-21 07:44 PM","funao","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:44 PM","pesao","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:45 PM","tu fuera de aqui que no eres ua student","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:45 PM","a la puta calle","",""
+"664432205598031882","Dark Spirit#3670","02-Jun-21 07:45 PM","es mod","",""
+"664432205598031882","Dark Spirit#3670","02-Jun-21 07:45 PM","y hace su trabajo","",""
+"664432205598031882","Dark Spirit#3670","02-Jun-21 07:45 PM","no como otros","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:45 PM","equisde","",""
+"458738156695584770","The_Siber#3448","02-Jun-21 07:45 PM","https://tenor.com/view/rip-coffin-black-ghana-celebrating-gif-16743302","",""
+"458738156695584770","The_Siber#3448","02-Jun-21 07:46 PM","lo ha matao paco","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:46 PM","ya pero no puede ver los mensajes","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:46 PM","ha cambiado el canal para poder verlo XD","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:47 PM","no muero","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:47 PM","bobo","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:47 PM","ya no lo puede ver XD","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:47 PM","@The_Siber @The_Siber @The_Siber @The_Siber @The_Siber @The_Siber @The_Siber @The_Siber @The_Siber","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:47 PM","ahora si porque has pingueado XD","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:48 PM","xddd","",""
+"458738156695584770","The_Siber#3448","02-Jun-21 07:48 PM","no puedes detenerme","","elmillorCringe (1),elmillorWeirdChamp (1),🖕 (1),elmillorPocho (1),😐 (1)"
+"284772672443777025","santiac#5923","02-Jun-21 07:48 PM","da igual","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:48 PM","siempre la chuparas","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:48 PM","a este ritmo","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:48 PM","le he quitado el rol otra vez XD","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:48 PM","xdd","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:52 PM","@The_Siber chupala no eres de la ua","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:52 PM","no  puedes estar aqui","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:52 PM","deja de abusar","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:52 PM","pero no le pinguees XDD","",""
+"284772672443777025","santiac#5923","02-Jun-21 07:52 PM","pero quiero que me lea","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 07:52 PM","ah bueno XD","",""
+"323378898794446850","mariv1k#5321","02-Jun-21 08:24 PM","se calentó","",""
+"355636164897669122","SISPLAU#7555","02-Jun-21 09:02 PM","Se prendió esta wea","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:24 PM","lo del kotlin este está guay","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:24 PM","se parece a js en algunas cosas","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:24 PM","yo estoy trasteando con android studio y el lenguaje kotlin","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:25 PM","y es bastante sencillo por lo que he visto","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:25 PM","sip","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:25 PM","estuve mirando ayer y parecia comodo","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:25 PM","es muy cómodo","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:26 PM","tiene funciones interesantes","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:26 PM","yo igual si quiero hacer algo con android le doy un try","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:26 PM","why not","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:26 PM","lo bueno es que en cada proyecto que tengas puedes añadirle lo que se llaman activities ya predefinidas muy útiles","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:26 PM","rollo activity para google maps","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","o para hacer un login","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","todo eso está diseñado ya","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:27 PM","mmm eso mola","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","tu lo programas y haces que funcione","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:27 PM","si hace todo mas rapido al dev","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","y lo puedes personalizar como quieras","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","yo es que quiero y encontré esto","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","estoy siguiendo unos tutos de un pavo","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","lo paso si quieres","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:27 PM","lo explica dpm todo","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:28 PM","https://www.youtube.com/playlist?list=PLNdFk2_brsRdYF0FXDtSaGvluzBNHRbNe","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:28 PM","luego si entras en el canal tiene videos más específicos","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:28 PM","pero siempre siendo fiel a lo que esplica en esta playlist","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:31 PM","hay cosas que me llaman la atención","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:31 PM","como la declaración de variables","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:31 PM","var nombre = ""Ivan""","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:31 PM","no hay que definirla por defecto como string","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:32 PM","y si pones 
+val nombre = ""ivan""","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:32 PM","es lo mismo pero invariable","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:32 PM","igual con enteros, byte, double y float","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:32 PM","nice","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:33 PM","tienes funciones como el when()","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:33 PM","es como un switch pero más intuitivo","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:33 PM","un ejemplo de los tutos","https://cdn.discordapp.com/attachments/666724570333446144/850034563379101746/unknown.png",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:34 PM","nose mola","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:35 PM","nice","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:35 PM","simplificacion","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:36 PM","","https://cdn.discordapp.com/attachments/666724570333446144/850035281473962044/unknown.png",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:37 PM","algunas veces es raro","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:37 PM","pero útil a posteriori xD","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:38 PM","mola porque si por ejemplo tienes una variable en la que quieres guardar un nombre y en vez de pasarle 1 solo le pasas esto : listOf(""ivan"", ""mario"")","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:38 PM","el propio programa te cambia la variable a un array","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:38 PM","para poder almacenar todos","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:39 PM","y no hace falta definir el tamaño","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:39 PM","ya","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:40 PM","pero si intentas meter elementos en huecos superiores que no existen te da error","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:40 PM","es normal que viniendo de c++ lo veas to guapo","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:40 PM","es lo bueno y malo de c++","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:40 PM","ya XD","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:40 PM","con c++ al ser de ma bajo nivel aprendes a trabajar con tipos de datos y al manejo de memoria etc","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:41 PM","me pasó al principio en teleco también","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:41 PM","porque en teleco dabamos C no C++","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:41 PM","luego al cambiar a C++ se simplifican muchas cosas","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:41 PM","en lenguajes como js python go y quinientos mas todo eso viene ""dado"" por el propio lenguaje y tu te dedicas a programar","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:41 PM","se dice q c++ ayuda a la máquina pero python hace rapido al developer","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:42 PM","yo phyton no sé pero está por todos lados ahora al parecer","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:42 PM","en internet todas las semanas veo el meme que sale un pavo aprendiendo python viniendo de C contento y otro al revés pero llorando xd","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:42 PM","XDD","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:42 PM","xdd","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:43 PM","pyhton está basado en alguno previo o...","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:43 PM","ya te digo yo ni puta idea de python","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:43 PM","ns no creo","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:44 PM","python tamb tiene bastantes años, pero no cuajó hasta hace menos de 10 años","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:45 PM","yap","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:45 PM","ya podria haber un lenguaje de programación universal","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:45 PM","que salen cada dia 20 nuevos XD","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:45 PM","si te quieres aprender python por lo q sea","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:46 PM","yo pillé est piratilla y lo haré en verano en tener tiempo","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:46 PM","https://mega.nz/folder/HSxgyRJB#Oi-i7Nxy83UVqnmWRwFgmw","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:46 PM","de hecho kotlin se creo en 2020 XD","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:46 PM","lmao como las cryptos ya","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:46 PM","pero python no es gratis?","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:46 PM","es un bootcamp","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:46 PM","y ha gustado tanto que quieren está sustituyendo al lenguaje de programacion actual de android","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:46 PM","en un bootcamp basicamente te enseñan a programar, es como un intensivo","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:47 PM","lmao","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:47 PM","ya","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:47 PM","pues en verano probablemente lo mire","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:47 PM","es eso kotlin tiene que ver tan llevadero que es muy muy facil de escribir","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:47 PM","tengo curiosidad","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:47 PM","si esq ya casi parece texto real y no lenguaje de programacion xd","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:47 PM","claro","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:47 PM","esta hecho sobretodo para gente que no haya programado antes","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","LMAO","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","lo acaban de eliminar","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","JAJAJAJA","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:48 PM","como ?","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:48 PM","ostias","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:48 PM","ya ves xD","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","hace 2min he pinchado y me iba y ahora ya no","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","joer me lo hubiese tenido q bajar","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:48 PM","te lo has bajado??","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","ya lo buscare era de una pava llamada angela yu","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","estaba en udemy por 15 pavos","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:48 PM","nop","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:48 PM","ou","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:49 PM","f","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:49 PM","tremendo vaya timing","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:49 PM","como tiene partes muy visuales como esto...","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:49 PM","","https://cdn.discordapp.com/attachments/666724570333446144/850038513449435146/unknown.png",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:49 PM","es la propia pantalla del android","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:50 PM","y para probar la app puedes conectar tu movil y bajartela o usar un emulador integrado que esta dpm","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:50 PM","joer","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:50 PM","si que mola si","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:50 PM","a ver si me hago una app o algo este verano","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:50 PM","ya te lo he vendido mario XD","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:50 PM","mañana haces p2=","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:50 PM","?","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:50 PM","puede","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:50 PM","voy a mirar","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:50 PM","si","",""
+"355636164897669122","SISPLAU#7555","03-Jun-21 05:50 PM","nose a que hora","",""
+"323378898794446850","mariv1k#5321","03-Jun-21 05:51 PM","vete a moodle > examen","",""
+"323378898794446850","mariv1k#5321","05-Jun-21 08:33 PM","dark que no borres mensajes","",""
+"323378898794446850","mariv1k#5321","05-Jun-21 08:33 PM","que me vuelvo loco","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 11:59 AM","¿Donde pone en que sala es el examen de Estructura de los Computadores?
+Que llevo un rato buscando y no lo encuentro por ningún lado","",""
+"323378898794446850","mariv1k#5321","11-Jun-21 11:59 AM","en evaluacion","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 11:59 AM","en el anuncio del otro dia","",""
+"323378898794446850","mariv1k#5321","11-Jun-21 11:59 AM","en evaluacion tamb no?","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 11:59 AM","supongo","",""
+"323378898794446850","mariv1k#5321","11-Jun-21 12:00 PM","la primera q salga","",""
+"323378898794446850","mariv1k#5321","11-Jun-21 12:00 PM","es el aulario 3 q es raro","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:00 PM","sep","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:00 PM","Gracias","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:05 PM","No me sale","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:05 PM","pues vete al horario","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:05 PM","ahi te sale seguro","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:05 PM","pero no cual es la mia","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:05 PM","ah no","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:05 PM","solo las que hay en general","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:05 PM","puedes ir a la que quieras","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:05 PM","me lo dijo el profesor ayer","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:05 PM","que le pregunte por tutoria","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:05 PM","ahh vale","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:06 PM","dejame que lo confirme pero vamos eso recuerdo yo","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:06 PM","1 min","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:06 PM","","https://cdn.discordapp.com/attachments/666724570333446144/852851389524607016/unknown.png",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:07 PM","https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wlengua=es&wcodasi=34010&scaca=2020-21#","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:07 PM","ahi lo llevas","",""
+"323378898794446850","mariv1k#5321","11-Jun-21 12:08 PM","es en aulario 3 no?","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:08 PM","se","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:08 PM","eres mi salvador, te estare eternamente agradecido(o al menos por una semana)","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:09 PM","XD","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:09 PM",":POGGERS:","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:11 PM","lo tenemos todos a las 3?","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:11 PM","si","",""
+"355636164897669122","SISPLAU#7555","11-Jun-21 12:12 PM","pues nada a ver quien sale primero del aula XDDD","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 12:13 PM","yo no salgo hasta el último segundo, a ver si me entra la inspiración y me acuerdo de algo a última hora","",""
+"664432205598031882","Dark Spirit#3670","11-Jun-21 02:30 PM","Yo he llegado ya a la uni","",""
+"355636164897669122","SISPLAU#7555","01-Jul-21 07:38 AM","Gente","",""
+"355636164897669122","SISPLAU#7555","01-Jul-21 07:38 AM","Vais a ir a md ahora?","",""
+"355636164897669122","SISPLAU#7555","01-Jul-21 07:39 AM","@Dark Spirit @mariv1k","",""
+"664432205598031882","Dark Spirit#3670","01-Jul-21 07:50 AM","Si","",""
+"355636164897669122","SISPLAU#7555","01-Jul-21 07:55 AM","Que aula tenéis?","",""
+"355636164897669122","SISPLAU#7555","01-Jul-21 07:55 AM","Yo la c2","",""
+"323378898794446850","mariv1k#5321","01-Jul-21 08:05 AM","a2","",""
+"664432205598031882","Dark Spirit#3670","01-Jul-21 08:06 AM","A01","",""
+"664432205598031882","Dark Spirit#3670","01-Jul-21 08:06 AM","Pero la lista no ponía la de todos?","",""
+"323378898794446850","mariv1k#5321","01-Jul-21 08:11 AM","atsaco","",""
+"323378898794446850","mariv1k#5321","01-Jul-21 08:11 AM","a saber cuando llego","",""
+"664432205598031882","Dark Spirit#3670","01-Jul-21 08:11 AM","F","",""
+"355636164897669122","SISPLAU#7555","06-Jul-21 11:44 PM","@Dark Spirit @mariv1k  suerte mañana señores","",""
+"355636164897669122","SISPLAU#7555","06-Jul-21 11:44 PM","Nose si tu vas dark","",""
+"355636164897669122","SISPLAU#7555","06-Jul-21 11:44 PM","XD","",""
+"664432205598031882","Dark Spirit#3670","06-Jul-21 11:45 PM","Si voy, gracias","",""
+"323378898794446850","mariv1k#5321","07-Jul-21 10:37 AM","va va","",""
+"323378898794446850","mariv1k#5321","07-Jul-21 10:37 AM","yo ya estoy por aqui","",""
+"664432205598031882","Dark Spirit#3670","07-Jul-21 10:46 AM","Y yo","",""
+"323378898794446850","mariv1k#5321","07-Jul-21 10:49 AM","estoy en la cueva por si eso","",""
+"355636164897669122","SISPLAU#7555","07-Jul-21 10:51 AM","Yo estoy saliendo de csa","",""
+"323378898794446850","mariv1k#5321","07-Jul-21 10:51 AM","el examen es a las 11 largas","",""
+"323378898794446850","mariv1k#5321","07-Jul-21 10:52 AM","queréis juntarnos y repasar","",""
+"323378898794446850","mariv1k#5321","07-Jul-21 10:52 AM","o q","",""
+"664432205598031882","Dark Spirit#3670","07-Jul-21 10:55 AM","La impresora de la cueva funciona?","",""
+"664432205598031882","Dark Spirit#3670","07-Jul-21 10:55 AM","Tiene papel?","",""
+"664432205598031882","Dark Spirit#3670","07-Jul-21 10:55 AM","Es que necesito imprimir lo del formulario, que se me ha olvidado traerlo","",""
+"323378898794446850","mariv1k#5321","07-Jul-21 10:57 AM","si creo","",""
+"664432205598031882","Dark Spirit#3670","13-Jul-21 08:06 AM","A qué sala vais a ir","",""
+"664432205598031882","Dark Spirit#3670","13-Jul-21 08:07 AM","Es por ir a la misma","",""
+"355636164897669122","SISPLAU#7555","13-Jul-21 08:07 AM","A la primera de la planta baja","",""
+"355636164897669122","SISPLAU#7555","13-Jul-21 08:08 AM","Al entrar izquierda","",""
+"355636164897669122","SISPLAU#7555","13-Jul-21 08:20 AM","Donde estais?","",""
+"664432205598031882","Dark Spirit#3670","13-Jul-21 08:21 AM","Sujetando una columna","",""
+"355636164897669122","SISPLAU#7555","13-Jul-21 08:22 AM","Estoy en los bancos estos","",""
+"355636164897669122","SISPLAU#7555","13-Jul-21 08:27 AM","Suerte gente","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 10:20 PM","/tell spam-commands ***The_Siber*** ha hecho micro pong","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:47 PM","/tell general Y a mí","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:48 PM","/tell general Go to horny jail","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:50 PM","/tell general @SISPLAU VC","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:50 PM","Ay no","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:50 PM","XD","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:50 PM","no digas nada","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:50 PM","Ya XD","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:50 PM","Dale que se raye","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:52 PM","/tell pokemon !start","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:53 PM","XDD","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:53 PM","Ya lo probé eso no furula","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:53 PM","Molaría","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:53 PM","Y jugar como el bot","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:54 PM","Si","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:54 PM","Pero bot no juega con bot","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:55 PM","/tell general Yo no veo nada firmado por notário...","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:56 PM","/tell general @mariv1k @mariv1k VC","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:56 PM","no va","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:56 PM","Ñe","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:57 PM","ciber va a jugar undertale","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:58 PM","Ven Sispi","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:58 PM","/tell general Suspi VC","",""
+"355636164897669122","SISPLAU#7555","08-Aug-21 11:58 PM","QuE pEsAo","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:58 PM","XD","",""
+"664432205598031882","Dark Spirit#3670","08-Aug-21 11:59 PM","/tell general Lo siento","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 12:01 AM","/tell general o la tuya","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 12:01 AM","/tell general Si borras algo más te comes ban","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 12:02 AM","/tell general Si, eh","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 12:03 AM","/tell general mal todo","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 12:03 AM","/tell general se me atascan los 0 con los 1","",""
+"355636164897669122","SISPLAU#7555","09-Aug-21 12:04 AM","Lmao","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 01:05 AM","/tell general voy perfecto","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 01:05 AM","/tell general tus roles no van perfectos","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 01:16 AM","/say /unmute @SISPLAU","",""
+"824989001999712337","LogiCraft Engine#2050","09-Aug-21 01:16 AM","unmute @SISPLAU","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 01:16 AM","/say //unmute @SISPLAU","",""
+"824989001999712337","LogiCraft Engine#2050","09-Aug-21 01:16 AM","unmute @SISPLAU","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 01:16 AM","/say / /unmute @SISPLAU","",""
+"824989001999712337","LogiCraft Engine#2050","09-Aug-21 01:16 AM","/unmute @SISPLAU","",""
+"824989001999712337","LogiCraft Engine#2050","09-Aug-21 01:16 AM","Buen intento","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 01:16 AM","Y tanto que bueno","",""
+"355636164897669122","SISPLAU#7555","09-Aug-21 08:41 AM","XDD","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 12:44 PM","/tell general Tú Landriu, tú","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 12:50 PM","/tell general queréis cabezas de Herobrine?","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 01:27 PM","/tell general No","",""
+"664432205598031882","Dark Spirit#3670","09-Aug-21 03:50 PM","/tell spam-commands **DarkSpirit** vanished","",""
+"664432205598031882","Dark Spirit#3670","17-Aug-21 04:25 PM","/tell general estoy roto","",""
+"664432205598031882","Dark Spirit#3670","18-Aug-21 08:12 PM","/tell general UwU","",""
+"664432205598031882","Dark Spirit#3670","19-Aug-21 03:30 PM","/tell ilogicraft es precioso","",""
+"664432205598031882","Dark Spirit#3670","18-Sep-21 10:42 PM","/tell otakus / /bonk?","",""
+"355636164897669122","SISPLAU#7555","18-Sep-21 10:47 PM","el backstage para ciber XD","",""
+"664432205598031882","Dark Spirit#3670","07-Oct-21 05:10 PM","","https://cdn.discordapp.com/attachments/666724570333446144/895689561995345980/Screenshot_20211007-171014.png",""
+"664432205598031882","Dark Spirit#3670","07-Oct-21 05:10 PM","Que narices?","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:10 PM","ya tio","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:10 PM","le sale a todo el mundo","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:10 PM","ni puta idea que es","",""
+"664432205598031882","Dark Spirit#3670","07-Oct-21 05:11 PM","Les han hackeado o algo? Que pasa con la UA?","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:12 PM","nose","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:12 PM","es raro","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:12 PM","pero no son anuncios","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:12 PM","son notificaciones de móvil y ya","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:12 PM","idk","",""
+"664432205598031882","Dark Spirit#3670","07-Oct-21 05:15 PM","No, no, si me encanta, quiero más, quiero 10 de estas todos los días.
+Es la mejor notificación que he tenido de la UA. Y la única positiva.","",""
+"355636164897669122","SISPLAU#7555","07-Oct-21 05:16 PM","XDDDDDDD","",""
+"893590163912007690","Logicrux#1987","25-Oct-21 08:58 PM","","",""
+"893590163912007690","Logicrux#1987","25-Oct-21 09:02 PM","","",""
+"893590163912007690","Logicrux#1987","12-Nov-21 12:22 PM","","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:23 PM","Khé?","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:27 PM","escribe bien","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:27 PM","UwU","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:28 PM","¿Qué?","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:28 PM","Se ha pirado del server :kekw:","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:29 PM","Para entender el motivo del mute solo hace falta ver el motivo en el mensaje","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:29 PM","Ah no","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:29 PM","Pues se me ha petado","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:29 PM","I know","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:29 PM","Espera te lo quito","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:29 PM","XD","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:30 PM","y bajalo, para que lo use yo tambien","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:30 PM","que para eso lo cree yo","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:30 PM","Voy","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:30 PM","gracias genio","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:30 PM","Ya, es que a ciber  le gusta el poder","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:30 PM","XD","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:30 PM","y a mi quitarselo cuando más por sentado lo dé","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:31 PM","ya esta","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 12:31 PM","gracias","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 12:31 PM","np","",""
+"458738156695584770","The_Siber#3448","12-Nov-21 01:44 PM","Qué majos creen que no puedo ver lo que dicen","",""
+"355636164897669122","SISPLAU#7555","12-Nov-21 01:46 PM","Tu fuera de aqui","",""
+"664432205598031882","Dark Spirit#3670","12-Nov-21 02:15 PM","confiaba en ello","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:02 PM","No le des mod sisplau","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:02 PM","Ok","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:03 PM","Btw","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:03 PM","Por?","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:12 PM","Su capacidad para gestionar roles es el origen de todo su poder","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:12 PM","Ya no lo tiene","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:14 PM","Ok","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:50 PM","Bueno, a que esperas para darme mod","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:50 PM","O mi rol al menos","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:50 PM","estaba en ello","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:50 PM","Que ese me gustaba","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:50 PM","done","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:52 PM","Gracias","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:55 PM","XDDDDDDDD","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:55 PM","he visto el registro","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:55 PM","brutal","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:55 PM","Pues enseñamelo","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:56 PM","","https://cdn.discordapp.com/attachments/666724570333446144/909486894247739392/unknown.png",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:56 PM","","https://cdn.discordapp.com/attachments/666724570333446144/909486928250941461/unknown.png",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:56 PM","eso digo XD","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:56 PM","Ah","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:56 PM","golpe de estado","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:56 PM","golpe de estado","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:56 PM","Me lo ha quitado de nuevo, no sé con qué rol","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:57 PM","yo creo que se cual","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:57 PM","pero has quitado permisos de roles a mod XD","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 05:57 PM","ya no puedo hacer na","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:58 PM","Cuál?","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 05:59 PM","Se lo he quitado a un montón","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:01 PM","horny jail policeman","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 06:01 PM","Ese no lo tenía","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 06:01 PM","Lo tenía yo","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:02 PM","ya pero ha usado el mismo","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:02 PM","sale en el registro que se lo ha puesto","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:02 PM","estoy mirando el resto tambien XD","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 06:03 PM","pero no podria ponerselo sin otro XD","",""
+"664432205598031882","Dark Spirit#3670","14-Nov-21 06:03 PM","es el de bot","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:03 PM","XDD","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:04 PM","si, lo acabo de ver","",""
+"458738156695584770","The_Siber#3448","14-Nov-21 06:06 PM","hmm conque sispi colabora con dark","",""
+"458738156695584770","The_Siber#3448","14-Nov-21 06:06 PM","interesante jugada","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:07 PM","yo no colaboro con nadie","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:07 PM","dame mod","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:07 PM","pesao","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:07 PM","de los cojones","",""
+"458738156695584770","The_Siber#3448","14-Nov-21 06:07 PM","ok","",""
+"458738156695584770","The_Siber#3448","14-Nov-21 06:07 PM","era por si estabas con el","",""
+"458738156695584770","The_Siber#3448","14-Nov-21 06:07 PM","me he rallao","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:08 PM","Este tío es bobo","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:08 PM","Por cierto fuera de aquí","",""
+"458738156695584770","The_Siber#3448","14-Nov-21 06:10 PM","este tio no es bobo le acaban de apuñalar por la espalda en el server de discord que considera su zona de comfort y ahora esta paranoico","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:11 PM","Que fuera he dicho","",""
+"458738156695584770","The_Siber#3448","14-Nov-21 06:11 PM","oka","",""
+"355636164897669122","SISPLAU#7555","14-Nov-21 06:15 PM","Que pasa si respondo a un mensaje de un canal que alguien no puede ver","",""
+"664432205598031882","Dark Spirit#3670","16-Nov-21 10:34 AM","mario","",""
+"323378898794446850","mariv1k#5321","16-Nov-21 10:44 AM","ok","",""
+"355636164897669122","SISPLAU#7555","16-Jan-22 10:11 PM","@Dark Spirit el ciber todavía no se ha dado cuenta de que cambiamos el nombre del canal de ilogi","",""

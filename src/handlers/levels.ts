@@ -4,15 +4,13 @@ import { getChannelByString } from "../utils/getters"
 import { MyMath } from "../utils/math"
 import { getUserProfile, setGlobalStats } from "../utils/mongo"
 
-const getXpPerLvl = (level: number) => Math.floor(Math.pow(level, 2.5))
-const getXpPerMsg = (level: number, content: string) =>
-    Math.floor(Math.pow(level, 1.2)) * 100 * (Math.floor(MyMath.clamp(content.split(" ").length, 0, 30) / 30) + 1)
+const getXpPerLvl = (level: number, xp: number) => 5 * Math.pow(level, 1.5) + (50 * level) + 100 - xp
+const getXpPerMsg = (level: number, content: string) => 20 + (level >= 10 ? MyMath.clamp(content.length, 0, 50) : 0)
 
 export async function addXP(
     message: Message,
     user: User,
-    method: "MESSAGE" | "BULK_MESSAGES" | "BULK_XP",
-    amount?: number
+    method: "MESSAGE"
 ) {
     const { guild, content } = message
     const spamChannel = await getChannelByString("spam", guild!)
@@ -25,7 +23,7 @@ export async function addXP(
     const previousLevel = level
 
     if (method === "MESSAGE") {
-        const xpPerLvl = getXpPerLvl(level)
+        const xpPerLvl = getXpPerLvl(level, totalXp)
         const xpPerMsg = getXpPerMsg(level, content)
 
         xp += xpPerMsg
@@ -37,7 +35,7 @@ export async function addXP(
         if (level != previousLevel)
             if (level === 1) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
             else if (level === 1000) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
-            else if (level % 25 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
+            else if (level % 10 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
             else if (level === 666) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}** 👺`)
             else if (level === 69) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}** 😎`)
     }

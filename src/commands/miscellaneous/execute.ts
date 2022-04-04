@@ -6,8 +6,6 @@ export default {
     category: "Miscellaneous",
     description: "Init some type of application",
     slash: true,
-    testOnly: true,
-    guildOnly: true,
     options: [
         {
             name: "application",

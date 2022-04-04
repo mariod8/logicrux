@@ -43,7 +43,7 @@ export default {
     category: "Stats",
     description: "Get the leaderboard related to some data",
     slash: true,
-    testOnly: true,
+    guildOnly: true,
     options: [
         {
             name: "option",
