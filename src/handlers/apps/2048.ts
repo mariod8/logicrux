@@ -9,7 +9,7 @@ import {
     TextChannel,
     User,
 } from "discord.js"
-import moment from "moment"
+import * as moment from "moment"
 import { Emojis } from "../../emojis"
 import { _2048MoveDir, _guildProfile } from "../../templates"
 import { lerp } from "../../utils/color"
@@ -34,7 +34,7 @@ class __2048 {
         this.tiles = new Array(__2048.boardSize).fill(0).map(() => new Array(__2048.boardSize).fill(0))
         this.guild = guild
         this.score = 0
-        this.id = moment().valueOf()
+        this.id = moment.default().valueOf()
         this.startTime = this.id
         this.user = user
         this.genRandomTile()
@@ -151,7 +151,7 @@ class __2048 {
                 {
                     "_2048.score": this.score,
                     "_2048.userTag": this.user.tag,
-                    "_2048.date": moment().valueOf().toString(),
+                    "_2048.date": moment.default().valueOf().toString(),
                 }
             )
         }
@@ -179,7 +179,7 @@ class __2048 {
     }
     public getEmbed() {
         const embedFooterData: EmbedFooterData = {
-            text: `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment().valueOf())} ⏰`,
+            text: `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment.default().valueOf())} ⏰`,
             iconURL: this.user.displayAvatarURL({ dynamic: false, format: "jpg" }),
         }
         const embed = new MessageEmbed()
@@ -280,9 +280,9 @@ export async function _2048Init(channel: TextChannel, user: User) {
     controlsManager.on("end", async (collection) => {
         if (collection.last()?.customId === "exit") _2048Exit(0)
         else if (
-            moment().valueOf() - time >=
-                (collection?.last() ? collection!.last()!.createdTimestamp : moment().valueOf() - 2 * time) ||
-            moment().valueOf() - time >= instanceMessage?.createdTimestamp
+            moment.default().valueOf() - time >=
+                (collection?.last() ? collection!.last()!.createdTimestamp : moment.default().valueOf() - 2 * time) ||
+            moment.default().valueOf() - time >= instanceMessage?.createdTimestamp
         )
             _2048Exit(1)
         const profile = await getUserProfile({

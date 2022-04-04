@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose"
+import { models, model, Schema } from "mongoose"
 
 const name = "guild-profiles"
 const guildSchema = new Schema({
@@ -20,4 +20,4 @@ const guildSchema = new Schema({
     },
 })
 
-export default mongoose.models[name] || mongoose.model(name, guildSchema, name)
+export default models[name] || model(name, guildSchema, name)

@@ -1,0 +1,19 @@
+{
+    "extends": "@tsconfig/node16/tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "build",
+        "target": "ES6",
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules",
+        "build"
+    ],
+    "include": [
+        "src/**/*"
+    ],
+}

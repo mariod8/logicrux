@@ -1,4 +1,4 @@
-import moment from "moment"
+import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { setGlobalStats, setUsername } from "../../utils/mongo"
 import { cleanSpecialCharacters } from "../../utils/string"
@@ -91,7 +91,7 @@ export default {
         const action = interaction.options.getString("action")
 
         if (action === "curr_date") {
-            return moment().format("llll")
+            return moment.default().format("llll")
         } else if (action === "member_add") {
             client.emit("guildMemberAdd", member)
         } else if (action === "member_remove") {

@@ -1,7 +1,7 @@
 import { GuildMember, MessageAttachment, PartialGuildMember } from "discord.js"
 import { getChannelByString } from "../utils/getters"
 import * as Canvas from "canvas"
-import path from "path"
+import * as path from "path"
 
 export default async (member: GuildMember | PartialGuildMember, action: "ADD" | "REMOVE") => {
     const { guild, user } = member

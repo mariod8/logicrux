@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose"
+import { models, model, Schema } from "mongoose"
 
 const name = "mutes"
 const muteSchema = new Schema(
@@ -42,4 +42,4 @@ const muteSchema = new Schema(
     }
 )
 
-export default mongoose.models[name] || mongoose.model(name, muteSchema, name)
+export default models[name] || model(name, muteSchema, name)

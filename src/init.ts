@@ -1,7 +1,7 @@
 import { Player } from "discord-music-player"
 import { Client } from "discord.js"
-import moment from "moment"
-import momentTimezone from "moment-timezone"
+import * as moment from "moment"
+import * as momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
 import { MyPlayer } from "./player"
 

@@ -1,19 +1,19 @@
 import { Player } from "discord-music-player"
-import DiscordJS, { Client, Intents } from "discord.js"
-import dotenv from "dotenv"
-import path from "path"
+import { Client, Intents } from "discord.js"
+import * as dotenv from "dotenv"
+import * as path from "path"
 import WOKCommands from "wokcommands"
-import responses from "./src/features/responses"
-import welcomeGoodbye from "./src/features/welcome-goodbye"
-import { addXP } from "./src/handlers/levels"
-import { checkOnJoinMute } from "./src/handlers/mute"
-import { statsOnMessage } from "./src/handlers/stats"
-import init from "./src/init"
-import { reactNewVersion } from "./src/features/react"
-import rage from "./src/features/rage"
+import responses from "./features/responses"
+import welcomeGoodbye from "./features/welcome-goodbye"
+import { addXP } from "./handlers/levels"
+import { checkOnJoinMute } from "./handlers/mute"
+import { statsOnMessage } from "./handlers/stats"
+import init from "./init"
+import { reactNewVersion } from "./features/react"
+import rage from "./features/rage"
 dotenv.config()
 
-const client = new DiscordJS.Client({
+const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
@@ -48,7 +48,7 @@ async function cleanGuildSlashCommands(client: Client) {
 client.on("ready", async () => {
     //await cleanGuildSlashCommands(client)
     new WOKCommands(client, {
-        commandsDir: path.join(__dirname, "src/commands"),
+        commandsDir: path.join(__dirname, "commands"),
         typeScript: true,
         ignoreBots: true,
         mongoUri: process.env.MONGO_URI,
@@ -57,7 +57,7 @@ client.on("ready", async () => {
         disabledDefaultCommands: ["help", "command", "language", "prefix", "requiredrole", "channelonly", "slash"],
         botOwners: ["323378898794446850"],
         debug: true,
-    }).setDefaultPrefix("//")
+    })
     init(client, player)
     console.log(`${client?.user?.username} is ready!`)
 })

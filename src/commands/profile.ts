@@ -6,7 +6,7 @@ import {
     MessageButton,
     MessageEmbed,
 } from "discord.js"
-import moment from "moment"
+import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../emojis"
 import { MyMember } from "../member"
@@ -58,11 +58,11 @@ class Profile {
                         name: "`General`",
                         value: `**Miembro**: ${this.member.getMember()}\n**Tag**: ${
                             this.member.getUser().tag
-                        }\n**Fecha de unión**: ${moment(this.member.getMember().joinedTimestamp).format(
-                            "lll"
-                        )}\n**Última vez boosteado**: ${
+                        }\n**Fecha de unión**: ${moment
+                            .default(this.member.getMember().joinedTimestamp)
+                            .format("lll")}\n**Última vez boosteado**: ${
                             this.member.getMember().premiumSinceTimestamp
-                                ? moment(this.member.getMember().premiumSince).format("lll")
+                                ? moment.default(this.member.getMember().premiumSince).format("lll")
                                 : "_Nunca_"
                         }`,
                     }),

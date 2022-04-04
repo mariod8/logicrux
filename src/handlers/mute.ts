@@ -1,5 +1,5 @@
 import { Client, EmbedFooterData, GuildMember, MessageEmbed, Role } from "discord.js"
-import moment from "moment"
+import * as moment from "moment"
 import { _mutes, _unmute } from "../templates"
 import { getChannelByString, getDate, getTimeElapsed } from "../utils/getters"
 import { deleteMute, getGuildProfile, getMute, getMutes } from "../utils/mongo"
@@ -64,7 +64,7 @@ export async function unmute(
                 .setDescription(
                     `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(
                         start
-                    )}\n**Muteado durante**: ${getTimeElapsed(start, moment().valueOf())}`
+                    )}\n**Muteado durante**: ${getTimeElapsed(start, moment.default().valueOf())}`
                 )
                 .setFooter(embedFooterData)
                 .setColor("GREEN")
@@ -117,7 +117,7 @@ export async function checkOnJoinMute(member: GuildMember) {
         return
     }
     if (!previousMute) return
-    if (previousMute.expires > 0 && previousMute.expires <= moment().valueOf()) {
+    if (previousMute.expires > 0 && previousMute.expires <= moment.default().valueOf()) {
         await unmute(member, null, true, null, false)
     } else {
         await member.roles.set([mutedRole])

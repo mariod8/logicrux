@@ -1,5 +1,5 @@
 import { Client, ColorResolvable, CommandInteraction, Guild, GuildMember, Message, TextChannel, User } from "discord.js"
-import moment from "moment"
+import * as moment from "moment"
 import { _userType } from "../templates"
 import { time } from "./regex"
 const stringSimilarity = require("string-similarity")
@@ -57,7 +57,8 @@ export function getRandomDecimalNumber(min: number, max: number) {
 }
 
 export function getTime(option: "MS_TO_END_OF_WEEK" | "WEEKLY_LOOP") {
-    if (option === "MS_TO_END_OF_WEEK") return moment().endOf("isoWeek").valueOf() - moment().valueOf() - 5000
+    if (option === "MS_TO_END_OF_WEEK")
+        return moment.default().endOf("isoWeek").valueOf() - moment.default().valueOf() - 5000
     else if (option === "WEEKLY_LOOP") return 7 * 24 * 60 * 3600 * 1000
 }
 
@@ -93,6 +94,6 @@ export function getTimeElapsed(startTime: number, endTime: number) {
 }
 
 export function getDate(ms: number | string) {
-    if (typeof ms == "string") return moment(ms, "x").format("lll")
-    return moment(ms).format("lll")
+    if (typeof ms == "string") return moment.default(ms, "x").format("lll")
+    return moment.default(ms).format("lll")
 }

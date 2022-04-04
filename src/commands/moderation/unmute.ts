@@ -1,5 +1,5 @@
 import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
-import moment from "moment"
+import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { unmute } from "../../handlers/mute"
 import { _mutes } from "../../templates"
@@ -99,7 +99,7 @@ export default {
                 .setDescription(
                     `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(
                         start
-                    )}\n**Muteado durante**: ${getTimeElapsed(start, moment().valueOf())}`
+                    )}\n**Muteado durante**: ${getTimeElapsed(start, moment.default().valueOf())}`
                 )
                 .setFooter(embedFooterData)
                 .setColor("GREEN")

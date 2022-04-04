@@ -1,5 +1,5 @@
 import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
-import moment from "moment"
+import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { addScheduledUnmute, unmute } from "../../handlers/mute"
 import { getMsFromString } from "../../utils/getters"
@@ -65,7 +65,7 @@ export default {
             : "_No especificado_"
         const duration = interaction.options.getString("duration") ? interaction.options.getString("duration") : null
         const durationMs = duration ? getMsFromString(duration) : 0
-        const startMute = moment().valueOf()
+        const startMute = moment.default().valueOf()
         const endMute = durationMs !== 0 ? startMute + durationMs : null
         const mutedRole = await guild?.roles?.cache?.find((role) => role.name.toLowerCase().includes("mute")!)
         const targetRoles: Array<string> = []
@@ -142,10 +142,10 @@ export default {
             embed
                 .setTitle(`${guild!.name} ha sido muteado`)
                 .setDescription(
-                    `**ID Servidor**: ${guild!.id}\n**Dueño**: ${await guild!.fetchOwner()}\n**Inicio**: ${moment(
-                        startMute
-                    ).format("lll")}\n**Fin**: ${
-                        endMute ? moment(endMute).format("lll") : "_Indefinido_"
+                    `**ID Servidor**: ${guild!.id}\n**Dueño**: ${await guild!.fetchOwner()}\n**Inicio**: ${moment
+                        .default(startMute)
+                        .format("lll")}\n**Fin**: ${
+                        endMute ? moment.default(endMute).format("lll") : "_Indefinido_"
                     }\n**Motivo**: ${reason}`
                 )
                 .setFooter(embedFooterData)
@@ -197,9 +197,11 @@ export default {
             embed
                 .setTitle(`${target.user.username} ha sido muteado`)
                 .setDescription(
-                    `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Inicio**: ${moment(startMute).format(
-                        "lll"
-                    )}\n**Fin**: ${endMute ? moment(endMute).format("lll") : "_Indefinido_"}\n**Motivo**: ${reason}`
+                    `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Inicio**: ${moment
+                        .default(startMute)
+                        .format("lll")}\n**Fin**: ${
+                        endMute ? moment.default(endMute).format("lll") : "_Indefinido_"
+                    }\n**Motivo**: ${reason}`
                 )
                 .setFooter(embedFooterData)
                 .setColor("RED")

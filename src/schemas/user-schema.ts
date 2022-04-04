@@ -1,5 +1,4 @@
-import moment from "moment"
-import mongoose, { Schema } from "mongoose"
+import { Schema, models, model } from "mongoose"
 
 const name = "user-profiles"
 const userStats = {
@@ -47,4 +46,4 @@ const userSchema = new Schema({
     },
 })
 
-export default mongoose.models[name] || mongoose.model(name, userSchema, name)
+export default models[name] || model(name, userSchema, name)
