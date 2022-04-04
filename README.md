@@ -46,5 +46,5 @@ That should install the required packages. It is recommended to not update them 
 
 For running Logicrux type
 ```
-npx ts-node index.ts
+npx ts-node src/index.ts
 ```
