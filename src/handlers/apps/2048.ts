@@ -11,7 +11,7 @@ import {
 } from "discord.js"
 import * as moment from "moment"
 import { Emojis } from "../../emojis"
-import { _2048MoveDir, _guildProfile } from "../../templates"
+import { _2048MoveDir, GuildProfile } from "../../templates"
 import { lerp } from "../../utils/color"
 import { getDate, getMsFromString, getRandomDecimalNumber, getRandomInArray, getTimeElapsed } from "../../utils/getters"
 import { MyMath } from "../../utils/math"

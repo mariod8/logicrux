@@ -1,5 +1,5 @@
-import { Message, User } from "discord.js"
-import { _userIdentification } from "../templates"
+import { Message, MessageEmbed, User } from "discord.js"
+import { UserIdentification } from "../templates"
 import { getChannelByString } from "../utils/getters"
 import { MyMath } from "../utils/math"
 import { getUserProfile, setGlobalStats } from "../utils/mongo"
@@ -10,7 +10,7 @@ const getXpPerMsg = (level: number, content: string) => 20 + (level >= 10 ? MyMa
 export async function addXP(message: Message, user: User, method: "MESSAGE") {
     const { guild, content } = message
     const spamChannel = await getChannelByString("spam", guild!)
-    const userIdentification: _userIdentification = { guildID: guild!.id, userID: user!.id }
+    const userIdentification: UserIdentification = { guildID: guild!.id, userID: user!.id }
     var {
         userProfile: {
             globalStats: { xp, level, totalXp },
@@ -30,7 +30,14 @@ export async function addXP(message: Message, user: User, method: "MESSAGE") {
         }
         if (level != previousLevel)
             if (level === 1) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
-            else if (level === 1000) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
+            else if (level % 1000 === 0)
+                spamChannel.send({
+                    embeds: [
+                        new MessageEmbed()
+                            .setTitle(`**${user?.username}** ha subido a nivel **${level}**`)
+                            .setColor("DARK_GREEN"),
+                    ],
+                })
             else if (level % 10 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
             else if (level === 666) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}** 👺`)
             else if (level === 69) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}** 😎`)

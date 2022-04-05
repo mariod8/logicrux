@@ -1,5 +1,5 @@
 import { ColorResolvable } from "discord.js"
-import { rgb } from "../templates"
+import { Rgb } from "../templates"
 
 function componentToHex(c: number) {
     var hex = c.toString(16)
@@ -29,7 +29,7 @@ function hexToRgb(hex: string) {
         r: +r,
         g: +g,
         b: +b,
-    } as rgb
+    } as Rgb
 }
 
 function calcLerp(a: number, b: number, u: number) {

@@ -2,15 +2,15 @@ import { Client, Guild } from "discord.js"
 import { getRandomInObject } from "./utils/getters"
 
 export class Emojis {
-    private static clientEmojis: any = {}
-    private static discEmojis: any = {}
+    private static clientEmojis: any = {} //: EmojiElements & EmojiDiscElements
+    private static discEmojis: any = {} //: EmojiDiscElements
 
     public static async setEmojis(client: Client) {
         const guild = client.guilds.cache.get("829448956417015828") as Guild
 
-        guild.emojis.cache.forEach((emoji) => {
+        guild.emojis.cache.each((emoji) => {
             Emojis.clientEmojis[`${emoji.name}`] = emoji
-            if (emoji.name!.includes("musicDisc")) Emojis.discEmojis[`${emoji.name}`] = emoji
+            if (emoji.name!.startsWith("musicDisc")) Emojis.discEmojis[`${emoji.name}`] = emoji
         })
     }
     public static getClientEmojis() {

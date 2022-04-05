@@ -3,6 +3,7 @@ import { Client } from "discord.js"
 import * as moment from "moment"
 import * as momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
+import setStatus from "./features/status"
 import { MyPlayer } from "./player"
 
 export default async (client: Client, player: Player) => {
@@ -11,7 +12,7 @@ export default async (client: Client, player: Player) => {
     moment.locale("Europe/Madrid")
 
     // Set presence
-    client.user?.setActivity("Minecraft", { type: "PLAYING" })
+    //client.user?.setActivity("Minecraft", { type: "PLAYING" })
     client.user?.setStatus("online")
 
     // Set avatar
@@ -22,4 +23,7 @@ export default async (client: Client, player: Player) => {
 
     // Set player
     MyPlayer.setPlayer(player)
+
+    // Set status
+    setStatus(client)
 }

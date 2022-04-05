@@ -13,14 +13,6 @@ export default {
     testOnly: true,
     guildOnly: true,
     ownerOnly: true,
-    options: [
-        {
-            name: "text",
-            description: "Echo text",
-            required: true,
-            type: "STRING",
-        },
-    ],
     callback: async ({ guild, interaction, member, user, channel }) => {
         await interaction.deferReply()
 
@@ -75,8 +67,6 @@ export default {
                 })
                 menusManager.stop()
             }
-
-            menusManager.resetTimer()
         })
         menusManager.on("end", async (collection) => {
             interaction.editReply({

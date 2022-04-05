@@ -10,7 +10,7 @@ import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../emojis"
 import { MyMember } from "../member"
-import { _menuPages, _used, _userProfile, _userType } from "../templates"
+import { _menuPages, UserProfile, _userType } from "../templates"
 import { getMsFromString, getUserByString } from "../utils/getters"
 import { getUserProfile } from "../utils/mongo"
 import { intToString } from "../utils/string"
@@ -18,17 +18,15 @@ import { intToString } from "../utils/string"
 class Profile {
     private page: _menuPages
     private member: MyMember
-    private profile: _userProfile
-    private clientEmojis: any
+    private profile: UserProfile
 
-    constructor(member: MyMember, profile: _userProfile, clientEmojis: any) {
+    constructor(member: MyMember, profile: UserProfile) {
         this.page = "general"
         this.member = member
         this.profile = profile
-        this.clientEmojis = clientEmojis
     }
 
-    private getMostUsedEmojis(emojis: Array<_used>) {
+    private getMostUsedEmojis(emojis: UserProfile["globalStats"]["emojis"]["used"]) {
         var result = ""
 
         if (!emojis.length) return "_No has usado ningún emoji_"
@@ -36,7 +34,7 @@ class Profile {
             return b.amount - a.amount
         })
         for (var i = 0; i < emojis.length && i < 10; i++) {
-            result += `${i + 1}. ${emojis[i].name} - **${emojis[i].amount}**\n`
+            result += `${i + 1}. ${emojis[i].name} **${emojis[i].amount}**\n`
         }
         return result
     }
@@ -171,8 +169,7 @@ export default {
                 new MyMember(targetMember),
                 await (
                     await getUserProfile({ userID: targetMember.id, guildID: guild!.id })
-                ).userProfile,
-                Emojis.getClientEmojis()
+                ).userProfile
             )
             const time = getMsFromString("40s")
 

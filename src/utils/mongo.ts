@@ -2,32 +2,32 @@ import guildSchema from "../schemas/guild-schema"
 import muteSchema from "../schemas/mute-schema"
 import userSchema from "../schemas/user-schema"
 import {
-    _2048,
-    _apps,
-    _emojis,
-    _guildIdentification,
-    _guildProfile,
+    GuildIdentification,
+    GuildProfile,
     _muteIdentification,
     _mutes,
-    _userIdentification,
-    _userProfile,
-    _userStats,
+    UserIdentification,
+    UserProfile,
+    UserStats,
+    Apps,
+    _app2048,
+    UserEmojis,
 } from "../templates"
 
-function getCleanUserProfile(_userProfile: _userProfile) {
-    const _2048: _2048 = {
+function getCleanUserProfile(_userProfile: UserProfile) {
+    const _2048: _app2048 = {
         games: _userProfile?.globalStats?.apps?._2048?.games | 0,
         highscore: _userProfile?.globalStats?.apps?._2048?.highscore | 0,
     }
-    const apps: _apps = {
+    const apps: Apps = {
         _2048,
     }
-    const emojis: _emojis = {
+    const emojis: UserEmojis = {
         unicode: _userProfile?.globalStats?.emojis?.unicode | 0,
         custom: _userProfile?.globalStats?.emojis?.custom | 0,
         used: _userProfile?.globalStats?.emojis?.used ? _userProfile?.globalStats?.emojis?.used : [],
     }
-    const userStats: _userStats = {
+    const userStats: UserStats = {
         xp: Math.floor(_userProfile?.globalStats?.xp) | 0,
         totalXp: _userProfile?.globalStats?.totalXp | 0,
         level: _userProfile?.globalStats?.level | 0,
@@ -44,7 +44,7 @@ function getCleanUserProfile(_userProfile: _userProfile) {
         emojis,
         apps,
     }
-    const userProfile: _userProfile = {
+    const userProfile: UserProfile = {
         userID: _userProfile?.userID,
         guildID: _userProfile?.guildID,
         username: _userProfile?.username ? _userProfile?.username : "",
@@ -54,7 +54,7 @@ function getCleanUserProfile(_userProfile: _userProfile) {
     return { userProfile }
 }
 
-function getCleanGuildProfile(_guildProfile: _guildProfile) {
+function getCleanGuildProfile(_guildProfile: GuildProfile) {
     var guildID = _guildProfile?.guildID
     var _2048 = {
         score: _guildProfile?._2048?.score | 0,
@@ -65,7 +65,7 @@ function getCleanGuildProfile(_guildProfile: _guildProfile) {
     return { _2048, guildID, muted }
 }
 
-export async function incGlobalStats(userIdentification: _userIdentification, globalStats: any) {
+export async function incGlobalStats(userIdentification: UserIdentification, globalStats: any) {
     var promises = []
 
     for (const globalStat in globalStats) {
@@ -87,7 +87,7 @@ export async function incGlobalStats(userIdentification: _userIdentification, gl
     await Promise.all(promises)
 }
 
-export async function setGlobalStats(userIdentification: _userIdentification, globalStats: any) {
+export async function setGlobalStats(userIdentification: UserIdentification, globalStats: any) {
     var promises = []
 
     for (const globalStat in globalStats) {
@@ -109,7 +109,7 @@ export async function setGlobalStats(userIdentification: _userIdentification, gl
     await Promise.all(promises)
 }
 
-export async function setUsername(userIdentification: _userIdentification, username: string) {
+export async function setUsername(userIdentification: UserIdentification, username: string) {
     await userSchema.updateOne(
         userIdentification,
         {
@@ -124,7 +124,7 @@ export async function setUsername(userIdentification: _userIdentification, usern
     )
 }
 
-export async function incGuildProfile(guildIdentification: _guildIdentification, properties: any) {
+export async function incGuildProfile(guildIdentification: GuildIdentification, properties: any) {
     var promises = []
 
     for (const property in properties) {
@@ -146,7 +146,7 @@ export async function incGuildProfile(guildIdentification: _guildIdentification,
     await Promise.all(promises)
 }
 
-export async function setGuildProfile(guildIdentification: _guildIdentification, properties: any) {
+export async function setGuildProfile(guildIdentification: GuildIdentification, properties: any) {
     var promises = []
 
     for (const property in properties) {
@@ -168,19 +168,19 @@ export async function setGuildProfile(guildIdentification: _guildIdentification,
     await Promise.all(promises)
 }
 
-export async function getUserProfile(userIdentification: _userIdentification) {
-    var userProfile: _userProfile = await userSchema.findOne(userIdentification)
+export async function getUserProfile(userIdentification: UserIdentification) {
+    var userProfile: UserProfile = await userSchema.findOne(userIdentification)
     return getCleanUserProfile(userProfile)
 }
 
 export async function getAllGuildUserProfiles(guildID: string) {
-    var userProfiles: Array<_userProfile> = await userSchema.find({ guildID })
+    var userProfiles: Array<UserProfile> = await userSchema.find({ guildID })
     return userProfiles.map((userProfile) => getCleanUserProfile(userProfile))
 }
 
-export async function getGuildProfile(guildIdentification: _guildIdentification) {
-    var guildProfile: _guildProfile = await guildSchema.findOne(guildIdentification)
-    return getCleanGuildProfile(guildProfile) as _guildProfile
+export async function getGuildProfile(guildIdentification: GuildIdentification) {
+    var guildProfile: GuildProfile = await guildSchema.findOne(guildIdentification)
+    return getCleanGuildProfile(guildProfile) as GuildProfile
 }
 
 export async function getMute(muteIdentification: _muteIdentification) {

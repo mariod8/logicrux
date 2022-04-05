@@ -1,7 +1,7 @@
 import { Message } from "discord.js"
 import { emojis } from "../utils/regex"
 import { getUserProfile, incGlobalStats, setGlobalStats, setUsername } from "../utils/mongo"
-import { _userIdentification, _userStats } from "../templates"
+import { UserIdentification } from "../templates"
 import { getTime } from "../utils/getters"
 
 var weeklyStatTracking
@@ -10,7 +10,7 @@ export async function statsOnMessage(message: Message) {
     var { author, content, attachments, reference, guild, type } = message
     var match: any
 
-    var userIdentification: _userIdentification = {
+    var userIdentification: UserIdentification = {
         userID: author!.id,
         guildID: guild!.id,
     }
