@@ -20,7 +20,7 @@ export default async function setStatus(client: Client) {
     const timeout = getMsFromString("5m")
     var prevDate = await getSilksongRelDate()
     const update = async (date: string | undefined) =>
-        await client.user?.setActivity(`Silksong on ${date}`, { type: "PLAYING" })
+        await client.user?.setActivity(`Silksong rel. date: ${date}`, { type: "WATCHING" })
 
     await update(prevDate)
     setInterval(async () => {
