@@ -2,7 +2,6 @@ import { Client } from "discord.js"
 import * as axios from "axios"
 import * as cheerio from "cheerio"
 import { getMsFromString } from "../utils/getters"
-import * as moment from "moment"
 
 async function getSilksongRelDate() {
     const url = "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/"
@@ -21,7 +20,7 @@ export default async function setStatus(client: Client) {
     const timeout = getMsFromString("5m")
     var prevDate = await getSilksongRelDate()
     const update = async (date: string | undefined) =>
-        await client.user?.setActivity(`Silksong 📆: ${date}\nLast updated: ${moment.default().format("lll")}`, { type: "WATCHING" })
+        await client.user?.setActivity(`Silksong 📆: ${date}`, { type: "WATCHING" })
 
     await update(prevDate)
     setInterval(async () => {
