@@ -19,13 +19,12 @@ async function getSilksongRelDate() {
 export default async function setStatus(client: Client) {
     const timeout = getMsFromString("5m")
     var prevDate = await getSilksongRelDate()
-    const update = async (date = "") =>
-        await client.user?.setActivity(`Silksong 📆: ${date}`, { type: "WATCHING" })
+    const update = async (date = "") => await client.user?.setActivity(`Silksong 📆: ${date}`, { type: "WATCHING" })
 
     await update(prevDate)
     setInterval(async () => {
         const currDate = await getSilksongRelDate()
-        
+
         if (prevDate !== currDate) {
             await update(currDate)
             prevDate = currDate

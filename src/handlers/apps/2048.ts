@@ -20,7 +20,7 @@ const asciiTable = require("ascii-table")
 
 class __2048 {
     static readonly boardSize = 4
-    private static highscore: number = 0
+    private static highscore = 0
     private static userHighscore: any
     private static dateHighscore: any
     private tiles: number[][]
@@ -44,75 +44,61 @@ class __2048 {
     public move(dir: _2048MoveDir) {
         var tilesWereMoved = false
         var highestAddition = 0
+        const moveTwo = (i: number, j: number, k: number, m: number) => {
+            tilesWereMoved = true
+            this.tiles[i][j] += this.tiles[k][m]
+            this.tiles[k][m] = 0
+            if (this.tiles[i][j] > highestAddition) highestAddition = this.tiles[i][j]
+        }
 
         if (dir === "UP") {
             for (var j = 0; j < __2048.boardSize; j++)
-                for (var i = 0; i < __2048.boardSize; i++)
+                for (var i = 1; i < __2048.boardSize; i++)
                     if (this.tiles[i][j] !== 0)
-                        for (var k = 0; k < i; k++)
-                            if (this.tiles[k][j] === 0 || this.tiles[k][j] === this.tiles[i][j]) {
-                                var canMove = true
-
-                                for (var m = k; m < i; m++)
-                                    if (this.tiles[m][j] !== 0 && this.tiles[m][j] !== this.tiles[i][j]) canMove = false
-                                if (!canMove) break
-                                tilesWereMoved = true
-                                this.tiles[k][j] = this.tiles[k][j] === 0 ? this.tiles[i][j] : this.tiles[i][j] * 2
-                                this.tiles[i][j] = 0
-                                if (this.tiles[k][j] > highestAddition) highestAddition = this.tiles[k][j]
+                        for (var k = i; k > 0; k--) {
+                            if (this.tiles[k - 1][j] === this.tiles[k][j]) {
+                                moveTwo(k - 1, j, k, j)
                                 break
-                            }
+                            } else if (this.tiles[k - 1][j] === 0) {
+                                moveTwo(k - 1, j, k, j)
+                            } else break
+                        }
         } else if (dir === "DOWN") {
             for (var j = 0; j < __2048.boardSize; j++)
-                for (var i = __2048.boardSize - 1; i >= 0; i--)
+                for (var i = __2048.boardSize - 2; i >= 0; i--)
                     if (this.tiles[i][j] !== 0)
-                        for (var k = __2048.boardSize - 1; k > i; k--)
-                            if (this.tiles[k][j] === 0 || this.tiles[k][j] === this.tiles[i][j]) {
-                                var canMove = true
-
-                                for (var m = k; m > i; m--)
-                                    if (this.tiles[m][j] !== 0 && this.tiles[m][j] !== this.tiles[i][j]) canMove = false
-                                if (!canMove) break
-                                tilesWereMoved = true
-                                this.tiles[k][j] = this.tiles[k][j] === 0 ? this.tiles[i][j] : this.tiles[i][j] * 2
-                                this.tiles[i][j] = 0
-                                if (this.tiles[k][j] > highestAddition) highestAddition = this.tiles[k][j]
+                        for (var k = i; k < __2048.boardSize - 1; k++) {
+                            if (this.tiles[k + 1][j] === this.tiles[k][j]) {
+                                moveTwo(k + 1, j, k, j)
                                 break
-                            }
+                            } else if (this.tiles[k + 1][j] === 0) {
+                                moveTwo(k + 1, j, k, j)
+                            } else break
+                        }
         } else if (dir === "LEFT") {
             for (var i = 0; i < __2048.boardSize; i++)
-                for (var j = 0; j < __2048.boardSize; j++)
+                for (var j = 1; j < __2048.boardSize; j++)
                     if (this.tiles[i][j] !== 0)
-                        for (var k = 0; k < j; k++)
-                            if (this.tiles[i][k] === 0 || this.tiles[i][k] === this.tiles[i][j]) {
-                                var canMove = true
-
-                                for (var m = k; m < j; m++)
-                                    if (this.tiles[i][m] !== 0 && this.tiles[i][m] !== this.tiles[i][j]) canMove = false
-                                if (!canMove) break
-                                tilesWereMoved = true
-                                this.tiles[i][k] = this.tiles[i][k] === 0 ? this.tiles[i][j] : this.tiles[i][j] * 2
-                                this.tiles[i][j] = 0
-                                if (this.tiles[i][k] > highestAddition) highestAddition = this.tiles[i][k]
+                        for (var k = j; k > 0; k--) {
+                            if (this.tiles[i][k - 1] === this.tiles[i][k]) {
+                                moveTwo(i, k - 1, i, k)
                                 break
-                            }
+                            } else if (this.tiles[i][k - 1] === 0) {
+                                moveTwo(i, k - 1, i, k)
+                            } else break
+                        }
         } else if (dir === "RIGHT") {
             for (var i = 0; i < __2048.boardSize; i++)
-                for (var j = __2048.boardSize - 1; j >= 0; j--)
+                for (var j = __2048.boardSize - 2; j >= 0; j--)
                     if (this.tiles[i][j] !== 0)
-                        for (var k = __2048.boardSize - 1; k > j; k--)
-                            if (this.tiles[i][k] === 0 || this.tiles[i][k] === this.tiles[i][j]) {
-                                var canMove = true
-
-                                for (var m = k; m > j; m--)
-                                    if (this.tiles[i][m] !== 0 && this.tiles[i][m] !== this.tiles[i][j]) canMove = false
-                                if (!canMove) break
-                                tilesWereMoved = true
-                                this.tiles[i][k] = this.tiles[i][k] === 0 ? this.tiles[i][j] : this.tiles[i][j] * 2
-                                this.tiles[i][j] = 0
-                                if (this.tiles[i][k] > highestAddition) highestAddition = this.tiles[i][k]
+                        for (var k = j; k > 0; k--) {
+                            if (this.tiles[i][k + 1] === this.tiles[i][k]) {
+                                moveTwo(i, k + 1, i, k)
                                 break
-                            }
+                            } else if (this.tiles[i][k + 1] === 0) {
+                                moveTwo(i, k + 1, i, k)
+                            } else break
+                        }
         }
         this.score += highestAddition
         this.updateHighscore()
@@ -163,17 +149,28 @@ class __2048 {
     public gameOver() {
         for (var i = 0; i < __2048.boardSize; i++) {
             for (var j = 0; j < __2048.boardSize; j++) {
-                if (i - 1 >= 0)
-                    if (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0) return false
-                if (j - 1 >= 0)
-                    if (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0) return false
-                if (i + 1 <= __2048.boardSize - 1)
-                    if (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0) return false
-                if (j + 1 <= __2048.boardSize - 1)
-                    if (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0) return false
+                if (i - 1 >= 0 && (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0))
+                    return false
+                if (j - 1 >= 0 && (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0))
+                    return false
+                if (
+                    i + 1 <= __2048.boardSize - 1 &&
+                    (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0)
+                )
+                    return false
+                if (
+                    j + 1 <= __2048.boardSize - 1 &&
+                    (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0)
+                )
+                    return false
             }
         }
         return true
+    }
+    private getHighscore() {
+        __2048.highscore === 0
+            ? "No existe o todavía no se ha actualizado"
+            : `${__2048.highscore} · ${__2048.userHighscore} _(${__2048.dateHighscore})`
     }
     public getScore() {
         return this.score
@@ -184,7 +181,7 @@ class __2048 {
             iconURL: this.user.displayAvatarURL({ dynamic: false, format: "jpg" }),
         }
         const embed = new MessageEmbed()
-            .setTitle(`2048`)
+            .setTitle("2048")
             .setDescription("The 2048 Game")
             .addFields(
                 {
@@ -199,10 +196,7 @@ class __2048 {
                 },
                 {
                     name: "Highscore",
-                    value:
-                        __2048.highscore === 0
-                            ? "_No existe o todavía no se ha actualizado_"
-                            : `${__2048.highscore} · ${__2048.userHighscore} _(${__2048.dateHighscore})_`,
+                    value: `${this.getHighscore()}`,
                     inline: false,
                 }
             )
