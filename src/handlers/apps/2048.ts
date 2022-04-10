@@ -1,19 +1,9 @@
-import {
-    ButtonInteraction,
-    EmbedFooterData,
-    Guild,
-    Message,
-    MessageActionRow,
-    MessageButton,
-    MessageEmbed,
-    TextChannel,
-    User,
-} from "discord.js"
+import { ButtonInteraction, Guild, Message, MessageActionRow, MessageButton, MessageEmbed, TextChannel, User } from "discord.js"
 import * as moment from "moment"
 import { Emojis } from "../../emojis"
-import { _2048MoveDir, GuildProfile } from "../../templates"
+import { _2048MoveDir } from "../../templates"
 import { lerp } from "../../utils/color"
-import { getDate, getMsFromString, getRandomDecimalNumber, getRandomInArray, getTimeElapsed } from "../../utils/getters"
+import { getDate, getMsFromString, getRandomFloat, getRandomInArray, getTimeElapsed } from "../../utils/getters"
 import { MyMath } from "../../utils/math"
 import { getGuildProfile, getUserProfile, incGlobalStats, setGlobalStats, setGuildProfile } from "../../utils/mongo"
 const asciiTable = require("ascii-table")
@@ -21,24 +11,22 @@ const asciiTable = require("ascii-table")
 class __2048 {
     static readonly boardSize = 4
     private static highscore = 0
-    private static userHighscore: any
-    private static dateHighscore: any
+    private static userHighscore: string
+    private static dateHighscore: string
     private tiles: number[][]
-    private id: number
     private score: number
     private user: User
     private guild: Guild
     private startTime: number
 
-    constructor(user: User, guild: Guild) {
-        this.tiles = new Array(__2048.boardSize).fill(0).map(() => new Array(__2048.boardSize).fill(0))
-        this.guild = guild
-        this.score = 0
-        this.id = moment.default().valueOf()
-        this.startTime = this.id
+    constructor(user: User, guild: Guild, tiles?: number[][], score?: number) {
         this.user = user
+        this.guild = guild
+        this.tiles = tiles ?? new Array(__2048.boardSize).fill(0).map(() => new Array(__2048.boardSize).fill(0))
+        this.score = score ?? 0
+        this.startTime = moment.default().valueOf()
         this.genRandomTile()
-        this.updateHighscore()
+        this.setHighscore()
     }
 
     public move(dir: _2048MoveDir) {
@@ -91,7 +79,7 @@ class __2048 {
             for (var i = 0; i < __2048.boardSize; i++)
                 for (var j = __2048.boardSize - 2; j >= 0; j--)
                     if (this.tiles[i][j] !== 0)
-                        for (var k = j; k > 0; k--) {
+                        for (var k = j; k < __2048.boardSize - 1; k++) {
                             if (this.tiles[i][k + 1] === this.tiles[i][k]) {
                                 moveTwo(i, k + 1, i, k)
                                 break
@@ -105,34 +93,27 @@ class __2048 {
         return tilesWereMoved
     }
     public genRandomTile() {
-        var tiles = []
+        var tiles: Array<{ i: number; j: number }> = []
         var chosenTile = null
 
-        for (var i = 0; i < __2048.boardSize; i++)
-            for (var j = 0; j < __2048.boardSize; j++) if (this.tiles[i][j] === 0) tiles.push({ i, j })
+        for (var i = 0; i < __2048.boardSize; i++) for (var j = 0; j < __2048.boardSize; j++) if (this.tiles[i][j] === 0) tiles.push({ i, j })
         chosenTile = getRandomInArray(tiles)
-        this.tiles[chosenTile.i][chosenTile.j] = getRandomDecimalNumber(0, 1) < 0.2 ? 4 : 2
+        this.tiles[chosenTile.i][chosenTile.j] = getRandomFloat(0, 1) < 0.2 ? 4 : 2
     }
     private getBoard() {
-        var board = new asciiTable()
+        const board = new asciiTable()
+
         board.addRowMatrix(this.tiles).removeBorder()
-        board = "```\n" + board.toString() + "\n```"
-        return board
+        return "```\n" + board.toString() + "\n```"
     }
     private getEmbedColor() {
-        return lerp(
-            "#57F287",
-            "#ED4245",
-            MyMath.clamp(this.score / (__2048.highscore === 0 ? 1 : __2048.highscore), 0, 1)
-        )
+        return lerp("#57F287", "#ED4245", MyMath.clamp(this.score / (__2048.highscore === 0 ? 1 : __2048.highscore), 0, 1))
     }
     public async updateHighscore() {
-        const guildProfile = await getGuildProfile({ guildID: this.guild.id })
-        __2048.highscore = guildProfile?._2048?.score | 0
-        __2048.dateHighscore = guildProfile?._2048?.date ? getDate(guildProfile?._2048?.date) : null
-        __2048.userHighscore = guildProfile?._2048?.userTag
         if (this.score > __2048.highscore) {
             __2048.highscore = this.score
+            __2048.userHighscore = this.user.tag
+            __2048.dateHighscore = moment.default().valueOf().toString()
             await setGuildProfile(
                 { guildID: this.guild.id },
                 {
@@ -143,43 +124,33 @@ class __2048 {
             )
         }
     }
-    public getId() {
-        return this.id
+    private showHighscore() {
+        return __2048.highscore === 0
+            ? "No existe o todavía no se ha actualizado"
+            : `${__2048.highscore} · ${__2048.userHighscore} _${getDate(__2048.dateHighscore)}_`
     }
-    public gameOver() {
+    private async setHighscore() {
+        const guildProfile = await getGuildProfile({ guildID: this.guild.id })
+
+        __2048.highscore = guildProfile?._2048?.score
+        __2048.dateHighscore = guildProfile?._2048?.date
+        __2048.userHighscore = guildProfile?._2048?.userTag
+    }
+    public isGameOver() {
         for (var i = 0; i < __2048.boardSize; i++) {
             for (var j = 0; j < __2048.boardSize; j++) {
-                if (i - 1 >= 0 && (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0))
-                    return false
-                if (j - 1 >= 0 && (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0))
-                    return false
-                if (
-                    i + 1 <= __2048.boardSize - 1 &&
-                    (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0)
-                )
-                    return false
-                if (
-                    j + 1 <= __2048.boardSize - 1 &&
-                    (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0)
-                )
-                    return false
+                if (i - 1 >= 0 && (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0)) return false
+                if (j - 1 >= 0 && (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0)) return false
+                if (i + 1 < __2048.boardSize && (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0)) return false
+                if (j + 1 < __2048.boardSize && (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0)) return false
             }
         }
         return true
-    }
-    private getHighscore() {
-        __2048.highscore === 0
-            ? "No existe o todavía no se ha actualizado"
-            : `${__2048.highscore} · ${__2048.userHighscore} _(${__2048.dateHighscore})`
     }
     public getScore() {
         return this.score
     }
     public getEmbed() {
-        const embedFooterData: EmbedFooterData = {
-            text: `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment.default().valueOf())} ⏰`,
-            iconURL: this.user.displayAvatarURL({ dynamic: false, format: "jpg" }),
-        }
         const embed = new MessageEmbed()
             .setTitle("2048")
             .setDescription("The 2048 Game")
@@ -196,21 +167,41 @@ class __2048 {
                 },
                 {
                     name: "Highscore",
-                    value: `${this.getHighscore()}`,
+                    value: `${this.showHighscore()}`,
                     inline: false,
                 }
             )
             .setColor(this.getEmbedColor())
-            .setFooter(embedFooterData)
+            .setFooter({
+                text: `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment.default().valueOf())} ⏰`,
+                iconURL: this.user.displayAvatarURL({ dynamic: false, format: "jpeg" }),
+            })
         return embed
+    }
+    public end(cause: "timeout" | "gameover" | "quit", msgInstance: Message) {
+        const embed = this.getEmbed()
+
+        if (cause === "timeout") {
+            embed.setTitle("2048 (TIMEOUT)")
+        } else if (cause === "gameover") {
+            embed.setTitle("2048 (GAME OVER)")
+        } else if (cause === "quit") {
+            embed.setTitle("2048 (QUIT)")
+        }
+        embed.setFooter({
+            text: `${this.user.username} played · ${getTimeElapsed(this.startTime, moment.default().valueOf())} ⏰`,
+            iconURL: this.user.displayAvatarURL({ dynamic: false, format: "jpeg" }),
+        })
+        embed.setColor("LIGHT_GREY")
+        msgInstance.edit({ embeds: [embed], components: [] }).catch(console.error)
     }
 }
 
 export async function _2048Init(channel: TextChannel, user: User) {
-    const _2048 = new __2048(user, channel!.guild)
     const clientEmojis = Emojis.getClientEmojis()
-    const time = getMsFromString("300s")
-    const controls = [
+    const _2048 = new __2048(user, channel!.guild)
+    const timeout = getMsFromString("300s")
+    const buttons = [
         new MessageActionRow().addComponents(
             new MessageButton().setCustomId("left").setEmoji(clientEmojis!.leftArrow).setStyle("PRIMARY"),
             new MessageButton().setCustomId("right").setEmoji(clientEmojis!.rightArrow).setStyle("PRIMARY"),
@@ -219,39 +210,17 @@ export async function _2048Init(channel: TextChannel, user: User) {
             new MessageButton().setCustomId("exit").setEmoji(clientEmojis!.exit).setStyle("SECONDARY")
         ),
     ]
-    const instanceMessage = (await channel
-        .send({ embeds: [_2048.getEmbed()], components: controls })
-        .catch(console.error)) as Message
+    const msgInstance = (await channel.send({ embeds: [_2048.getEmbed()], components: buttons }).catch(console.error)) as Message
     const filter = (i: ButtonInteraction) => {
-        return i.user.id === user.id && i.message.id === instanceMessage.id
+        return i.user.id === user.id && i.message.id === msgInstance.id
     }
-    const controlsManager = channel.createMessageComponentCollector({
+    const buttonsController = channel.createMessageComponentCollector({
         componentType: "BUTTON",
-        time,
+        time: timeout,
         filter,
     })
-    function _2048Exit(option: 0 | 1 | 2) {
-        instanceMessage
-            .edit({
-                embeds: [
-                    _2048
-                        .getEmbed()
-                        .setTitle(
-                            option === 0
-                                ? "2048 (GAME ENDED)"
-                                : option === 1
-                                ? "2048 (TIME EXPIRED)"
-                                : "2048 (GAME OVER)"
-                        )
-                        .setColor("LIGHT_GREY"),
-                ],
-                components: [],
-            })
-            .catch(console.error)
-        controlsManager.stop()
-    }
 
-    controlsManager.on("collect", async (i: ButtonInteraction) => {
+    buttonsController.on("collect", async (i: ButtonInteraction) => {
         if (i.customId === "left") {
             if (_2048.move("LEFT")) _2048.genRandomTile()
         } else if (i.customId === "right") {
@@ -261,29 +230,27 @@ export async function _2048Init(channel: TextChannel, user: User) {
         } else if (i.customId === "up") {
             if (_2048.move("UP")) _2048.genRandomTile()
         }
-        if (i.customId !== "exit") {
-            if (_2048.gameOver()) {
-                _2048Exit(2)
-            } else {
-                controlsManager.resetTimer()
-                i.update({ embeds: [_2048.getEmbed()], components: controls })
-            }
-        } else {
-            _2048Exit(0)
+        if (i.customId === "exit") {
+            _2048.end("quit", msgInstance)
+            buttonsController.stop()
+        } else if (_2048.isGameOver()) {
+            _2048.end("gameover", msgInstance)
+            buttonsController.stop()
         }
+        if (!buttonsController.ended) i.update({ embeds: [_2048.getEmbed()], components: buttons }).catch(console.error)
     })
-    controlsManager.on("end", async (collection) => {
-        if (collection.last()?.customId === "exit") _2048Exit(0)
-        else if (
-            moment.default().valueOf() - time >=
-                (collection?.last() ? collection!.last()!.createdTimestamp : moment.default().valueOf() - 2 * time) ||
-            moment.default().valueOf() - time >= instanceMessage?.createdTimestamp
-        )
-            _2048Exit(1)
+    buttonsController.on("end", async (collection) => {
         const profile = await getUserProfile({
             userID: user.id,
             guildID: channel!.guild.id,
         })
+
+        if (
+            moment.default().valueOf() - timeout >=
+                (collection?.last() ? collection!.last()!.createdTimestamp : moment.default().valueOf() - (timeout << 1)) ||
+            moment.default().valueOf() - timeout >= msgInstance?.createdTimestamp
+        )
+            _2048.end("timeout", msgInstance)
         if (_2048.getScore() > profile?.userProfile?.globalStats?.apps?._2048?.highscore)
             await setGlobalStats(
                 {
@@ -303,6 +270,6 @@ export async function _2048Init(channel: TextChannel, user: User) {
                 "apps._2048.games": 1,
             }
         )
-        console.log(`2048 (${_2048.getId()}, ${user.username}) ended!`)
+        console.log(`2048 by ${user.username} ended!`)
     })
 }

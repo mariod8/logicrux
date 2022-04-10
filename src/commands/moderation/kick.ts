@@ -24,9 +24,7 @@ export default {
     ],
     callback: ({ interaction, user }) => {
         const target = interaction.options.getMember("user") as GuildMember
-        const reason = interaction.options.getString("reason")
-            ? (interaction.options.getString("reason") as string)
-            : "_No especificado_"
+        const reason = interaction.options.getString("reason") ? (interaction.options.getString("reason") as string) : "_No especificado_"
 
         if (!target) return "Especifica alguien a expulsar"
         if (!target.kickable || target.roles.botRole) return "No se puede expulsar al usuario"

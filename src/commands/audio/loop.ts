@@ -2,6 +2,7 @@ import { RepeatMode } from "discord-music-player"
 import { GuildChannelResolvable } from "discord.js"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../../emojis"
+import { texts } from "../../locales"
 import { MyPlayer } from "../../player"
 
 export default {
@@ -13,8 +14,7 @@ export default {
     options: [
         {
             name: "option",
-            description:
-                "Choose whether you want to loop the current song or the entire queue. You can also disable it",
+            description: "Choose whether you want to loop the current song or the entire queue. You can also disable it",
             required: true,
             type: "STRING",
             choices: [
@@ -38,7 +38,7 @@ export default {
         const option = interaction.options.getString("option")!
         const channel = member.voice.channel as GuildChannelResolvable
 
-        if (!channel) return `Necesitas estar en un canal de voz ${Emojis.getClientEmojis().none}`
+        if (!channel) return texts.missingVoiceChannel(Emojis.getClientEmojis().none, interaction.locale)
         var queue = player.getQueue(guild!.id)
         if (queue) {
             if (option === "song") {

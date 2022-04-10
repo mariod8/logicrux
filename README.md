@@ -29,7 +29,7 @@ Some commands may require certain permissions or roles to be executed. Here's a 
 
 ## Building
 
-You shouldn't be able to run this bot in other servers as it's build from scratch for LC.
+You can run this bot in other servers. You'll have to provide a login token. It'll need to be specified in a `.env` file with the name TOKEN_OG `TOKEN_OG=...`
 
 Anyway if you'd like to try, you can clone the repository to your computer with
 ```

@@ -24,9 +24,10 @@ export async function unmute(target: GuildMember, client: Client | null, reply: 
         const embed = new MessageEmbed()
             .setTitle(`${target.user.username} ha sido desmuteado`)
             .setDescription(
-                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(
-                    start
-                )}\n**Muteado durante**: ${getTimeElapsed(start, moment.default().valueOf())}`
+                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(start)}\n**Muteado durante**: ${getTimeElapsed(
+                    start,
+                    moment.default().valueOf()
+                )}`
             )
             .setFooter(embedFooterData)
             .setColor("GREEN")
@@ -43,13 +44,7 @@ export async function recoverRoles(member: GuildMember, roles: Array<string>) {
     })
 }
 
-export function addScheduledUnmute(
-    member: GuildMember,
-    muteID: string,
-    duration: number,
-    client: Client,
-    reply: boolean
-) {
+export function addScheduledUnmute(member: GuildMember, muteID: string, duration: number, client: Client, reply: boolean) {
     scheduledUnmutes.push({
         userID: member.id,
         unmute: setTimeout(() => unmute(member, client, reply, muteID), duration),

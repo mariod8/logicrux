@@ -2,8 +2,8 @@ import { Client, Guild } from "discord.js"
 import { getRandomInObject } from "./utils/getters"
 
 export class Emojis {
-    private static clientEmojis: any = {} //: EmojiElements & EmojiDiscElements
-    private static discEmojis: any = {} //: EmojiDiscElements
+    private static clientEmojis: any = {}
+    private static discEmojis: any = {}
 
     public static async setEmojis(client: Client) {
         const guild = client.guilds.cache.get("829448956417015828") as Guild
@@ -20,8 +20,6 @@ export class Emojis {
         return this.discEmojis
     }
     public static getRandomDiscEmoji(text?: string) {
-        return text?.toLowerCase().includes("pigstep")
-            ? this.discEmojis.musicDiscPigstep
-            : getRandomInObject(this.discEmojis)
+        return text?.toLowerCase().includes("pigstep") ? this.discEmojis.musicDiscPigstep : getRandomInObject(this.discEmojis)
     }
 }

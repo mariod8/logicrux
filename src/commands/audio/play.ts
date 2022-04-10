@@ -1,7 +1,9 @@
 import { GuildChannelResolvable } from "discord.js"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../../emojis"
+import { texts } from "../../locales"
 import { MyPlayer } from "../../player"
+import { getInteractionLocale } from "../../utils/getters"
 
 export default {
     category: "Audio",
@@ -22,7 +24,7 @@ export default {
         const audio = interaction.options.getString("audio")!
         const channel = member.voice.channel as GuildChannelResolvable
 
-        if (!channel) return `Necesitas estar en un canal de voz ${Emojis.getClientEmojis().none}`
+        if (!channel) return texts.missingVoiceChannel(Emojis.getClientEmojis().none, interaction.locale)
         interaction.deferReply()
         let queue = player.createQueue(guild!.id)
         await queue.join(member.voice.channel as GuildChannelResolvable)
@@ -32,10 +34,8 @@ export default {
                 .catch(console.error)
                 .then((playlist) =>
                     playlist
-                        ? interaction.editReply(
-                              `Reproduciendo "**${playlist.name}**" ${Emojis.getRandomDiscEmoji(playlist.name)}`
-                          )
-                        : interaction.editReply(`No se ha podido reproducir la playlist`)
+                        ? interaction.editReply(texts.playingPlaylist(playlist.name, Emojis.getRandomDiscEmoji(playlist.name), interaction.locale))
+                        : interaction.editReply(texts.errorPlayingPlaylist(interaction.locale))
                 )
         } else {
             await queue
@@ -43,10 +43,8 @@ export default {
                 .catch(console.error)
                 .then((song) =>
                     song
-                        ? interaction.editReply(
-                              `Reproduciendo "**${song.name}**" ${Emojis.getRandomDiscEmoji(song.name)}`
-                          )
-                        : interaction.editReply(`No se ha podido reproducir el audio`)
+                        ? interaction.editReply(texts.playingSong(song.name, Emojis.getRandomDiscEmoji(song.name), interaction.locale))
+                        : interaction.editReply(texts.errorPlayingSong(interaction.locale))
                 )
         }
     },

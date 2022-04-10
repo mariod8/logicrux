@@ -27,7 +27,7 @@ export default {
 
         if (application === "2048") {
             _2048Init(channel as TextChannel, user)
-            return "Starting 2048 game..."
+            return "Starting 2048"
         }
     },
 } as ICommand
