@@ -17,7 +17,7 @@ export async function addXP(message: Message, user: User, method: "MESSAGE") {
         },
     } = await getUserProfile(userIdentification)
     const previousLevel = level
-    
+
     if (method === "MESSAGE") {
         const xpPerLvl = getXpPerLvl(level, totalXp)
         const xpPerMsg = getXpPerMsg(level, content)

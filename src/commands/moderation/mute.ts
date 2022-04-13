@@ -1,9 +1,9 @@
-import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
+import { GuildMember, MessageEmbed } from "discord.js"
 import * as moment from "moment"
 import { ICommand } from "wokcommands"
-import { addScheduledUnmute, unmute } from "../../handlers/mute"
+import { addScheduledUnmute } from "../../handlers/mute"
 import { getMsFromString } from "../../utils/getters"
-import { getGuildProfile, getMute, getMutes, setGuildProfile, setMute } from "../../utils/mongo"
+import { getMute, setMute } from "../../utils/mongo"
 
 export default {
     category: "Moderation",
@@ -86,10 +86,6 @@ export default {
             reason,
         }).catch(console.error)
 
-        const embedFooterData: EmbedFooterData = {
-            text: `Muteado por ${user.username}`,
-            iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
-        }
         embed
             .setTitle(`${target.user.username} ha sido muteado`)
             .setDescription(
@@ -97,7 +93,10 @@ export default {
                     endMute ? moment.default(endMute).format("lll") : "_Indefinido_"
                 }\n**Motivo**: ${reason}`
             )
-            .setFooter(embedFooterData)
+            .setFooter({
+                text: `Muteado por ${user.username}`,
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            })
             .setColor("RED")
         await interaction.editReply({ embeds: [embed] })
     },

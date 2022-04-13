@@ -43,14 +43,14 @@ export default {
         if (queue) {
             if (option === "song") {
                 queue.setRepeatMode(RepeatMode.SONG)
-                return `El audio actual se ha puesto en bucle`
+                return texts.loopSong(interaction.locale)
             } else if (option === "queue") {
                 queue.setRepeatMode(RepeatMode.QUEUE)
-                return `La cola se ha puesto en bucle`
+                return texts.loopQueue(interaction.locale)
             } else if (option === "disable") {
                 queue.setRepeatMode(RepeatMode.DISABLED)
             }
         }
-        return `No hay ninguna cola activa ${Emojis.getClientEmojis().none}`
+        return texts.errorNoActiveQueue(Emojis.getClientEmojis().none, interaction.locale)
     },
 } as ICommand

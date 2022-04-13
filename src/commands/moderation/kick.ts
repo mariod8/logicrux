@@ -1,5 +1,6 @@
-import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
+import { GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
+import { texts } from "../../locales"
 
 export default {
     category: "Moderation",
@@ -22,22 +23,23 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ interaction, user }) => {
+    callback: async ({ interaction, user }) => {
         const target = interaction.options.getMember("user") as GuildMember
-        const reason = interaction.options.getString("reason") ? (interaction.options.getString("reason") as string) : "_No especificado_"
+        const reason = interaction.options.getString("reason")
+            ? (interaction.options.getString("reason") as string)
+            : texts.reasonNotSpecified(interaction.locale)
 
-        if (!target) return "Especifica alguien a expulsar"
-        if (!target.kickable || target.roles.botRole) return "No se puede expulsar al usuario"
-        const embedFooterData: EmbedFooterData = {
-            text: `Expulsado por ${user.username}`,
-            iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
-        }
+        if (!target) return texts.specifySomeoneToKick(interaction.locale)
+        if (!target.kickable || target.roles.botRole) return texts.errorKickingUser(interaction.locale)
         const embed = new MessageEmbed()
-            .setTitle(`${target.user.username} ha sido expulsado`)
-            .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
-            .setFooter(embedFooterData)
+            .setTitle(texts.kickTitle(target.user.username, interaction.locale))
+            .setDescription(texts.kickDescription(target.id, target.user, reason, interaction.locale))
+            .setFooter({
+                text: texts.kickFooter(user.username, interaction.locale),
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            })
             .setColor("ORANGE")
-        target.kick(reason).catch(console.error)
+        await target.kick(reason).catch(console.error)
         return embed
     },
 } as ICommand

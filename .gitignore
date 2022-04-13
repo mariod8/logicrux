@@ -1,5 +1,5 @@
 node_modules
 .env
-raw-data
 tslint.json
 /build/
+tools/bulk-guild-export/raw-data

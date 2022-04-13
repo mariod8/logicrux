@@ -1,6 +1,7 @@
 import { GuildChannelResolvable } from "discord.js"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../../emojis"
+import { texts } from "../../locales"
 import { MyPlayer } from "../../player"
 
 export default {
@@ -9,16 +10,16 @@ export default {
     guildOnly: true,
     testOnly: true,
     slash: true,
-    callback: async ({ member, guild }) => {
+    callback: async ({ member, guild, interaction }) => {
         const player = MyPlayer.getPlayer()
         const channel = member.voice.channel as GuildChannelResolvable
 
-        if (!channel) return `Necesitas estar en un canal de voz ${Emojis.getClientEmojis().none}`
+        if (!channel) return texts.missingVoiceChannel(Emojis.getClientEmojis().none, interaction.locale)
         var queue = player.getQueue(guild!.id)
         if (queue) {
             await queue.stop()
-            return `Se ha detenido la cola`
+            return texts.queueStopped(interaction.locale)
         }
-        return `No hay ninguna cola activa ${Emojis.getClientEmojis().none}`
+        return texts.errorNoActiveQueue(Emojis.getClientEmojis().none, interaction.locale)
     },
 } as ICommand

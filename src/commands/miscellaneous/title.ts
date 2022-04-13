@@ -1,4 +1,5 @@
 import { ICommand } from "wokcommands"
+import { texts } from "../../locales"
 import { emojis } from "../../utils/regex"
 
 export default {
@@ -20,7 +21,7 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ interaction, user }) => {
+    callback: ({ interaction }) => {
         const characters: any = {
             a: {
                 top: "OXO",
@@ -268,11 +269,11 @@ export default {
         const emptyChar = "      "
         var result = "‎\n"
 
-        if (!emojis.test(emoji!)) return "El emoji introducido no se puede usar o bien no es un emoji"
+        if (!emojis.test(emoji!)) return texts.invalidEmoji(interaction.locale)
 
         // top row
         for (let i = 0; i < text.length; i++) {
-            if (!(`${text[i]}` in characters)) return `El caracter '${text[i]}' no se puede imprimir`
+            if (!(`${text[i]}` in characters)) return texts.errorPrintOutChar(text[i], interaction.locale)
             for (let j = 0; j < 3; j++) result += characters[`${text[i]}`].top[j] === "X" ? emoji : emptyChar
             result += "   "
         }
@@ -291,7 +292,7 @@ export default {
             result += "   "
         }
 
-        if (result.length > 2000) return "El resultado del mensaje supera el límite de 2000 caracteres"
+        if (result.length > 2000) return texts.errorMsgContentTooLong(interaction.locale)
         return result
     },
 } as ICommand

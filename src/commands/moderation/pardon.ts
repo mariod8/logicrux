@@ -1,4 +1,4 @@
-import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
+import { MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
 
 export default {
@@ -32,14 +32,13 @@ export default {
         } catch {
             return "El usuario no está baneado"
         }
-        const embedFooterData: EmbedFooterData = {
-            text: `Desbaneado por ${user.username}`,
-            iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
-        }
         const embed = new MessageEmbed()
             .setTitle(`${target?.username} ha sido desbaneado`)
             .setDescription(`**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Motivo**: ${reason}`)
-            .setFooter(embedFooterData)
+            .setFooter({
+                text: `Desbaneado por ${user.username}`,
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            })
             .setColor("GREEN")
         return embed
     },

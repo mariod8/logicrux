@@ -9,7 +9,7 @@ import { getGuildProfile, getUserProfile, incGlobalStats, setGlobalStats, setGui
 const asciiTable = require("ascii-table")
 
 class __2048 {
-    static readonly boardSize = 4
+    private static readonly boardSize = 4
     private static highscore = 0
     private static userHighscore: string
     private static dateHighscore: string
@@ -89,7 +89,6 @@ class __2048 {
                         }
         }
         this.score += highestAddition
-        this.updateHighscore()
         return tilesWereMoved
     }
     public genRandomTile() {
@@ -181,6 +180,8 @@ class __2048 {
     public end(cause: "timeout" | "gameover" | "quit", msgInstance: Message) {
         const embed = this.getEmbed()
 
+        this.setHighscore()
+        this.updateHighscore()
         if (cause === "timeout") {
             embed.setTitle("2048 (TIMEOUT)")
         } else if (cause === "gameover") {

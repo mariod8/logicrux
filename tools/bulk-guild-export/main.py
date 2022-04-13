@@ -5,7 +5,7 @@ import re
 import math
 import emoji
 
-path = "/home/mariv1k/Documents/Proyectos/Typescript/logicrux/tools/bulk-guild-export/raw_data"
+path = "./raw-data"
 customEmojis = re.compile(r":(\w+):")
 unicodeEmojis = re.compile(r'\d+(.*?)(?:\u263a|\U0001f645)')
 data = {}

@@ -1,10 +1,9 @@
-import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
+import { GuildMember, MessageEmbed } from "discord.js"
 import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { unmute } from "../../handlers/mute"
 import { _mutes } from "../../templates"
 import { getDate, getTimeElapsed } from "../../utils/getters"
-import { getGuildProfile, setGuildProfile } from "../../utils/mongo"
 
 export default {
     category: "Moderation",
@@ -51,10 +50,6 @@ export default {
 
         const { start } = previousMute
 
-        const embedFooterData: EmbedFooterData = {
-            text: `Desmuteado por ${user.username}`,
-            iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
-        }
         embed
             .setTitle(`${target.user.username} ha sido desmuteado`)
             .setDescription(
@@ -63,7 +58,10 @@ export default {
                     moment.default().valueOf()
                 )}`
             )
-            .setFooter(embedFooterData)
+            .setFooter({
+                text: `Desmuteado por ${user.username}`,
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            })
             .setColor("GREEN")
         await interaction.editReply({ embeds: [embed] })
     },

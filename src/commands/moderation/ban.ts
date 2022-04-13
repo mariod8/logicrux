@@ -1,5 +1,6 @@
-import { EmbedFooterData, GuildMember, MessageEmbed } from "discord.js"
+import { GuildMember, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
+import { texts } from "../../locales"
 import { MyMember } from "../../member"
 
 export default {
@@ -23,27 +24,28 @@ export default {
             type: "STRING",
         },
     ],
-    callback: ({ interaction, user }) => {
-        const target = new MyMember(interaction.options.getMember("user") as GuildMember)
-        const reason = interaction.options.getString("reason") ? (interaction.options.getString("reason") as string) : "_No especificado_"
+    callback: async ({ interaction, user }) => {
+        const target = interaction.options.getMember("user") as GuildMember
+        const reason = interaction.options.getString("reason")
+            ? (interaction.options.getString("reason") as string)
+            : texts.reasonNotSpecified(interaction.locale)
 
-        if (!target) return "Especifica alguien a banear"
-        if (!target.getMember().bannable || target.getMember().roles.botRole) return "No se puede banear al usuario"
+        if (!target) return texts.specifySomeoneToBan(interaction.locale)
+        if (!target.bannable || target.roles.botRole) return texts.errorBanningUser(interaction.locale)
         try {
-            target.getMember().ban({
+            await target.ban({
                 reason,
             })
         } catch {
-            return "El usuario ya está baneado"
-        }
-        const embedFooterData: EmbedFooterData = {
-            text: `Baneado por ${user.username}`,
-            iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            return texts.userAlreadyBanned(interaction.locale)
         }
         const embed = new MessageEmbed()
-            .setTitle(`${target.getUsername()} ha sido baneado`)
-            .setDescription(`**ID Usuario**: ${target.getId()}\n**Miembro**: ${target.getUser()}\n**Motivo**: ${reason}`)
-            .setFooter(embedFooterData)
+            .setTitle(texts.banTitle(target.user.username, interaction.locale))
+            .setDescription(texts.banDescription(target.id, target.user, reason, interaction.locale))
+            .setFooter({
+                text: texts.banFooter(user.username, interaction.locale),
+                iconURL: user.displayAvatarURL({ dynamic: false, format: "jpg" }),
+            })
             .setColor("RED")
         return embed
     },
