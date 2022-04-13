@@ -24,7 +24,9 @@ export default {
     ],
     callback: async ({ interaction, guild, user, client }) => {
         const target = await client?.users?.fetch(interaction.options.getString("user_id")!).catch(console.error)!
-        const reason = interaction.options.getString("reason") ? (interaction.options.getString("reason") as string) : "_No especificado_"
+        const reason = interaction.options.getString("reason")
+            ? (interaction.options.getString("reason") as string)
+            : "_No especificado_"
 
         if (!target) return "El ID de usuario es inválido"
         try {

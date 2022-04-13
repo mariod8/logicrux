@@ -53,10 +53,9 @@ export default {
         embed
             .setTitle(`${target.user.username} ha sido desmuteado`)
             .setDescription(
-                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(start)}\n**Muteado durante**: ${getTimeElapsed(
-                    start,
-                    moment.default().valueOf()
-                )}`
+                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Muteado desde**: ${getDate(
+                    start
+                )}\n**Muteado durante**: ${getTimeElapsed(start, moment.default().valueOf())}`
             )
             .setFooter({
                 text: `Desmuteado por ${user.username}`,

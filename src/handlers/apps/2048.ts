@@ -1,4 +1,13 @@
-import { ButtonInteraction, Guild, Message, MessageActionRow, MessageButton, MessageEmbed, TextChannel, User } from "discord.js"
+import {
+    ButtonInteraction,
+    Guild,
+    Message,
+    MessageActionRow,
+    MessageButton,
+    MessageEmbed,
+    TextChannel,
+    User,
+} from "discord.js"
 import * as moment from "moment"
 import { Emojis } from "../../emojis"
 import { _2048MoveDir } from "../../templates"
@@ -95,7 +104,8 @@ class __2048 {
         var tiles: Array<{ i: number; j: number }> = []
         var chosenTile = null
 
-        for (var i = 0; i < __2048.boardSize; i++) for (var j = 0; j < __2048.boardSize; j++) if (this.tiles[i][j] === 0) tiles.push({ i, j })
+        for (var i = 0; i < __2048.boardSize; i++)
+            for (var j = 0; j < __2048.boardSize; j++) if (this.tiles[i][j] === 0) tiles.push({ i, j })
         chosenTile = getRandomInArray(tiles)
         this.tiles[chosenTile.i][chosenTile.j] = getRandomFloat(0, 1) < 0.2 ? 4 : 2
     }
@@ -106,7 +116,11 @@ class __2048 {
         return "```\n" + board.toString() + "\n```"
     }
     private getEmbedColor() {
-        return lerp("#57F287", "#ED4245", MyMath.clamp(this.score / (__2048.highscore === 0 ? 1 : __2048.highscore), 0, 1))
+        return lerp(
+            "#57F287",
+            "#ED4245",
+            MyMath.clamp(this.score / (__2048.highscore === 0 ? 1 : __2048.highscore), 0, 1)
+        )
     }
     public async updateHighscore() {
         if (this.score > __2048.highscore) {
@@ -138,10 +152,20 @@ class __2048 {
     public isGameOver() {
         for (var i = 0; i < __2048.boardSize; i++) {
             for (var j = 0; j < __2048.boardSize; j++) {
-                if (i - 1 >= 0 && (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0)) return false
-                if (j - 1 >= 0 && (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0)) return false
-                if (i + 1 < __2048.boardSize && (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0)) return false
-                if (j + 1 < __2048.boardSize && (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0)) return false
+                if (i - 1 >= 0 && (this.tiles[i - 1][j] === this.tiles[i][j] || this.tiles[i - 1][j] === 0))
+                    return false
+                if (j - 1 >= 0 && (this.tiles[i][j - 1] === this.tiles[i][j] || this.tiles[i][j - 1] === 0))
+                    return false
+                if (
+                    i + 1 < __2048.boardSize &&
+                    (this.tiles[i + 1][j] === this.tiles[i][j] || this.tiles[i + 1][j] === 0)
+                )
+                    return false
+                if (
+                    j + 1 < __2048.boardSize &&
+                    (this.tiles[i][j + 1] === this.tiles[i][j] || this.tiles[i][j + 1] === 0)
+                )
+                    return false
             }
         }
         return true
@@ -172,7 +196,10 @@ class __2048 {
             )
             .setColor(this.getEmbedColor())
             .setFooter({
-                text: `${this.user.username} is playing · ${getTimeElapsed(this.startTime, moment.default().valueOf())} ⏰`,
+                text: `${this.user.username} is playing · ${getTimeElapsed(
+                    this.startTime,
+                    moment.default().valueOf()
+                )} ⏰`,
                 iconURL: this.user.displayAvatarURL({ dynamic: false, format: "jpeg" }),
             })
         return embed
@@ -211,7 +238,9 @@ export async function _2048Init(channel: TextChannel, user: User) {
             new MessageButton().setCustomId("exit").setEmoji(clientEmojis!.exit).setStyle("SECONDARY")
         ),
     ]
-    const msgInstance = (await channel.send({ embeds: [_2048.getEmbed()], components: buttons }).catch(console.error)) as Message
+    const msgInstance = (await channel
+        .send({ embeds: [_2048.getEmbed()], components: buttons })
+        .catch(console.error)) as Message
     const filter = (i: ButtonInteraction) => {
         return i.user.id === user.id && i.message.id === msgInstance.id
     }
@@ -248,7 +277,9 @@ export async function _2048Init(channel: TextChannel, user: User) {
 
         if (
             moment.default().valueOf() - timeout >=
-                (collection?.last() ? collection!.last()!.createdTimestamp : moment.default().valueOf() - (timeout << 1)) ||
+                (collection?.last()
+                    ? collection!.last()!.createdTimestamp
+                    : moment.default().valueOf() - (timeout << 1)) ||
             moment.default().valueOf() - timeout >= msgInstance?.createdTimestamp
         )
             _2048.end("timeout", msgInstance)

@@ -32,7 +32,11 @@ export async function addXP(message: Message, user: User, method: "MESSAGE") {
             if (level === 1) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
             else if (level % 1000 === 0)
                 spamChannel.send({
-                    embeds: [new MessageEmbed().setTitle(`**${user?.username}** ha subido a nivel **${level}**`).setColor("DARK_GREEN")],
+                    embeds: [
+                        new MessageEmbed()
+                            .setTitle(`**${user?.username}** ha subido a nivel **${level}**`)
+                            .setColor("DARK_GREEN"),
+                    ],
                 })
             else if (level % 10 === 0) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}**`)
             else if (level === 666) spamChannel.send(`**${user?.username}** ha subido a nivel **${level}** 👺`)

@@ -14,7 +14,8 @@ export default {
     options: [
         {
             name: "option",
-            description: "Choose whether you want to loop the current song or the entire queue. You can also disable it",
+            description:
+                "Choose whether you want to loop the current song or the entire queue. You can also disable it",
             required: true,
             type: "STRING",
             choices: [

@@ -8,20 +8,26 @@ export const texts = {
         }[getInteractionLocale(locale)]
     },
     playingPlaylist: (playlistName: any, discEmoji: any, locale: string) => {
-        return { "es-ES": `Reproduciendo "**${playlistName}**" ${discEmoji}`, "en-US": `Playing "**${playlistName}**" ${discEmoji}` }[
-            getInteractionLocale(locale)
-        ]
+        return {
+            "es-ES": `Reproduciendo "**${playlistName}**" ${discEmoji}`,
+            "en-US": `Playing "**${playlistName}**" ${discEmoji}`,
+        }[getInteractionLocale(locale)]
     },
     errorPlayingPlaylist: (locale: string) => {
-        return { "es-ES": `No se ha podido reproducir la playlist`, "en-US": `Playlist couldn't be played` }[getInteractionLocale(locale)]
-    },
-    playingSong: (songName: any, discEmoji: any, locale: string) => {
-        return { "es-ES": `Reproduciendo "**${songName}**" ${discEmoji}`, "en-US": `Playing "**${songName}**" ${discEmoji}` }[
+        return { "es-ES": `No se ha podido reproducir la playlist`, "en-US": `Playlist couldn't be played` }[
             getInteractionLocale(locale)
         ]
     },
+    playingSong: (songName: any, discEmoji: any, locale: string) => {
+        return {
+            "es-ES": `Reproduciendo "**${songName}**" ${discEmoji}`,
+            "en-US": `Playing "**${songName}**" ${discEmoji}`,
+        }[getInteractionLocale(locale)]
+    },
     errorPlayingSong: (locale: string) => {
-        return { "es-ES": `No se ha podido reproducir el audio`, "en-US": `Audio couldn't be played` }[getInteractionLocale(locale)]
+        return { "es-ES": `No se ha podido reproducir el audio`, "en-US": `Audio couldn't be played` }[
+            getInteractionLocale(locale)
+        ]
     },
     queuePaused: (locale: string) => {
         return { "es-ES": `La cola se ha pausado`, "en-US": `Queue has been paused` }[getInteractionLocale(locale)]
@@ -33,16 +39,22 @@ export const texts = {
         }[getInteractionLocale(locale)]
     },
     loopSong: (locale: string) => {
-        return { "es-ES": `El audio actual se ha puesto en bucle`, "en-US": `Looping current audio` }[getInteractionLocale(locale)]
+        return { "es-ES": `El audio actual se ha puesto en bucle`, "en-US": `Looping current audio` }[
+            getInteractionLocale(locale)
+        ]
     },
     loopQueue: (locale: string) => {
-        return { "es-ES": `La cola actual se ha puesto en bucle`, "en-US": `Looping current queue` }[getInteractionLocale(locale)]
+        return { "es-ES": `La cola actual se ha puesto en bucle`, "en-US": `Looping current queue` }[
+            getInteractionLocale(locale)
+        ]
     },
     queueResumed: (locale: string) => {
         return { "es-ES": `La cola se ha reanudado`, "en-US": `Queue has been resumed` }[getInteractionLocale(locale)]
     },
     queueShuffled: (locale: string) => {
-        return { "es-ES": `La cola se ha aleatorizado`, "en-US": `Queue has been shuffled` }[getInteractionLocale(locale)]
+        return { "es-ES": `La cola se ha aleatorizado`, "en-US": `Queue has been shuffled` }[
+            getInteractionLocale(locale)
+        ]
     },
     queueEnded: (locale: string) => {
         return { "es-ES": `La cola ha terminado`, "en-US": `Queue ended` }[getInteractionLocale(locale)]
@@ -57,9 +69,10 @@ export const texts = {
         }[getInteractionLocale(locale)]
     },
     errorPrintOutChar: (char: any, locale: string) => {
-        return { "es-ES": `El caracter ${char} no se puede imprimir`, "en-US": `Character ${char} can't be printed out` }[
-            getInteractionLocale(locale)
-        ]
+        return {
+            "es-ES": `El caracter ${char} no se puede imprimir`,
+            "en-US": `Character ${char} can't be printed out`,
+        }[getInteractionLocale(locale)]
     },
     errorMsgContentTooLong: (locale: string) => {
         return {

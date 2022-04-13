@@ -34,7 +34,13 @@ export default {
                 .catch(console.error)
                 .then((playlist) =>
                     playlist
-                        ? interaction.editReply(texts.playingPlaylist(playlist.name, Emojis.getRandomDiscEmoji(playlist.name), interaction.locale))
+                        ? interaction.editReply(
+                              texts.playingPlaylist(
+                                  playlist.name,
+                                  Emojis.getRandomDiscEmoji(playlist.name),
+                                  interaction.locale
+                              )
+                          )
                         : interaction.editReply(texts.errorPlayingPlaylist(interaction.locale))
                 )
         } else {
@@ -43,7 +49,9 @@ export default {
                 .catch(console.error)
                 .then((song) =>
                     song
-                        ? interaction.editReply(texts.playingSong(song.name, Emojis.getRandomDiscEmoji(song.name), interaction.locale))
+                        ? interaction.editReply(
+                              texts.playingSong(song.name, Emojis.getRandomDiscEmoji(song.name), interaction.locale)
+                          )
                         : interaction.editReply(texts.errorPlayingSong(interaction.locale))
                 )
         }

@@ -20,6 +20,8 @@ export class Emojis {
         return this.discEmojis
     }
     public static getRandomDiscEmoji(text?: string) {
-        return text?.toLowerCase().includes("pigstep") ? this.discEmojis.musicDiscPigstep : getRandomInObject(this.discEmojis)
+        return text?.toLowerCase().includes("pigstep")
+            ? this.discEmojis.musicDiscPigstep
+            : getRandomInObject(this.discEmojis)
     }
 }

@@ -34,7 +34,9 @@ export default {
     ],
     callback: async ({ interaction, user, guild, client }) => {
         const target = interaction.options.getMember("user") as GuildMember
-        const reason = interaction.options.getString("reason") ? (interaction.options.getString("reason") as string) : "_No especificado_"
+        const reason = interaction.options.getString("reason")
+            ? (interaction.options.getString("reason") as string)
+            : "_No especificado_"
         const duration = interaction.options.getString("duration") ? interaction.options.getString("duration") : null
         const durationMs = duration ? getMsFromString(duration) : 0
         const startMute = moment.default().valueOf()
@@ -89,7 +91,9 @@ export default {
         embed
             .setTitle(`${target.user.username} ha sido muteado`)
             .setDescription(
-                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Inicio**: ${moment.default(startMute).format("lll")}\n**Fin**: ${
+                `**ID Usuario**: ${target.id}\n**Miembro**: ${target}\n**Inicio**: ${moment
+                    .default(startMute)
+                    .format("lll")}\n**Fin**: ${
                     endMute ? moment.default(endMute).format("lll") : "_Indefinido_"
                 }\n**Motivo**: ${reason}`
             )

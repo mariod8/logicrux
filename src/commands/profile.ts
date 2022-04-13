@@ -1,4 +1,11 @@
-import { ButtonInteraction, GuildMember, MessageActionRow, MessageAttachment, MessageButton, MessageEmbed } from "discord.js"
+import {
+    ButtonInteraction,
+    GuildMember,
+    MessageActionRow,
+    MessageAttachment,
+    MessageButton,
+    MessageEmbed,
+} from "discord.js"
 import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../emojis"
@@ -47,7 +54,9 @@ class Profile {
                     .setThumbnail(this.member.getUser().displayAvatarURL({ dynamic: true }))
                     .addFields({
                         name: "`General`",
-                        value: `**Miembro**: ${this.member.getMember()}\n**Tag**: ${this.member.getUser().tag}\n**Fecha de unión**: ${moment
+                        value: `**Miembro**: ${this.member.getMember()}\n**Tag**: ${
+                            this.member.getUser().tag
+                        }\n**Fecha de unión**: ${moment
                             .default(this.member.getMember().joinedTimestamp)
                             .format("lll")}\n**Última vez boosteado**: ${
                             this.member.getMember().premiumSinceTimestamp
@@ -72,7 +81,9 @@ class Profile {
                         }\n**Ratio palabras/mensaje**: ${
                             this.profile.globalStats.messages === 0
                                 ? 0
-                                : Math.round((this.profile.globalStats.words / this.profile.globalStats.messages) * 100) / 100
+                                : Math.round(
+                                      (this.profile.globalStats.words / this.profile.globalStats.messages) * 100
+                                  ) / 100
                         }\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
                     }),
             ]
@@ -88,9 +99,9 @@ class Profile {
                             name: "`Emojis`",
                             value: `**Emojis enviados**: ${
                                 this.profile.globalStats.emojis.custom + this.profile.globalStats.emojis.unicode
-                            }\n**Emojis enviados Unicode**: ${this.profile.globalStats.emojis.unicode}\n**Emojis enviados personalizados**: ${
-                                this.profile.globalStats.emojis.custom
-                            }`,
+                            }\n**Emojis enviados Unicode**: ${
+                                this.profile.globalStats.emojis.unicode
+                            }\n**Emojis enviados personalizados**: ${this.profile.globalStats.emojis.custom}`,
                         },
                         {
                             name: "`Emojis más usados`",
@@ -148,7 +159,11 @@ export default {
 
         try {
             const targetMember = interaction.options?.getString("user")
-                ? (getUserByString(interaction.options.getString("user") as string, guild!, _userType.Member) as GuildMember)
+                ? (getUserByString(
+                      interaction.options.getString("user") as string,
+                      guild!,
+                      _userType.Member
+                  ) as GuildMember)
                 : member
             const profile = new Profile(
                 new MyMember(targetMember),

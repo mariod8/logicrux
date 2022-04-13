@@ -25,7 +25,7 @@
         "tabWidth": 4,
         "semi": false,
         "bracketSameLine": true,
-        "printWidth": 150,
+        "printWidth": 120,
         "singleQuote": false
     },
     "homepage": "https://github.com/mariod8/Logicrux#readme",
