@@ -9,10 +9,9 @@ async function getSilksongRelDate() {
     try {
         const response = await axios.default.get(url)
         const html = cheerio.load(response.data)
-        const text = html(".date").text()
-        return text
+        return html(".date").text()
     } catch (e) {
-        console.error(`Error en setStatus Silksong: ${e}`)
+        console.error(`Error en setStatus Silksong "${e}"`)
     }
 }
 

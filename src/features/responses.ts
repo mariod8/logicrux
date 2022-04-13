@@ -1,6 +1,6 @@
 import { Message } from "discord.js"
 import { getRandomInArray } from "../utils/getters"
-import { sus } from "../utils/regex"
+import { monke, sus } from "../utils/regex"
 
 export default (message: Message) => {
     const { channel } = message
@@ -11,7 +11,7 @@ export default (message: Message) => {
     // F
     if (content === "f" && Math.random() * 1 < fResponseChance) channel.send(getRandomInArray(fResponses))
     // monke
-    else if (content.includes("monke")) channel.send("reject humanity, return to monke 🐒")
+    else if (monke.test(content)) channel.send("reject humanity, return to monke 🐒")
     // Dark trolling
     else if (content === "/xd") channel.send("seas o no Dark, es /xp no /xd")
     // sus
