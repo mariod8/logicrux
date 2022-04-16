@@ -60,6 +60,10 @@ async function cleanGuildSlashCommands(client: Client) {
     })
 }
 
+function mcServer() {
+
+}
+
 export default {
     category: "Testing",
     description: "Some tools for the dev to use",
@@ -105,6 +109,10 @@ export default {
                     name: "Clean commands",
                     value: "clean_commands",
                 },
+                {
+                    name: "MC Server",
+                    value: "mc_server"
+                }
             ],
         },
     ],
@@ -128,6 +136,8 @@ export default {
         } else if (action === "clean_commands") {
             cleanGuildSlashCommands(client)
             return "Deleting slash commands"
+        } else if(action === "mc_server") {
+            mcServer()
         }
         await interaction.reply({ content: "OK", ephemeral: true })
     },
