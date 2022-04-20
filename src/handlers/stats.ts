@@ -1,7 +1,7 @@
 import { Message } from "discord.js"
 import { emojis } from "../utils/regex"
 import { getUserProfile, incGlobalStats, setGlobalStats, setUsername } from "../utils/mongo"
-import { UserIdentification } from "../templates"
+import { UserIdentification } from "../types"
 import { getTime } from "../utils/getters"
 
 var weeklyStatTracking

@@ -1,17 +1,17 @@
 import { Client, EmbedFooterData, GuildMember, MessageEmbed, Role } from "discord.js"
 import * as moment from "moment"
-import { _mutes, _unmute } from "../templates"
+import { Mute, Unmute } from "../types"
 import { getChannelByString, getDate, getTimeElapsed } from "../utils/getters"
 import { deleteMute, getGuildProfile, getMute, getMutes } from "../utils/mongo"
 
-const scheduledUnmutes: Array<_unmute> = []
+const scheduledUnmutes: Array<Unmute> = []
 
 export async function unmute(target: GuildMember, client: Client | null, reply: boolean, muteID: string | null) {
     const previousMute = muteID
         ? await getMute({ userID: target.id, guildID: target.guild.id, muteID })
         : await getMute({ userID: target.id, guildID: target.guild.id })
     if (!previousMute) return null
-    const { userID, guildID, roles, start } = previousMute as _mutes
+    const { userID, guildID, roles, start } = previousMute as Mute
     await deleteMute({ userID, guildID })
     await recoverRoles(target, roles).catch(console.error)
     cleanTimeouts(target.id)
@@ -53,7 +53,7 @@ export function addScheduledUnmute(
     scheduledUnmutes.push({
         userID: member.id,
         unmute: setTimeout(() => unmute(member, client, reply, muteID), duration),
-    } as _unmute)
+    } as Unmute)
 }
 
 export function cleanTimeouts(userID: string) {

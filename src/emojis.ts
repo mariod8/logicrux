@@ -1,4 +1,5 @@
 import { Client, Guild } from "discord.js"
+import { DEV_GUILD_ID } from "./constants"
 import { getRandomInObject } from "./utils/getters"
 
 export class Emojis {
@@ -6,7 +7,7 @@ export class Emojis {
     private static discEmojis: any = {}
 
     public static async setEmojis(client: Client) {
-        const guild = client.guilds.cache.get("829448956417015828") as Guild
+        const guild = client.guilds.cache.get(DEV_GUILD_ID) as Guild
 
         guild.emojis.cache.each((emoji) => {
             Emojis.clientEmojis[`${emoji.name}`] = emoji

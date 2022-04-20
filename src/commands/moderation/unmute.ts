@@ -2,7 +2,7 @@ import { GuildMember, MessageEmbed } from "discord.js"
 import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { unmute } from "../../handlers/mute"
-import { _mutes } from "../../templates"
+import { Mute } from "../../types"
 import { getDate, getTimeElapsed } from "../../utils/getters"
 
 export default {

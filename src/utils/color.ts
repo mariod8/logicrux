@@ -1,5 +1,6 @@
 import { ColorResolvable } from "discord.js"
-import { Rgb } from "../templates"
+const { getColorFromURL } = require("color-thief-node")
+import { Rgb } from "../types"
 
 function componentToHex(c: number) {
     var hex = c.toString(16)
@@ -36,9 +37,14 @@ function calcLerp(a: number, b: number, u: number) {
     return Math.floor((1 - u) * a + u * b)
 }
 
-export function lerp(a: string, b: string, u: number) {
+export function lerpHexColors(a: string, b: string, u: number) {
     const { r: sR, g: sG, b: sB } = hexToRgb(a)
     const { r: eR, g: eG, b: eB } = hexToRgb(b)
 
     return rgbToHex(calcLerp(sR, eR, u), calcLerp(sG, eG, u), calcLerp(sB, eB, u)) as ColorResolvable
+}
+
+export async function getImagePrimaryColor(url: string) {
+    const [r, g, b] = await getColorFromURL(url)
+    return rgbToHex(r, g, b)
 }

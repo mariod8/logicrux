@@ -5,13 +5,13 @@ export type UserIdentification = {
     guildID: string
 }
 
-export type _app2048 = {
+export type App2048 = {
     games: number
     highscore: number
 }
 
 export type Apps = {
-    _2048: _app2048
+    _2048: App2048
 }
 
 export type UserUsedEmojis = {
@@ -66,7 +66,7 @@ export type GuildProfile = {
     muted: boolean
 }
 
-export type _mutes = {
+export type Mute = {
     userID: string
     guildID: string
     muteID: string
@@ -77,7 +77,7 @@ export type _mutes = {
     reason: string
 }
 
-export type _muteIdentification = {
+export type MuteIdentifier = {
     userID: string
     guildID: string
     muteID?: string
@@ -89,7 +89,7 @@ export type Rgb = {
     b: number
 }
 
-export type _unmute = {
+export type Unmute = {
     userID: string
     unmute: NodeJS.Timeout
 }
@@ -98,9 +98,9 @@ export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"
 
 export type _2048MoveDir = "LEFT" | "RIGHT" | "DOWN" | "UP"
 
-export type _menuPages = "general" | "emojis" | "chat"
+export type ProfileMenuPages = "general" | "emojis" | "chat"
 
-export enum _userType {
+export enum UserType {
     User,
     Member,
 }

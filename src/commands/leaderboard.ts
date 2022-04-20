@@ -1,5 +1,6 @@
 import { Guild, MessageEmbed } from "discord.js"
 import { ICommand } from "wokcommands"
+import { LC_GUILD_ID } from "../constants"
 import { Emojis } from "../emojis"
 import { getAllGuildUserProfiles } from "../utils/mongo"
 import { cleanSpecialCharacters, intToString } from "../utils/string"
@@ -64,7 +65,7 @@ export default {
         },
     ],
     callback: async ({ guild, interaction }) => {
-        const profiles = await getAllGuildUserProfiles("666295714724446209")
+        const profiles = await getAllGuildUserProfiles(LC_GUILD_ID)
         const option = interaction.options.getString("option")!
         var data = []
 

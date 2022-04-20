@@ -1,4 +1,4 @@
-import { Client } from "discord.js"
+import { Client, Guild } from "discord.js"
 import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { DEV_DISC_ID } from "../../constants"
@@ -60,10 +60,6 @@ async function cleanGuildSlashCommands(client: Client) {
     })
 }
 
-function mcServer() {
-
-}
-
 export default {
     category: "Testing",
     description: "Some tools for the dev to use",
@@ -109,10 +105,6 @@ export default {
                     name: "Clean commands",
                     value: "clean_commands",
                 },
-                {
-                    name: "MC Server",
-                    value: "mc_server"
-                }
             ],
         },
     ],
@@ -132,12 +124,8 @@ export default {
             client.emit("guildMemberAdd", member)
         } else if (action === "stats") {
             setStats()
-            return "Upserting stats!"
         } else if (action === "clean_commands") {
             cleanGuildSlashCommands(client)
-            return "Deleting slash commands"
-        } else if(action === "mc_server") {
-            mcServer()
         }
         await interaction.reply({ content: "OK", ephemeral: true })
     },

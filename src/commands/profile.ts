@@ -1,22 +1,15 @@
-import {
-    ButtonInteraction,
-    GuildMember,
-    MessageActionRow,
-    MessageAttachment,
-    MessageButton,
-    MessageEmbed,
-} from "discord.js"
+import { ButtonInteraction, GuildMember, MessageActionRow, MessageButton, MessageEmbed } from "discord.js"
 import * as moment from "moment"
 import { ICommand } from "wokcommands"
 import { Emojis } from "../emojis"
 import { MyMember } from "../member"
-import { _menuPages, UserProfile, _userType } from "../templates"
+import { ProfileMenuPages, UserProfile, UserType } from "../types"
 import { getMsFromString, getUserByString } from "../utils/getters"
 import { getUserProfile } from "../utils/mongo"
 import { intToString } from "../utils/string"
 
 class Profile {
-    private page: _menuPages
+    private page: ProfileMenuPages
     private member: MyMember
     private profile: UserProfile
 
@@ -39,11 +32,11 @@ class Profile {
         return result
     }
 
-    public setPage(option: _menuPages) {
+    public setPage(option: ProfileMenuPages) {
         this.page = option
     }
 
-    public async getEmbed(option?: _menuPages) {
+    public async getEmbed(option?: ProfileMenuPages) {
         if (!option) option = this.page
         if (option === "general") {
             return [
@@ -111,7 +104,7 @@ class Profile {
             ]
         }
     }
-    public getComponents(option?: _menuPages) {
+    public getComponents(option?: ProfileMenuPages) {
         if (option === "general") {
             return [
                 new MessageActionRow().addComponents(
@@ -162,7 +155,7 @@ export default {
                 ? (getUserByString(
                       interaction.options.getString("user") as string,
                       guild!,
-                      _userType.Member
+                      UserType.Member
                   ) as GuildMember)
                 : member
             const profile = new Profile(
@@ -188,10 +181,10 @@ export default {
             })
 
             menusManager.on("collect", async (i: ButtonInteraction) => {
-                profile.setPage(i.customId as _menuPages)
+                profile.setPage(i.customId as ProfileMenuPages)
                 i.update({
-                    embeds: await profile.getEmbed(i.customId as _menuPages),
-                    components: profile.getComponents(i.customId as _menuPages),
+                    embeds: await profile.getEmbed(i.customId as ProfileMenuPages),
+                    components: profile.getComponents(i.customId as ProfileMenuPages),
                 })
                 menusManager.resetTimer()
             })

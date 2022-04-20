@@ -4,18 +4,18 @@ import userSchema from "../schemas/user-schema"
 import {
     GuildIdentification,
     GuildProfile,
-    _muteIdentification,
-    _mutes,
+    MuteIdentifier,
+    Mute,
     UserIdentification,
     UserProfile,
     UserStats,
     Apps,
-    _app2048,
+    App2048,
     UserEmojis,
-} from "../templates"
+} from "../types"
 
 function getCleanUserProfile(_userProfile: UserProfile) {
-    const _2048: _app2048 = {
+    const _2048: App2048 = {
         games: _userProfile?.globalStats?.apps?._2048?.games | 0,
         highscore: _userProfile?.globalStats?.apps?._2048?.highscore | 0,
     }
@@ -183,20 +183,20 @@ export async function getGuildProfile(guildIdentification: GuildIdentification) 
     return getCleanGuildProfile(guildProfile) as GuildProfile
 }
 
-export async function getMute(muteIdentification: _muteIdentification) {
+export async function getMute(muteIdentification: MuteIdentifier) {
     var mute = await muteSchema.findOne(muteIdentification)
-    return mute ? (mute as _mutes) : false
+    return mute ? (mute as Mute) : false
 }
 
 export async function getMutes(guildID: string) {
     var mute = await muteSchema.find({ guildID })
-    return mute ? (mute.map((mute) => mute as _mutes) as Array<_mutes>) : false
+    return mute ? (mute.map((mute) => mute as Mute) as Array<Mute>) : false
 }
 
-export async function setMute(mute: _mutes) {
+export async function setMute(mute: Mute) {
     await new muteSchema(mute).save()
 }
 
-export async function deleteMute(muteIdentification: _muteIdentification) {
+export async function deleteMute(muteIdentification: MuteIdentifier) {
     await muteSchema.deleteMany(muteIdentification)
 }

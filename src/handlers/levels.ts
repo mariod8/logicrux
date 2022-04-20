@@ -1,5 +1,5 @@
 import { Message, MessageEmbed, User } from "discord.js"
-import { UserIdentification } from "../templates"
+import { UserIdentification } from "../types"
 import { getChannelByString } from "../utils/getters"
 import { MyMath } from "../utils/math"
 import { getUserProfile, setGlobalStats } from "../utils/mongo"

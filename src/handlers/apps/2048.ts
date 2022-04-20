@@ -10,8 +10,8 @@ import {
 } from "discord.js"
 import * as moment from "moment"
 import { Emojis } from "../../emojis"
-import { _2048MoveDir } from "../../templates"
-import { lerp } from "../../utils/color"
+import { _2048MoveDir } from "../../types"
+import { lerpHexColors } from "../../utils/color"
 import { getDate, getMsFromString, getRandomFloat, getRandomInArray, getTimeElapsed } from "../../utils/getters"
 import { MyMath } from "../../utils/math"
 import { getGuildProfile, getUserProfile, incGlobalStats, setGlobalStats, setGuildProfile } from "../../utils/mongo"
@@ -116,7 +116,7 @@ class __2048 {
         return "```\n" + board.toString() + "\n```"
     }
     private getEmbedColor() {
-        return lerp(
+        return lerpHexColors(
             "#57F287",
             "#ED4245",
             MyMath.clamp(this.score / (__2048.highscore === 0 ? 1 : __2048.highscore), 0, 1)
