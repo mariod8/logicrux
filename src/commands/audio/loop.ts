@@ -1,9 +1,9 @@
 import { RepeatMode } from "discord-music-player"
 import { GuildChannelResolvable } from "discord.js"
 import { ICommand } from "wokcommands"
+import { player } from "../.."
 import { Emojis } from "../../emojis"
 import { texts } from "../../locales"
-import { MyPlayer } from "../../player"
 
 export default {
     category: "Audio",
@@ -35,7 +35,6 @@ export default {
         },
     ],
     callback: async ({ guild, interaction, member }) => {
-        const player = MyPlayer.getPlayer()
         const option = interaction.options.getString("option")!
         const channel = member.voice.channel as GuildChannelResolvable
 

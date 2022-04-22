@@ -98,7 +98,7 @@ export type _2048BtnIds = "left" | "right" | "down" | "up" | "quit"
 
 export type _2048MoveDir = "LEFT" | "RIGHT" | "DOWN" | "UP"
 
-export type ProfileMenuPages = "general" | "emojis" | "chat"
+export type ProfileMenuPages = "GENERAL" | "EMOJIS" | "CHAT"
 
 export enum UserType {
     User,
@@ -106,3 +106,20 @@ export enum UserType {
 }
 
 export type Locale = "en-US" | "es-ES"
+
+type McVersion = {
+    releaseTime: string
+    requires: Array<any>
+    sha256: string
+    type: string
+    version: string
+}
+
+export type McVersionList = {
+    formatVersion: number
+    name: string
+    uid: string
+    versions: Array<McVersion>
+}
+
+export type McServerStatus = "ONLINE" | "UPDATING" | "OFFLINE"

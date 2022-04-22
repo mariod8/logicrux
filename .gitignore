@@ -3,3 +3,4 @@ node_modules
 tslint.json
 /build/
 tools/bulk-guild-export/raw-data
+/tools/encrypt

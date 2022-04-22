@@ -14,7 +14,7 @@ class Profile {
     private profile: UserProfile
 
     constructor(member: MyMember, profile: UserProfile) {
-        this.page = "general"
+        this.page = "GENERAL"
         this.member = member
         this.profile = profile
     }
@@ -38,7 +38,7 @@ class Profile {
 
     public async getEmbed(option?: ProfileMenuPages) {
         if (!option) option = this.page
-        if (option === "general") {
+        if (option === "GENERAL") {
             return [
                 new MessageEmbed()
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
@@ -58,7 +58,7 @@ class Profile {
                         }`,
                     }),
             ]
-        } else if (option === "chat") {
+        } else if (option === "CHAT") {
             return [
                 new MessageEmbed()
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
@@ -80,7 +80,7 @@ class Profile {
                         }\n**Archivos adjuntados**: ${this.profile.globalStats.attachments}`,
                     }),
             ]
-        } else if (option === "emojis") {
+        } else if (option === "EMOJIS") {
             return [
                 new MessageEmbed()
                     .setTitle(`Perfil de ${this.member.getUsername()}`)
@@ -105,7 +105,7 @@ class Profile {
         }
     }
     public getComponents(option?: ProfileMenuPages) {
-        if (option === "general") {
+        if (option === "GENERAL") {
             return [
                 new MessageActionRow().addComponents(
                     new MessageButton().setCustomId("general").setLabel("General").setStyle("PRIMARY").setDisabled(),
@@ -113,7 +113,7 @@ class Profile {
                     new MessageButton().setCustomId("emojis").setLabel("Emojis").setStyle("PRIMARY")
                 ),
             ]
-        } else if (option === "chat") {
+        } else if (option === "CHAT") {
             return [
                 new MessageActionRow().addComponents(
                     new MessageButton().setCustomId("general").setLabel("General").setStyle("PRIMARY"),
@@ -121,7 +121,7 @@ class Profile {
                     new MessageButton().setCustomId("emojis").setLabel("Emojis").setStyle("PRIMARY")
                 ),
             ]
-        } else if (option === "emojis") {
+        } else if (option === "EMOJIS") {
             return [
                 new MessageActionRow().addComponents(
                     new MessageButton().setCustomId("general").setLabel("General").setStyle("PRIMARY"),
@@ -167,8 +167,8 @@ export default {
             const time = getMsFromString("40s")
 
             await interaction.editReply({
-                embeds: await profile.getEmbed("general"),
-                components: profile.getComponents("general"),
+                embeds: await profile.getEmbed("GENERAL"),
+                components: profile.getComponents("GENERAL"),
             })
             const message = await interaction.fetchReply()
             const filter = (i: ButtonInteraction) => {

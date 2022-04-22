@@ -63,11 +63,11 @@ export function getTime(option: "MS_TO_END_OF_WEEK" | "WEEKLY_LOOP") {
     else if (option === "WEEKLY_LOOP") return 7 * 24 * 60 * 3600 * 1000
 }
 
-export function getMsFromString(timeRaw: string) {
-    timeRaw = timeRaw.toLowerCase()
-    if (!time.test(timeRaw)) return 1000
-    var timeUnit = /[smhd]/gm.exec(timeRaw)![0]
-    var timeValue = parseInt(/\d+/gm.exec(timeRaw)![0]) * 1000
+export function getMsFromString(rawTime: string) {
+    rawTime = rawTime.toLowerCase()
+    if (!time.test(rawTime)) return 1000
+    var timeUnit = /[smhd]/gm.exec(rawTime)![0]
+    var timeValue = parseInt(/\d+/gm.exec(rawTime)![0]) * 1000
 
     switch (timeUnit) {
         case "s":

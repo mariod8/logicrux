@@ -1,8 +1,8 @@
 import { GuildChannelResolvable } from "discord.js"
 import { ICommand } from "wokcommands"
+import { player } from "../.."
 import { Emojis } from "../../emojis"
 import { texts } from "../../locales"
-import { MyPlayer } from "../../player"
 
 export default {
     category: "Audio",
@@ -11,7 +11,6 @@ export default {
     testOnly: true,
     slash: true,
     callback: async ({ member, guild, interaction }) => {
-        const player = MyPlayer.getPlayer()
         const channel = member.voice.channel as GuildChannelResolvable
 
         if (!channel) return texts.missingVoiceChannel(Emojis.getClientEmojis().none, interaction.locale)

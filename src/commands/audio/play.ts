@@ -1,9 +1,8 @@
 import { GuildChannelResolvable } from "discord.js"
 import { ICommand } from "wokcommands"
+import { player } from "../.."
 import { Emojis } from "../../emojis"
 import { texts } from "../../locales"
-import { MyPlayer } from "../../player"
-import { getInteractionLocale } from "../../utils/getters"
 
 export default {
     category: "Audio",
@@ -20,7 +19,6 @@ export default {
         },
     ],
     callback: async ({ interaction, guild, member }) => {
-        const player = MyPlayer.getPlayer()
         const audio = interaction.options.getString("audio")!
         const channel = member.voice.channel as GuildChannelResolvable
 

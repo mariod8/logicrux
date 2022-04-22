@@ -18,3 +18,7 @@ export function intToString(value: number) {
     }
     return shortValue + suffixes[suffixNum]
 }
+
+export function replaceLine(search: string, replace: string, data: string) {
+    return data.replace(new RegExp("^.*" + search + ".*$", "gm"), replace)
+}

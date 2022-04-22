@@ -1,22 +1,17 @@
 import { Client } from "discord.js"
-import * as axios from "axios"
-import * as cheerio from "cheerio"
 import { getMsFromString } from "../utils/getters"
+import { getHtml } from "../utils/net"
 
 async function getSilksongRelDate() {
     const url = "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/"
 
-    try {
-        const response = await axios.default.get(url)
-        const html = cheerio.load(response.data)
-        return html(".date").text()
-    } catch (e) {
-        console.error(`Error en setStatus Silksong "${e}"`)
-    }
+    const html = await getHtml(url)
+    if (!html) return
+    return html(".date").text()
 }
 
 export default async function setStatus(client: Client) {
-    const timeout = getMsFromString("5m")
+    const interval = getMsFromString("5m")
     var prevDate = await getSilksongRelDate()
     const update = async (date = "") => await client.user?.setActivity(`Silksong 📆: ${date}`, { type: "WATCHING" })
 
@@ -28,5 +23,5 @@ export default async function setStatus(client: Client) {
             await update(currDate)
             prevDate = currDate
         }
-    }, timeout)
+    }, interval)
 }

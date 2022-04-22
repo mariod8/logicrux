@@ -11,9 +11,10 @@ import { statsOnMessage } from "./handlers/stats"
 import init from "./init"
 import { reactNewVersion } from "./features/react"
 import rage from "./features/rage"
+import { setMaxListeners } from "events"
 dotenv.config()
 
-const client = new Client({
+export const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
@@ -28,7 +29,7 @@ const client = new Client({
         repliedUser: false,
     },
 })
-const player = new Player(client, {
+export const player = new Player(client, {
     leaveOnEmpty: false,
     quality: "high",
     volume: 80,
@@ -46,14 +47,17 @@ client.on("ready", async () => {
         botOwners: ["323378898794446850"],
         debug: true,
     })
+    setMaxListeners(50)
     init(client, player)
     console.log(`${client?.user?.username} is ready!`)
 })
 
 client.on("messageCreate", (message) => {
-    const { author } = message
+    const { author, channelId } = message
 
-    reactNewVersion(message)
+    if (author.id === "730742657046806529" && channelId === "730742558556291173") {
+        reactNewVersion(message)
+    }
     if (author?.bot) return
     statsOnMessage(message)
     addXP(message, author, "MESSAGE")

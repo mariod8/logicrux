@@ -3,6 +3,7 @@ import { Client } from "discord.js"
 import * as moment from "moment"
 import * as momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
+import { initSnapshotServer } from "./features/sandbox-server/sandbox-server"
 import setStatus from "./features/status"
 import { MyPlayer } from "./player"
 
@@ -16,7 +17,7 @@ export default async (client: Client, player: Player) => {
     client.user?.setStatus("online")
 
     // Set avatar
-    //client?.user?.setAvatar("./src/assets/avatar2.jpeg")
+    //client?.user?.setAvatar("./src/assets/avatar2.jpeg").catch(console.error)
 
     // Set emojis
     await Emojis.setEmojis(client)
@@ -26,4 +27,7 @@ export default async (client: Client, player: Player) => {
 
     // Set status
     setStatus(client)
+
+    // Setup Snapshot Server
+    initSnapshotServer(client)
 }
