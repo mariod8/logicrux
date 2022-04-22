@@ -3,9 +3,8 @@ import { Client } from "discord.js"
 import * as moment from "moment"
 import * as momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
-import { initSnapshotServer } from "./features/sandbox-server/sandbox-server"
+import { startSandboxServer } from "./features/sandbox-server/sandbox-server"
 import setStatus from "./features/status"
-import { MyPlayer } from "./player"
 
 export default async (client: Client, player: Player) => {
     // Set Spain/Madrid timezone and language
@@ -22,12 +21,9 @@ export default async (client: Client, player: Player) => {
     // Set emojis
     await Emojis.setEmojis(client)
 
-    // Set player
-    MyPlayer.setPlayer(player)
-
     // Set status
     setStatus(client)
 
     // Setup Snapshot Server
-    initSnapshotServer(client)
+    startSandboxServer(client)
 }

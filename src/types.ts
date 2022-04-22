@@ -122,4 +122,4 @@ export type McVersionList = {
     versions: Array<McVersion>
 }
 
-export type McServerStatus = "ONLINE" | "UPDATING" | "OFFLINE"
+export type McServerStatus = "ONLINE" | "OFFLINE"

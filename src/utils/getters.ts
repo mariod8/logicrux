@@ -94,7 +94,8 @@ export function getTimeElapsed(startTime: number, endTime: number) {
     return (hrs < 10 ? "0" + hrs : hrs) + ":" + (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs)
 }
 
-export function getDate(ms: number | string) {
+export function getDate(ms?: number | string) {
+    if (!ms) ms = moment.default().valueOf()
     if (typeof ms == "string") return moment.default(ms, "x").format("lll")
     return moment.default(ms).format("lll")
 }
