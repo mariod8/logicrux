@@ -169,7 +169,7 @@ export async function setGuildProfile(guildIdentification: GuildIdentification, 
 }
 
 export async function getUserProfile(userIdentification: UserIdentification) {
-    var userProfile: UserProfile = await userSchema.findOne(userIdentification)
+    var userProfile: UserProfile = (await userSchema.findOne(userIdentification)) as UserProfile
     return getCleanUserProfile(userProfile)
 }
 
@@ -179,7 +179,7 @@ export async function getAllGuildUserProfiles(guildID: string) {
 }
 
 export async function getGuildProfile(guildIdentification: GuildIdentification) {
-    var guildProfile: GuildProfile = await guildSchema.findOne(guildIdentification)
+    var guildProfile: GuildProfile = (await guildSchema.findOne(guildIdentification)) as GuildProfile
     return getCleanGuildProfile(guildProfile) as GuildProfile
 }
 

@@ -132,21 +132,22 @@ abstract class McServer {
 }
 
 export abstract class HeavyNodeMcServer extends McServer {
-    private hostConn: HeavyNodeConnection
+    private hostConn?: HeavyNodeConnection
 
     constructor(
         ip: string,
         port: number,
         title: string,
         description: string,
-        hostApiKey: string,
-        hostServerId: string
+        hostApiKey?: string,
+        hostServerId?: string
     ) {
         super(ip, port, title, description)
-        this.hostConn = new HeavyNodeConnection(hostApiKey, hostServerId)
+        if (hostApiKey && hostServerId) this.hostConn = new HeavyNodeConnection(hostApiKey, hostServerId)
     }
 
     public restartServer() {
+        if (!this.hostConn) return false
         return this.hostConn.restartServer()
     }
 }
