@@ -5,7 +5,7 @@ import { UserType, Locale } from "../types"
 import { time } from "./regex"
 const stringSimilarity = require("string-similarity")
 
-export function getUserByString(username: string, guild: Guild, type: UserType = UserType.User) {
+export function getUserByString(username: string, guild: Guild, type: UserType = "USER") {
     var usernames: Array<string> = []
     const usernameSimilarityThreshold = 0.1
     username = username.toLowerCase()
@@ -17,9 +17,8 @@ export function getUserByString(username: string, guild: Guild, type: UserType =
     const similarMember = guild.members.cache.find(
         (member) => member.user.username.toLowerCase() === similarUsername
     ) as GuildMember
-    if (stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold)
-        throw "No se ha podido encontrar al usuario"
-    return type === UserType.User ? similarMember.user : similarMember
+    if (stringSimilarity.compareTwoStrings(similarUsername, username) < usernameSimilarityThreshold) return
+    return type === "USER" ? similarMember.user : similarMember
 }
 
 export function getChannelByString(channel: string, guild: Guild) {

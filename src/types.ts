@@ -100,10 +100,7 @@ export type _2048MoveDir = "LEFT" | "RIGHT" | "DOWN" | "UP"
 
 export type ProfileMenuPages = "GENERAL" | "EMOJIS" | "CHAT"
 
-export enum UserType {
-    User,
-    Member,
-}
+export type UserType = "USER" | "MEMBER"
 
 export type Locale = "en-US" | "es-ES"
 

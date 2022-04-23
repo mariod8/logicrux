@@ -1,15 +1,12 @@
 import { Client, Message, MessageEmbed, TextChannel } from "discord.js"
 import { client } from "."
-import { LC_GUILD_ID } from "./constants"
+import { DEV_GUILD_ID, LC_GUILD_ID } from "./constants"
 import { McServerStatus } from "./types"
-import { getChannelByString, getDate } from "./utils/getters"
+import { getChannelByString, getDate, getUserByString } from "./utils/getters"
 import * as msu from "minecraft-server-util"
 import { JavaStatusResponse } from "minecraft-server-util"
-import { Emojis } from "./emojis"
 import { decrypt } from "./utils/crypto"
 const nodeactyl = require("nodeactyl")
-
-const emojis = Emojis.getClientEmojis()
 
 abstract class IHostConnection {
     protected hostConn: any
@@ -39,14 +36,14 @@ class HeavyNodeConnection extends IHostConnection {
 }
 
 abstract class McServer {
-    private ip: string
-    private port: number
-    private title: string
-    private description: string
-    private status: McServerStatus = "OFFLINE"
+    protected ip: string
+    protected port: number
+    protected title: string
+    protected description: string
+    protected status: McServerStatus = "OFFLINE"
     private channel?: TextChannel
     private message?: Message | void
-    private data?: JavaStatusResponse
+    protected data?: JavaStatusResponse
     private client: Client = client
 
     protected constructor(ip: string, port: number, title: string, description: string) {
@@ -63,7 +60,7 @@ abstract class McServer {
     private async updateMessage() {
         try {
             if (!this.message) return this.sendMessage()
-            await this.message.edit({ embeds: [await this.getEmbed()] })
+            await this.message.edit({ embeds: [this.getEmbed()] })
             return true
         } catch (e) {
             return false
@@ -84,33 +81,6 @@ abstract class McServer {
         return this.updateMessage()
     }
 
-    private async getEmbed() {
-        return new MessageEmbed()
-            .setTitle(this.title)
-            .setDescription(this.description)
-            .setFooter({
-                text: `Last updated ${getDate()}`,
-            })
-            .setColor(this.isOnline() ? "GREEN" : "RED")
-            .setFields([
-                {
-                    name: `Access ${emojis.lens}`,
-                    value: `**IP** \`${this.ip}:${this.port}\``,
-                    inline: false,
-                },
-                {
-                    name: `Status`,
-                    value: `${this.isOnline() ? `Online ${emojis.high}` : `Offline ${emojis.none}`}`,
-                    inline: true,
-                },
-                {
-                    name: `Players`,
-                    value: `${this.data ? `${this.data.players.online} / ${this.data.players.max}` : `-`}`,
-                    inline: true,
-                },
-            ])
-    }
-
     private async sendMessage() {
         try {
             if (this.message) return false
@@ -119,17 +89,49 @@ abstract class McServer {
             this.channel = getChannelByString("mc-servers", lcGuild) as TextChannel
             if (!this.channel) return false
             await this.channel.bulkDelete(100)
-            this.message = await this.channel.send({ embeds: [await this.getEmbed()] })
+            this.message = await this.channel.send({ embeds: [this.getEmbed()] })
             return true
         } catch (e) {
             return false
         }
     }
 
+    protected getPlayerNames() {
+        var names = ""
+
+        if (!this.data) return
+        if (!this.data.players.sample) return
+        names += `${this.getPlayerMcProfiles()}\n`
+        return names
+    }
+
+    private getPlayerMcProfiles() {
+        var mcProfiles = ""
+
+        if (!this.data) return
+        if (!this.data.players.sample) return
+        for (var player of this.data.players.sample) {
+            mcProfiles += `[${player.name}](https://namemc.com/profile/${player.name})\n`
+        }
+        return mcProfiles
+    }
+
+    protected getPlayerDiscord() {
+        var discord = ""
+
+        if (!this.data) return
+        if (!this.data.players.sample) return
+        for (var player of this.data.players.sample) {
+            discord += `${getUserByString(player.name, this.channel!.guild, "MEMBER") ?? "-"}\n`
+        }
+        return discord
+    }
+
+    abstract getEmbed(): MessageEmbed
     abstract restartServer(): boolean
 }
 
-export class HeavyNodeMcServer extends McServer {
+export abstract class HeavyNodeMcServer extends McServer {
     private hostConn: HeavyNodeConnection
 
     constructor(

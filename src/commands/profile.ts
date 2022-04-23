@@ -152,11 +152,7 @@ export default {
 
         try {
             const targetMember = interaction.options?.getString("user")
-                ? (getUserByString(
-                      interaction.options.getString("user") as string,
-                      guild!,
-                      UserType.Member
-                  ) as GuildMember)
+                ? (getUserByString(interaction.options.getString("user") as string, guild!, "MEMBER") as GuildMember)
                 : member
             const profile = new Profile(
                 new MyMember(targetMember),

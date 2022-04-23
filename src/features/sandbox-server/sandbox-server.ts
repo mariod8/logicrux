@@ -1,12 +1,15 @@
-import { Client, Message, MessageEmbed, TextChannel } from "discord.js"
+import { Client, MessageEmbed } from "discord.js"
 import * as sftp from "ssh2-sftp-client"
 import { decrypt } from "../../utils/crypto"
 import * as fs from "fs"
 import { replaceLine } from "../../utils/string"
-import { getMsFromString } from "../../utils/getters"
+import { getDate, getMsFromString } from "../../utils/getters"
 import { downloadToBuffer, getHtml } from "../../utils/net"
 import { McVersionList } from "../../types"
 import { HeavyNodeMcServer } from "../../mc-server"
+import { Emojis } from "../../emojis"
+
+const emojis = Emojis.getClientEmojis()
 
 class SandboxServer extends HeavyNodeMcServer {
     private sftpConn?: sftp = new sftp.default()
@@ -57,6 +60,48 @@ class SandboxServer extends HeavyNodeMcServer {
             return false
         }
     }
+
+    public getEmbed() {
+        return new MessageEmbed()
+            .setTitle(this.title)
+            .setDescription(this.description)
+            .setFooter({
+                text: `Last updated ${getDate()}`,
+            })
+            .setColor(this.isOnline() ? "GREEN" : "RED")
+            .setFields([
+                {
+                    name: `Access ${emojis.lens}`,
+                    value: `**IP** \`${this.ip}:${this.port}\``,
+                    inline: false,
+                },
+                {
+                    name: `Status`,
+                    value: `${this.isOnline() ? `Online ${emojis.high}` : `Offline ${emojis.none}`}`,
+                    inline: true,
+                },
+                {
+                    name: `Version`,
+                    value: `${this.data ? `${this.data.version.name}` : "-"}`,
+                    inline: true,
+                },
+                {
+                    name: `Players`,
+                    value: `${this.data ? `${this.data.players.online} / ${this.data.players.max}` : "-"}`,
+                    inline: false,
+                },
+                {
+                    name: `Names`,
+                    value: `${this.getPlayerNames() ?? "-"}`,
+                    inline: true,
+                },
+                {
+                    name: `Discord`,
+                    value: `${this.getPlayerDiscord() ?? "-"}`,
+                    inline: true,
+                },
+            ])
+    }
 }
 
 export async function startSandboxServer(client: Client) {
@@ -94,15 +139,17 @@ async function getLatestMcSnapshot() {
     if (!dataBuf) return ""
     const data = JSON.parse(dataBuf.toString()) as McVersionList
     const latestSnapshot = data.versions.find((version) => version.type === "snapshot")
-    return latestSnapshot?.version ?? ""
+    return latestSnapshot ? latestSnapshot.version : ""
 }
 
 async function getServerJarUrl(version: string) {
     const url = "https://mcversions.net/download/" + version
     var $
 
-    while (!$) {
+    while (true) {
         $ = await getHtml(url)
+        if ($) break
+        setTimeout(() => {}, 5000)
     }
     return $(".bg-green-700").attr("href")
 }

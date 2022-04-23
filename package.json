@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.ts",
     "engines": {
-        "node": ">=16.11.1"
+        "node": ">=17.9.0"
     },
     "scripts": {
         "pretty": "prettier --write \"./**/*.{ts,js,jsx,json}\"",
@@ -45,7 +45,6 @@
         "discord.js": "^13.6.0",
         "dotenv": "^16.0.0",
         "ffmpeg": "^0.0.4",
-        "i": "^0.3.7",
         "minecraft-server-util": "^5.2.9",
         "moment": "^2.29.3",
         "moment-timezone": "^0.5.34",
