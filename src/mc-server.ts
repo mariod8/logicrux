@@ -33,6 +33,15 @@ class HeavyNodeConnection extends IHostConnection {
             return false
         }
     }
+
+    public getConsoleWebSocket() {
+        try {
+            const socket = this.hostConn.getConsoleWebSocket(this.hostServerId)
+            return socket
+        } catch (e) {
+            return
+        }
+    }
 }
 
 abstract class McServer {
@@ -41,10 +50,11 @@ abstract class McServer {
     protected title: string
     protected description: string
     protected status: McServerStatus = "OFFLINE"
-    private channel?: TextChannel
+    protected channel?: TextChannel
     private message?: Message | void
     protected data?: JavaStatusResponse
     private client: Client = client
+    private static wipedChannel: boolean = false
 
     protected constructor(ip: string, port: number, title: string, description: string) {
         this.ip = decrypt(ip)
@@ -88,7 +98,10 @@ abstract class McServer {
             if (!lcGuild) return false
             this.channel = getChannelByString("mc-servers", lcGuild) as TextChannel
             if (!this.channel) return false
-            await this.channel.bulkDelete(100)
+            if (!McServer.wipedChannel) {
+                await this.channel.bulkDelete(100)
+                McServer.wipedChannel = true
+            }
             this.message = await this.channel.send({ embeds: [this.getEmbed()] })
             return true
         } catch (e) {
@@ -128,7 +141,6 @@ abstract class McServer {
     }
 
     abstract getEmbed(): MessageEmbed
-    abstract restartServer(): boolean
 }
 
 export abstract class HeavyNodeMcServer extends McServer {
@@ -147,7 +159,12 @@ export abstract class HeavyNodeMcServer extends McServer {
     }
 
     public restartServer() {
-        if (!this.hostConn) return false
+        if (!this.hostConn) return
         return this.hostConn.restartServer()
+    }
+
+    public getConsoleWebSocket() {
+        if (!this.hostConn) return
+        return this.hostConn.getConsoleWebSocket()
     }
 }

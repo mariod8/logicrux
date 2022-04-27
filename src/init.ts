@@ -3,7 +3,8 @@ import { Client } from "discord.js"
 import * as moment from "moment"
 import * as momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
-import { startSandboxServer } from "./features/sandbox-server/sandbox-server"
+import { initIlogicraftServer } from "./features/servers/ilogicraft-server"
+import { initSandboxServer } from "./features/servers/sandbox-server/sandbox-server"
 import setStatus from "./features/status"
 
 export default async (client: Client, player: Player) => {
@@ -24,6 +25,7 @@ export default async (client: Client, player: Player) => {
     // Set status
     setStatus(client)
 
-    // Setup Snapshot Server
-    startSandboxServer(client)
+    // Init servers
+    await initSandboxServer()
+    initIlogicraftServer()
 }

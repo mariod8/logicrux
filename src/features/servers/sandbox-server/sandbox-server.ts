@@ -1,13 +1,13 @@
 import { Client, MessageEmbed } from "discord.js"
 import * as sftp from "ssh2-sftp-client"
-import { decrypt } from "../../utils/crypto"
+import { decrypt } from "../../../utils/crypto"
 import * as fs from "fs"
-import { replaceLine } from "../../utils/string"
-import { getDate, getMsFromString } from "../../utils/getters"
-import { downloadToBuffer, getHtml } from "../../utils/net"
-import { McVersionList } from "../../types"
-import { HeavyNodeMcServer } from "../../mc-server"
-import { Emojis } from "../../emojis"
+import { replaceLine } from "../../../utils/string"
+import { getDate, getMsFromString } from "../../../utils/getters"
+import { downloadToBuffer, getHtml } from "../../../utils/net"
+import { McVersionList } from "../../../types"
+import { HeavyNodeMcServer } from "../../../mc-server"
+import { Emojis } from "../../../emojis"
 
 const emojis = Emojis.getClientEmojis()
 
@@ -104,7 +104,7 @@ class SandboxServer extends HeavyNodeMcServer {
     }
 }
 
-export async function startSandboxServer(client: Client) {
+export async function initSandboxServer() {
     const sandboxServer = new SandboxServer(
         "U2FsdGVkX18sBEBYARLrsvGo7s6HPGvZF4FDrtRhvsE='",
         25605,
@@ -147,8 +147,7 @@ async function getServerJarUrl(version: string) {
     var $
 
     while (true) {
-        $ = await getHtml(url)
-        if ($) break
+        if ( $ = await getHtml(url)) break
         setTimeout(() => {}, 5000)
     }
     return $(".bg-green-700").attr("href")

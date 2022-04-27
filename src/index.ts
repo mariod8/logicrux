@@ -74,4 +74,4 @@ client.on("guildMemberRemove", (member) => {
     welcomeGoodbye(member, "REMOVE")
 })
 
-client.login(process.env.TOKEN)
+client.login(process.env.TOKEN_OG)

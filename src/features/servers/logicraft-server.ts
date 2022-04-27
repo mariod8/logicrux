@@ -1,7 +1,7 @@
 import { MessageEmbed } from "discord.js"
-import { Emojis } from "../emojis"
-import { HeavyNodeMcServer } from "../mc-server"
-import { getDate, getMsFromString } from "../utils/getters"
+import { Emojis } from "../../emojis"
+import { HeavyNodeMcServer } from "../../mc-server"
+import { getDate, getMsFromString } from "../../utils/getters"
 
 const emojis = Emojis.getClientEmojis()
 
