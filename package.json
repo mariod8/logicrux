@@ -37,7 +37,6 @@
         "@types/ssh2-sftp-client": "^7.0.1",
         "ascii-table": "^0.0.9",
         "axios": "^0.27.2",
-        "canvas": "github:Automattic/node-canvas#prebuilds",
         "cheerio": "^1.0.0-rc.11",
         "color-thief-node": "^1.0.4",
         "crypto-js": "^4.1.1",
