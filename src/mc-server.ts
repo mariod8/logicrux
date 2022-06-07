@@ -94,7 +94,7 @@ abstract class McServer {
     private async sendMessage() {
         try {
             if (this.message) return false
-            const lcGuild = this.client.guilds.cache.get(DEV_GUILD_ID)
+            const lcGuild = this.client.guilds.cache.get(LC_GUILD_ID)
             if (!lcGuild) return false
             this.channel = getChannelByString("mc-servers", lcGuild) as TextChannel
             if (!this.channel) return false
