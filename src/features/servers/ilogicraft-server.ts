@@ -68,7 +68,7 @@ export function initIlogicraftServer() {
         "Multiple dimensions vanilla on the 20w14infinity snapshot"
     )
 
-    const interval = getMsFromString("5s")
+    const interval = getMsFromString("5m")
 
     setInterval(async () => {
         await ilogicraftServer.update()
