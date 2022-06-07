@@ -8,7 +8,7 @@
     },
     "scripts": {
         "pretty": "prettier --write \"./**/*.{ts,js,jsx,json}\"",
-        "start": "npx --optimize_for_size --max_old_space_size=2560 ts-node src/index.ts"
+        "start": "npx --optimize_for_size --max_old_space_size=460 ts-node src/index.ts"
     },
     "repository": {
         "type": "git",
