@@ -25,5 +25,5 @@ export default async (client: Client, player: Player) => {
     setStatus(client)
 
     // Init servers
-    initIlogicraftServer()
+    //initIlogicraftServer()
 }
