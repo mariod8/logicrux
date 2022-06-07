@@ -4,7 +4,6 @@ import * as moment from "moment"
 import * as momentTimezone from "moment-timezone"
 import { Emojis } from "./emojis"
 import { initIlogicraftServer } from "./features/servers/ilogicraft-server"
-import { initSandboxServer } from "./features/servers/sandbox-server/sandbox-server"
 import setStatus from "./features/status"
 
 export default async (client: Client, player: Player) => {
@@ -26,6 +25,5 @@ export default async (client: Client, player: Player) => {
     setStatus(client)
 
     // Init servers
-    await initSandboxServer()
     initIlogicraftServer()
 }

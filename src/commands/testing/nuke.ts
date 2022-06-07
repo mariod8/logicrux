@@ -5,8 +5,8 @@ import { getMsFromString } from "../../utils/getters"
 async function nuke(guild: Guild) {
     const deletes: Array<Promise<any>> = []
 
-    guild.channels.cache.filter(c => c.manageable).each(c => deletes.push(c.delete()))
-    guild.roles.cache.filter(r => !r.managed).each(r => deletes.push(r.delete()))
+    guild.channels.cache.filter((c) => c.manageable).each((c) => deletes.push(c.delete()))
+    guild.roles.cache.filter((r) => !r.managed).each((r) => deletes.push(r.delete()))
     await Promise.all(deletes)
 }
 
@@ -27,16 +27,16 @@ export default {
                 "Nukear un servidor eliminará todos sus canales, incluido los registros de mensajes, todos los roles y demás. Procede con precaución"
             )
             .setColor("RED")
-            .setFooter({text:`Lanzado por ${member.user.username}`})
+            .setFooter({ text: `Lanzado por ${member.user.username}` })
         const embedCancelled = new MessageEmbed()
             .setTitle(`Nuke cancelado`)
             .setColor("GREY")
-            .setFooter({text:`Lanzado por ${member.user.username}`})
+            .setFooter({ text: `Lanzado por ${member.user.username}` })
         const embedApproved = new MessageEmbed()
             .setTitle(`Nuke aceptado`)
             .setDescription("Nukeando servidor")
             .setColor("RED")
-            .setFooter({text:`Lanzado por ${member.user.username}`})
+            .setFooter({ text: `Lanzado por ${member.user.username}` })
 
         await interaction.editReply({
             embeds: [embedConfirm],
@@ -63,7 +63,7 @@ export default {
                     embeds: [embedApproved],
                     components: [],
                 })
-                await nuke(guild!)
+                //await nuke(guild!)
             } else if (i.customId === "n") {
                 i.update({
                     embeds: [embedCancelled],

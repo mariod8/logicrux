@@ -7,7 +7,7 @@ const stringSimilarity = require("string-similarity")
 
 export function getUserByString(username: string, guild: Guild, type: UserType = "USER") {
     var usernames: Array<string> = []
-    const usernameSimilarityThreshold = 0.1
+    const usernameSimilarityThreshold = 0.9
     username = username.toLowerCase()
 
     guild.members.cache.each((member) => {

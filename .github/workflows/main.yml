@@ -23,12 +23,3 @@ jobs:
       run: |
         npm install
         npx tsc
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "logicrux"
-        heroku_email: "mariodavo.20@gmail.com"
